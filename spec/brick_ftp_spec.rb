@@ -10,4 +10,10 @@ describe BrickFTP do
 
     it { is_expected.to be_an_instance_of BrickFTP::Configuration }
   end
+
+  describe '.configure' do
+    it 'yield with config' do
+      expect { |b| BrickFTP.configure(&b) }.to yield_with_args(BrickFTP.config)
+    end
+  end
 end

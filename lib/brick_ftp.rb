@@ -5,4 +5,8 @@ module BrickFTP
   def self.config
     @config ||= BrickFTP::Configuration.new
   end
+
+  def self.configure
+    yield(config)
+  end
 end
