@@ -18,4 +18,26 @@ RSpec.describe BrickFTP::Authentication, type: :lib do
       expect(subject.value).to eq %w(xxxxxxxx)
     end
   end
+
+  describe '.login' do
+    subject { described_class.login('koshigoe', 'password') }
+
+    it 'call BrickFTP::Authentication::Session.create' do
+      expect(BrickFTP::Authentication::Session).to receive(:create).with('koshigoe', 'password')
+      subject
+    end
+  end
+
+  describe '.logout' do
+    subject { described_class.logout }
+
+    let(:session) { BrickFTP::Authentication::Session.new(id: 'xxxxxxxx') }
+
+    before { BrickFTP.config.session = session }
+
+    it 'call BrickFTP.config.session.destroy' do
+      expect(session).to receive(:destroy)
+      subject
+    end
+  end
 end
