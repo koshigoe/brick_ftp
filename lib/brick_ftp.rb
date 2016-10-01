@@ -12,6 +12,11 @@ module BrickFTP
     @config ||= BrickFTP::Configuration.new
   end
 
+  def self.config=(config)
+    raise TypeError unless config.is_a?(BrickFTP::Configuration)
+    @config = config
+  end
+
   def self.configure
     yield(config)
   end
