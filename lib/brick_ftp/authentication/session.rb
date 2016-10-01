@@ -7,14 +7,13 @@ module BrickFTP
           password: password,
         }
         data = BrickFTP::HTTPClient.new.post('/api/rest/v1/sessions.json', params: params)
-        new(id: data['id'])
+        new(id: data['id']).tap { |x| BrickFTP.config.session = x }
       end
 
       attr_reader :id
 
       def initialize(id:)
         @id = id
-        BrickFTP.configure { |c| c.session = self }
       end
     end
   end
