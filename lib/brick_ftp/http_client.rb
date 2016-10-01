@@ -35,6 +35,16 @@ module BrickFTP
       end
     end
 
+    def put(path, params: {})
+      case res = request(:put, path, params: params)
+      when Net::HTTPSuccess
+        JSON.parse(res.body)
+      else
+        # TODO: redirect
+        raise Error, res
+      end
+    end
+
     def delete(path)
       case res = request(:delete, path)
       when Net::HTTPSuccess
