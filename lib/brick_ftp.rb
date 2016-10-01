@@ -1,6 +1,8 @@
 require "brick_ftp/version"
 require 'brick_ftp/configuration'
 require 'brick_ftp/http_client'
+require 'brick_ftp/authentication'
+require 'brick_ftp/authentication/session'
 
 module BrickFTP
   def self.config
