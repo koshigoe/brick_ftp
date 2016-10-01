@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/koshigoe/brick_ftp/tree/master.svg?style=svg)](https://circleci.com/gh/koshigoe/brick_ftp/tree/master)
+
 # BrickFTP
 
 This is a [BrickFTP](https://brickftp.com/)'s _unofficial_ [REST API](https://brickftp.com/ja/docs/rest-api/) Client.
