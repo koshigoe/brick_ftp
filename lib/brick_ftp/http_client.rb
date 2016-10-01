@@ -40,6 +40,7 @@ module BrickFTP
     def request(method, path, params: {}, headers: {})
       req = Net::HTTP.const_get(method.to_s.capitalize).new(path, headers)
       req['Content-Type'] = 'application/json'
+      req['Cookie'] = BrickFTP::Authentication.cookie(BrickFTP.config.session).to_s if BrickFTP.config.session
       req.body = params.to_json unless params.empty?
 
       @conn.request(req)
