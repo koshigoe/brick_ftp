@@ -1,8 +1,6 @@
-# BrickFtp
+# BrickFTP
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/brick_ftp`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This is a [BrickFTP](https://brickftp.com/)'s _unofficial_ [REST API](https://brickftp.com/ja/docs/rest-api/) Client.
 
 ## Installation
 
@@ -22,7 +20,32 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Configuration
+
+```ruby
+BrickFTP.configure do |c|
+  c.subdomain = 'koshigoe'      # Used by build API URL(e.g. https://{subdomain}.brickftp.com/api/rest/v1/...)
+  c.api_key = 'xxxxx'           # Used by set REST API key.
+  c.logger = Logger.new(STDOUT) # Used by logging.
+end
+```
+
+- Environment value `BRICK_FTP_SUBDOMAIN` is set to `subdomain`.
+- Environment value `BRICK_FTP_API_KEY` is set to `api_key`.
+
+### Authentication
+
+If you authenticate by API key, you set API key to configuration.
+If you authenticate by session cooki, you must authenticate by API.
+
+```ruby
+# Authenticate and set authentication session to configuration.
+BrickFTP::Authentication.login('koshigoe', 'password')
+```
+
+### Other APIs
+
+see API document or source code.
 
 ## Development
 
