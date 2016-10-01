@@ -5,6 +5,11 @@ module BrickFTP
         BrickFTP::HTTPClient.new.get('/api/rest/v1/users.json').map { |x| new(x.symbolize_keys) }
       end
 
+      def self.find(id)
+        data = BrickFTP::HTTPClient.new.get("/api/rest/v1/users/#{id}.json")
+        data.empty? ? nil : new(data.symbolize_keys)
+      end
+
       attr_reader :id,
                   :username,
                   :password,
