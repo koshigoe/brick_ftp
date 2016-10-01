@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe BrickFTP::Authentication::Session, type: :lib do
+RSpec.describe BrickFTP::API::Authentication::Session, type: :lib do
   before do
     BrickFTP.configure { |c| c.subdomain = 'koshigoe' }
   end
@@ -18,8 +18,8 @@ RSpec.describe BrickFTP::Authentication::Session, type: :lib do
           .to_return(status: 201, body: { id: 'xxxxxxxx' }.to_json)
       end
 
-      it 'return instance of BrickFTP::Authentication::Session' do
-        is_expected.to be_an_instance_of BrickFTP::Authentication::Session
+      it 'return instance of BrickFTP::API::Authentication::Session' do
+        is_expected.to be_an_instance_of BrickFTP::API::Authentication::Session
       end
 
       it 'store id' do

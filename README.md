@@ -40,7 +40,7 @@ If you authenticate by session cooki, you must authenticate by API.
 
 ```ruby
 # Authenticate and set authentication session to configuration.
-BrickFTP::Authentication.login('koshigoe', 'password')
+BrickFTP::API::Authentication.login('koshigoe', 'password')
 ```
 
 ### Other APIs

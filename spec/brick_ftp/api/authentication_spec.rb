@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-RSpec.describe BrickFTP::Authentication, type: :lib do
+RSpec.describe BrickFTP::API::Authentication, type: :lib do
   describe '.cookie' do
     subject { described_class.cookie(session) }
 
-    let(:session) { BrickFTP::Authentication::Session.new(id: 'xxxxxxxx') }
+    let(:session) { BrickFTP::API::Authentication::Session.new(id: 'xxxxxxxx') }
 
     it 'return instance of CGI::Cookie' do
       is_expected.to be_an_instance_of CGI::Cookie
@@ -22,8 +22,8 @@ RSpec.describe BrickFTP::Authentication, type: :lib do
   describe '.login' do
     subject { described_class.login('koshigoe', 'password') }
 
-    it 'call BrickFTP::Authentication::Session.create' do
-      expect(BrickFTP::Authentication::Session).to receive(:create).with('koshigoe', 'password')
+    it 'call BrickFTP::API::Authentication::Session.create' do
+      expect(BrickFTP::API::Authentication::Session).to receive(:create).with('koshigoe', 'password')
       subject
     end
   end
@@ -31,7 +31,7 @@ RSpec.describe BrickFTP::Authentication, type: :lib do
   describe '.logout' do
     subject { described_class.logout }
 
-    let(:session) { BrickFTP::Authentication::Session.new(id: 'xxxxxxxx') }
+    let(:session) { BrickFTP::API::Authentication::Session.new(id: 'xxxxxxxx') }
 
     before { BrickFTP.config.session = session }
 
