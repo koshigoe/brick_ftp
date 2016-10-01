@@ -1,5 +1,5 @@
 require "brick_ftp/version"
 
-module BrickFtp
+module BrickFTP
   # Your code goes here...
 end

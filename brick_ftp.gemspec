@@ -5,7 +5,7 @@ require 'brick_ftp/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "brick_ftp"
-  spec.version       = BrickFtp::VERSION
+  spec.version       = BrickFTP::VERSION
   spec.authors       = ["koshigoe"]
   spec.email         = ["koshigoeb@gmail.com"]
 

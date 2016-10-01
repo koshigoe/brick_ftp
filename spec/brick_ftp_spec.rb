@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe BrickFtp do
+describe BrickFTP do
   it 'has a version number' do
-    expect(BrickFtp::VERSION).not_to be nil
+    expect(BrickFTP::VERSION).not_to be nil
   end
 
   it 'does something useful' do
