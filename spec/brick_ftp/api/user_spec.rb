@@ -242,4 +242,63 @@ RSpec.describe BrickFTP::API::User, type: :lib do
       end
     end
   end
+
+  describe '#update' do
+    subject { user.update(params) }
+
+    let(:user) { described_class.new(id: 125108, username: 'johndoe') }
+    let(:params) { { name: 'JOHN DOE' } }
+
+    context 'success' do
+      before do
+        body = {
+          "id" => 125108,
+          "username" => "johndoe",
+          "authentication_method" => "password",
+          "last_login_at" => nil,
+          "name" => "JOHN DOE",
+          "email" => "john@example.com",
+          "notes" => "CTO",
+          "group_ids" => "3,4",
+          "ftp_permission" => true,
+          "web_permission" => true,
+          "sftp_permission" => true,
+          "dav_permission" => true,
+          "restapi_permission" => true,
+          "attachments_permission" => true,
+          "self_managed" => true,
+          "require_password_change" => false,
+          "allowed_ips" => nil,
+          "user_root" => nil,
+          "time_zone" => "Eastern Time (US & Canada)",
+          "language" => "",
+          "ssl_required" => "use_system_setting",
+          "site_admin" => false,
+        }
+        stub_request(:put, 'https://koshigoe.brickftp.com/api/rest/v1/users/125108.json')
+          .with(body: params.to_json, basic_auth: ['xxxxxxxx', 'x'])
+          .to_return(body: body.to_json)
+      end
+
+      it 'return self' do
+        is_expected.to eq user
+      end
+
+      it 'update attributes' do
+        expect { subject }.to change(user, :name).to('JOHN DOE')
+      end
+    end
+
+    context 'failure' do
+      before do
+        stub_request(:put, 'https://koshigoe.brickftp.com/api/rest/v1/users/125108.json')
+          .with(basic_auth: ['xxxxxxxx', 'x'])
+          .to_return(status: 500, body: { 'error' => 'xxxxxxxx', 'http-code' => '500' }.to_json)
+      end
+
+      it 'raise BrickFTP::HTTPClient::Error' do
+        expect { subject }.to raise_error BrickFTP::HTTPClient::Error
+      end
+    end
+  end
 end
