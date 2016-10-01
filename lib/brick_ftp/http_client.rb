@@ -15,6 +15,16 @@ module BrickFTP
       @conn.use_ssl = true
     end
 
+    def get(path)
+      case res = request(:get, path)
+      when Net::HTTPSuccess
+        JSON.parse(res.body)
+      else
+        # TODO: redirect
+        raise Error, res
+      end
+    end
+
     def post(path, params: {})
       case res = request(:post, path, params: params)
       when Net::HTTPCreated
