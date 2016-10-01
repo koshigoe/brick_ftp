@@ -12,7 +12,10 @@ RSpec.describe BrickFTP::HTTPClient, type: :lib do
 
     context 'HTTP 200 OK' do
       before do
+        BrickFTP.config.api_key = 'xxxxxxxx'
+
         stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/users.json')
+          .with(basic_auth: ['xxxxxxxx', 'x'])
           .to_return(body: { id: 'xxxxxxxx' }.to_json)
       end
 
