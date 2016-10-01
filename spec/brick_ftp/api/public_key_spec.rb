@@ -63,4 +63,27 @@ RSpec.describe BrickFTP::API::PublicKey, type: :lib do
       expect(public_key.created_at).to eq '2016-09-30T01:14:26-04:00'
     end
   end
+
+  describe '#destroy' do
+    subject { public_key.destroy }
+
+    let(:public_key) do
+      described_class.new(
+        id: 1,
+        title: 'key',
+        fingerprint: '1b:11:87:39:5c:88:05:ec:cc:41:33:90:b0:70:e2:8b',
+        created_at: '2016-09-30T01:14:26-04:00'
+      )
+    end
+
+    before do
+      stub_request(:delete, 'https://koshigoe.brickftp.com/api/rest/v1/public_keys/1.json')
+        .with(basic_auth: ['xxxxxxxx', 'x'])
+        .to_return(body: '[]')
+    end
+
+    it 'return true' do
+      is_expected.to eq true
+    end
+  end
 end
