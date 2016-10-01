@@ -1,5 +1,8 @@
 require "brick_ftp/version"
+require 'brick_ftp/configuration'
 
 module BrickFTP
-  # Your code goes here...
+  def self.config
+    @config ||= BrickFTP::Configuration.new
+  end
 end

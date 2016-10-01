@@ -5,7 +5,9 @@ describe BrickFTP do
     expect(BrickFTP::VERSION).not_to be nil
   end
 
-  it 'does something useful' do
-    expect(false).to eq(true)
+  describe '.config' do
+    subject { described_class.config }
+
+    it { is_expected.to be_an_instance_of BrickFTP::Configuration }
   end
 end
