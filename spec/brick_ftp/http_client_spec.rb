@@ -5,6 +5,37 @@ RSpec.describe BrickFTP::HTTPClient, type: :lib do
     BrickFTP.configure { |c| c.subdomain = 'koshigoe' }
   end
 
+  describe '#get' do
+    subject { described_class.new.get(path) }
+
+    let(:path) { '/api/rest/v1/users.json' }
+
+    context 'HTTP 200 OK' do
+      before do
+        BrickFTP.config.api_key = 'xxxxxxxx'
+
+        stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/users.json')
+          .with(basic_auth: ['xxxxxxxx', 'x'])
+          .to_return(body: { id: 'xxxxxxxx' }.to_json)
+      end
+
+      it 'return data' do
+        is_expected.to eq('id' => 'xxxxxxxx')
+      end
+    end
+
+    context 'Other' do
+      before do
+        stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/users.json')
+          .to_return(status: 500, body: { 'error' => 'xxxxxxxx', 'http-code' => '500' }.to_json)
+      end
+
+      it 'raise BrickFTP::HTTPClient::Error' do
+        expect { subject }.to raise_error BrickFTP::HTTPClient::Error
+      end
+    end
+  end
+
   describe '#post' do
     subject { described_class.new.post(path, params: params) }
 
@@ -29,6 +60,43 @@ RSpec.describe BrickFTP::HTTPClient, type: :lib do
     context 'Other' do
       before do
         stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/sessions.json')
+          .with(
+            body: { username: 'koshigoe', password: 'password' }.to_json,
+            headers: { 'Content-Type' => 'application/json' }
+          )
+          .to_return(status: 500, body: { 'error' => 'xxxxxxxx', 'http-code' => '500' }.to_json)
+      end
+
+      it 'raise BrickFTP::HTTPClient::Error' do
+        expect { subject }.to raise_error BrickFTP::HTTPClient::Error
+      end
+    end
+  end
+
+  describe '#put' do
+    subject { described_class.new.put(path, params: params) }
+
+    let(:path) { '/api/rest/v1/sessions.json' }
+    let(:params) { { username: 'koshigoe', password: 'password' } }
+
+    context 'HTTP 200 OK' do
+      before do
+        stub_request(:put, 'https://koshigoe.brickftp.com/api/rest/v1/sessions.json')
+          .with(
+            body: { username: 'koshigoe', password: 'password' }.to_json,
+            headers: { 'Content-Type' => 'application/json' }
+          )
+          .to_return(status: 200, body: { id: 'xxxxxxxx' }.to_json)
+      end
+
+      it 'return data' do
+        is_expected.to eq('id' => 'xxxxxxxx')
+      end
+    end
+
+    context 'Other' do
+      before do
+        stub_request(:put, 'https://koshigoe.brickftp.com/api/rest/v1/sessions.json')
           .with(
             body: { username: 'koshigoe', password: 'password' }.to_json,
             headers: { 'Content-Type' => 'application/json' }

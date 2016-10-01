@@ -15,9 +15,29 @@ module BrickFTP
       @conn.use_ssl = true
     end
 
+    def get(path)
+      case res = request(:get, path)
+      when Net::HTTPSuccess
+        JSON.parse(res.body)
+      else
+        # TODO: redirect
+        raise Error, res
+      end
+    end
+
     def post(path, params: {})
       case res = request(:post, path, params: params)
       when Net::HTTPCreated
+        JSON.parse(res.body)
+      else
+        # TODO: redirect
+        raise Error, res
+      end
+    end
+
+    def put(path, params: {})
+      case res = request(:put, path, params: params)
+      when Net::HTTPSuccess
         JSON.parse(res.body)
       else
         # TODO: redirect
@@ -40,7 +60,14 @@ module BrickFTP
     def request(method, path, params: {}, headers: {})
       req = Net::HTTP.const_get(method.to_s.capitalize).new(path, headers)
       req['Content-Type'] = 'application/json'
-      req['Cookie'] = BrickFTP::API::Authentication.cookie(BrickFTP.config.session).to_s if BrickFTP.config.session
+
+      case
+      when BrickFTP.config.session
+        req['Cookie'] = BrickFTP::API::Authentication.cookie(BrickFTP.config.session).to_s
+      when BrickFTP.config.api_key
+        req.basic_auth(BrickFTP.config.api_key, 'x')
+      end
+
       req.body = params.to_json unless params.empty?
 
       @conn.request(req)

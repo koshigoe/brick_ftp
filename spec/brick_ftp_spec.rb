@@ -11,6 +11,26 @@ describe BrickFTP do
     it { is_expected.to be_an_instance_of BrickFTP::Configuration }
   end
 
+  describe '.config=' do
+    subject { described_class.config = config }
+
+    context 'pass instance of BrickFTP::Configuration' do
+      let(:config) { BrickFTP::Configuration.new }
+
+      it 'replace configuration' do
+        expect { subject }.to change(BrickFTP, :config).to(config)
+      end
+    end
+
+    context 'pass not instance of BrickFTP::Configuration' do
+      let(:config) { {} }
+
+      it 'raise TypeError' do
+        expect { subject }.to raise_error TypeError
+      end
+    end
+  end
+
   describe '.configure' do
     it 'yield with config' do
       expect { |b| BrickFTP.configure(&b) }.to yield_with_args(BrickFTP.config)
