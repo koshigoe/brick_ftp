@@ -6,6 +6,7 @@ require 'brick_ftp/api'
 require 'brick_ftp/api/authentication'
 require 'brick_ftp/api/authentication/session'
 require 'brick_ftp/api/user'
+require 'brick_ftp/api/public_key'
 
 module BrickFTP
   def self.config
