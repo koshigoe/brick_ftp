@@ -1,12 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe BrickFTP::API::User, type: :lib do
-  before do
-    BrickFTP.configure do |c|
-      c.subdomain = 'koshigoe'
-      c.api_key = 'xxxxxxxx'
-    end
-  end
+  before { BrickFTP.config.api_key = 'xxxxxxxx' }
 
   describe '.all' do
     subject { described_class.all }
