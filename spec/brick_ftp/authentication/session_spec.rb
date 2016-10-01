@@ -49,4 +49,40 @@ RSpec.describe BrickFTP::Authentication::Session, type: :lib do
       end
     end
   end
+
+  describe '#destroy' do
+    subject { session.destroy }
+
+    let(:session) { described_class.new(id: 'xxxxxxxx') }
+
+    before { BrickFTP.config.session = session }
+
+    context 'success' do
+      before do
+        stub_request(:delete, 'https://koshigoe.brickftp.com/api/rest/v1/sessions.json')
+          .with(headers: { 'Cookie' => 'BrickFTP=xxxxxxxx; path=' })
+          .to_return(body: '[]')
+      end
+
+      it 'clear session id' do
+        expect { subject }.to change(session, :id).to(nil)
+      end
+
+      it 'unset session from configuration' do
+        expect { subject }.to change(BrickFTP.config, :session).to(nil)
+      end
+    end
+
+    context 'failure' do
+      before do
+        stub_request(:delete, 'https://koshigoe.brickftp.com/api/rest/v1/sessions.json')
+          .with(headers: { 'Cookie' => 'BrickFTP=xxxxxxxx; path=' })
+          .to_return(status: 500, body: { 'error' => 'xxxxx', 'http-code' => '500' }.to_json)
+      end
+
+      it 'raise BrickFTP::HTTPClient::Error' do
+        expect { subject }.to raise_error BrickFTP::HTTPClient::Error
+      end
+    end
+  end
 end

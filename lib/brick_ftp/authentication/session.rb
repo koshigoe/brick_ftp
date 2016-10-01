@@ -15,6 +15,12 @@ module BrickFTP
       def initialize(id:)
         @id = id
       end
+
+      def destroy
+        BrickFTP::HTTPClient.new.delete('/api/rest/v1/sessions.json')
+        @id = nil
+        BrickFTP.config.session = nil
+      end
     end
   end
 end
