@@ -41,4 +41,32 @@ RSpec.describe BrickFTP::HTTPClient, type: :lib do
       end
     end
   end
+
+  describe '#delete' do
+    subject { described_class.new.delete(path) }
+
+    let(:path) { '/api/rest/v1/sessions.json' }
+
+    context 'HTTP 200 OK' do
+      before do
+        stub_request(:delete, 'https://koshigoe.brickftp.com/api/rest/v1/sessions.json')
+          .to_return(status: 200, body: '[]')
+      end
+
+      it 'return true' do
+        is_expected.to eq true
+      end
+    end
+
+    context 'Other' do
+      before do
+        stub_request(:delete, 'https://koshigoe.brickftp.com/api/rest/v1/sessions.json')
+          .to_return(status: 500, body: { 'error' => 'xxxxxxxx', 'http-code' => '500' }.to_json)
+      end
+
+      it 'raise BrickFTP::HTTPClient::Error' do
+        expect { subject }.to raise_error BrickFTP::HTTPClient::Error
+      end
+    end
+  end
 end

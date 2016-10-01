@@ -25,6 +25,16 @@ module BrickFTP
       end
     end
 
+    def delete(path)
+      case res = request(:delete, path)
+      when Net::HTTPSuccess
+        true
+      else
+        # TODO: redirect
+        raise Error, res
+      end
+    end
+
     private
 
     def request(method, path, params: {}, headers: {})
