@@ -14,6 +14,7 @@ module BrickFTP
 
       def initialize(id:)
         @id = id
+        BrickFTP.configure { |c| c.session = self }
       end
     end
   end

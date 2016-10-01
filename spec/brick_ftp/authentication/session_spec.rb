@@ -25,6 +25,11 @@ RSpec.describe BrickFTP::Authentication::Session, type: :lib do
       it 'store id' do
         expect(subject.id).to eq 'xxxxxxxx'
       end
+
+      it 'set session to configuration' do
+        session = subject
+        expect(BrickFTP.config.session).to eq session
+      end
     end
 
     context 'invalid parameter' do
