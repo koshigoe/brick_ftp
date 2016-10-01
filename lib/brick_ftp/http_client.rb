@@ -16,17 +16,23 @@ module BrickFTP
     end
 
     def post(path, params: {})
-      req = Net::HTTP::Post.new(path)
-      req['Content-Type'] = 'application/json'
-      req.body = params.to_json
-
-      case res = @conn.request(req)
+      case res = request(:post, path, params: params)
       when Net::HTTPCreated
         JSON.parse(res.body)
       else
         # TODO: redirect
         raise Error, res
       end
+    end
+
+    private
+
+    def request(method, path, params: {}, headers: {})
+      req = Net::HTTP.const_get(method.to_s.capitalize).new(path, headers)
+      req['Content-Type'] = 'application/json'
+      req.body = params.to_json unless params.empty?
+
+      @conn.request(req)
     end
   end
 end
