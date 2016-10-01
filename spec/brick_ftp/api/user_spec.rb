@@ -301,4 +301,20 @@ RSpec.describe BrickFTP::API::User, type: :lib do
       end
     end
   end
+
+  describe '#destroy' do
+    subject { user.destroy }
+
+    let(:user) { described_class.new(id: 125108) }
+
+    before do
+      stub_request(:delete, 'https://koshigoe.brickftp.com/api/rest/v1/users/125108.json')
+          .with(basic_auth: ['xxxxxxxx', 'x'])
+          .to_return(body: '[]')
+    end
+
+    it 'return true' do
+      is_expected.to eq true
+    end
+  end
 end

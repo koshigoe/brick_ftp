@@ -54,6 +54,11 @@ module BrickFTP
 
         self
       end
+
+      def destroy
+        BrickFTP::HTTPClient.new.delete("/api/rest/v1/users/#{id}.json")
+        true
+      end
     end
   end
 end
