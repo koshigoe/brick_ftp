@@ -17,6 +17,10 @@ RSpec.describe BrickFTP::Configuration, type: :lib do
       expect(subject.api_key).to eq 'APIKEY'
     end
 
+    it 'initialize session' do
+      expect(subject.session).to be_nil
+    end
+
     it 'set logger' do
       expect(subject.logger).to be_an_instance_of(Logger)
     end
