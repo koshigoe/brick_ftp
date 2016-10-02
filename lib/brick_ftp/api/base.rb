@@ -54,6 +54,7 @@ module BrickFTP
       end
 
       def self.create(params = {}, path_params = {})
+        params.symbolize_keys!
         undefined_attributes = params.keys - writable_attributes
         raise UndefinedAttributesError, undefined_attributes unless undefined_attributes.empty?
 
@@ -69,6 +70,7 @@ module BrickFTP
       end
 
       def update(params = {})
+        params.symbolize_keys!
         undefined_attributes = params.keys - self.class.writable_attributes
         raise UndefinedAttributesError, undefined_attributes unless undefined_attributes.empty?
 
