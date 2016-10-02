@@ -5,8 +5,20 @@ module BrickFTP
   class HTTPClient
     class Error < StandardError
       def initialize(response)
-        error = JSON.parse(response.body)
-        super "#{error['http-code']}: #{error['error']}"
+        begin
+          error = JSON.parse(response.body)
+        rescue
+          error = { 'http-code' => response.code, 'error' => "#{response.message}, #{response.body}" }
+        end
+
+        case
+        when error.key?('http-code')
+          super "#{error['http-code']}: #{error['error']}"
+        when error.key?('errors')
+          super error['errors'].join('. ')
+        else
+          super 'unknown error.'
+        end
       end
     end
 
