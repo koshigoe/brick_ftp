@@ -33,12 +33,12 @@ module BrickFTP
 
       def self.define_writable_attributes(*attributes)
         @writable_attributes = attributes
-        attr_reader *@writable_attributes
+        attr_reader *@writable_attributes.map { |x| x.to_s.tr('-', '_') }
       end
 
       def self.define_readonly_attributes(*attributes)
         @readonly_attributes = attributes
-        attr_reader *@readonly_attributes
+        attr_reader *@readonly_attributes.map { |x| x.to_s.tr('-', '_') }
       end
 
       def self.api_path_for(method, params = {})
