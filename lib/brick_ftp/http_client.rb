@@ -22,6 +22,8 @@ module BrickFTP
       end
     end
 
+    USER_AGENT = 'BrickFTP Client/0.1 (https://github.com/koshigoe/brick_ftp)'.freeze
+
     def initialize
       @conn = Net::HTTP.new(BrickFTP.config.api_host, 443)
       @conn.use_ssl = true
@@ -72,6 +74,7 @@ module BrickFTP
     def request(method, path, params: {}, headers: {})
       req = Net::HTTP.const_get(method.to_s.capitalize).new(path, headers)
       req['Content-Type'] = 'application/json'
+      req['User-Agent'] = USER_AGENT
 
       case
       when BrickFTP.config.session
