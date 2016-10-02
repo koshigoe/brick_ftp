@@ -7,7 +7,7 @@ RSpec.describe BrickFTP::API::Authentication::Session, type: :lib do
 
   describe '.create' do
     context 'valid parameter' do
-      subject { described_class.create('koshigoe', 'password') }
+      subject { described_class.create(username: 'koshigoe', password: 'password') }
 
       before do
         stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/sessions.json')
@@ -33,7 +33,7 @@ RSpec.describe BrickFTP::API::Authentication::Session, type: :lib do
     end
 
     context 'invalid parameter' do
-      subject { described_class.create('', '') }
+      subject { described_class.create(username: '', password: '') }
 
       before do
         stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/sessions.json')

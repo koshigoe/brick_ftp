@@ -10,7 +10,7 @@ module BrickFTP
       end
 
       def self.login(username, password)
-        Session.create(username, password)
+        Session.create(username: username, password: password)
       end
 
       def self.logout
