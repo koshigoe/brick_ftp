@@ -24,15 +24,16 @@ module BrickFTP
 
     USER_AGENT = 'BrickFTP Client/0.1 (https://github.com/koshigoe/brick_ftp)'.freeze
 
-    def initialize
-      @conn = Net::HTTP.new(BrickFTP.config.api_host, 443)
+    def initialize(host = nil)
+      @host = host || BrickFTP.config.api_host
+      @conn = Net::HTTP.new(@host, 443)
       @conn.use_ssl = true
     end
 
     def get(path)
       case res = request(:get, path)
       when Net::HTTPSuccess
-        JSON.parse(res.body)
+        res.body.nil? || res.body.empty? ? {} : JSON.parse(res.body)
       else
         # TODO: redirect
         raise Error, res
@@ -42,7 +43,7 @@ module BrickFTP
     def post(path, params: {})
       case res = request(:post, path, params: params)
       when Net::HTTPSuccess, Net::HTTPCreated
-        JSON.parse(res.body)
+        res.body.nil? || res.body.empty? ? {} : JSON.parse(res.body)
       else
         # TODO: redirect
         raise Error, res
@@ -52,7 +53,7 @@ module BrickFTP
     def put(path, params: {})
       case res = request(:put, path, params: params)
       when Net::HTTPSuccess
-        JSON.parse(res.body)
+        res.body.nil? || res.body.empty? ? {} : JSON.parse(res.body)
       else
         # TODO: redirect
         raise Error, res
@@ -73,17 +74,25 @@ module BrickFTP
 
     def request(method, path, params: {}, headers: {})
       req = Net::HTTP.const_get(method.to_s.capitalize).new(path, headers)
-      req['Content-Type'] = 'application/json'
       req['User-Agent'] = USER_AGENT
 
-      case
-      when BrickFTP.config.session
-        req['Cookie'] = BrickFTP::API::Authentication.cookie(BrickFTP.config.session).to_s
-      when BrickFTP.config.api_key
-        req.basic_auth(BrickFTP.config.api_key, 'x')
+      if @host == BrickFTP.config.api_host
+        req['Content-Type'] = 'application/json'
+        case
+        when BrickFTP.config.session
+          req['Cookie'] = BrickFTP::API::Authentication.cookie(BrickFTP.config.session).to_s
+        when BrickFTP.config.api_key
+          req.basic_auth(BrickFTP.config.api_key, 'x')
+        end
       end
 
-      req.body = params.to_json unless params.empty?
+      case
+      when params.is_a?(Hash)
+        req.body = params.to_json unless params.empty?
+      when params.is_a?(IO)
+        req.body_stream = params
+        req["Content-Length"] = params.size
+      end
 
       @conn.request(req)
     end
