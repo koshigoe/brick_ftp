@@ -46,8 +46,23 @@ module BrickFTP
         @api[method] % Hash[params.map { |k, v| [k, CGI.escape(v.to_s)] }]
       end
 
+      PAGENATION_PARAMS = %i(page per_page start_at).freeze
+
       def self.all(path_params = {})
-        BrickFTP::HTTPClient.new.get(api_path_for(:index, path_params)).map { |x| new(x.symbolize_keys) }
+        path_params.symbolize_keys!
+        pagination_params = PAGENATION_PARAMS.each_with_object({}) do |name, res|
+          res.update(name => path_params.delete(name)) if path_params.key?(name)
+        end
+
+        path = api_path_for(:index, path_params)
+        unless pagination_params.empty?
+          query = pagination_params.each_with_object([]) do |(k, v), res|
+            res << "#{CGI.escape(k.to_s)}=#{CGI.escape(v.to_s)}"
+          end.join('&')
+          path = "#{path}?#{query}"
+        end
+
+        BrickFTP::HTTPClient.new.get(path).map { |x| new(x.symbolize_keys) }
       end
 
       def self.find(id)
