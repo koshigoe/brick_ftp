@@ -25,6 +25,7 @@ require 'brick_ftp/api/behavior_folder'
 require 'brick_ftp/api/folder'
 require 'brick_ftp/api/file'
 require 'brick_ftp/api/file_move'
+require 'brick_ftp/api/file_copy'
 
 module BrickFTP
   def self.config
