@@ -2,7 +2,10 @@ require 'spec_helper'
 
 RSpec.describe BrickFTP::HTTPClient, type: :lib do
   before do
-    BrickFTP.configure { |c| c.subdomain = 'koshigoe' }
+    BrickFTP.configure do |c|
+      c.subdomain = 'koshigoe'
+      c.api_key = 'xxxxxxxx'
+    end
   end
 
   describe '#get' do
@@ -12,10 +15,11 @@ RSpec.describe BrickFTP::HTTPClient, type: :lib do
 
     context 'HTTP 200 OK' do
       before do
-        BrickFTP.config.api_key = 'xxxxxxxx'
-
         stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/users.json')
-          .with(basic_auth: ['xxxxxxxx', 'x'])
+          .with(
+            basic_auth: ['xxxxxxxx', 'x'],
+            headers: { 'Content-Type' => 'application/json', 'User-Agent' => 'BrickFTP Client/0.1 (https://github.com/koshigoe/brick_ftp)' }
+          )
           .to_return(body: { id: 'xxxxxxxx' }.to_json)
       end
 
@@ -27,6 +31,10 @@ RSpec.describe BrickFTP::HTTPClient, type: :lib do
     context 'Other' do
       before do
         stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/users.json')
+          .with(
+            basic_auth: ['xxxxxxxx', 'x'],
+            headers: { 'Content-Type' => 'application/json', 'User-Agent' => 'BrickFTP Client/0.1 (https://github.com/koshigoe/brick_ftp)' }
+          )
           .to_return(status: 500, body: { 'error' => 'xxxxxxxx', 'http-code' => '500' }.to_json)
       end
 
@@ -47,7 +55,7 @@ RSpec.describe BrickFTP::HTTPClient, type: :lib do
         stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/sessions.json')
           .with(
             body: { username: 'koshigoe', password: 'password' }.to_json,
-            headers: { 'Content-Type' => 'application/json' }
+            headers: { 'Content-Type' => 'application/json', 'User-Agent' => 'BrickFTP Client/0.1 (https://github.com/koshigoe/brick_ftp)' }
           )
           .to_return(status: 201, body: { id: 'xxxxxxxx' }.to_json)
       end
@@ -62,7 +70,7 @@ RSpec.describe BrickFTP::HTTPClient, type: :lib do
         stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/sessions.json')
           .with(
             body: { username: 'koshigoe', password: 'password' }.to_json,
-            headers: { 'Content-Type' => 'application/json' }
+            headers: { 'Content-Type' => 'application/json', 'User-Agent' => 'BrickFTP Client/0.1 (https://github.com/koshigoe/brick_ftp)' }
           )
           .to_return(status: 500, body: { 'error' => 'xxxxxxxx', 'http-code' => '500' }.to_json)
       end
@@ -83,8 +91,9 @@ RSpec.describe BrickFTP::HTTPClient, type: :lib do
       before do
         stub_request(:put, 'https://koshigoe.brickftp.com/api/rest/v1/sessions.json')
           .with(
+            basic_auth: ['xxxxxxxx', 'x'],
             body: { username: 'koshigoe', password: 'password' }.to_json,
-            headers: { 'Content-Type' => 'application/json' }
+            headers: { 'Content-Type' => 'application/json', 'User-Agent' => 'BrickFTP Client/0.1 (https://github.com/koshigoe/brick_ftp)' }
           )
           .to_return(status: 200, body: { id: 'xxxxxxxx' }.to_json)
       end
@@ -98,8 +107,9 @@ RSpec.describe BrickFTP::HTTPClient, type: :lib do
       before do
         stub_request(:put, 'https://koshigoe.brickftp.com/api/rest/v1/sessions.json')
           .with(
+            basic_auth: ['xxxxxxxx', 'x'],
             body: { username: 'koshigoe', password: 'password' }.to_json,
-            headers: { 'Content-Type' => 'application/json' }
+            headers: { 'Content-Type' => 'application/json', 'User-Agent' => 'BrickFTP Client/0.1 (https://github.com/koshigoe/brick_ftp)' }
           )
           .to_return(status: 500, body: { 'error' => 'xxxxxxxx', 'http-code' => '500' }.to_json)
       end
@@ -118,6 +128,10 @@ RSpec.describe BrickFTP::HTTPClient, type: :lib do
     context 'HTTP 200 OK' do
       before do
         stub_request(:delete, 'https://koshigoe.brickftp.com/api/rest/v1/sessions.json')
+          .with(
+            basic_auth: ['xxxxxxxx', 'x'],
+            headers: { 'Content-Type' => 'application/json', 'User-Agent' => 'BrickFTP Client/0.1 (https://github.com/koshigoe/brick_ftp)' }
+          )
           .to_return(status: 200, body: '[]')
       end
 
@@ -129,6 +143,10 @@ RSpec.describe BrickFTP::HTTPClient, type: :lib do
     context 'Other' do
       before do
         stub_request(:delete, 'https://koshigoe.brickftp.com/api/rest/v1/sessions.json')
+          .with(
+            basic_auth: ['xxxxxxxx', 'x'],
+            headers: { 'Content-Type' => 'application/json', 'User-Agent' => 'BrickFTP Client/0.1 (https://github.com/koshigoe/brick_ftp)' }
+          )
           .to_return(status: 500, body: { 'error' => 'xxxxxxxx', 'http-code' => '500' }.to_json)
       end
 
