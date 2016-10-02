@@ -39,7 +39,7 @@ module BrickFTP
 
     def post(path, params: {})
       case res = request(:post, path, params: params)
-      when Net::HTTPCreated
+      when Net::HTTPSuccess, Net::HTTPCreated
         JSON.parse(res.body)
       else
         # TODO: redirect
