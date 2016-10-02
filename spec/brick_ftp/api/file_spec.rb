@@ -8,13 +8,16 @@ RSpec.describe BrickFTP::API::File, type: :lib do
 
     let(:file) do
       {
+        "id" => 1,
         "path" => "Engineering Candidates/John Smith.docx",
         "type" => "file",
         "size" => 61440,
         "mtime" => "2014-05-15T18:34:51+00:00",
         "crc32" => "f341cc60",
         "md5" => "b67236f5bcd29d1307d574fb9fe585b5",
-        "download_uri" => "https://s3.amazonaws.com/objects.brickftp.com/metadata/1/84c6ecd0-be8d-0131-dd53-12b5580f0798?AWSAccessKeyId=AKIAIEWLY3MN4YGZQOWA&Signature=8GtrTVcKyPXrchpieNII%2Fo8DzMU%3D&Expires=1400217125&response-content-disposition=attachment;+filename=%22John+Smith.docx%22"
+        "download_uri" => "https://s3.amazonaws.com/objects.brickftp.com/metadata/1/84c6ecd0-be8d-0131-dd53-12b5580f0798?AWSAccessKeyId=AKIAIEWLY3MN4YGZQOWA&Signature=8GtrTVcKyPXrchpieNII%2Fo8DzMU%3D&Expires=1400217125&response-content-disposition=attachment;+filename=%22John+Smith.docx%22",
+        "provided_mtime" => "2014-05-15T18:34:51+00:00",
+        "permissions" => "rwd",
       }
     end
 
@@ -31,6 +34,7 @@ RSpec.describe BrickFTP::API::File, type: :lib do
 
       it 'set attributes' do
         file = subject
+        expect(file.id).to eq 1
         expect(file.path).to eq "Engineering Candidates/John Smith.docx"
         expect(file.type).to eq "file"
         expect(file.size).to eq 61440
@@ -38,6 +42,8 @@ RSpec.describe BrickFTP::API::File, type: :lib do
         expect(file.crc32).to eq "f341cc60"
         expect(file.md5).to eq "b67236f5bcd29d1307d574fb9fe585b5"
         expect(file.download_uri).to eq "https://s3.amazonaws.com/objects.brickftp.com/metadata/1/84c6ecd0-be8d-0131-dd53-12b5580f0798?AWSAccessKeyId=AKIAIEWLY3MN4YGZQOWA&Signature=8GtrTVcKyPXrchpieNII%2Fo8DzMU%3D&Expires=1400217125&response-content-disposition=attachment;+filename=%22John+Smith.docx%22"
+        expect(file.provided_mtime).to eq '2014-05-15T18:34:51+00:00'
+        expect(file.permissions).to eq 'rwd'
       end
     end
 

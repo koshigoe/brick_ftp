@@ -20,7 +20,7 @@ module BrickFTP
       end
 
       class << self
-        attr_reader :writable_attributes, :readonly_attributes
+        attr_reader :api, :writable_attributes, :readonly_attributes
       end
 
       def self.attributes
@@ -66,7 +66,8 @@ module BrickFTP
       end
 
       def self.find(id)
-        params = attributes.include?(:id) ? { id: id } : { path: id }
+        params = {}
+        api[:show].scan(/%\{([^}]+)\}/) { |m| params[m.first.to_sym] = id }
         data = BrickFTP::HTTPClient.new.get(api_path_for(:show, params))
         data.empty? ? nil : new(data.symbolize_keys)
       end
@@ -100,7 +101,8 @@ module BrickFTP
       end
 
       def destroy
-        params = self.class.attributes.include?(:id) ? { id: id } : { path: path }
+        params = {}
+        self.class.api[:delete].scan(/%\{([^}]+)\}/) { |m| params[m.first.to_sym] = send(m.first.to_sym) }
         BrickFTP::HTTPClient.new.delete(self.class.api_path_for(:delete, params))
         true
       end

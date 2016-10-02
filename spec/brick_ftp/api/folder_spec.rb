@@ -18,28 +18,37 @@ RSpec.describe BrickFTP::API::Folder, type: :lib do
     let(:folders) do
       [
         {
+          "id" => 1,
           "path" => "Engineering Candidates/R\u00e9sum\u00e9s/Needs Review",
           "type" => "directory",
           "size" => nil,
           "mtime" => "2014-05-15T20:26:18+00:00",
           "crc32" => nil,
           "md5" => nil,
+          'provided_mtime' => '2014-05-15T20:26:18+00:00',
+          'permissions' => 'rwd',
         },
         {
+          "id" => 2,
           "path" => "Engineering Candidates/R\u00e9sum\u00e9s/John Smith.docx",
           "type" => "file",
           "size" => 61440,
           "mtime" => "2014-05-15T18:34:51+00:00",
           "crc32" => "f341cc60",
-          "md5" => "b67236f5bcd29d1307d574fb9fe585b5"
+          "md5" => "b67236f5bcd29d1307d574fb9fe585b5",
+          'provided_mtime' => '2014-05-15T18:34:51+00:00',
+          'permissions' => 'rwd',
         },
         {
+          "id" => 3,
           "path" => "Engineering Candidates/R\u00e9sum\u00e9s/Mary Jones.pdf",
           "type" => "file",
           "size" => 19946,
           "mtime" => "2014-05-15T18:36:03+00:00",
           "crc32" => "a720a234",
-          "md5" => "02c442ecc0d499bf443fa8fd444c2933"
+          "md5" => "02c442ecc0d499bf443fa8fd444c2933",
+          'provided_mtime' => '2014-05-15T18:36:03+00:00',
+          'permissions' => 'rwd',
         }
       ]
     end
@@ -56,12 +65,15 @@ RSpec.describe BrickFTP::API::Folder, type: :lib do
 
     it 'set attributes' do
       folders = subject
+      expect(folders.last.id).to eq 3
       expect(folders.last.path).to eq "Engineering Candidates/R\u00e9sum\u00e9s/Mary Jones.pdf"
       expect(folders.last.type).to eq "file"
       expect(folders.last.size).to eq 19946
       expect(folders.last.mtime).to eq "2014-05-15T18:36:03+00:00"
       expect(folders.last.crc32).to eq "a720a234"
       expect(folders.last.md5).to eq "02c442ecc0d499bf443fa8fd444c2933"
+      expect(folders.last.provided_mtime).to eq '2014-05-15T18:36:03+00:00'
+      expect(folders.last.permissions).to eq 'rwd'
     end
   end
 
