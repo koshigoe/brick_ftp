@@ -20,7 +20,7 @@ module BrickFTP
       end
 
       class << self
-        attr_reader :writable_attributes, :readonly_attributes
+        attr_reader :api, :writable_attributes, :readonly_attributes
       end
 
       def self.attributes
@@ -33,12 +33,12 @@ module BrickFTP
 
       def self.define_writable_attributes(*attributes)
         @writable_attributes = attributes
-        attr_reader *@writable_attributes
+        attr_reader *@writable_attributes.map { |x| x.to_s.tr('-', '_') }
       end
 
       def self.define_readonly_attributes(*attributes)
         @readonly_attributes = attributes
-        attr_reader *@readonly_attributes
+        attr_reader *@readonly_attributes.map { |x| x.to_s.tr('-', '_') }
       end
 
       def self.api_path_for(method, params = {})
@@ -66,7 +66,9 @@ module BrickFTP
       end
 
       def self.find(id)
-        data = BrickFTP::HTTPClient.new.get(api_path_for(:show, id: id))
+        params = {}
+        api[:show].scan(/%\{([^}]+)\}/) { |m| params[m.first.to_sym] = id }
+        data = BrickFTP::HTTPClient.new.get(api_path_for(:show, params))
         data.empty? ? nil : new(data.symbolize_keys)
       end
 
@@ -76,6 +78,7 @@ module BrickFTP
         raise UndefinedAttributesError, undefined_attributes unless undefined_attributes.empty?
 
         data = BrickFTP::HTTPClient.new.post(api_path_for(:create, path_params), params: params)
+        data = {} if data.is_a?(Array)
         new(data.symbolize_keys)
       end
 
@@ -98,7 +101,9 @@ module BrickFTP
       end
 
       def destroy
-        BrickFTP::HTTPClient.new.delete(self.class.api_path_for(:delete, id: id))
+        params = {}
+        self.class.api[:delete].scan(/%\{([^}]+)\}/) { |m| params[m.first.to_sym] = send(m.first.to_sym) }
+        BrickFTP::HTTPClient.new.delete(self.class.api_path_for(:delete, params))
         true
       end
     end
