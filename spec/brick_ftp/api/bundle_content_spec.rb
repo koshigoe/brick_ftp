@@ -17,6 +17,7 @@ RSpec.describe BrickFTP::API::BundleContent, type: :lib do
       let(:contents) do
         [
           {
+            "id" => 1,
             "path" => "cloud",
             "type" => "directory",
             "size" => nil,
@@ -24,6 +25,7 @@ RSpec.describe BrickFTP::API::BundleContent, type: :lib do
             "md5" => nil
           },
           {
+            "id" => 2,
             "path" => "backup.zip",
             "type" => "file",
             "size" => 209715200,
@@ -45,6 +47,7 @@ RSpec.describe BrickFTP::API::BundleContent, type: :lib do
 
       it 'set attributes' do
         contents = subject
+        expect(contents.last.id).to eq 2
         expect(contents.last.path).to eq "backup.zip"
         expect(contents.last.type).to eq 'file'
         expect(contents.last.size).to eq 209715200

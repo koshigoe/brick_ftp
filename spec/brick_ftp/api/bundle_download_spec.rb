@@ -21,6 +21,7 @@ RSpec.describe BrickFTP::API::BundleDownload, type: :lib do
       let(:downloads) do
         [
           {
+            "id" => 1,
             "path" => "cloud/images/image1.jpg",
             "type" => "file",
             "size" => 842665,
@@ -29,6 +30,7 @@ RSpec.describe BrickFTP::API::BundleDownload, type: :lib do
             "download_uri" => "https://s3.amazonaws.com/objects.brickftp.com/metadata/10099/2e2376c0-7527-0133-21fb-0a2d4abb99a7?AWSAccessKeyId=AKIAIEWLY3MN4YGZQOWA\u0026Signature=spXByI%2BBFThcB%2FwFkPUZcIXtRzE%3D\u0026Expires=1448404172\u0026response-content-disposition=attachment;%20filename=%22image1.jpg%22"
           },
           {
+            "id" => 2,
             "path" => "backup.zip",
             "type" => "file",
             "size" => 209715200,
@@ -51,6 +53,7 @@ RSpec.describe BrickFTP::API::BundleDownload, type: :lib do
 
       it 'set attributes' do
         downloads = subject
+        expect(downloads.last.id).to eq 2
         expect(downloads.last.path).to eq "backup.zip"
         expect(downloads.last.type).to eq 'file'
         expect(downloads.last.size).to eq 209715200
