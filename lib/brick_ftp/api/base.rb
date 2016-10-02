@@ -1,3 +1,5 @@
+require 'cgi'
+
 module BrickFTP
   module API
     class Base
@@ -41,7 +43,7 @@ module BrickFTP
 
       def self.api_path_for(method, params = {})
         raise NoSuchAPIError, "#{method} #{self.name}" unless @api.key?(method)
-        @api[method] % params
+        @api[method] % Hash[params.map { |k, v| [k, CGI.escape(v.to_s)] }]
       end
 
       def self.all(path_params = {})

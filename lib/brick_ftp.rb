@@ -13,9 +13,10 @@ require 'brick_ftp/api/permission'
 require 'brick_ftp/api/notification'
 require 'brick_ftp/api/history'
 require 'brick_ftp/api/history/site'
-# require 'brick_ftp/api/history/user'
-# require 'brick_ftp/api/history/folder'
-# require 'brick_ftp/api/history/file'
+require 'brick_ftp/api/history/login'
+require 'brick_ftp/api/history/user'
+require 'brick_ftp/api/history/folder'
+require 'brick_ftp/api/history/file'
 
 module BrickFTP
   def self.config
