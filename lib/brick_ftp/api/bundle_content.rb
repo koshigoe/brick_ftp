@@ -10,6 +10,8 @@ module BrickFTP
         undefined_attributes = params.keys - writable_attributes
         raise UndefinedAttributesError, undefined_attributes unless undefined_attributes.empty?
 
+        path_params[:path] = '' unless path_params.key?(:path)
+
         data = BrickFTP::HTTPClient.new.post(api_path_for(:index, path_params), params: params)
         data.map { |x| new(x.symbolize_keys) }
       end
