@@ -22,6 +22,7 @@ require 'brick_ftp/api/bundle_content'
 require 'brick_ftp/api/bundle_download'
 require 'brick_ftp/api/behavior'
 require 'brick_ftp/api/behavior_folder'
+require 'brick_ftp/api/folder'
 
 module BrickFTP
   def self.config

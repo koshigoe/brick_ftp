@@ -76,6 +76,7 @@ module BrickFTP
         raise UndefinedAttributesError, undefined_attributes unless undefined_attributes.empty?
 
         data = BrickFTP::HTTPClient.new.post(api_path_for(:create, path_params), params: params)
+        data = {} if data.is_a?(Array)
         new(data.symbolize_keys)
       end
 
