@@ -19,6 +19,7 @@ require 'brick_ftp/api/history/folder'
 require 'brick_ftp/api/history/file'
 require 'brick_ftp/api/bundle'
 require 'brick_ftp/api/bundle_content'
+require 'brick_ftp/api/bundle_download'
 
 module BrickFTP
   def self.config
