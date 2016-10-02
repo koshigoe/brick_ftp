@@ -66,7 +66,8 @@ module BrickFTP
       end
 
       def self.find(id)
-        data = BrickFTP::HTTPClient.new.get(api_path_for(:show, id: id))
+        params = attributes.include?(:id) ? { id: id } : { path: id }
+        data = BrickFTP::HTTPClient.new.get(api_path_for(:show, params))
         data.empty? ? nil : new(data.symbolize_keys)
       end
 
@@ -99,7 +100,8 @@ module BrickFTP
       end
 
       def destroy
-        BrickFTP::HTTPClient.new.delete(self.class.api_path_for(:delete, id: id))
+        params = self.class.attributes.include?(:id) ? { id: id } : { path: path }
+        BrickFTP::HTTPClient.new.delete(self.class.api_path_for(:delete, params))
         true
       end
     end
