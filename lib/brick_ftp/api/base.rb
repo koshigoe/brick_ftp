@@ -44,8 +44,8 @@ module BrickFTP
         @api[method] % params
       end
 
-      def self.all
-        BrickFTP::HTTPClient.new.get(api_path_for(:index)).map { |x| new(x.symbolize_keys) }
+      def self.all(path_params = {})
+        BrickFTP::HTTPClient.new.get(api_path_for(:index, path_params)).map { |x| new(x.symbolize_keys) }
       end
 
       def self.find(id)
@@ -53,11 +53,11 @@ module BrickFTP
         data.empty? ? nil : new(data.symbolize_keys)
       end
 
-      def self.create(params = {})
+      def self.create(params = {}, path_params = {})
         undefined_attributes = params.keys - writable_attributes
         raise UndefinedAttributesError, undefined_attributes unless undefined_attributes.empty?
 
-        data = BrickFTP::HTTPClient.new.post(api_path_for(:create), params: params)
+        data = BrickFTP::HTTPClient.new.post(api_path_for(:create, path_params), params: params)
         new(data.symbolize_keys)
       end
 
