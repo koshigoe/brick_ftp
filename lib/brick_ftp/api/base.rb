@@ -64,7 +64,7 @@ module BrickFTP
 
       def initialize(params = {})
         undefined_attributes = params.keys - self.class.attributes
-        raise UndefinedAttribuftesError, undefined_attributes unless undefined_attributes.empty?
+        raise UndefinedAttributesError, undefined_attributes unless undefined_attributes.empty?
 
         params.each { |k, v| instance_variable_set(:"@#{k}", v) }
       end
