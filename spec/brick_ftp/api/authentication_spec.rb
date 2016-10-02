@@ -23,7 +23,7 @@ RSpec.describe BrickFTP::API::Authentication, type: :lib do
     subject { described_class.login('koshigoe', 'password') }
 
     it 'call BrickFTP::API::Authentication::Session.create' do
-      expect(BrickFTP::API::Authentication::Session).to receive(:create).with('koshigoe', 'password')
+      expect(BrickFTP::API::Authentication::Session).to receive(:create).with(username: 'koshigoe', password: 'password')
       subject
     end
   end
