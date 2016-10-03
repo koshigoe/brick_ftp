@@ -26,15 +26,15 @@ module BrickFTP
                                  :provided_mtime,
                                  :permissions
 
-      def self.create(params, path_params = {})
+      def self.create(path: , source:)
         api_client = BrickFTP::HTTPClient.new
-        step1 = api_client.post(api_path_for(:create, path_params), params: { action: 'put' })
+        step1 = api_client.post(api_path_for(:create, path: path), params: { action: 'put' })
 
         upload_uri = URI.parse(step1['upload_uri'])
         upload_client = BrickFTP::HTTPClient.new(upload_uri.host)
-        upload_client.put(step1['upload_uri'], params: params)
+        upload_client.put(step1['upload_uri'], params: source)
 
-        step3 = api_client.post(api_path_for(:create, path_params), params: { action: 'end', ref: step1['ref'] })
+        step3 = api_client.post(api_path_for(:create, path: path), params: { action: 'end', ref: step1['ref'] })
 
         new(step1.merge(step3).symbolize_keys)
       end
