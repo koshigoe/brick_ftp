@@ -1,5 +1,5 @@
 module BrickFTP
-  module APi
+  module API
     module History
     end
   end
