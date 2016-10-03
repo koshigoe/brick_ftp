@@ -189,5 +189,55 @@ module BrickFTP
       query = { path: path, page: page, per_page: per_page, start_at: start_at }.reject { |_, v| v.nil? }
       BrickFTP::API::History::File.all(query)
     end
+
+    # List all bundles on the current site.
+    # @see https://brickftp.com/ja/docs/rest-api/bundles/
+    # @return [Array] array of BrickFTP::API::Bundle
+    def list_bundles
+      BrickFTP::API::Bundle.all
+    end
+
+    # Show a single bundle.
+    # @see https://brickftp.com/ja/docs/rest-api/bundles/
+    # @param id bundle id.
+    # @return [BrickFTP::API::Bundle] bundle object.
+    def show_bundle(id)
+      BrickFTP::API::Bundle.find(id)
+    end
+
+    # Create a new bundle on the current site.
+    # @see https://brickftp.com/ja/docs/rest-api/bundles/
+    # @param attributes [Hash] Bundle's attributes.
+    def create_bundle(attributes)
+      BrickFTP::API::Bundle.create(attributes)
+    end
+
+    # Delete a bundle.
+    # @see https://brickftp.com/ja/docs/rest-api/bundles/
+    # @param bundle [BrickFTP::API::Bundle] bundle object.
+    # @return [Boolean] return true.
+    def delete_bundle(bundle)
+      bundle.destroy
+    end
+
+    # List the contents of a bundle.
+    # @see https://brickftp.com/ja/docs/rest-api/bundles/
+    # @param path [String]
+    # @param code [String]
+    # @param host [String]
+    # @return [Array] array of `BrickFTP::API::BundleContent`.
+    def list_bundle_contents(path: nil, code:, host:)
+      BrickFTP::API::BundleContent.all(path: path, code: code, host: host)
+    end
+
+    # Provides download URLs that will enable you to download the files in a bundle.
+    # @see https://brickftp.com/ja/docs/rest-api/bundles/
+    # @param code [String]
+    # @param host [String]
+    # @param paths [Array] array of path string.
+    # @return [Array] array of `BrickFTP::API::BundleDownload`.
+    def list_bundle_downloads(code:, host:, paths: [])
+      BrickFTP::API::BundleDownload.all(code: code, host: host, paths: paths)
+    end
   end
 end

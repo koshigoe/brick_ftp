@@ -191,4 +191,53 @@ RSpec.describe BrickFTP::Client, type: :lib do
       end
     end
   end
+
+  describe 'Bundle' do
+    describe '#list_bundles' do
+      it 'delegate BrickFTP::API::Bundle.all' do
+        expect(BrickFTP::API::Bundle).to receive(:all)
+        described_class.new.list_bundles
+      end
+    end
+
+    describe '#show_bundle' do
+      let(:id) { 1 }
+      it 'delegate BrickFTP::API::Bundle.find' do
+        expect(BrickFTP::API::Bundle).to receive(:find).with(id)
+        described_class.new.show_bundle(id)
+      end
+    end
+
+    describe '#create_bundle' do
+      let(:attributes) { {} }
+      it 'delegate BrickFTP::API::Bundle.create' do
+        expect(BrickFTP::API::Bundle).to receive(:create).with(attributes)
+        described_class.new.create_bundle(attributes)
+      end
+    end
+
+    describe '#delete_bundle' do
+      let(:bundle) { BrickFTP::API::Bundle.new(id: 1) }
+      it 'delegate BrickFTP::API::Bundle#destroy' do
+        expect(bundle).to receive(:destroy)
+        described_class.new.delete_bundle(bundle)
+      end
+    end
+
+    describe '#list_bundle_contents' do
+      let(:query) { { path: 'a/b', code: 'a0b1c2d3e', host: 'justin.brickftp.com' } }
+      it 'delegate BrickFTP::API::BundleContent.all' do
+        expect(BrickFTP::API::BundleContent).to receive(:all).with(query)
+        described_class.new.list_bundle_contents(query)
+      end
+    end
+
+    describe '#list_bundle_downloads' do
+      let(:query) { { code: 'a0b1c2d3e', host: 'justin.brickftp.com', paths: %w(cloud/images/image1.jpg backup.zip) } }
+      it 'delegate BrickFTP::API::BundleDownload.all' do
+        expect(BrickFTP::API::BundleDownload).to receive(:all).with(query)
+        described_class.new.list_bundle_downloads(query)
+      end
+    end
+  end
 end
