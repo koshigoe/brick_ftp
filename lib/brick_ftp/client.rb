@@ -15,12 +15,14 @@ module BrickFTP
     end
 
     # List all users on the current site.
+    # @see https://brickftp.com/ja/docs/rest-api/users/
     # @return [Array] array of BrickFTP::API::User
     def list_users
       BrickFTP::API::User.all
     end
 
     # Show a single user.
+    # @see https://brickftp.com/ja/docs/rest-api/users/
     # @param id user id.
     # @return [BrickFTP::API::User] user object.
     def show_user(id)
@@ -28,12 +30,14 @@ module BrickFTP
     end
 
     # Create a new user on the current site.
+    # @see https://brickftp.com/ja/docs/rest-api/users/
     # @param attributes [Hash] User's attributes.
     def create_user(attributes)
       BrickFTP::API::User.create(attributes)
     end
 
     # Update an existing user.
+    # @see https://brickftp.com/ja/docs/rest-api/users/
     # @param user [BrickFTP::API::User] user object.
     # @param attributes [Hash] User's attributes.
     # @return [BrickFTP::API::User] user object.
@@ -42,6 +46,7 @@ module BrickFTP
     end
 
     # Delete a user.
+    # @see https://brickftp.com/ja/docs/rest-api/users/
     # @param user [BrickFTP::API::User] user object.
     # @return [Boolean] return true.
     def delete_user(user)
