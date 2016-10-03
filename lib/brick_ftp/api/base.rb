@@ -46,7 +46,7 @@ module BrickFTP
         @api[method] % Hash[params.map { |k, v| [k, CGI.escape(v.to_s)] }]
       end
 
-      QUERY_PARAMS = %i(page per_page start_at recursive).freeze
+      QUERY_PARAMS = %i(page per_page start_at search sort_by[path] sort_by[size] sort_by[modified_at_datetime] recursive).freeze
 
       def self.all(path_params = {})
         path_params.symbolize_keys!
