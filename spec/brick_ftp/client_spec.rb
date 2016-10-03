@@ -58,4 +58,46 @@ RSpec.describe BrickFTP::Client, type: :lib do
       end
     end
   end
+
+  describe 'Group' do
+    describe '#list_groups' do
+      it 'delegate BrickFTP::API::Group.all' do
+        expect(BrickFTP::API::Group).to receive(:all)
+        described_class.new.list_groups
+      end
+    end
+
+    describe '#show_group' do
+      let(:id) { 1 }
+      it 'delegate BrickFTP::API::Group.find' do
+        expect(BrickFTP::API::Group).to receive(:find).with(id)
+        described_class.new.show_group(id)
+      end
+    end
+
+    describe '#create_group' do
+      let(:attributes) { {} }
+      it 'delegate BrickFTP::API::Group.create' do
+        expect(BrickFTP::API::Group).to receive(:create).with(attributes)
+        described_class.new.create_group(attributes)
+      end
+    end
+
+    describe '#update_group' do
+      let(:group) { BrickFTP::API::Group.new(id: 1) }
+      let(:attributes) { {} }
+      it 'delegate BrickFTP::API::Group#update' do
+        expect(group).to receive(:update).with(attributes)
+        described_class.new.update_group(group, attributes)
+      end
+    end
+
+    describe '#delete_group' do
+      let(:group) { BrickFTP::API::Group.new(id: 1) }
+      it 'delegate BrickFTP::API::Group#destroy' do
+        expect(group).to receive(:destroy)
+        described_class.new.delete_group(group)
+      end
+    end
+  end
 end

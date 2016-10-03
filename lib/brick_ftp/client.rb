@@ -19,6 +19,7 @@ module BrickFTP
     end
 
     # Show a single user.
+    # @param id user id.
     # @return [BrickFTP::API::User] user object.
     def show_user(id)
       BrickFTP::API::User.find(id)
@@ -43,6 +44,39 @@ module BrickFTP
     # @return [Boolean] return true.
     def delete_user(user)
       user.destroy
+    end
+
+    # List all groups on the current site.
+    def list_groups
+      BrickFTP::API::Group.all
+    end
+
+    # Show a single group.
+    # @param id group id.
+    # @return [BrickFTP::API::Group] group object.
+    def show_group(id)
+      BrickFTP::API::Group.find(id)
+    end
+
+    # Create a new group on the current site.
+    # @param attributes [Hash] Group's attributes.
+    def create_group(attributes)
+      BrickFTP::API::Group.create(attributes)
+    end
+
+    # Update an existing group.
+    # @param group [BrickFTP::API::Group] group object.
+    # @param attributes [Hash] Group's attributes.
+    # @return [BrickFTP::API::Group] group object.
+    def update_group(group, attributes)
+      group.update(attributes)
+    end
+
+    # Delete a group.
+    # @param group [BrickFTP::API::Group] group object.
+    # @return [Boolean] return true.
+    def delete_group(group)
+      group.destroy
     end
   end
 end
