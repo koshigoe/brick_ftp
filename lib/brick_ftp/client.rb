@@ -96,5 +96,23 @@ module BrickFTP
     def delete_permission(permission)
       permission.destroy
     end
+
+    # List all notifications on the current site.
+    def list_notifications
+      BrickFTP::API::Notification.all
+    end
+
+    # Create a new notification on the current site.
+    # @param attributes [Hash] Notification's attributes.
+    def create_notification(attributes)
+      BrickFTP::API::Notification.create(attributes)
+    end
+
+    # Delete a notification.
+    # @param notification [BrickFTP::API::Notification] notification object.
+    # @return [Boolean] return true.
+    def delete_notification(notification)
+      notification.destroy
+    end
   end
 end
