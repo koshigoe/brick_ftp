@@ -113,17 +113,20 @@ module BrickFTP
     end
 
     # List all notifications on the current site.
+    # @see https://brickftp.com/ja/docs/rest-api/notifications/
     def list_notifications
       BrickFTP::API::Notification.all
     end
 
     # Create a new notification on the current site.
+    # @see https://brickftp.com/ja/docs/rest-api/notifications/
     # @param attributes [Hash] Notification's attributes.
     def create_notification(attributes)
       BrickFTP::API::Notification.create(attributes)
     end
 
     # Delete a notification.
+    # @see https://brickftp.com/ja/docs/rest-api/notifications/
     # @param notification [BrickFTP::API::Notification] notification object.
     # @return [Boolean] return true.
     def delete_notification(notification)
