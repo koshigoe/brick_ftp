@@ -47,7 +47,7 @@ BrickFTP::API::Authentication.login('koshigoe', 'password')
 
 ### Other APIs
 
-see API document or source code.
+see [API document](http://www.rubydoc.info/github/koshigoe/brick_ftp/master) or source code.
 
 ## Development
 
