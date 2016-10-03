@@ -66,27 +66,20 @@ module BrickFTP
         params.symbolize_keys!
 
         attributes = api_component_for(:create).except_path_and_query(params)
-        undefined_attributes = attributes.keys - writable_attributes
-        raise UndefinedAttributesError, undefined_attributes unless undefined_attributes.empty?
-
         data = BrickFTP::HTTPClient.new.post(api_path_for(:create, params), params: attributes)
         data = {} if data.is_a?(Array)
         new(data.symbolize_keys)
       end
 
       def initialize(params = {})
-        undefined_attributes = params.keys - self.class.attributes
-        raise UndefinedAttributesError, undefined_attributes unless undefined_attributes.empty?
-
         params.each { |k, v| instance_variable_set(:"@#{k}", v) }
       end
 
       def update(params = {})
         params.symbolize_keys!
-        undefined_attributes = params.keys - self.class.writable_attributes
-        raise UndefinedAttributesError, undefined_attributes unless undefined_attributes.empty?
 
-        data = BrickFTP::HTTPClient.new.put(self.class.api_path_for(:update, self), params: self.class.api_component_for(:update).except_path_and_query(params))
+        attributes = self.class.api_component_for(:update).except_path_and_query(params)
+        data = BrickFTP::HTTPClient.new.put(self.class.api_path_for(:update, self), params: attributes)
         data.each { |k, v| instance_variable_set(:"@#{k}", v) }
 
         self
