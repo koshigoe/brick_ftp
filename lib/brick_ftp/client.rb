@@ -239,5 +239,51 @@ module BrickFTP
     def list_bundle_downloads(code:, host:, paths: [])
       BrickFTP::API::BundleDownload.all(code: code, host: host, paths: paths)
     end
+
+    # List all behaviors on the current site.
+    # @see https://brickftp.com/ja/docs/rest-api/behaviors/
+    # @return [Array] array of BrickFTP::API::Behavior
+    def list_behaviors
+      BrickFTP::API::Behavior.all
+    end
+
+    # Show a single behavior.
+    # @see https://brickftp.com/ja/docs/rest-api/behaviors/
+    # @param id behavior id.
+    # @return [BrickFTP::API::Behavior] behavior object.
+    def show_behavior(id)
+      BrickFTP::API::Behavior.find(id)
+    end
+
+    # Create a new behavior on the current site.
+    # @see https://brickftp.com/ja/docs/rest-api/behaviors/
+    # @param attributes [Hash] Behavior's attributes.
+    def create_behavior(attributes)
+      BrickFTP::API::Behavior.create(attributes)
+    end
+
+    # Update an existing behavior.
+    # @see https://brickftp.com/ja/docs/rest-api/behaviors/
+    # @param behavior [BrickFTP::API::Behavior] behavior object.
+    # @param attributes [Hash] Behavior's attributes.
+    # @return [BrickFTP::API::Behavior] behavior object.
+    def update_behavior(behavior, attributes)
+      behavior.update(attributes)
+    end
+
+    # Delete a behavior.
+    # @see https://brickftp.com/ja/docs/rest-api/behaviors/
+    # @param behavior [BrickFTP::API::Behavior] behavior object.
+    # @return [Boolean] return true.
+    def delete_behavior(behavior)
+      behavior.destroy
+    end
+
+    # shows the behaviors that apply to the given path.
+    # @see https://brickftp.com/ja/docs/rest-api/behaviors/
+    # @return [Array] array of BrickFTP::API::BehaviorFolder
+    def list_folder_behaviors(path:)
+      BrickFTP::API::BehaviorFolder.all(path: path)
+    end
   end
 end

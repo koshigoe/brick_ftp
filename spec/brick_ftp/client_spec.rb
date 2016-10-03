@@ -240,4 +240,53 @@ RSpec.describe BrickFTP::Client, type: :lib do
       end
     end
   end
+
+  describe 'Behavior' do
+    describe '#list_behaviors' do
+      it 'delegate BrickFTP::API::Behavior.all' do
+        expect(BrickFTP::API::Behavior).to receive(:all)
+        described_class.new.list_behaviors
+      end
+    end
+
+    describe '#show_behavior' do
+      let(:id) { 1 }
+      it 'delegate BrickFTP::API::Behavior.find' do
+        expect(BrickFTP::API::Behavior).to receive(:find).with(id)
+        described_class.new.show_behavior(id)
+      end
+    end
+
+    describe '#create_behavior' do
+      let(:attributes) { {} }
+      it 'delegate BrickFTP::API::Behavior.create' do
+        expect(BrickFTP::API::Behavior).to receive(:create).with(attributes)
+        described_class.new.create_behavior(attributes)
+      end
+    end
+
+    describe '#update_behavior' do
+      let(:behavior) { BrickFTP::API::Behavior.new(id: 1) }
+      let(:attributes) { {} }
+      it 'delegate BrickFTP::API::Behavior#update' do
+        expect(behavior).to receive(:update).with(attributes)
+        described_class.new.update_behavior(behavior, attributes)
+      end
+    end
+
+    describe '#delete_behavior' do
+      let(:behavior) { BrickFTP::API::Behavior.new(id: 1) }
+      it 'delegate BrickFTP::API::Behavior#destroy' do
+        expect(behavior).to receive(:destroy)
+        described_class.new.delete_behavior(behavior)
+      end
+    end
+
+    describe '#list_folder_behaviors' do
+      it 'delegate BrickFTP::API::BehaviorFolder.all' do
+        expect(BrickFTP::API::BehaviorFolder).to receive(:all).with(path: 'a/b')
+        described_class.new.list_folder_behaviors(path: 'a/b')
+      end
+    end
+  end
 end
