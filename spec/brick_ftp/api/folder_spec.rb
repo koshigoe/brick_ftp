@@ -9,6 +9,9 @@ RSpec.describe BrickFTP::API::Folder, type: :lib do
     let(:params) do
       {
         path: "Engineering Candidates/R\u00e9sum\u00e9s",
+        page: 1,
+        per_page: 10,
+        search: "Engineering Candidates/",
         'sort_by[path]' => 'asc',
         'sort_by[size]' => 'asc',
         'sort_by[modified_at_datetime]' => 'asc',
@@ -54,7 +57,7 @@ RSpec.describe BrickFTP::API::Folder, type: :lib do
     end
 
     before do
-      stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/folders/Engineering+Candidates%2FR%C3%A9sum%C3%A9s')
+      stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/folders/Engineering+Candidates%2FR%C3%A9sum%C3%A9s?page=1&per_page=10&search=Engineering%20Candidates%2F&sort_by%5Bmodified_at_datetime%5D=asc&sort_by%5Bpath%5D=asc&sort_by%5Bsize%5D=asc')
         .with(basic_auth: ['xxxxxxxx', 'x'])
         .to_return(body: folders.to_json)
     end

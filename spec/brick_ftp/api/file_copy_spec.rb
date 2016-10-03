@@ -4,10 +4,10 @@ RSpec.describe BrickFTP::API::FileCopy, type: :lib do
   before { BrickFTP.config.api_key = 'xxxxxxxx' }
 
   describe '.create' do
-    subject { described_class.create(params, path: 'path') }
+    subject { described_class.create(params) }
 
     context 'success' do
-      let(:params) { { 'copy-destination' => '/DESTINATION_PATH_AND_FILENAME.EXT' } }
+      let(:params) { { path: 'path', 'copy-destination' => '/DESTINATION_PATH_AND_FILENAME.EXT' } }
 
       before do
         stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/files/path')
@@ -21,7 +21,7 @@ RSpec.describe BrickFTP::API::FileCopy, type: :lib do
     end
 
     context 'failure' do
-      let(:params) { {} }
+      let(:params) { { path: 'path' } }
 
       before do
         stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/files/path')
