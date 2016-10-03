@@ -150,4 +150,45 @@ RSpec.describe BrickFTP::Client, type: :lib do
       end
     end
   end
+
+  describe 'History' do
+    let(:query) { { page: 1, per_page: 1, start_at: '2015-09-30T18:58:16-04:00' } }
+
+    describe '#list_site_history' do
+      it 'delegate BrickFTP::API::History::Site.all' do
+        expect(BrickFTP::API::History::Site).to receive(:all).with(query)
+        described_class.new.list_site_history(query)
+      end
+    end
+
+    describe '#list_login_history' do
+      it 'delegate BrickFTP::API::History::Login.all' do
+        expect(BrickFTP::API::History::Login).to receive(:all).with(query)
+        described_class.new.list_login_history(query)
+      end
+    end
+
+    describe '#list_user_history' do
+      it 'delegate BrickFTP::API::History::User.all' do
+        expect(BrickFTP::API::History::User).to receive(:all).with(query)
+        described_class.new.list_user_history(query)
+      end
+    end
+
+    describe '#list_folder_history' do
+      before { query.update(path: 'a/b') }
+      it 'delegate BrickFTP::API::History::Folder.all' do
+        expect(BrickFTP::API::History::Folder).to receive(:all).with(query)
+        described_class.new.list_folder_history(query)
+      end
+    end
+
+    describe '#list_file_history' do
+      before { query.update(path: 'a/b/c.txt') }
+      it 'delegate BrickFTP::API::History::File.all' do
+        expect(BrickFTP::API::History::File).to receive(:all).with(query)
+        described_class.new.list_file_history(query)
+      end
+    end
+  end
 end
