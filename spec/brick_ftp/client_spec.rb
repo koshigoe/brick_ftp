@@ -289,4 +289,41 @@ RSpec.describe BrickFTP::Client, type: :lib do
       end
     end
   end
+
+  describe 'Folder' do
+    describe '#list_folders' do
+      let(:query) do
+        {
+          path: 'a/b',
+          page: 1,
+          per_page: 1,
+          search: 'a/b',
+          sort_by_path: 'asc',
+          sort_by_size: 'asc',
+          sort_by_modified_at_datetime: 'asc',
+        }
+      end
+
+      it 'delegate BrickFTP::API::Folder.all' do
+        converted_query = {
+          path: 'a/b',
+          page: 1,
+          per_page: 1,
+          search: 'a/b',
+          :'sort_by[path]' => 'asc',
+          :'sort_by[size]' => 'asc',
+          :'sort_by[modified_at_datetime]' => 'asc',
+        }
+        expect(BrickFTP::API::Folder).to receive(:all).with(converted_query)
+        described_class.new.list_folders(query)
+      end
+    end
+
+    describe '#create_folder' do
+      it 'delegate BrickFTP::API::Folder.create' do
+        expect(BrickFTP::API::Folder).to receive(:create).with(path: 'a/b')
+        described_class.new.create_folder(path: 'a/b')
+      end
+    end
+  end
 end

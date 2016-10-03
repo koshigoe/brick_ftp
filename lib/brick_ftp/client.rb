@@ -285,5 +285,31 @@ module BrickFTP
     def list_folder_behaviors(path:)
       BrickFTP::API::BehaviorFolder.all(path: path)
     end
+
+    # Lists the contents of the folder provided in the URL.
+    # @see https://brickftp.com/ja/docs/rest-api/file-operations/
+    # @param path [String]
+    # @param page [Integer] Page number of items to return in this request.
+    # @param per_page [Integer] Requested number of items returned per request. Maximum: 5000, leave blank for default (strongly recommended).
+    # @param search [String] Only return items matching the given search text.
+    # @param sort_by_path [String] Sort by file name, and value is either asc or desc to indicate normal or reverse sort. (Note that sort_by[path] = asc is the default.)
+    # @param sort_by_size [String] Sort by file size, and value is either asc or desc to indicate smaller files first or larger files first, respectively.
+    # @param sort_by_modified_at_datetime [String] Sort by modification time, and value is either asc or desc to indicate older files first or newer files first, respectively.
+    # @return [Array] array of BrickFTP::API::Folder.
+    def list_folders(path:, page: nil, per_page: nil, search: nil, sort_by_path: nil, sort_by_size: nil, sort_by_modified_at_datetime: nil)
+      query = { path: path, page: page, per_page: per_page, search: search }.reject { |_, v| v.nil? }
+      query[:'sort_by[path]'] = sort_by_path if sort_by_path
+      query[:'sort_by[size]'] = sort_by_size if sort_by_size
+      query[:'sort_by[modified_at_datetime]'] = sort_by_modified_at_datetime if sort_by_modified_at_datetime
+      BrickFTP::API::Folder.all(query)
+    end
+
+    # Create a folder.
+    # @see https://brickftp.com/ja/docs/rest-api/file-operations/
+    # @param path [String]
+    # @return [BrickFTP::API::Folder]
+    def create_folder(path:)
+      BrickFTP::API::Folder.create(path: path)
+    end
   end
 end
