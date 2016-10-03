@@ -29,15 +29,33 @@ require 'brick_ftp/api/file_copy'
 require 'brick_ftp/api/file_upload'
 
 module BrickFTP
+  # Return configuration.
+  # If it has not been configured yet, initialize configuration.
+  # @return [BrickFTP::Configuration] configuration object.
   def self.config
     @config ||= BrickFTP::Configuration.new
   end
 
+  # Set configuration.
+  #
+  # @param config [BrickFTP::Configuration] configuration object.
+  # @return [BrickFTP::Configuration] configuration object.
   def self.config=(config)
     raise TypeError unless config.is_a?(BrickFTP::Configuration)
     @config = config
   end
 
+  # Configure some settings.
+  #
+  # @yield [config] Given configuration object.
+  # @yieldparam config [BrickFTP::Configuration] configuration object.
+  #
+  # @example
+  #   BrickFTP.configure do |c|
+  #     c.subdomain = 'koshigoe'
+  #     c.api_key = 'xxxxxxxxxx'
+  #   end
+  #
   def self.configure
     yield(config)
   end
