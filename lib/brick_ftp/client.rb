@@ -92,17 +92,20 @@ module BrickFTP
     end
 
     # List all permissions on the current site.
+    # @see https://brickftp.com/ja/docs/rest-api/permissions/
     def list_permissions
       BrickFTP::API::Permission.all
     end
 
     # Create a new permission on the current site.
+    # @see https://brickftp.com/ja/docs/rest-api/permissions/
     # @param attributes [Hash] Permission's attributes.
     def create_permission(attributes)
       BrickFTP::API::Permission.create(attributes)
     end
 
     # Delete a permission.
+    # @see https://brickftp.com/ja/docs/rest-api/permissions/
     # @param permission [BrickFTP::API::Permission] permission object.
     # @return [Boolean] return true.
     def delete_permission(permission)
