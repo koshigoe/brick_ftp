@@ -311,5 +311,48 @@ module BrickFTP
     def create_folder(path:)
       BrickFTP::API::Folder.create(path: path)
     end
+
+    # provides a download URL that will enable you to download a file.
+    # @see https://brickftp.com/ja/docs/rest-api/file-operations/
+    # @param id file id.
+    # @return [BrickFTP::API::File] file object.
+    def show_file(id)
+      BrickFTP::API::File.find(id)
+    end
+
+    # Move or renames a file or folder to the destination provided in the move_destination parameter.
+    # @see https://brickftp.com/ja/docs/rest-api/file-operations/
+    # @param path [String]
+    # @param move_destination [String]
+    # @return [BrickFTP::API::FileMove]
+    def move_file(path:, move_destination:)
+      BrickFTP::API::FileMove.create(path: path, move_destination: move_destination)
+    end
+
+    # Copy a file or folder to the destination provided in the copy_destination parameter.
+    # @see https://brickftp.com/ja/docs/rest-api/file-operations/
+    # @param path [String]
+    # @param copy_destination [String]
+    # @return [BrickFTP::API::FileCopy]
+    def copy_file(path:, copy_destination:)
+      BrickFTP::API::FileCopy.create(path: path, copy_destination: copy_destination)
+    end
+
+    # Delete a file.
+    # @see https://brickftp.com/ja/docs/rest-api/file-operations/
+    # @param file [BrickFTP::API::File] file object.
+    # @return [Boolean] return true.
+    def delete_file(file)
+      file.destroy
+    end
+
+    # Upload file.
+    # @see https://brickftp.com/ja/docs/rest-api/file-uploading/
+    # @param path [String]
+    # @param source [String] path for source file.
+    # @return [BrickFTP::API::FileUpload]
+    def upload_file(path:, source:)
+      BrickFTP::API::FileUpload.create(path: path, source: source)
+    end
   end
 end

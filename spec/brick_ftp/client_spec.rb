@@ -326,4 +326,42 @@ RSpec.describe BrickFTP::Client, type: :lib do
       end
     end
   end
+
+  describe 'File' do
+    describe '#show_file' do
+      it 'delegate BrickFTP::API::File.find' do
+        expect(BrickFTP::API::File).to receive(:find).with('a/b')
+        described_class.new.show_file('a/b')
+      end
+    end
+
+    describe '#move_file' do
+      it 'delegate BrickFTP::API::FileMove.create' do
+        expect(BrickFTP::API::FileMove).to receive(:create).with(path: 'a/b', move_destination: 'a/B')
+        described_class.new.move_file(path: 'a/b', move_destination: 'a/B')
+      end
+    end
+
+    describe '#copy_file' do
+      it 'delegate BrickFTP::API::FileCopy.create' do
+        expect(BrickFTP::API::FileCopy).to receive(:create).with(path: 'a/b', copy_destination: 'a/B')
+        described_class.new.copy_file(path: 'a/b', copy_destination: 'a/B')
+      end
+    end
+
+    describe '#delete_file' do
+      let(:file) { BrickFTP::API::File.new(id: 'a/b') }
+      it 'delegate BrickFTP::API::File#destroy' do
+        expect(file).to receive(:destroy)
+        described_class.new.delete_file(file)
+      end
+    end
+
+    describe '#upload_file' do
+      it 'delegate BrickFTP::API::FileUpload.create' do
+        expect(BrickFTP::API::FileUpload).to receive(:create).with(path: 'a/b', source: 'b')
+        described_class.new.upload_file(path: 'a/b', source: 'b')
+      end
+    end
+  end
 end
