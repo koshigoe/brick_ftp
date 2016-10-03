@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe BrickFTP::API::FileUpload, type: :lib do
+RSpec.describe BrickFTP::API::FileOperation::Upload, type: :lib do
   before { BrickFTP.config.api_key = 'xxxxxxxx' }
 
   describe '.create' do
@@ -55,8 +55,8 @@ RSpec.describe BrickFTP::API::FileUpload, type: :lib do
           .to_return(status: 200, body: step3.to_json)
       end
 
-      it 'return instance of BrickFTP::API::FileUpload' do
-        is_expected.to be_an_instance_of BrickFTP::API::FileUpload
+      it 'return instance of BrickFTP::API::FileOperation::Upload' do
+        is_expected.to be_an_instance_of BrickFTP::API::FileOperation::Upload
       end
 
       it 'set attributes' do

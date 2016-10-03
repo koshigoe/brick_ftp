@@ -23,12 +23,13 @@ require 'brick_ftp/api/bundle'
 require 'brick_ftp/api/bundle_content'
 require 'brick_ftp/api/bundle_download'
 require 'brick_ftp/api/behavior'
-require 'brick_ftp/api/behavior_folder'
+require 'brick_ftp/api/folder_behavior'
 require 'brick_ftp/api/folder'
 require 'brick_ftp/api/file'
-require 'brick_ftp/api/file_move'
-require 'brick_ftp/api/file_copy'
-require 'brick_ftp/api/file_upload'
+require 'brick_ftp/api/file_operation'
+require 'brick_ftp/api/file_operation/move'
+require 'brick_ftp/api/file_operation/copy'
+require 'brick_ftp/api/file_operation/upload'
 
 module BrickFTP
   # Return configuration.

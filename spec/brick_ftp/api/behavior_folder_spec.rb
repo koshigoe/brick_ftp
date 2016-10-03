@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe BrickFTP::API::BehaviorFolder, type: :lib do
+RSpec.describe BrickFTP::API::FolderBehavior, type: :lib do
   before { BrickFTP.config.api_key = 'xxxxxxxx' }
 
   describe '.all' do
@@ -33,8 +33,8 @@ RSpec.describe BrickFTP::API::BehaviorFolder, type: :lib do
         .to_return(status: 200, body: behaviors.to_json)
     end
 
-    it 'return instance of BrickFTP::API::BehaviorFolder' do
-      is_expected.to all(be_an_instance_of(BrickFTP::API::BehaviorFolder))
+    it 'return instance of BrickFTP::API::FolderBehavior' do
+      is_expected.to all(be_an_instance_of(BrickFTP::API::FolderBehavior))
     end
 
     it 'set attributes' do
