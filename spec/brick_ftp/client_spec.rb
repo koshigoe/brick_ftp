@@ -283,8 +283,8 @@ RSpec.describe BrickFTP::Client, type: :lib do
     end
 
     describe '#list_folder_behaviors' do
-      it 'delegate BrickFTP::API::BehaviorFolder.all' do
-        expect(BrickFTP::API::BehaviorFolder).to receive(:all).with(path: 'a/b')
+      it 'delegate BrickFTP::API::FolderBehavior.all' do
+        expect(BrickFTP::API::FolderBehavior).to receive(:all).with(path: 'a/b')
         described_class.new.list_folder_behaviors(path: 'a/b')
       end
     end
@@ -336,15 +336,15 @@ RSpec.describe BrickFTP::Client, type: :lib do
     end
 
     describe '#move_file' do
-      it 'delegate BrickFTP::API::FileMove.create' do
-        expect(BrickFTP::API::FileMove).to receive(:create).with(path: 'a/b', move_destination: 'a/B')
+      it 'delegate BrickFTP::API::FileOperation::Move.create' do
+        expect(BrickFTP::API::FileOperation::Move).to receive(:create).with(path: 'a/b', move_destination: 'a/B')
         described_class.new.move_file(path: 'a/b', move_destination: 'a/B')
       end
     end
 
     describe '#copy_file' do
-      it 'delegate BrickFTP::API::FileCopy.create' do
-        expect(BrickFTP::API::FileCopy).to receive(:create).with(path: 'a/b', copy_destination: 'a/B')
+      it 'delegate BrickFTP::API::FileOperation::Copy.create' do
+        expect(BrickFTP::API::FileOperation::Copy).to receive(:create).with(path: 'a/b', copy_destination: 'a/B')
         described_class.new.copy_file(path: 'a/b', copy_destination: 'a/B')
       end
     end
@@ -358,8 +358,8 @@ RSpec.describe BrickFTP::Client, type: :lib do
     end
 
     describe '#upload_file' do
-      it 'delegate BrickFTP::API::FileUpload.create' do
-        expect(BrickFTP::API::FileUpload).to receive(:create).with(path: 'a/b', source: 'b')
+      it 'delegate BrickFTP::API::FileOperation::Upload.create' do
+        expect(BrickFTP::API::FileOperation::Upload).to receive(:create).with(path: 'a/b', source: 'b')
         described_class.new.upload_file(path: 'a/b', source: 'b')
       end
     end

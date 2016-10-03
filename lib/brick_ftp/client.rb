@@ -281,9 +281,9 @@ module BrickFTP
 
     # shows the behaviors that apply to the given path.
     # @see https://brickftp.com/ja/docs/rest-api/behaviors/
-    # @return [Array] array of BrickFTP::API::BehaviorFolder
+    # @return [Array] array of BrickFTP::API::FolderBehavior
     def list_folder_behaviors(path:)
-      BrickFTP::API::BehaviorFolder.all(path: path)
+      BrickFTP::API::FolderBehavior.all(path: path)
     end
 
     # Lists the contents of the folder provided in the URL.
@@ -326,7 +326,7 @@ module BrickFTP
     # @param move_destination [String]
     # @return [BrickFTP::API::FileMove]
     def move_file(path:, move_destination:)
-      BrickFTP::API::FileMove.create(path: path, move_destination: move_destination)
+      BrickFTP::API::FileOperation::Move.create(path: path, move_destination: move_destination)
     end
 
     # Copy a file or folder to the destination provided in the copy_destination parameter.
@@ -335,7 +335,7 @@ module BrickFTP
     # @param copy_destination [String]
     # @return [BrickFTP::API::FileCopy]
     def copy_file(path:, copy_destination:)
-      BrickFTP::API::FileCopy.create(path: path, copy_destination: copy_destination)
+      BrickFTP::API::FileOperation::Copy.create(path: path, copy_destination: copy_destination)
     end
 
     # Delete a file.
@@ -352,7 +352,7 @@ module BrickFTP
     # @param source [String] path for source file.
     # @return [BrickFTP::API::FileUpload]
     def upload_file(path:, source:)
-      BrickFTP::API::FileUpload.create(path: path, source: source)
+      BrickFTP::API::FileOperation::Upload.create(path: path, source: source)
     end
   end
 end

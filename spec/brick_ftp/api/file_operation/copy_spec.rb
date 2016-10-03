@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-RSpec.describe BrickFTP::API::FileMove, type: :lib do
+RSpec.describe BrickFTP::API::FileOperation::Copy, type: :lib do
   before { BrickFTP.config.api_key = 'xxxxxxxx' }
 
   describe '.create' do
     subject { described_class.create(params) }
 
     context 'success' do
-      let(:params) { { path: 'path', 'move-destination' => '/DESTINATION_PATH_AND_FILENAME.EXT' } }
+      let(:params) { { path: 'path', 'copy-destination' => '/DESTINATION_PATH_AND_FILENAME.EXT' } }
 
       before do
         stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/files/path')
@@ -15,8 +15,8 @@ RSpec.describe BrickFTP::API::FileMove, type: :lib do
           .to_return(status: 200, body: '[]')
       end
 
-      it 'return instance of BrickFTP::API::FileMove' do
-        is_expected.to be_an_instance_of BrickFTP::API::FileMove
+      it 'return instance of BrickFTP::API::FileOperation::Copy' do
+        is_expected.to be_an_instance_of BrickFTP::API::FileOperation::Copy
       end
     end
 
