@@ -54,11 +54,13 @@ module BrickFTP
     end
 
     # List all groups on the current site.
+    # @see https://brickftp.com/ja/docs/rest-api/groups/
     def list_groups
       BrickFTP::API::Group.all
     end
 
     # Show a single group.
+    # @see https://brickftp.com/ja/docs/rest-api/groups/
     # @param id group id.
     # @return [BrickFTP::API::Group] group object.
     def show_group(id)
@@ -66,12 +68,14 @@ module BrickFTP
     end
 
     # Create a new group on the current site.
+    # @see https://brickftp.com/ja/docs/rest-api/groups/
     # @param attributes [Hash] Group's attributes.
     def create_group(attributes)
       BrickFTP::API::Group.create(attributes)
     end
 
     # Update an existing group.
+    # @see https://brickftp.com/ja/docs/rest-api/groups/
     # @param group [BrickFTP::API::Group] group object.
     # @param attributes [Hash] Group's attributes.
     # @return [BrickFTP::API::Group] group object.
@@ -80,6 +84,7 @@ module BrickFTP
     end
 
     # Delete a group.
+    # @see https://brickftp.com/ja/docs/rest-api/groups/
     # @param group [BrickFTP::API::Group] group object.
     # @return [Boolean] return true.
     def delete_group(group)
