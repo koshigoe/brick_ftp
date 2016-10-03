@@ -1,6 +1,7 @@
 module BrickFTP
   class Client
     # Login and store authentication session.
+    # @see https://brickftp.com/ja/docs/rest-api/authentication/
     # @param username [String] username of BrickFTP's user.
     # @param password [String] password of BrickFTP's user.
     def login(username, password)
@@ -8,6 +9,7 @@ module BrickFTP
     end
 
     # Logout and discard authentication session.
+    # @see https://brickftp.com/ja/docs/rest-api/authentication/
     def logout
       BrickFTP::API::Authentication.logout
     end
