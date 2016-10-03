@@ -4,10 +4,10 @@ RSpec.describe BrickFTP::API::FileUpload, type: :lib do
   before { BrickFTP.config.api_key = 'xxxxxxxx' }
 
   describe '.create' do
-    subject { described_class.create(params, path: 'NewFile.txt') }
+    subject { described_class.create(path: 'NewFile.txt', source: source) }
 
     context 'success' do
-      let(:params) { open('spec/data/file_upload/source.txt') }
+      let(:source) { open('spec/data/file_upload/source.txt') }
 
       let(:step1) do
         {
@@ -83,7 +83,7 @@ RSpec.describe BrickFTP::API::FileUpload, type: :lib do
     end
 
     context 'failure' do
-      let(:params) { {} }
+      let(:source) { '' }
 
       before do
         stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/files/NewFile.txt')
