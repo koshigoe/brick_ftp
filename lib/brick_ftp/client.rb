@@ -78,5 +78,23 @@ module BrickFTP
     def delete_group(group)
       group.destroy
     end
+
+    # List all permissions on the current site.
+    def list_permissions
+      BrickFTP::API::Permission.all
+    end
+
+    # Create a new permission on the current site.
+    # @param attributes [Hash] Permission's attributes.
+    def create_permission(attributes)
+      BrickFTP::API::Permission.create(attributes)
+    end
+
+    # Delete a permission.
+    # @param permission [BrickFTP::API::Permission] permission object.
+    # @return [Boolean] return true.
+    def delete_permission(permission)
+      permission.destroy
+    end
   end
 end
