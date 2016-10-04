@@ -36,4 +36,13 @@ describe BrickFTP do
       expect { |b| BrickFTP.configure(&b) }.to yield_with_args(BrickFTP.config)
     end
   end
+
+  describe '.logger' do
+    subject { described_class.logger }
+
+    it 'delegate BrickFTP::Configuration#logger' do
+      expect(described_class.config).to receive(:logger)
+      subject
+    end
+  end
 end

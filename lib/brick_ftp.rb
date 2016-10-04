@@ -63,4 +63,10 @@ module BrickFTP
   def self.configure
     yield(config)
   end
+
+  # Return logger object.
+  # @return [Logger]
+  def self.logger
+    config.logger
+  end
 end
