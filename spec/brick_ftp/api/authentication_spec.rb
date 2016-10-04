@@ -11,7 +11,7 @@ RSpec.describe BrickFTP::API::Authentication, type: :lib do
     end
 
     it 'name is BrickFTP' do
-      expect(subject.name).to eq 'BrickFTP'
+      expect(subject.name).to eq 'BrickAPI'
     end
 
     it 'value is session id' do
