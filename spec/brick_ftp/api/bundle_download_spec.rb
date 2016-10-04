@@ -4,7 +4,7 @@ RSpec.describe BrickFTP::API::BundleDownload, type: :lib do
   before { BrickFTP.config.api_key = 'xxxxxxxx' }
 
   describe '.all' do
-    subject { described_class.all(params, path: '') }
+    subject { described_class.all(params) }
 
     context 'success' do
       let(:params) do

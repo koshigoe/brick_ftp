@@ -2,32 +2,36 @@ module BrickFTP
   module API
     module FileOperation
       class Upload < BrickFTP::API::Base
-        define_api :create, '/api/rest/v1/files/%{path}'
-        define_writable_attributes :action, :ref, :part, :restart
-        define_readonly_attributes :id,
-                                   :ref,
-                                   :http_method,
-                                   :upload_uri,
-                                   :partsize,
-                                   :part_number,
-                                   :available_parts,
-                                   :headers,
-                                   :parameters,
-                                   :send,
-                                   :path,
-                                   :action,
-                                   :ask_about_overwrites,
-                                   :type,
-                                   :size,
-                                   :mtime,
-                                   :crc32,
-                                   :md5,
-                                   :expires,
-                                   :next_partsize,
-                                   :provided_mtime,
-                                   :permissions
+        endpoint :post, :create, '/api/rest/v1/files/%{path}'
 
-        def self.create(path: , source:)
+        attribute :id
+        attribute :ref
+        attribute :http_method
+        attribute :upload_uri
+        attribute :partsize
+        attribute :part_number
+        attribute :available_parts
+        attribute :headers
+        attribute :parameters
+        attribute :send
+        attribute :path
+        attribute :action
+        attribute :ask_about_overwrites
+        attribute :type
+        attribute :size
+        attribute :mtime
+        attribute :crc32
+        attribute :md5
+        attribute :expires
+        attribute :next_partsize
+        attribute :provided_mtime
+        attribute :permission
+        attribute :action, writable: true
+        attribute :ref, writable: true
+        attribute :part, writable: true
+        attribute :restart, writable: true
+
+        def self.create(path:, source:)
           api_client = BrickFTP::HTTPClient.new
           step1 = api_client.post(api_path_for(:create, path: path), params: { action: 'put' })
 

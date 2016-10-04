@@ -1,18 +1,26 @@
 module BrickFTP
   module API
     class BundleContent < Base
-      define_api :index, '/api/rest/v1/bundles/folders%{path}'
-      define_writable_attributes :code, :host
-      define_readonly_attributes :id, :path, :type, :size, :crc32, :md5
+      endpoint :post, :index, '/api/rest/v1/bundles/folders'
+      endpoint :post, :index_with_path, '/api/rest/v1/bundles/folders/%{path}'
 
-      def self.all(params, path_params = {})
+      attribute :id
+      attribute :path
+      attribute :type
+      attribute :size
+      attribute :crc32
+      attribute :md5
+      attribute :code, writable: true
+      attribute :host, writable: true
+
+      def self.all(params = {})
         params.symbolize_keys!
-        undefined_attributes = params.keys - writable_attributes
-        raise UndefinedAttributesError, undefined_attributes unless undefined_attributes.empty?
 
-        path_params[:path] = '' unless path_params.key?(:path)
-
-        data = BrickFTP::HTTPClient.new.post(api_path_for(:index, path_params), params: params)
+        name = params.key?(:path) ? :index_with_path : :index
+        data = BrickFTP::HTTPClient.new.post(
+          api_path_for(name, params),
+          params: api_component_for(name).except_path_and_query(params)
+        )
         data.map { |x| new(x.symbolize_keys) }
       end
     end
