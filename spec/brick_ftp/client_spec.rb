@@ -170,6 +170,7 @@ RSpec.describe BrickFTP::Client, type: :lib do
 
     describe '#list_user_history' do
       it 'delegate BrickFTP::API::History::User.all' do
+        query.update(user_id: 1)
         expect(BrickFTP::API::History::User).to receive(:all).with(query)
         described_class.new.list_user_history(query)
       end

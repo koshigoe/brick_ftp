@@ -157,12 +157,13 @@ module BrickFTP
 
     # Show all history for a specific user.
     # @see https://brickftp.com/ja/docs/rest-api/history/
+    # @param user_id [Integer] User ID.
     # @param page [Integer] Page number of items to return in this request.
     # @param per_page [Integer] Requested number of items returned per request. Default: 1000, maximum: 10000. Leave blank for default (strongly recommended).
     # @param start_at [String] Date and time in the history to start from.
     # @return [Array] array of `BrickFTP::API::History::User`
-    def list_user_history(page: nil, per_page: nil, start_at: nil)
-      query = { page: page, per_page: per_page, start_at: start_at }.reject { |_, v| v.nil? }
+    def list_user_history(user_id:, page: nil, per_page: nil, start_at: nil)
+      query = { user_id: user_id, page: page, per_page: per_page, start_at: start_at }.reject { |_, v| v.nil? }
       BrickFTP::API::History::User.all(query)
     end
 
