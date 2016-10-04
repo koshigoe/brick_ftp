@@ -2,7 +2,7 @@ module BrickFTP
   module API
     module FileOperation
       class Upload < BrickFTP::API::Base
-        define_api :create, '/api/rest/v1/files/%{path}'
+        endpoint :create, '/api/rest/v1/files/%{path}'
 
         attribute :id
         attribute :ref

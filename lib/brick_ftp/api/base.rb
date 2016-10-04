@@ -27,7 +27,7 @@ module BrickFTP
         writable_attributes + readonly_attributes
       end
 
-      def self.define_api(method, path_template, *query_keys)
+      def self.endpoint(method, path_template, *query_keys)
         @api[method] = { path_template: path_template, query_keys: query_keys }
       end
 

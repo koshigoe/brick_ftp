@@ -1,9 +1,9 @@
 module BrickFTP
   module API
     class Notification < Base
-      define_api :index,  '/api/rest/v1/notifications.json'
-      define_api :create, '/api/rest/v1/notifications.json'
-      define_api :delete, '/api/rest/v1/notifications/%{id}.json'
+      endpoint :index,  '/api/rest/v1/notifications.json'
+      endpoint :create, '/api/rest/v1/notifications.json'
+      endpoint :delete, '/api/rest/v1/notifications/%{id}.json'
 
       attribute :id
       attribute :path, writable: true

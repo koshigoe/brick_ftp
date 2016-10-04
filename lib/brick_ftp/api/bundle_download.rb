@@ -1,7 +1,7 @@
 module BrickFTP
   module API
     class BundleDownload < Base
-      define_api :index, '/api/rest/v1/bundles/files.json'
+      endpoint :index, '/api/rest/v1/bundles/files.json'
 
       attribute :id
       attribute :path

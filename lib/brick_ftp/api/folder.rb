@@ -1,8 +1,8 @@
 module BrickFTP
   module API
     class Folder < Base
-      define_api :index,  '/api/rest/v1/folders/%{path}', :page, :per_page, :search, :'sort_by[path]', :'sort_by[size]', :'sort_by[modified_at_datetime]'
-      define_api :create, '/api/rest/v1/folders/%{path}'
+      endpoint :index,  '/api/rest/v1/folders/%{path}', :page, :per_page, :search, :'sort_by[path]', :'sort_by[size]', :'sort_by[modified_at_datetime]'
+      endpoint :create, '/api/rest/v1/folders/%{path}'
 
       attribute :id
       attribute :path
