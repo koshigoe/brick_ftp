@@ -327,7 +327,7 @@ module BrickFTP
     # @param move_destination [String]
     # @return [BrickFTP::API::FileMove]
     def move_file(path:, move_destination:)
-      BrickFTP::API::FileOperation::Move.create(path: path, move_destination: move_destination)
+      BrickFTP::API::FileOperation::Move.create(path: path, :'move-destination' => move_destination)
     end
 
     # Copy a file or folder to the destination provided in the copy_destination parameter.
@@ -336,7 +336,7 @@ module BrickFTP
     # @param copy_destination [String]
     # @return [BrickFTP::API::FileCopy]
     def copy_file(path:, copy_destination:)
-      BrickFTP::API::FileOperation::Copy.create(path: path, copy_destination: copy_destination)
+      BrickFTP::API::FileOperation::Copy.create(path: path, :'copy-destination' => copy_destination)
     end
 
     # Delete a file.
