@@ -94,7 +94,17 @@ module BrickFTP
         req["Content-Length"] = params.size
       end
 
-      @conn.request(req)
+      start = Time.now
+      begin
+        logger.debug 'Request headers: %{headers}' % { headers: req.each_capitalized.map { |k, v| "#{k}: #{v}" } }
+        logger.debug 'Request body: %{body}' % { body: req.body }
+        @conn.request(req).tap do |res|
+          logger.debug 'Response headers: %{headers}' % { headers: res.each_capitalized.map { |k, v| "#{k}: #{v}" } }
+          logger.debug 'Response body: %{body}' % { body: res.body }
+        end
+      ensure
+        logger.info 'Complete %{method} %{path} (%{time} ms)' % { method: method.upcase, path: path, time: (Time.now - start) * 1000 }
+      end
     end
 
     def logger
