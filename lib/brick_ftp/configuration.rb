@@ -17,6 +17,9 @@ module BrickFTP
     # Log level
     # @return [Integer]
     attr_reader :log_level
+    # Log formatter
+    # @return [Logger::Formatter]
+    attr_reader :log_formatter
 
     def initialize
       self.subdomain = ENV['BRICK_FTP_SUBDOMAIN']
@@ -24,6 +27,7 @@ module BrickFTP
       self.session = nil
       self.logger = Logger.new(STDOUT)
       self.log_level = Logger::WARN
+      self.log_formatter = Logger::Formatter.new
       logger.level = log_level
     end
 
@@ -38,6 +42,13 @@ module BrickFTP
     def log_level=(level)
       @log_level = level
       logger.level = @log_level
+    end
+
+    # Set log formatter to logger object.
+    # @param formatter [Logger::Formatter]
+    def log_formatter=(formatter)
+      @log_formatter = formatter
+      logger.formatter = @log_formatter
     end
   end
 end

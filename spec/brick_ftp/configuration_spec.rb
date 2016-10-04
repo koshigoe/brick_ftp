@@ -47,4 +47,18 @@ RSpec.describe BrickFTP::Configuration, type: :lib do
       expect { subject }.to change(configuration.logger, :level).from(Logger::WARN).to(Logger::DEBUG)
     end
   end
+
+  describe '#log_formatter=' do
+    let(:configuration) { described_class.new }
+    let(:formatter) { Logger::Formatter.new }
+    subject { configuration.log_formatter = formatter }
+
+    it 'store log_formatter' do
+      expect { subject }.to change(configuration, :log_formatter).to(formatter)
+    end
+
+    it 'change log formatter of logger' do
+      expect { subject }.to change(configuration.logger, :formatter).to(formatter)
+    end
+  end
 end
