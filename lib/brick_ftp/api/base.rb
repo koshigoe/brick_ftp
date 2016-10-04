@@ -13,14 +13,14 @@ module BrickFTP
 
       def self.inherited(subclass)
         subclass.instance_eval do
-          @api = {}
+          @endpoints = {}
           @writable_attributes = []
           @readonly_attributes = []
         end
       end
 
       class << self
-        attr_reader :api, :writable_attributes, :readonly_attributes
+        attr_reader :endpoints, :writable_attributes, :readonly_attributes
       end
 
       def self.attributes
@@ -28,7 +28,7 @@ module BrickFTP
       end
 
       def self.endpoint(method, path_template, *query_keys)
-        @api[method] = { path_template: path_template, query_keys: query_keys }
+        endpoints[method] = { path_template: path_template, query_keys: query_keys }
       end
 
       def self.attribute(name, writable: false)
@@ -50,8 +50,8 @@ module BrickFTP
       end
 
       def self.api_component_for(method)
-        raise NoSuchAPIError, "#{method} #{self.name}" unless @api.key?(method)
-        BrickFTP::APIComponent.new(@api[method][:path_template], @api[method][:query_keys])
+        raise NoSuchAPIError, "#{method} #{self.name}" unless endpoints.key?(method)
+        BrickFTP::APIComponent.new(endpoints[method][:path_template], endpoints[method][:query_keys])
       end
 
       def self.all(params = {})
