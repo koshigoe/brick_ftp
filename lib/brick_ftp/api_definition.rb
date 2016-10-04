@@ -16,11 +16,11 @@ module BrickFTP
 
     module ClassMethods
       # Define API endpoint.
-      # @param method [Symbol] any one of :index, :show, :create, :update, :destroy
+      # @param name [Symbol] any one of :index, :show, :create, :update, :destroy
       # @param path_template [Stryng] template of endpoint path.
       # @param query_keys [Array] array of query_string's parameter name.
-      def endpoint(method, path_template, *query_keys)
-        endpoints[method] = { path_template: path_template, query_keys: query_keys }
+      def endpoint(name, path_template, *query_keys)
+        endpoints[name] = { path_template: path_template, query_keys: query_keys }
       end
 
       # Define attribute.
@@ -42,19 +42,19 @@ module BrickFTP
       end
 
       # Build path for API endpoint.
-      # @param method [Symbol]
+      # @param name [Symbol]
       # @param params [Hash] mixed path parameters and query parameters.
       # @return [String]
-      def api_path_for(method, params = {})
-        api_component_for(method).path(params)
+      def api_path_for(name, params = {})
+        api_component_for(name).path(params)
       end
 
-      # Build BrickFTP::APIComponent for specified method.
-      # @param method [Symbol]
+      # Build BrickFTP::APIComponent.
+      # @param name [Symbol]
       # @return [BrickFTP::APIComponent]
-      def api_component_for(method)
-        raise BrickFTP::API::NoSuchAPI, "#{method} #{self.name}" unless endpoints.key?(method)
-        BrickFTP::APIComponent.new(endpoints[method][:path_template], endpoints[method][:query_keys])
+      def api_component_for(name)
+        raise BrickFTP::API::NoSuchAPI, "#{name} #{self.name}" unless endpoints.key?(name)
+        BrickFTP::APIComponent.new(endpoints[name][:path_template], endpoints[name][:query_keys])
       end
     end
   end

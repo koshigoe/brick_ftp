@@ -16,10 +16,10 @@ module BrickFTP
       def self.all(params = {})
         params.symbolize_keys!
 
-        method = params.key?(:path) ? :index_with_path : :index
+        name = params.key?(:path) ? :index_with_path : :index
         data = BrickFTP::HTTPClient.new.post(
-          api_path_for(method, params),
-          params: api_component_for(method).except_path_and_query(params)
+          api_path_for(name, params),
+          params: api_component_for(name).except_path_and_query(params)
         )
         data.map { |x| new(x.symbolize_keys) }
       end
