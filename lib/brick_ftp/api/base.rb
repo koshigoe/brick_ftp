@@ -3,14 +3,6 @@ require 'cgi'
 module BrickFTP
   module API
     class Base
-      class NoSuchAPIError < StandardError; end
-
-      class UndefinedAttributesError < StandardError
-        def initialize(undefined_attributes = [])
-          super "No such attributes: #{undefined_attributes.join(', ')}"
-        end
-      end
-
       def self.inherited(subclass)
         subclass.include APIDefinition
       end

@@ -53,7 +53,7 @@ module BrickFTP
       # @param method [Symbol]
       # @return [BrickFTP::APIComponent]
       def api_component_for(method)
-        raise NoSuchAPIError, "#{method} #{self.name}" unless endpoints.key?(method)
+        raise BrickFTP::API::NoSuchAPI, "#{method} #{self.name}" unless endpoints.key?(method)
         BrickFTP::APIComponent.new(endpoints[method][:path_template], endpoints[method][:query_keys])
       end
     end
