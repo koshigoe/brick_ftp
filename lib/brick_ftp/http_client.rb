@@ -96,5 +96,9 @@ module BrickFTP
 
       @conn.request(req)
     end
+
+    def logger
+      BrickFTP.logger
+    end
   end
 end
