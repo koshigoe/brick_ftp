@@ -14,8 +14,6 @@ module BrickFTP
 
       def self.all(params, path_params = {})
         params.symbolize_keys!
-        undefined_attributes = params.keys - writable_attributes
-        raise UndefinedAttributesError, undefined_attributes unless undefined_attributes.empty?
 
         path_params[:path] = '' unless path_params.key?(:path)
 
