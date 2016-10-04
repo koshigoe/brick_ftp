@@ -4,8 +4,10 @@ module BrickFTP
       class Session < BrickFTP::API::Base
         define_api :create, '/api/rest/v1/sessions.json'
         define_api :delete, '/api/rest/v1/sessions.json'
-        define_writable_attributes :username, :password
-        define_readonly_attributes :id
+
+        attribute :id
+        attribute :username, writable: true
+        attribute :password, writable: true
 
         def self.create(params = {})
           super.tap { |x| BrickFTP.config.session = x }

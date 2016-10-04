@@ -2,8 +2,15 @@ module BrickFTP
   module API
     class BundleContent < Base
       define_api :index, '/api/rest/v1/bundles/folders%{path}'
-      define_writable_attributes :code, :host
-      define_readonly_attributes :id, :path, :type, :size, :crc32, :md5
+
+      attribute :id
+      attribute :path
+      attribute :type
+      attribute :size
+      attribute :crc32
+      attribute :md5
+      attribute :code, writable: true
+      attribute :host, writable: true
 
       def self.all(params, path_params = {})
         params.symbolize_keys!

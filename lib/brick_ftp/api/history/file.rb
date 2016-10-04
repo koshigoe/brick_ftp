@@ -3,18 +3,19 @@ module BrickFTP
     module History
       class File < BrickFTP::API::Base
         define_api :index, '/api/rest/v1/history/files/%{path}', :page, :per_page, :start_at
-        define_readonly_attributes :id,
-                                   :when,
-                                   :user_id,
-                                   :username,
-                                   :action,
-                                   :failure_type,
-                                   :path,
-                                   :source,
-                                   :destination,
-                                   :targets,
-                                   :ip,
-                                   :interface
+
+        attribute :id
+        attribute :when
+        attribute :user_id
+        attribute :username
+        attribute :action
+        attribute :failure_type
+        attribute :path
+        attribute :source
+        attribute :destination
+        attribute :targets
+        attribute :ip
+        attribute :interface
       end
     end
   end

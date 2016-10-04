@@ -2,8 +2,17 @@ module BrickFTP
   module API
     class BundleDownload < Base
       define_api :index, '/api/rest/v1/bundles/files.json'
-      define_writable_attributes :code, :host, :paths
-      define_readonly_attributes :id, :path, :type, :size, :crc32, :md5, :download_uri
+
+      attribute :id
+      attribute :path
+      attribute :type
+      attribute :size
+      attribute :crc32
+      attribute :md5
+      attribute :download_uri
+      attribute :code, writable: true
+      attribute :host, writable: true
+      attribute :paths, writable: true
 
       def self.all(params, path_params = {})
         params.symbolize_keys!

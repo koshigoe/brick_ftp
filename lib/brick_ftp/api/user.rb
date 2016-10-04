@@ -6,30 +6,31 @@ module BrickFTP
       define_api :create, '/api/rest/v1/users.json'
       define_api :update, '/api/rest/v1/users/%{id}.json'
       define_api :delete, '/api/rest/v1/users/%{id}.json'
-      define_writable_attributes :username,
-                                 :password,
-                                 :name,
-                                 :email,
-                                 :notes,
-                                 :group_ids,
-                                 :ftp_permission,
-                                 :web_permission,
-                                 :sftp_permission,
-                                 :dav_permission,
-                                 :restapi_permission,
-                                 :attachments_permission,
-                                 :self_managed,
-                                 :require_password_change,
-                                 :allowed_ips,
-                                 :user_root,
-                                 :grant_permission,
-                                 :ssl_required,
-                                 :authentication_method
-      define_readonly_attributes :id,
-                                 :last_login_at,
-                                 :time_zone,
-                                 :language,
-                                 :site_admin
+
+      attribute :id
+      attribute :last_login_at
+      attribute :time_zone
+      attribute :language
+      attribute :site_admin
+      attribute :username, writable: true
+      attribute :password, writable: true
+      attribute :name, writable: true
+      attribute :email, writable: true
+      attribute :notes, writable: true
+      attribute :group_ids, writable: true
+      attribute :ftp_permission, writable: true
+      attribute :web_permission, writable: true
+      attribute :sftp_permission, writable: true
+      attribute :dav_permission, writable: true
+      attribute :restapi_permission, writable: true
+      attribute :attachments_permission, writable: true
+      attribute :self_managed, writable: true
+      attribute :require_password_change, writable: true
+      attribute :allowed_ips, writable: true
+      attribute :user_root, writable: true
+      attribute :grant_permission, writable: true
+      attribute :ssl_required, writable: true
+      attribute :authentication_method, writable: true
     end
   end
 end

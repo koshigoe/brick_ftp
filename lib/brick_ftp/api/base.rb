@@ -31,14 +31,18 @@ module BrickFTP
         @api[method] = { path_template: path_template, query_keys: query_keys }
       end
 
-      def self.define_writable_attributes(*attributes)
-        @writable_attributes = attributes
-        attr_reader *@writable_attributes.map { |x| x.to_s.tr('-', '_') }
+      def self.attribute(name, writable: false)
+        writable ? register_writable_attribute(name) : register_readonly_attribute(name)
       end
 
-      def self.define_readonly_attributes(*attributes)
-        @readonly_attributes = attributes
-        attr_reader *@readonly_attributes.map { |x| x.to_s.tr('-', '_') }
+      def self.register_writable_attribute(name)
+        @writable_attributes << name.to_sym
+        attr_reader name.to_s.tr('-', '_')
+      end
+
+      def self.register_readonly_attribute(name)
+        @readonly_attributes << name.to_sym
+        attr_reader name.to_s.tr('-', '_')
       end
 
       def self.api_path_for(method, params = {})

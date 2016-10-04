@@ -2,7 +2,11 @@ module BrickFTP
   module API
     class FolderBehavior < Base
       define_api :index, '/api/rest/v1/behaviors/folders/%{path}', :recursive
-      define_readonly_attributes :id, :path, :behavior, :value
+
+      attribute :id
+      attribute :path
+      attribute :behavior
+      attribute :value
     end
   end
 end
