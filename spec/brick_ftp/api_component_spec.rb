@@ -3,10 +3,12 @@ require 'spec_helper'
 RSpec.describe BrickFTP::APIComponent, type: :lib do
   let(:api_component) do
     described_class.new(
-      '/api/rest/v1/folders/%{path}',
+      path_template,
       %i(page per_page search sort_by[path] sort_by[size] sort_by[modified_at_datetime])
     )
   end
+
+  let(:path_template) { '/api/rest/v1/folders/%{path}' }
 
   let(:params) do
     {
@@ -31,6 +33,22 @@ RSpec.describe BrickFTP::APIComponent, type: :lib do
       let(:params) { 1 }
       it { is_expected.to eq '/api/rest/v1/folders/1?page=1&per_page=1&search=1&sort_by%5Bpath%5D=1&sort_by%5Bsize%5D=1&sort_by%5Bmodified_at_datetime%5D=1' }
     end
+
+    context 'path_template is a proc' do
+      let(:path_template) do
+        ->(params) { params.key?(:path) ? '/a/b/%{path}' : '/a/b' }
+      end
+
+      context 'params has path key' do
+        let(:params) { { path: 'c' } }
+        it { is_expected.to eq '/a/b/c' }
+      end
+
+      context 'params does not have key' do
+        let(:params) { {} }
+        it { is_expected.to eq '/a/b' }
+      end
+    end
   end
 
   describe '#build_path_params_from' do
@@ -46,6 +64,22 @@ RSpec.describe BrickFTP::APIComponent, type: :lib do
       let(:params) { 1 }
       it do
         is_expected.to eq(path: 1)
+      end
+    end
+
+    context 'path_template is a proc' do
+      let(:path_template) do
+        ->(params) { params.key?(:path) ? '/a/b/%{path}' : '/a/b' }
+      end
+
+      context 'params has path key' do
+        let(:params) { { path: 'c' } }
+        it { is_expected.to eq(path: 'c') }
+      end
+
+      context 'params does not have key' do
+        let(:params) { {} }
+        it { is_expected.to eq({}) }
       end
     end
   end
@@ -106,5 +140,21 @@ RSpec.describe BrickFTP::APIComponent, type: :lib do
     before { params[:attr] = 'a' }
 
     it { is_expected.to eq(attr: 'a') }
+
+    context 'path_template is a proc' do
+      let(:path_template) do
+        ->(params) { params.key?(:path) ? '/a/b/%{path}' : '/a/b' }
+      end
+
+      context 'params has path key' do
+        let(:params) { { path: 'c' } }
+        it { is_expected.to eq(attr: 'a') }
+      end
+
+      context 'params does not have key' do
+        let(:params) { {} }
+        it { is_expected.to eq(attr: 'a') }
+      end
+    end
   end
 end
