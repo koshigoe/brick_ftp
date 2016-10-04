@@ -2,8 +2,8 @@ module BrickFTP
   module API
     module Authentication
       class Session < BrickFTP::API::Base
-        endpoint :create, '/api/rest/v1/sessions.json'
-        endpoint :delete, '/api/rest/v1/sessions.json'
+        endpoint :post,   :create, '/api/rest/v1/sessions.json'
+        endpoint :delete, :delete, '/api/rest/v1/sessions.json'
 
         attribute :id
         attribute :username, writable: true

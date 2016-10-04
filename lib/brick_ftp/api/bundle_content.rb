@@ -1,8 +1,8 @@
 module BrickFTP
   module API
     class BundleContent < Base
-      endpoint :index, '/api/rest/v1/bundles/folders'
-      endpoint :index_with_path, '/api/rest/v1/bundles/folders/%{path}'
+      endpoint :post, :index, '/api/rest/v1/bundles/folders'
+      endpoint :post, :index_with_path, '/api/rest/v1/bundles/folders/%{path}'
 
       attribute :id
       attribute :path

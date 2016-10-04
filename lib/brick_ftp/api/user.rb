@@ -1,11 +1,11 @@
 module BrickFTP
   module API
     class User < Base
-      endpoint :index,  '/api/rest/v1/users.json'
-      endpoint :show,   '/api/rest/v1/users/%{id}.json'
-      endpoint :create, '/api/rest/v1/users.json'
-      endpoint :update, '/api/rest/v1/users/%{id}.json'
-      endpoint :delete, '/api/rest/v1/users/%{id}.json'
+      endpoint :get,    :index,  '/api/rest/v1/users.json'
+      endpoint :get,    :show,   '/api/rest/v1/users/%{id}.json'
+      endpoint :post,   :create, '/api/rest/v1/users.json'
+      endpoint :put,    :update, '/api/rest/v1/users/%{id}.json'
+      endpoint :delete, :delete, '/api/rest/v1/users/%{id}.json'
 
       attribute :id
       attribute :last_login_at

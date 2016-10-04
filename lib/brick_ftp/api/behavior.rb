@@ -1,11 +1,11 @@
 module BrickFTP
   module API
     class Behavior < Base
-      endpoint :index,  '/api/rest/v1/behaviors.json'
-      endpoint :show,   '/api/rest/v1/behaviors/%{id}.json'
-      endpoint :create, '/api/rest/v1/behaviors.json'
-      endpoint :update, '/api/rest/v1/behaviors/%{id}.json'
-      endpoint :delete, '/api/rest/v1/behaviors/%{id}.json'
+      endpoint :get,    :index,  '/api/rest/v1/behaviors.json'
+      endpoint :get,    :show,   '/api/rest/v1/behaviors/%{id}.json'
+      endpoint :post,   :create, '/api/rest/v1/behaviors.json'
+      endpoint :put,    :update, '/api/rest/v1/behaviors/%{id}.json'
+      endpoint :delete, :delete, '/api/rest/v1/behaviors/%{id}.json'
 
       attribute :id
       attribute :path

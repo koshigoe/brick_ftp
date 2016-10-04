@@ -1,11 +1,11 @@
 module BrickFTP
   module API
     class Group < Base
-      endpoint :index,  '/api/rest/v1/groups.json'
-      endpoint :show,   '/api/rest/v1/groups/%{id}.json'
-      endpoint :create, '/api/rest/v1/groups.json'
-      endpoint :update, '/api/rest/v1/groups/%{id}.json'
-      endpoint :delete, '/api/rest/v1/groups/%{id}.json'
+      endpoint :get,    :index,  '/api/rest/v1/groups.json'
+      endpoint :get,    :show,   '/api/rest/v1/groups/%{id}.json'
+      endpoint :post,   :create, '/api/rest/v1/groups.json'
+      endpoint :put,    :update, '/api/rest/v1/groups/%{id}.json'
+      endpoint :delete, :delete, '/api/rest/v1/groups/%{id}.json'
 
       attribute :id
       attribute :name, writable: true

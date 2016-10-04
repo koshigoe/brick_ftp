@@ -1,9 +1,9 @@
 module BrickFTP
   module API
     class Permission < Base
-      endpoint :index,  '/api/rest/v1/permissions.json'
-      endpoint :create, '/api/rest/v1/permissions.json'
-      endpoint :delete, '/api/rest/v1/permissions/%{id}.json'
+      endpoint :get,    :index,  '/api/rest/v1/permissions.json'
+      endpoint :post,   :create, '/api/rest/v1/permissions.json'
+      endpoint :delete, :delete, '/api/rest/v1/permissions/%{id}.json'
 
       attribute :id
       attribute :recursive

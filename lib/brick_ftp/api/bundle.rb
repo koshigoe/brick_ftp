@@ -1,10 +1,10 @@
 module BrickFTP
   module API
     class Bundle < Base
-      endpoint :index,  '/api/rest/v1/bundles.json'
-      endpoint :show,   '/api/rest/v1/bundles/%{id}.json'
-      endpoint :create, '/api/rest/v1/bundles.json'
-      endpoint :delete, '/api/rest/v1/bundles/%{id}.json'
+      endpoint :get,    :index,  '/api/rest/v1/bundles.json'
+      endpoint :get,    :show,   '/api/rest/v1/bundles/%{id}.json'
+      endpoint :post,   :create, '/api/rest/v1/bundles.json'
+      endpoint :delete, :delete, '/api/rest/v1/bundles/%{id}.json'
 
       attribute :id
       attribute :code

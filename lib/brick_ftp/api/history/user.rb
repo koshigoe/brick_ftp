@@ -2,7 +2,7 @@ module BrickFTP
   module API
     module History
       class User < BrickFTP::API::Base
-        endpoint :index, '/api/rest/v1/history/users/%{user_id}.json', :page, :per_page, :start_at
+        endpoint :get, :index, '/api/rest/v1/history/users/%{user_id}.json', :page, :per_page, :start_at
 
         attribute :id
         attribute :when

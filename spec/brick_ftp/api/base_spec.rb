@@ -3,14 +3,14 @@ require 'spec_helper'
 RSpec.describe BrickFTP::API::Base do
   let(:api) do
     Class.new(described_class) do
-      endpoint :create, '/path/to/resources'
+      endpoint :post, :create, '/path/to/resources'
     end
   end
 
   describe '.endpoint' do
     it 'define endpoint' do
-      api.endpoint :show, '/path/to/resource/%{param1}/%{param2}', :param1, :param2
-      expect(api.endpoints[:show]).to eq(path_template: '/path/to/resource/%{param1}/%{param2}', query_keys: %i(param1 param2))
+      api.endpoint :get, :show, '/path/to/resource/%{param1}/%{param2}', :param1, :param2
+      expect(api.endpoints[:show]).to eq(http_method: :get, path_template: '/path/to/resource/%{param1}/%{param2}', query_keys: %i(param1 param2))
     end
   end
 

@@ -1,8 +1,8 @@
 module BrickFTP
   module API
     class Folder < Base
-      endpoint :index,  '/api/rest/v1/folders/%{path}', :page, :per_page, :search, :'sort_by[path]', :'sort_by[size]', :'sort_by[modified_at_datetime]'
-      endpoint :create, '/api/rest/v1/folders/%{path}'
+      endpoint :get,  :index,  '/api/rest/v1/folders/%{path}', :page, :per_page, :search, :'sort_by[path]', :'sort_by[size]', :'sort_by[modified_at_datetime]'
+      endpoint :post, :create, '/api/rest/v1/folders/%{path}'
 
       attribute :id
       attribute :path
@@ -13,10 +13,6 @@ module BrickFTP
       attribute :md5
       attribute :provided_mtime
       attribute :permissions
-
-      def self.create(params = {})
-        super(params)
-      end
     end
   end
 end

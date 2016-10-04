@@ -16,11 +16,16 @@ module BrickFTP
 
     module ClassMethods
       # Define API endpoint.
+      # @param http_method [:Symbol] any one of :get, :post, :put, :delete
       # @param name [Symbol] any one of :index, :show, :create, :update, :destroy
       # @param path_template [Stryng] template of endpoint path.
       # @param query_keys [Array] array of query_string's parameter name.
-      def endpoint(name, path_template, *query_keys)
-        endpoints[name] = { path_template: path_template, query_keys: query_keys }
+      def endpoint(http_method, name, path_template, *query_keys)
+        endpoints[name] = {
+          http_method: http_method,
+          path_template: path_template,
+          query_keys: query_keys,
+        }
       end
 
       # Define attribute.

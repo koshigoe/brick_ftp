@@ -2,7 +2,7 @@ module BrickFTP
   module API
     module FileOperation
       class Upload < BrickFTP::API::Base
-        endpoint :create, '/api/rest/v1/files/%{path}'
+        endpoint :post, :create, '/api/rest/v1/files/%{path}'
 
         attribute :id
         attribute :ref
@@ -31,7 +31,7 @@ module BrickFTP
         attribute :part, writable: true
         attribute :restart, writable: true
 
-        def self.create(path: , source:)
+        def self.create(path:, source:)
           api_client = BrickFTP::HTTPClient.new
           step1 = api_client.post(api_path_for(:create, path: path), params: { action: 'put' })
 

@@ -30,8 +30,8 @@ module BrickFTP
       @conn.use_ssl = true
     end
 
-    def get(path)
-      case res = request(:get, path)
+    def get(path, params: {})
+      case res = request(:get, path, params: params)
       when Net::HTTPSuccess
         res.body.nil? || res.body.empty? ? {} : JSON.parse(res.body)
       else
@@ -60,8 +60,8 @@ module BrickFTP
       end
     end
 
-    def delete(path)
-      case res = request(:delete, path)
+    def delete(path, params: {})
+      case res = request(:delete, path, params: params)
       when Net::HTTPSuccess
         true
       else

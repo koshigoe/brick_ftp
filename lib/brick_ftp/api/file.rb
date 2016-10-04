@@ -1,8 +1,8 @@
 module BrickFTP
   module API
     class File < Base
-      endpoint :show,   '/api/rest/v1/files/%{path}'
-      endpoint :delete, '/api/rest/v1/files/%{path}'
+      endpoint :get,    :show,   '/api/rest/v1/files/%{path}'
+      endpoint :delete, :delete, '/api/rest/v1/files/%{path}'
 
       attribute :id
       attribute :path
