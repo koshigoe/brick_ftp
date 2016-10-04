@@ -60,7 +60,7 @@ RSpec.describe BrickFTP::API::Authentication::Session, type: :lib do
     context 'success' do
       before do
         stub_request(:delete, 'https://koshigoe.brickftp.com/api/rest/v1/sessions.json')
-          .with(headers: { 'Cookie' => 'BrickFTP=xxxxxxxx; path=' })
+          .with(headers: { 'Cookie' => 'BrickAPI=xxxxxxxx; path=' })
           .to_return(body: '[]')
       end
 
@@ -76,7 +76,7 @@ RSpec.describe BrickFTP::API::Authentication::Session, type: :lib do
     context 'failure' do
       before do
         stub_request(:delete, 'https://koshigoe.brickftp.com/api/rest/v1/sessions.json')
-          .with(headers: { 'Cookie' => 'BrickFTP=xxxxxxxx; path=' })
+          .with(headers: { 'Cookie' => 'BrickAPI=xxxxxxxx; path=' })
           .to_return(status: 500, body: { 'error' => 'xxxxx', 'http-code' => '500' }.to_json)
       end
 

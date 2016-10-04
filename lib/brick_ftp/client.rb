@@ -157,12 +157,13 @@ module BrickFTP
 
     # Show all history for a specific user.
     # @see https://brickftp.com/ja/docs/rest-api/history/
+    # @param user_id [Integer] User ID.
     # @param page [Integer] Page number of items to return in this request.
     # @param per_page [Integer] Requested number of items returned per request. Default: 1000, maximum: 10000. Leave blank for default (strongly recommended).
     # @param start_at [String] Date and time in the history to start from.
     # @return [Array] array of `BrickFTP::API::History::User`
-    def list_user_history(page: nil, per_page: nil, start_at: nil)
-      query = { page: page, per_page: per_page, start_at: start_at }.reject { |_, v| v.nil? }
+    def list_user_history(user_id:, page: nil, per_page: nil, start_at: nil)
+      query = { user_id: user_id, page: page, per_page: per_page, start_at: start_at }.reject { |_, v| v.nil? }
       BrickFTP::API::History::User.all(query)
     end
 
@@ -326,7 +327,7 @@ module BrickFTP
     # @param move_destination [String]
     # @return [BrickFTP::API::FileMove]
     def move_file(path:, move_destination:)
-      BrickFTP::API::FileOperation::Move.create(path: path, move_destination: move_destination)
+      BrickFTP::API::FileOperation::Move.create(path: path, :'move-destination' => move_destination)
     end
 
     # Copy a file or folder to the destination provided in the copy_destination parameter.
@@ -335,7 +336,7 @@ module BrickFTP
     # @param copy_destination [String]
     # @return [BrickFTP::API::FileCopy]
     def copy_file(path:, copy_destination:)
-      BrickFTP::API::FileOperation::Copy.create(path: path, copy_destination: copy_destination)
+      BrickFTP::API::FileOperation::Copy.create(path: path, :'copy-destination' => copy_destination)
     end
 
     # Delete a file.

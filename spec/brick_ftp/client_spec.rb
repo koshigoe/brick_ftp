@@ -170,6 +170,7 @@ RSpec.describe BrickFTP::Client, type: :lib do
 
     describe '#list_user_history' do
       it 'delegate BrickFTP::API::History::User.all' do
+        query.update(user_id: 1)
         expect(BrickFTP::API::History::User).to receive(:all).with(query)
         described_class.new.list_user_history(query)
       end
@@ -337,14 +338,14 @@ RSpec.describe BrickFTP::Client, type: :lib do
 
     describe '#move_file' do
       it 'delegate BrickFTP::API::FileOperation::Move.create' do
-        expect(BrickFTP::API::FileOperation::Move).to receive(:create).with(path: 'a/b', move_destination: 'a/B')
+        expect(BrickFTP::API::FileOperation::Move).to receive(:create).with(path: 'a/b', :'move-destination' => 'a/B')
         described_class.new.move_file(path: 'a/b', move_destination: 'a/B')
       end
     end
 
     describe '#copy_file' do
       it 'delegate BrickFTP::API::FileOperation::Copy.create' do
-        expect(BrickFTP::API::FileOperation::Copy).to receive(:create).with(path: 'a/b', copy_destination: 'a/B')
+        expect(BrickFTP::API::FileOperation::Copy).to receive(:create).with(path: 'a/b', :'copy-destination' => 'a/B')
         described_class.new.copy_file(path: 'a/b', copy_destination: 'a/B')
       end
     end
