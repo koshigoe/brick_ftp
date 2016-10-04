@@ -34,4 +34,17 @@ RSpec.describe BrickFTP::Configuration, type: :lib do
     subject { described_class.new.api_host }
     it { is_expected.to eq 'koshigoe.brickftp.com' }
   end
+
+  describe '#log_level=' do
+    let(:configuration) { described_class.new }
+    subject { configuration.log_level = Logger::DEBUG }
+
+    it 'store log_level' do
+      expect { subject }.to change(configuration, :log_level).from(Logger::WARN).to(Logger::DEBUG)
+    end
+
+    it 'change log level of logger' do
+      expect { subject }.to change(configuration.logger, :level).from(Logger::WARN).to(Logger::DEBUG)
+    end
+  end
 end
