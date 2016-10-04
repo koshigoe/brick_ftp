@@ -1,6 +1,7 @@
 require 'deep_hash_transform'
 require "brick_ftp/version"
 require 'brick_ftp/configuration'
+require 'brick_ftp/log_formatter'
 require 'brick_ftp/http_client'
 require 'brick_ftp/client'
 require 'brick_ftp/api'
