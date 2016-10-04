@@ -3,7 +3,7 @@ module BrickFTP
     attr_reader :path_template, :query_keys
 
     def initialize(path_template, query_keys = [])
-      @path_template = path_template
+      @path_template = path_template.respond_to?(:call) ? path_template : ->(_) { path_template }
       @query_keys = query_keys.map(&:to_sym)
     end
 
@@ -15,7 +15,7 @@ module BrickFTP
         res[k] = CGI.escape(v.to_s)
       end
 
-      path = path_template % escaped_path_params
+      path = path_template.call(params) % escaped_path_params
       query = build_query_string_from(params)
       query.empty? ? path : "#{path}?#{query}"
     end
@@ -23,7 +23,7 @@ module BrickFTP
     def build_path_params_from(params = {})
       params = normalize_params(params)
 
-      path_variables.each_with_object({}) do |key, res|
+      path_variables(params).each_with_object({}) do |key, res|
         res[key] = params[key]
       end
     end
@@ -49,14 +49,14 @@ module BrickFTP
     def except_path_and_query(params = {})
       params = normalize_params(params)
 
-      exceptions = path_variables + query_keys
+      exceptions = path_variables(params) + query_keys
       params.reject { |k, _| exceptions.include?(k) }
     end
 
     private
 
-    def path_variables
-      @path_variables ||= path_template.scan(/%\{([^}]+)\}/).map { |m| m.first.to_sym }
+    def path_variables(params = {})
+      @path_variables ||= path_template.call(params).scan(/%\{([^}]+)\}/).map { |m| m.first.to_sym }
     end
 
     def normalize_params(params = {})
@@ -64,12 +64,12 @@ module BrickFTP
       when Hash
         params.symbolize_keys
       when BrickFTP::API::Base
-        keys = path_variables + query_keys
+        keys = path_variables(params) + query_keys
         keys.each_with_object({}) do |key, res|
           res[key] = params.send(key)
         end
       else
-        keys = path_variables + query_keys
+        keys = path_variables(params) + query_keys
         keys.each_with_object({}) do |key, res|
           res[key] = params
         end
