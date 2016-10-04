@@ -1,7 +1,8 @@
 module BrickFTP
   module API
     class BundleContent < Base
-      endpoint :index, '/api/rest/v1/bundles/folders%{path}'
+      endpoint :index, '/api/rest/v1/bundles/folders'
+      endpoint :index_with_path, '/api/rest/v1/bundles/folders/%{path}'
 
       attribute :id
       attribute :path
@@ -12,12 +13,14 @@ module BrickFTP
       attribute :code, writable: true
       attribute :host, writable: true
 
-      def self.all(params, path_params = {})
+      def self.all(params = {})
         params.symbolize_keys!
 
-        path_params[:path] = '' unless path_params.key?(:path)
-
-        data = BrickFTP::HTTPClient.new.post(api_path_for(:index, path_params), params: params)
+        method = params.key?(:path) ? :index_with_path : :index
+        data = BrickFTP::HTTPClient.new.post(
+          api_path_for(method, params),
+          params: api_component_for(method).except_path_and_query(params)
+        )
         data.map { |x| new(x.symbolize_keys) }
       end
     end
