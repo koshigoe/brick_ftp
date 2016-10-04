@@ -12,46 +12,7 @@ module BrickFTP
       end
 
       def self.inherited(subclass)
-        subclass.instance_eval do
-          @endpoints = {}
-          @writable_attributes = []
-          @readonly_attributes = []
-        end
-      end
-
-      class << self
-        attr_reader :endpoints, :writable_attributes, :readonly_attributes
-      end
-
-      def self.attributes
-        writable_attributes + readonly_attributes
-      end
-
-      def self.endpoint(method, path_template, *query_keys)
-        endpoints[method] = { path_template: path_template, query_keys: query_keys }
-      end
-
-      def self.attribute(name, writable: false)
-        writable ? register_writable_attribute(name) : register_readonly_attribute(name)
-      end
-
-      def self.register_writable_attribute(name)
-        @writable_attributes << name.to_sym
-        attr_reader name.to_s.tr('-', '_')
-      end
-
-      def self.register_readonly_attribute(name)
-        @readonly_attributes << name.to_sym
-        attr_reader name.to_s.tr('-', '_')
-      end
-
-      def self.api_path_for(method, params = {})
-        api_component_for(method).path(params)
-      end
-
-      def self.api_component_for(method)
-        raise NoSuchAPIError, "#{method} #{self.name}" unless endpoints.key?(method)
-        BrickFTP::APIComponent.new(endpoints[method][:path_template], endpoints[method][:query_keys])
+        subclass.include APIDefinition
       end
 
       def self.all(params = {})
