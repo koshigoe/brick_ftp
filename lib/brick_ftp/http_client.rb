@@ -28,6 +28,8 @@ module BrickFTP
       @host = host || BrickFTP.config.api_host
       @conn = Net::HTTP.new(@host, 443)
       @conn.use_ssl = true
+      @conn.open_timeout = BrickFTP.config.open_timeout
+      @conn.read_timeout = BrickFTP.config.read_timeout
     end
 
     def get(path, params: {})
