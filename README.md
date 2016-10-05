@@ -38,7 +38,7 @@ end
 ### Authentication
 
 If you authenticate by API key, you set API key to configuration.
-If you authenticate by session cooki, you must authenticate by API.
+If you authenticate by session cookie, you must authenticate by API.
 
 ```ruby
 # Authenticate and set authentication session to configuration.
