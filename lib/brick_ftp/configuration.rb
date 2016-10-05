@@ -20,11 +20,22 @@ module BrickFTP
     # Log formatter
     # @return [Logger::Formatter]
     attr_reader :log_formatter
+    # Open timeout
+    # @return [Integer]
+    attr_accessor :open_timeout
+    # Read timeout
+    # @return [Integer]
+    attr_accessor :read_timeout
+
+    DEFAULT_OPEN_TIMEOUT = 10
+    DEFAULT_READ_TIMEOUT = 30
 
     def initialize
       self.subdomain = ENV['BRICK_FTP_SUBDOMAIN']
       self.api_key = ENV['BRICK_FTP_API_KEY']
       self.session = nil
+      self.open_timeout = DEFAULT_OPEN_TIMEOUT
+      self.read_timeout = DEFAULT_READ_TIMEOUT
       self.logger = Logger.new(STDOUT)
       self.log_level = Logger::WARN
       self.log_formatter = Logger::Formatter.new
