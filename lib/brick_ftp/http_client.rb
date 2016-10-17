@@ -12,6 +12,8 @@ module BrickFTP
         end
 
         case
+        when !error.is_a?(Hash)
+          super "#{response.code} #{response.message}"
         when error.key?('http-code')
           super "#{error['http-code']}: #{error['error']}"
         when error.key?('errors')

@@ -42,6 +42,27 @@ RSpec.describe BrickFTP::HTTPClient, type: :lib do
         expect { subject }.to raise_error BrickFTP::HTTPClient::Error
       end
     end
+
+    context 'Error response with empty array' do
+      before do
+        stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/users.json')
+          .with(
+            basic_auth: ['xxxxxxxx', 'x'],
+            headers: { 'Content-Type' => 'application/json', 'User-Agent' => 'BrickFTP Client/0.1 (https://github.com/koshigoe/brick_ftp)' }
+          )
+          .to_return(status: [422, 'Unprocessable Entity'], body: '[]')
+      end
+
+      it 'raise BrickFTP::HTTPClient::Error' do
+        expect { subject }.to raise_error BrickFTP::HTTPClient::Error
+      end
+
+      it 'message of exception is HTTP Status-Line' do
+        expect { subject }.to raise_error(BrickFTP::HTTPClient::Error) do |ex|
+          expect(ex.message).to eq('422 Unprocessable Entity')
+        end
+      end
+    end
   end
 
   describe '#post' do
@@ -77,6 +98,27 @@ RSpec.describe BrickFTP::HTTPClient, type: :lib do
 
       it 'raise BrickFTP::HTTPClient::Error' do
         expect { subject }.to raise_error BrickFTP::HTTPClient::Error
+      end
+    end
+
+    context 'Error response with empty array' do
+      before do
+        stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/sessions.json')
+          .with(
+            body: { username: 'koshigoe', password: 'password' }.to_json,
+            headers: { 'Content-Type' => 'application/json', 'User-Agent' => 'BrickFTP Client/0.1 (https://github.com/koshigoe/brick_ftp)' }
+          )
+          .to_return(status: [422, 'Unprocessable Entity'], body: '[]')
+      end
+
+      it 'raise BrickFTP::HTTPClient::Error' do
+        expect { subject }.to raise_error BrickFTP::HTTPClient::Error
+      end
+
+      it 'message of exception is HTTP Status-Line' do
+        expect { subject }.to raise_error(BrickFTP::HTTPClient::Error) do |ex|
+          expect(ex.message).to eq('422 Unprocessable Entity')
+        end
       end
     end
   end
@@ -118,6 +160,28 @@ RSpec.describe BrickFTP::HTTPClient, type: :lib do
         expect { subject }.to raise_error BrickFTP::HTTPClient::Error
       end
     end
+
+    context 'Error response with empty array' do
+      before do
+        stub_request(:put, 'https://koshigoe.brickftp.com/api/rest/v1/sessions.json')
+          .with(
+            basic_auth: ['xxxxxxxx', 'x'],
+            body: { username: 'koshigoe', password: 'password' }.to_json,
+            headers: { 'Content-Type' => 'application/json', 'User-Agent' => 'BrickFTP Client/0.1 (https://github.com/koshigoe/brick_ftp)' }
+          )
+          .to_return(status: [422, 'Unprocessable Entity'], body: '[]')
+      end
+
+      it 'raise BrickFTP::HTTPClient::Error' do
+        expect { subject }.to raise_error BrickFTP::HTTPClient::Error
+      end
+
+      it 'message of exception is HTTP Status-Line' do
+        expect { subject }.to raise_error(BrickFTP::HTTPClient::Error) do |ex|
+          expect(ex.message).to eq('422 Unprocessable Entity')
+        end
+      end
+    end
   end
 
   describe '#delete' do
@@ -152,6 +216,27 @@ RSpec.describe BrickFTP::HTTPClient, type: :lib do
 
       it 'raise BrickFTP::HTTPClient::Error' do
         expect { subject }.to raise_error BrickFTP::HTTPClient::Error
+      end
+    end
+
+    context 'Error response with empty array' do
+      before do
+        stub_request(:delete, 'https://koshigoe.brickftp.com/api/rest/v1/sessions.json')
+          .with(
+            basic_auth: ['xxxxxxxx', 'x'],
+            headers: { 'Content-Type' => 'application/json', 'User-Agent' => 'BrickFTP Client/0.1 (https://github.com/koshigoe/brick_ftp)' }
+          )
+          .to_return(status: [422, 'Unprocessable Entity'], body: '[]')
+      end
+
+      it 'raise BrickFTP::HTTPClient::Error' do
+        expect { subject }.to raise_error BrickFTP::HTTPClient::Error
+      end
+
+      it 'message of exception is HTTP Status-Line' do
+        expect { subject }.to raise_error(BrickFTP::HTTPClient::Error) do |ex|
+          expect(ex.message).to eq('422 Unprocessable Entity')
+        end
       end
     end
   end
