@@ -55,10 +55,14 @@ module BrickFTP
         self
       end
 
-      def destroy
+      def destroy(recursive: false)
+        headers = {}
+        headers['Depth'] = 'infinity' if recursive
+
         BrickFTP::HTTPClient.new.send(
           self.class.endpoints[:delete][:http_method],
           self.class.api_path_for(:delete, self),
+          headers: headers,
         )
         true
       end

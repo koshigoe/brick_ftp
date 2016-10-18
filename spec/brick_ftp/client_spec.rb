@@ -352,9 +352,19 @@ RSpec.describe BrickFTP::Client, type: :lib do
 
     describe '#delete_file' do
       let(:file) { BrickFTP::API::File.new(id: 'a/b') }
-      it 'delegate BrickFTP::API::File#destroy' do
-        expect(file).to receive(:destroy)
-        described_class.new.delete_file(file)
+
+      context 'without options' do
+        it 'delegate BrickFTP::API::File#destroy' do
+          expect(file).to receive(:destroy).with(recursive: false)
+          described_class.new.delete_file(file)
+        end
+      end
+
+      context 'recursive: true' do
+        it 'delegate BrickFTP::API::File#destroy' do
+          expect(file).to receive(:destroy).with(recursive: true)
+          described_class.new.delete_file(file, recursive: true)
+        end
       end
     end
 
