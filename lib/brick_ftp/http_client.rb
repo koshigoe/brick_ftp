@@ -34,8 +34,8 @@ module BrickFTP
       @conn.read_timeout = BrickFTP.config.read_timeout
     end
 
-    def get(path, params: {})
-      case res = request(:get, path, params: params)
+    def get(path, params: {}, headers: {})
+      case res = request(:get, path, params: params, headers: headers)
       when Net::HTTPSuccess
         res.body.nil? || res.body.empty? ? {} : JSON.parse(res.body)
       else
@@ -44,8 +44,8 @@ module BrickFTP
       end
     end
 
-    def post(path, params: {})
-      case res = request(:post, path, params: params)
+    def post(path, params: {}, headers: {})
+      case res = request(:post, path, params: params, headers: headers)
       when Net::HTTPSuccess, Net::HTTPCreated
         res.body.nil? || res.body.empty? ? {} : JSON.parse(res.body)
       else
@@ -54,8 +54,8 @@ module BrickFTP
       end
     end
 
-    def put(path, params: {})
-      case res = request(:put, path, params: params)
+    def put(path, params: {}, headers: {})
+      case res = request(:put, path, params: params, headers: headers)
       when Net::HTTPSuccess
         res.body.nil? || res.body.empty? ? {} : JSON.parse(res.body)
       else
@@ -64,8 +64,8 @@ module BrickFTP
       end
     end
 
-    def delete(path, params: {})
-      case res = request(:delete, path, params: params)
+    def delete(path, params: {}, headers: {})
+      case res = request(:delete, path, params: params, headers: headers)
       when Net::HTTPSuccess
         true
       else
