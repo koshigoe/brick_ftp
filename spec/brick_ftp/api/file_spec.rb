@@ -61,18 +61,36 @@ RSpec.describe BrickFTP::API::File, type: :lib do
   end
 
   describe '#destroy' do
-    subject { file.destroy }
+    context 'single file' do
+      subject { file.destroy }
 
-    let(:file) { described_class.new(path: 'Engineering Candidates/John Smith.docx') }
+      let(:file) { described_class.new(path: 'Engineering Candidates/John Smith.docx') }
 
-    before do
-      stub_request(:delete, 'https://koshigoe.brickftp.com/api/rest/v1/files/Engineering+Candidates%2FJohn+Smith.docx')
+      before do
+        stub_request(:delete, 'https://koshigoe.brickftp.com/api/rest/v1/files/Engineering+Candidates%2FJohn+Smith.docx')
           .with(basic_auth: ['xxxxxxxx', 'x'])
           .to_return(body: '[]')
+      end
+
+      it 'return true' do
+        is_expected.to eq true
+      end
     end
 
-    it 'return true' do
-      is_expected.to eq true
+    context 'recursive' do
+      subject { file.destroy(recursive: true) }
+
+      let(:file) { described_class.new(path: 'Engineering Candidates') }
+
+      before do
+        stub_request(:delete, 'https://koshigoe.brickftp.com/api/rest/v1/files/Engineering+Candidates')
+          .with(basic_auth: ['xxxxxxxx', 'x'], headers: { 'Depth' => 'infinity' })
+          .to_return(body: '[]')
+      end
+
+      it 'return true' do
+        is_expected.to eq true
+      end
     end
   end
 end
