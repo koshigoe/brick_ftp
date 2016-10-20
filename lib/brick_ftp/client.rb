@@ -356,5 +356,11 @@ module BrickFTP
     def upload_file(path:, source:)
       BrickFTP::API::FileOperation::Upload.create(path: path, source: source)
     end
+
+    # Get usage of site.
+    # @return [BrickFTP::API::SiteUsage]
+    def site_usage
+      BrickFTP::API::SiteUsage.find
+    end
   end
 end

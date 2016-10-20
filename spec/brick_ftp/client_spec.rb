@@ -375,4 +375,13 @@ RSpec.describe BrickFTP::Client, type: :lib do
       end
     end
   end
+
+  describe 'Usage' do
+    describe '#site_usage' do
+      it 'delegate BrickFTP::API::SiteUsage.find' do
+        expect(BrickFTP::API::SiteUsage).to receive(:find)
+        described_class.new.site_usage
+      end
+    end
+  end
 end
