@@ -33,6 +33,8 @@ require 'brick_ftp/api/file_operation/move'
 require 'brick_ftp/api/file_operation/copy'
 require 'brick_ftp/api/file_operation/upload'
 require 'brick_ftp/api/site_usage'
+require 'brick_ftp/webhook'
+require 'brick_ftp/webhook/request'
 
 module BrickFTP
   # Return configuration.
