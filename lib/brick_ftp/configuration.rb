@@ -1,4 +1,5 @@
 require 'logger'
+require 'inifile'
 
 module BrickFTP
   class Configuration
@@ -30,12 +31,20 @@ module BrickFTP
     DEFAULT_OPEN_TIMEOUT = 10
     DEFAULT_READ_TIMEOUT = 30
 
-    def initialize
-      self.subdomain = ENV['BRICK_FTP_SUBDOMAIN']
-      self.api_key = ENV['BRICK_FTP_API_KEY']
+    CONFIG_FILE_PATH = File.expand_path('~/.brick_ftp/config').freeze
+
+    def self.config_file_path
+      CONFIG_FILE_PATH
+    end
+
+    def initialize(profile: 'global')
+      load
+
+      self.subdomain = inifile[profile]['subdomain'] || ENV['BRICK_FTP_SUBDOMAIN']
+      self.api_key = inifile[profile]['api_key'] || ENV['BRICK_FTP_API_KEY']
       self.session = nil
-      self.open_timeout = DEFAULT_OPEN_TIMEOUT
-      self.read_timeout = DEFAULT_READ_TIMEOUT
+      self.open_timeout = (inifile[profile]['open_timeout'] || DEFAULT_OPEN_TIMEOUT).to_i
+      self.read_timeout = (inifile[profile]['read_timeout'] || DEFAULT_READ_TIMEOUT).to_i
       self.logger = Logger.new(STDOUT)
       self.log_level = Logger::WARN
       self.log_formatter = Logger::Formatter.new
@@ -60,6 +69,14 @@ module BrickFTP
     def log_formatter=(formatter)
       @log_formatter = formatter
       logger.formatter = @log_formatter
+    end
+
+    private
+
+    attr_reader :inifile
+
+    def load
+      @inifile = File.exist?(self.class.config_file_path) ? IniFile.load(self.class.config_file_path) : IniFile.new
     end
   end
 end

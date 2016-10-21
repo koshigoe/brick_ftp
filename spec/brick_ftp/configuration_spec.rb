@@ -7,14 +7,74 @@ RSpec.describe BrickFTP::Configuration, type: :lib do
   end
 
   describe '#initialize' do
-    subject { described_class.new }
+    subject { described_class.new(options) }
 
-    it 'set subdomain' do
-      expect(subject.subdomain).to eq 'koshigoe'
+    let(:options) { {} }
+
+    context 'inifile does not exist' do
+      before do
+        allow(described_class).to receive(:config_file_path).and_return(File.expand_path('../../data/config-not-exist', __FILE__))
+      end
+
+      it 'set subdomain from environment variable' do
+        expect(subject.subdomain).to eq 'koshigoe'
+      end
+
+      it 'set api_key from environment variable' do
+        expect(subject.api_key).to eq 'APIKEY'
+      end
+
+      it 'set open_timeout default value' do
+        expect(subject.open_timeout).to eq 10
+      end
+
+      it 'set read_timeout default value' do
+        expect(subject.read_timeout).to eq 30
+      end
     end
 
-    it 'set api_key' do
-      expect(subject.api_key).to eq 'APIKEY'
+    context 'inifile exists' do
+      before do
+        allow(described_class).to receive(:config_file_path).and_return(File.expand_path('../../data/config', __FILE__))
+      end
+
+      context 'without profile:' do
+        it 'set subdomain from global section in config file' do
+          expect(subject.subdomain).to eq 'abc'
+        end
+
+        it 'set api_key from global section in config file' do
+          expect(subject.api_key).to eq 'xxxxx'
+        end
+
+        it 'set open_timeout from global section in config file' do
+          expect(subject.open_timeout).to eq 1
+        end
+
+        it 'set read_timeout from global section in config file' do
+          expect(subject.read_timeout).to eq 2
+        end
+      end
+
+      context 'with profile:' do
+        let(:options) { { profile: 'test' } }
+
+        it 'set subdomain from specified section in config file' do
+          expect(subject.subdomain).to eq 'xyz'
+        end
+
+        it 'set api_key from specified section in config file' do
+          expect(subject.api_key).to eq 'yyyyy'
+        end
+
+        it 'set open_timeout from specified section in config file' do
+          expect(subject.open_timeout).to eq 3
+        end
+
+        it 'set read_timeout from specified section in config file' do
+          expect(subject.read_timeout).to eq 4
+        end
+      end
     end
 
     it 'initialize session' do
