@@ -37,10 +37,6 @@ module BrickFTP
     DEFAULT_PROFILE = 'global'.freeze
     CONFIG_FILE_PATH = File.expand_path('~/.brick_ftp/config').freeze
 
-    def self.config_file_path
-      CONFIG_FILE_PATH
-    end
-
     def initialize(profile: DEFAULT_PROFILE, config_file_path: CONFIG_FILE_PATH)
       @profile = profile
       load_config_file(config_file_path)
