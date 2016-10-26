@@ -37,8 +37,8 @@ module BrickFTP
       CONFIG_FILE_PATH
     end
 
-    def initialize(profile: 'global')
-      load
+    def initialize(profile: 'global', config_file_path: CONFIG_FILE_PATH)
+      load_config_file(config_file_path)
 
       self.subdomain = inifile[profile]['subdomain'] || ENV['BRICK_FTP_SUBDOMAIN']
       self.api_key = inifile[profile]['api_key'] || ENV['BRICK_FTP_API_KEY']
@@ -75,8 +75,8 @@ module BrickFTP
 
     attr_reader :inifile
 
-    def load
-      @inifile = File.exist?(self.class.config_file_path) ? IniFile.load(self.class.config_file_path) : IniFile.new
+    def load_config_file(config_file_path)
+      @inifile = File.exist?(config_file_path) ? IniFile.load(config_file_path) : IniFile.new
     end
   end
 end
