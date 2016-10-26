@@ -1,11 +1,6 @@
 require 'spec_helper'
 
 RSpec.describe BrickFTP::Configuration, type: :lib do
-  before do
-    allow(ENV).to receive(:[]).with('BRICK_FTP_SUBDOMAIN').and_return('koshigoe')
-    allow(ENV).to receive(:[]).with('BRICK_FTP_API_KEY').and_return('APIKEY')
-  end
-
   describe '#initialize' do
     subject { described_class.new(options) }
 
@@ -14,16 +9,39 @@ RSpec.describe BrickFTP::Configuration, type: :lib do
     context 'inifile does not exist' do
       before { options[:config_file_path] = File.expand_path('../../data/config-not-exist', __FILE__) }
 
+      context 'with environment variable' do
+        around do |example|
+          begin
+            env = ENV.to_hash
+            ENV['BRICK_FTP_SUBDOMAIN'] = 'koshigoe'
+            ENV['BRICK_FTP_API_KEY'] = 'APIKEY'
+            example.run
+          ensure
+            ENV.replace(env)
+          end
+        end
+
+        it 'set subdomain from environment variable' do
+          expect(subject.subdomain).to eq 'koshigoe'
+        end
+
+        it 'set api_key from environment variable' do
+          expect(subject.api_key).to eq 'APIKEY'
+        end
+      end
+
+      context 'without environment variable' do
+        it 'set subdomain nil' do
+          expect(subject.subdomain).to be_nil
+        end
+
+        it 'set api_key nil' do
+          expect(subject.api_key).to be_nil
+        end
+      end
+
       it 'set profile default value' do
         expect(subject.profile).to eq 'global'
-      end
-
-      it 'set subdomain from environment variable' do
-        expect(subject.subdomain).to eq 'koshigoe'
-      end
-
-      it 'set api_key from environment variable' do
-        expect(subject.api_key).to eq 'APIKEY'
       end
 
       it 'set open_timeout default value' do
@@ -43,12 +61,35 @@ RSpec.describe BrickFTP::Configuration, type: :lib do
           expect(subject.profile).to eq 'global'
         end
 
-        it 'set subdomain from global section in config file' do
-          expect(subject.subdomain).to eq 'abc'
+        context 'with environment variable' do
+          around do |example|
+            begin
+              env = ENV.to_hash
+              ENV['BRICK_FTP_SUBDOMAIN'] = 'koshigoe'
+              ENV['BRICK_FTP_API_KEY'] = 'APIKEY'
+              example.run
+            ensure
+              ENV.replace(env)
+            end
+          end
+
+          it 'set subdomain from environment variable' do
+            expect(subject.subdomain).to eq 'koshigoe'
+          end
+
+          it 'set api_key from environment variable' do
+            expect(subject.api_key).to eq 'APIKEY'
+          end
         end
 
-        it 'set api_key from global section in config file' do
-          expect(subject.api_key).to eq 'xxxxx'
+        context 'without environment variable' do
+          it 'set subdomain from global section in config file' do
+            expect(subject.subdomain).to eq 'abc'
+          end
+
+          it 'set api_key from global section in config file' do
+            expect(subject.api_key).to eq 'xxxxx'
+          end
         end
 
         it 'set open_timeout from global section in config file' do
@@ -63,16 +104,39 @@ RSpec.describe BrickFTP::Configuration, type: :lib do
       context 'with profile:' do
         before { options[:profile] = 'test' }
 
+        context 'with environment variable' do
+          around do |example|
+            begin
+              env = ENV.to_hash
+              ENV['BRICK_FTP_SUBDOMAIN'] = 'koshigoe'
+              ENV['BRICK_FTP_API_KEY'] = 'APIKEY'
+              example.run
+            ensure
+              ENV.replace(env)
+            end
+          end
+
+          it 'set subdomain from environment variable' do
+            expect(subject.subdomain).to eq 'koshigoe'
+          end
+
+          it 'set api_key from environment variable' do
+            expect(subject.api_key).to eq 'APIKEY'
+          end
+        end
+
+        context 'without environment variable' do
+          it 'set subdomain from specified section in config file' do
+            expect(subject.subdomain).to eq 'xyz'
+          end
+
+          it 'set api_key from specified section in config file' do
+            expect(subject.api_key).to eq 'yyyyy'
+          end
+        end
+
         it 'set profile from argument' do
           expect(subject.profile).to eq 'test'
-        end
-
-        it 'set subdomain from specified section in config file' do
-          expect(subject.subdomain).to eq 'xyz'
-        end
-
-        it 'set api_key from specified section in config file' do
-          expect(subject.api_key).to eq 'yyyyy'
         end
 
         it 'set open_timeout from specified section in config file' do
@@ -100,6 +164,17 @@ RSpec.describe BrickFTP::Configuration, type: :lib do
 
   describe '#api_host' do
     subject { described_class.new.api_host }
+
+    around do |example|
+      begin
+        env = ENV.to_hash
+        ENV['BRICK_FTP_SUBDOMAIN'] = 'koshigoe'
+        example.run
+      ensure
+        ENV.replace(env)
+      end
+    end
+
     it { is_expected.to eq 'koshigoe.brickftp.com' }
   end
 
@@ -132,13 +207,19 @@ RSpec.describe BrickFTP::Configuration, type: :lib do
 
   describe '#save!' do
     subject do
-      described_class.new(profile: 'rspec', config_file_path: config_file_path).save!
+      configuration.save!
     end
+
+    let(:configuration) { described_class.new(profile: 'rspec', config_file_path: config_file_path) }
 
     around do |example|
       begin
+        env = ENV.to_hash
+        ENV['BRICK_FTP_SUBDOMAIN'] = 'koshigoe'
+        ENV['BRICK_FTP_API_KEY'] = 'APIKEY'
         example.run
       ensure
+        ENV.replace(env)
         File.unlink(config_file_path) if File.exist?(config_file_path)
       end
     end
@@ -151,13 +232,33 @@ RSpec.describe BrickFTP::Configuration, type: :lib do
           expect { subject }.to change { File.exist?(config_file_path) }.to(true)
         end
 
-        it 'write inifile' do
-          subject
-          inifile = IniFile.load(config_file_path)
-          expect(inifile['rspec']['subdomain']).to eq 'koshigoe'
-          expect(inifile['rspec']['api_key']).to eq 'APIKEY'
-          expect(inifile['rspec']['open_timeout']).to eq 10
-          expect(inifile['rspec']['read_timeout']).to eq 30
+        context 'unchange attributes' do
+          it 'write inifile' do
+            subject
+            inifile = IniFile.load(config_file_path)
+            expect(inifile['rspec']['subdomain']).to be_nil
+            expect(inifile['rspec']['api_key']).to be_nil
+            expect(inifile['rspec']['open_timeout']).to be_nil
+            expect(inifile['rspec']['read_timeout']).to be_nil
+          end
+        end
+
+        context 'change attributes' do
+          before do
+            configuration.subdomain = 'abc'
+            configuration.api_key = 'api-key'
+            configuration.open_timeout = 1
+            configuration.read_timeout = 2
+          end
+
+          it 'write inifile' do
+            subject
+            inifile = IniFile.load(config_file_path)
+            expect(inifile['rspec']['subdomain']).to eq 'abc'
+            expect(inifile['rspec']['api_key']).to eq 'api-key'
+            expect(inifile['rspec']['open_timeout']).to eq 1
+            expect(inifile['rspec']['read_timeout']).to eq 2
+          end
         end
       end
 
@@ -173,13 +274,33 @@ RSpec.describe BrickFTP::Configuration, type: :lib do
           expect { subject }.to change { File.exist?(config_file_path) }.to(true)
         end
 
-        it 'write inifile' do
-          subject
-          inifile = IniFile.load(config_file_path)
-          expect(inifile['rspec']['subdomain']).to eq 'koshigoe'
-          expect(inifile['rspec']['api_key']).to eq 'APIKEY'
-          expect(inifile['rspec']['open_timeout']).to eq 10
-          expect(inifile['rspec']['read_timeout']).to eq 30
+        context 'unchange attributes' do
+          it 'write inifile' do
+            subject
+            inifile = IniFile.load(config_file_path)
+            expect(inifile['rspec']['subdomain']).to be_nil
+            expect(inifile['rspec']['api_key']).to be_nil
+            expect(inifile['rspec']['open_timeout']).to be_nil
+            expect(inifile['rspec']['read_timeout']).to be_nil
+          end
+        end
+
+        context 'change attributes' do
+          before do
+            configuration.subdomain = 'abc'
+            configuration.api_key = 'api-key'
+            configuration.open_timeout = 1
+            configuration.read_timeout = 2
+          end
+
+          it 'write inifile' do
+            subject
+            inifile = IniFile.load(config_file_path)
+            expect(inifile['rspec']['subdomain']).to eq 'abc'
+            expect(inifile['rspec']['api_key']).to eq 'api-key'
+            expect(inifile['rspec']['open_timeout']).to eq 1
+            expect(inifile['rspec']['read_timeout']).to eq 2
+          end
         end
       end
     end
@@ -191,13 +312,33 @@ RSpec.describe BrickFTP::Configuration, type: :lib do
         FileUtils.copy File.expand_path('../../data/config', __FILE__), config_file_path
       end
 
-      it 'write inifile' do
-        subject
-        inifile = IniFile.load(config_file_path)
-        expect(inifile['rspec']['subdomain']).to eq 'koshigoe'
-        expect(inifile['rspec']['api_key']).to eq 'APIKEY'
-        expect(inifile['rspec']['open_timeout']).to eq 10
-        expect(inifile['rspec']['read_timeout']).to eq 30
+      context 'unchange attributes' do
+        it 'write inifile' do
+          subject
+          inifile = IniFile.load(config_file_path)
+          expect(inifile['rspec']['subdomain']).to be_nil
+          expect(inifile['rspec']['api_key']).to be_nil
+          expect(inifile['rspec']['open_timeout']).to be_nil
+          expect(inifile['rspec']['read_timeout']).to be_nil
+        end
+      end
+
+      context 'change attributes' do
+        before do
+          configuration.subdomain = 'abc'
+          configuration.api_key = 'api-key'
+          configuration.open_timeout = 1
+          configuration.read_timeout = 2
+        end
+
+        it 'write inifile' do
+          subject
+          inifile = IniFile.load(config_file_path)
+          expect(inifile['rspec']['subdomain']).to eq 'abc'
+          expect(inifile['rspec']['api_key']).to eq 'api-key'
+          expect(inifile['rspec']['open_timeout']).to eq 1
+          expect(inifile['rspec']['read_timeout']).to eq 2
+        end
       end
 
       it 'unchange other sections' do

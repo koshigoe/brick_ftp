@@ -42,13 +42,20 @@ module BrickFTP
     # Name of storable configurations. (TODO: log_path, log_level, log_formatter)
     STORABLE_CONFIGURATION_KEYS = %w(subdomain api_key open_timeout read_timeout).freeze
 
+    STORABLE_CONFIGURATION_KEYS.each do |name|
+      define_method("#{name}=") do |value|
+        dirty_attributes.add(name)
+        instance_variable_set(:"@#{name}", value)
+      end
+    end
+
     def initialize(profile: DEFAULT_PROFILE, config_file_path: CONFIG_FILE_PATH)
       @profile = profile
       @config_file_path = config_file_path
       load_config_file(config_file_path)
 
-      self.subdomain = inifile[profile]['subdomain'] || ENV['BRICK_FTP_SUBDOMAIN']
-      self.api_key = inifile[profile]['api_key'] || ENV['BRICK_FTP_API_KEY']
+      self.subdomain = ENV.fetch('BRICK_FTP_SUBDOMAIN', inifile[profile]['subdomain'])
+      self.api_key = ENV.fetch('BRICK_FTP_API_KEY', inifile[profile]['api_key'])
       self.session = nil
       self.open_timeout = (inifile[profile]['open_timeout'] || DEFAULT_OPEN_TIMEOUT).to_i
       self.read_timeout = (inifile[profile]['read_timeout'] || DEFAULT_READ_TIMEOUT).to_i
@@ -56,6 +63,8 @@ module BrickFTP
       self.log_level = Logger::WARN
       self.log_formatter = Logger::Formatter.new
       logger.level = log_level
+
+      dirty_attributes.clear
     end
 
     # Host name of API endpoint.
@@ -79,16 +88,16 @@ module BrickFTP
     end
 
     def save!
-      STORABLE_CONFIGURATION_KEYS.each do |key|
-        inifile[profile][key] = self.send(key)
+      dirty_attributes.each do |key|
+        inifile[profile][key] = send(key)
       end
       FileUtils.mkdir_p(File.dirname(inifile.filename)) unless File.exist?(File.dirname(inifile.filename))
       inifile.save
-     end
+    end
 
     private
 
-    attr_reader :inifile
+    attr_reader :inifile, :dirty_attributes
 
     def load_config_file(config_file_path)
       @inifile = if File.exist?(config_file_path)
@@ -96,6 +105,10 @@ module BrickFTP
                  else
                    IniFile.new(filename: config_file_path, encoding: 'UTF-8')
                  end
+    end
+
+    def dirty_attributes
+      @dirty_attributes ||= Set.new
     end
   end
 end
