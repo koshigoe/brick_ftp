@@ -39,6 +39,8 @@ module BrickFTP
 
     DEFAULT_PROFILE = 'global'.freeze
     CONFIG_FILE_PATH = File.expand_path('~/.brick_ftp/config').freeze
+    # Name of storable configurations. (TODO: log_path, log_level, log_formatter)
+    STORABLE_CONFIGURATION_KEYS = %w(subdomain api_key open_timeout read_timeout).freeze
 
     def initialize(profile: DEFAULT_PROFILE, config_file_path: CONFIG_FILE_PATH)
       @profile = profile
@@ -75,6 +77,14 @@ module BrickFTP
       @log_formatter = formatter
       logger.formatter = @log_formatter
     end
+
+    def save!
+      STORABLE_CONFIGURATION_KEYS.each do |key|
+        inifile[profile][key] = self.send(key)
+      end
+      FileUtils.mkdir_p(File.dirname(inifile.filename)) unless File.exist?(File.dirname(inifile.filename))
+      inifile.save
+     end
 
     private
 

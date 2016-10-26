@@ -129,4 +129,91 @@ RSpec.describe BrickFTP::Configuration, type: :lib do
       expect { subject }.to change(configuration.logger, :formatter).to(formatter)
     end
   end
+
+  describe '#save!' do
+    subject do
+      described_class.new(profile: 'rspec', config_file_path: config_file_path).save!
+    end
+
+    around do |example|
+      begin
+        example.run
+      ensure
+        File.unlink(config_file_path) if File.exist?(config_file_path)
+      end
+    end
+
+    context 'new file' do
+      context 'parent directory exists' do
+        let(:config_file_path) { File.expand_path('../../data/new-config-file', __FILE__) }
+
+        it 'create new config file' do
+          expect { subject }.to change { File.exist?(config_file_path) }.to(true)
+        end
+
+        it 'write inifile' do
+          subject
+          inifile = IniFile.load(config_file_path)
+          expect(inifile['rspec']['subdomain']).to eq 'koshigoe'
+          expect(inifile['rspec']['api_key']).to eq 'APIKEY'
+          expect(inifile['rspec']['open_timeout']).to eq 10
+          expect(inifile['rspec']['read_timeout']).to eq 30
+        end
+      end
+
+      context 'parent directory does not exist' do
+        let(:config_file_path) { File.expand_path('../../data/parent/new-config-file', __FILE__) }
+
+        after do
+          path = File.dirname(config_file_path)
+          FileUtils.remove_entry_secure(path) if Dir.exist?(path)
+        end
+
+        it 'create new config file' do
+          expect { subject }.to change { File.exist?(config_file_path) }.to(true)
+        end
+
+        it 'write inifile' do
+          subject
+          inifile = IniFile.load(config_file_path)
+          expect(inifile['rspec']['subdomain']).to eq 'koshigoe'
+          expect(inifile['rspec']['api_key']).to eq 'APIKEY'
+          expect(inifile['rspec']['open_timeout']).to eq 10
+          expect(inifile['rspec']['read_timeout']).to eq 30
+        end
+      end
+    end
+
+    context 'exist file' do
+      let(:config_file_path) { File.expand_path('../../data/exist-config-file', __FILE__) }
+
+      before do
+        FileUtils.copy File.expand_path('../../data/config', __FILE__), config_file_path
+      end
+
+      it 'write inifile' do
+        subject
+        inifile = IniFile.load(config_file_path)
+        expect(inifile['rspec']['subdomain']).to eq 'koshigoe'
+        expect(inifile['rspec']['api_key']).to eq 'APIKEY'
+        expect(inifile['rspec']['open_timeout']).to eq 10
+        expect(inifile['rspec']['read_timeout']).to eq 30
+      end
+
+      it 'unchange other sections' do
+        subject
+        inifile = IniFile.load(config_file_path)
+
+        expect(inifile['global']['subdomain']).to eq 'abc'
+        expect(inifile['global']['api_key']).to eq 'xxxxx'
+        expect(inifile['global']['open_timeout']).to eq 1
+        expect(inifile['global']['read_timeout']).to eq 2
+
+        expect(inifile['test']['subdomain']).to eq 'xyz'
+        expect(inifile['test']['api_key']).to eq 'yyyyy'
+        expect(inifile['test']['open_timeout']).to eq 3
+        expect(inifile['test']['read_timeout']).to eq 4
+      end
+    end
+  end
 end
