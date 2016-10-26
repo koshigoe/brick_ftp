@@ -14,6 +14,10 @@ RSpec.describe BrickFTP::Configuration, type: :lib do
     context 'inifile does not exist' do
       before { options[:config_file_path] = File.expand_path('../../data/config-not-exist', __FILE__) }
 
+      it 'set profile default value' do
+        expect(subject.profile).to eq 'global'
+      end
+
       it 'set subdomain from environment variable' do
         expect(subject.subdomain).to eq 'koshigoe'
       end
@@ -35,6 +39,10 @@ RSpec.describe BrickFTP::Configuration, type: :lib do
       before { options[:config_file_path] = File.expand_path('../../data/config', __FILE__) }
 
       context 'without profile:' do
+        it 'set profile default value' do
+          expect(subject.profile).to eq 'global'
+        end
+
         it 'set subdomain from global section in config file' do
           expect(subject.subdomain).to eq 'abc'
         end
@@ -54,6 +62,10 @@ RSpec.describe BrickFTP::Configuration, type: :lib do
 
       context 'with profile:' do
         before { options[:profile] = 'test' }
+
+        it 'set profile from argument' do
+          expect(subject.profile).to eq 'test'
+        end
 
         it 'set subdomain from specified section in config file' do
           expect(subject.subdomain).to eq 'xyz'
