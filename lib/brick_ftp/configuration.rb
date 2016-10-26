@@ -6,6 +6,9 @@ module BrickFTP
     # Name of configuration profile.
     # @return [String] profile
     attr_reader :profile
+    # Path for configuration file.
+    # @return [String] path
+    attr_reader :config_file_path
     # Subdomain of API endpoint. If not specified, get value from enviroment variable `BRICK_FTP_SUBDOMAIN`.
     # @return [String] subdomain
     attr_accessor :subdomain
@@ -39,6 +42,7 @@ module BrickFTP
 
     def initialize(profile: DEFAULT_PROFILE, config_file_path: CONFIG_FILE_PATH)
       @profile = profile
+      @config_file_path = config_file_path
       load_config_file(config_file_path)
 
       self.subdomain = inifile[profile]['subdomain'] || ENV['BRICK_FTP_SUBDOMAIN']
