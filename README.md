@@ -49,6 +49,26 @@ BrickFTP::API::Authentication.login('koshigoe', 'password')
 
 see [API document](http://www.rubydoc.info/github/koshigoe/brick_ftp/master) or source code.
 
+### CLI (experimental)
+
+#### Configuration
+
+```
+$ brick_ftp config set subdomain mydomain
+$ brick_ftp config set api_key XXXXXXXXXX
+```
+
+#### e.g. Get site usage (disk usage)
+
+```
+$ brick_ftp site usage
+```
+
+### More
+
+Please read help by run `brick_ftp help`, or read source code.
+
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

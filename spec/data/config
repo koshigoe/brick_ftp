@@ -1,0 +1,11 @@
+[global]
+subdomain = abc
+api_key = xxxxx
+open_timeout = 1
+read_timeout = 2
+
+[test]
+subdomain = xyz
+api_key = yyyyy
+open_timeout = 3
+read_timeout = 4

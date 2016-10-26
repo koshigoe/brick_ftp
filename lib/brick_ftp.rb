@@ -1,4 +1,5 @@
 require 'deep_hash_transform'
+require 'thor'
 require "brick_ftp/version"
 require 'brick_ftp/configuration'
 require 'brick_ftp/log_formatter'
@@ -35,6 +36,10 @@ require 'brick_ftp/api/file_operation/upload'
 require 'brick_ftp/api/site_usage'
 require 'brick_ftp/webhook'
 require 'brick_ftp/webhook/request'
+require 'brick_ftp/cli'
+require 'brick_ftp/cli/config'
+require 'brick_ftp/cli/site'
+require 'brick_ftp/cli/main'
 
 module BrickFTP
   # https://brickftp.com/redundancy/

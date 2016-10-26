@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+root = File.dirname(File.dirname(__FILE__))
+$:.unshift(File.join(root, 'lib'))
+
+require 'brick_ftp'
+
+BrickFTP::CLI.start(ARGV)

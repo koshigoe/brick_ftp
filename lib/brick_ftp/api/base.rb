@@ -66,6 +66,14 @@ module BrickFTP
         )
         true
       end
+
+      def as_json
+        self.class.attributes.each_with_object({}) { |name, res| res[name] = send(name) }
+      end
+
+      def to_json
+        as_json.to_json
+      end
     end
   end
 end
