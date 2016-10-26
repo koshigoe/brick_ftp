@@ -4,6 +4,9 @@ RSpec.describe BrickFTP::API::Base do
   let(:api) do
     Class.new(described_class) do
       endpoint :post, :create, '/path/to/resources'
+
+      attribute :id
+      attribute :value
     end
   end
 
@@ -53,5 +56,17 @@ RSpec.describe BrickFTP::API::Base do
         expect { api.api_component_for(:delete) }.to raise_error(BrickFTP::API::NoSuchAPI)
       end
     end
+  end
+
+  describe '#as_json' do
+    subject { api.new(id: '1', value: 'v').as_json }
+
+    it { is_expected.to eq(id: '1', value: 'v') }
+  end
+
+  describe '#to_json' do
+    subject { api.new(id: '1', value: 'v').to_json }
+
+    it { is_expected.to eq({ id: '1', value: 'v' }.to_json) }
   end
 end
