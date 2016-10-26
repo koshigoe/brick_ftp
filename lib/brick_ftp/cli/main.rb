@@ -18,6 +18,9 @@ module BrickFTP
 
       desc 'config COMMAND', 'Manage configuration.'
       subcommand 'config', BrickFTP::CLI::Config
+
+      desc 'site COMMAND', 'Manage site.'
+      subcommand 'site', BrickFTP::CLI::Site
     end
   end
 end

@@ -38,6 +38,7 @@ require 'brick_ftp/webhook'
 require 'brick_ftp/webhook/request'
 require 'brick_ftp/cli'
 require 'brick_ftp/cli/config'
+require 'brick_ftp/cli/site'
 require 'brick_ftp/cli/main'
 
 module BrickFTP
