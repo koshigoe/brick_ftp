@@ -20,10 +20,10 @@ module BrickFTP
     attr_accessor :logger
     # Log level
     # @return [Integer]
-    attr_reader :log_level
+    attr_accessor :log_level
     # Log formatter
     # @return [Logger::Formatter]
-    attr_reader :log_formatter
+    attr_accessor :log_formatter
     # Open timeout
     # @return [Integer]
     attr_accessor :open_timeout
