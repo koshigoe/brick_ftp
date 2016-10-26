@@ -81,7 +81,11 @@ module BrickFTP
     attr_reader :inifile
 
     def load_config_file(config_file_path)
-      @inifile = File.exist?(config_file_path) ? IniFile.load(config_file_path) : IniFile.new
+      @inifile = if File.exist?(config_file_path)
+                   IniFile.load(config_file_path, encoding: 'UTF-8')
+                 else
+                   IniFile.new(filename: config_file_path, encoding: 'UTF-8')
+                 end
     end
   end
 end
