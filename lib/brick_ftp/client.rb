@@ -315,10 +315,10 @@ module BrickFTP
 
     # provides a download URL that will enable you to download a file.
     # @see https://brickftp.com/ja/docs/rest-api/file-operations/
-    # @param id file id.
+    # @param path path for file.
     # @return [BrickFTP::API::File] file object.
-    def show_file(id)
-      BrickFTP::API::File.find(id)
+    def show_file(path)
+      BrickFTP::API::File.find(path)
     end
 
     # Move or renames a file or folder to the destination provided in the move_destination parameter.
