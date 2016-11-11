@@ -316,9 +316,12 @@ module BrickFTP
     # provides a download URL that will enable you to download a file.
     # @see https://brickftp.com/ja/docs/rest-api/file-operations/
     # @param path [String] path for file.
+    # @param omit_download_uri [Boolean] If true, omit download_uri. (Add query `action=stat`)
     # @return [BrickFTP::API::File] file object.
-    def show_file(path)
-      BrickFTP::API::File.find(path)
+    def show_file(path, omit_download_uri: false)
+      params = {}
+      params[:action] = 'stat' if omit_download_uri
+      BrickFTP::API::File.find(path, params: params)
     end
 
     # Move or renames a file or folder to the destination provided in the move_destination parameter.

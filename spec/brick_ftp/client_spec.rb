@@ -330,9 +330,18 @@ RSpec.describe BrickFTP::Client, type: :lib do
 
   describe 'File' do
     describe '#show_file' do
-      it 'delegate BrickFTP::API::File.find' do
-        expect(BrickFTP::API::File).to receive(:find).with('a/b')
-        described_class.new.show_file('a/b')
+      context 'omit_download_uri: false' do
+        it 'delegate BrickFTP::API::File.find' do
+          expect(BrickFTP::API::File).to receive(:find).with('a/b', params: {})
+          described_class.new.show_file('a/b')
+        end
+      end
+
+      context 'omit_download_uri: true' do
+        it 'delegate BrickFTP::API::File.find' do
+          expect(BrickFTP::API::File).to receive(:find).with('a/b', params: { action: 'stat' })
+          described_class.new.show_file('a/b', omit_download_uri: true)
+        end
       end
     end
 
