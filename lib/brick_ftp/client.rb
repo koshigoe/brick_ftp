@@ -315,7 +315,7 @@ module BrickFTP
 
     # provides a download URL that will enable you to download a file.
     # @see https://brickftp.com/ja/docs/rest-api/file-operations/
-    # @param path path for file.
+    # @param path [String] path for file.
     # @return [BrickFTP::API::File] file object.
     def show_file(path)
       BrickFTP::API::File.find(path)
