@@ -9,26 +9,50 @@ RSpec.describe BrickFTP::HTTPClient, type: :lib do
   end
 
   describe '#get' do
-    subject { described_class.new.get(path, params: {}, headers: { 'Depth' => 'infinity' }) }
+    subject { described_class.new.get(path, params: params, headers: { 'Depth' => 'infinity' }) }
 
     let(:path) { '/api/rest/v1/users.json' }
+    let(:params) { {} }
 
     context 'HTTP 200 OK' do
-      before do
-        stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/users.json')
-          .with(
-            basic_auth: ['xxxxxxxx', 'x'],
-            headers: {
-              'Content-Type' => 'application/json',
-              'User-Agent' => 'BrickFTP Client/0.1 (https://github.com/koshigoe/brick_ftp)',
-              'Depth' => 'infinity',
-            }
-          )
-          .to_return(body: { id: 'xxxxxxxx' }.to_json)
+      context 'without query string' do
+        before do
+          stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/users.json')
+            .with(
+              basic_auth: ['xxxxxxxx', 'x'],
+              headers: {
+                'Content-Type' => 'application/json',
+                'User-Agent' => 'BrickFTP Client/0.1 (https://github.com/koshigoe/brick_ftp)',
+                'Depth' => 'infinity',
+              }
+            )
+            .to_return(body: { id: 'xxxxxxxx' }.to_json)
+        end
+
+        it 'return data' do
+          is_expected.to eq('id' => 'xxxxxxxx')
+        end
       end
 
-      it 'return data' do
-        is_expected.to eq('id' => 'xxxxxxxx')
+      context 'with query string' do
+        let(:params) { { key: 'value' } }
+
+        before do
+          stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/users.json?key=value')
+            .with(
+              basic_auth: ['xxxxxxxx', 'x'],
+              headers: {
+                'Content-Type' => 'application/json',
+                'User-Agent' => 'BrickFTP Client/0.1 (https://github.com/koshigoe/brick_ftp)',
+                'Depth' => 'infinity',
+              }
+            )
+            .to_return(body: { id: 'xxxxxxxx' }.to_json)
+        end
+
+        it 'return data' do
+          is_expected.to eq('id' => 'xxxxxxxx')
+        end
       end
     end
 

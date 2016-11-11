@@ -1,5 +1,6 @@
 require 'net/https'
 require 'json'
+require 'cgi'
 
 module BrickFTP
   class HTTPClient
@@ -35,7 +36,10 @@ module BrickFTP
     end
 
     def get(path, params: {}, headers: {})
-      case res = request(:get, path, params: params, headers: headers)
+      query = params.map { |k, v| "#{CGI.escape(k.to_s)}=#{CGI.escape(v.to_s)}" }.join('&')
+      path = "#{path}?#{query}" unless query.empty?
+
+      case res = request(:get, path, headers: headers)
       when Net::HTTPSuccess
         res.body.nil? || res.body.empty? ? {} : JSON.parse(res.body)
       else
