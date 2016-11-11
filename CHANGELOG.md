@@ -11,5 +11,6 @@ Changelog
 
 - [#36](https://github.com/koshigoe/brick_ftp/pull/36) Add Changelog.
 - [#46](https://github.com/koshigoe/brick_ftp/pull/46) Add CLI.
+- [#53](https://github.com/koshigoe/brick_ftp/pull/53) Allow to pass `action=stat` to Files: Download API.
 
 ### Fixed Bugs:
