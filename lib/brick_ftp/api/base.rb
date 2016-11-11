@@ -18,10 +18,11 @@ module BrickFTP
         data.map { |x| new(x.symbolize_keys) }
       end
 
-      def self.find(id)
+      def self.find(id, params: {})
         data = BrickFTP::HTTPClient.new.send(
           endpoints[:show][:http_method],
-          api_path_for(:show, id)
+          api_path_for(:show, id),
+          params: params
         )
         data.empty? ? nil : new(data.symbolize_keys)
       end
