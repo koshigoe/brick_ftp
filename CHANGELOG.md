@@ -11,6 +11,9 @@ Changelog
 
 ### Fixed Bugs:
 
+- [#58](https://github.com/koshigoe/brick_ftp/pull/58) Fix wrong path escape
+    - reported by [terencedignon](https://github.com/terencedignon)
+
 
 [0.4.0](https://github.com/koshigoe/brick_ftp/compare/v0.3.8...v0.4.0)
 ----
