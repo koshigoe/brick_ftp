@@ -11,6 +11,7 @@ RSpec.describe BrickFTP::API::File, type: :lib do
       {
         "id" => 1,
         "path" => "Engineering Candidates/John Smith.docx",
+        "display_name" => "John Smith.docx",
         "type" => "file",
         "size" => 61440,
         "mtime" => "2014-05-15T18:34:51+00:00",
@@ -38,6 +39,7 @@ RSpec.describe BrickFTP::API::File, type: :lib do
           file = subject
           expect(file.id).to eq 1
           expect(file.path).to eq "Engineering Candidates/John Smith.docx"
+          expect(file.display_name).to eq "John Smith.docx"
           expect(file.type).to eq "file"
           expect(file.size).to eq 61440
           expect(file.mtime).to eq "2014-05-15T18:34:51+00:00"
@@ -67,6 +69,7 @@ RSpec.describe BrickFTP::API::File, type: :lib do
           file = subject
           expect(file.id).to eq 1
           expect(file.path).to eq "Engineering Candidates/John Smith.docx"
+          expect(file.display_name).to eq "John Smith.docx"
           expect(file.type).to eq "file"
           expect(file.size).to eq 61440
           expect(file.mtime).to eq "2014-05-15T18:34:51+00:00"
