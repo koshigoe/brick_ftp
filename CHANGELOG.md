@@ -10,6 +10,7 @@ Changelog
 ### Enhancements:
 
 - [#62](https://github.com/koshigoe/brick_ftp/pull/62) Add property `display_name` to File API ([terencedignon](https://github.com/terencedignon))
+- [#63](https://github.com/koshigoe/brick_ftp/pull/63) Add property `display_name` to Folder API
 
 ### Fixed Bugs:
 
