@@ -36,7 +36,7 @@ module BrickFTP
     end
 
     def get(path, params: {}, headers: {})
-      query = params.map { |k, v| "#{CGI.escape(k.to_s)}=#{CGI.escape(v.to_s)}" }.join('&')
+      query = params.map { |k, v| "#{URI.escape(k.to_s)}=#{URI.escape(v.to_s)}" }.join('&')
       path = "#{path}?#{query}" unless query.empty?
 
       case res = request(:get, path, headers: headers)

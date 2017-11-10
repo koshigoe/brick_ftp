@@ -12,7 +12,7 @@ module BrickFTP
 
       path_params = build_path_params_from(params)
       escaped_path_params = path_params.each_with_object({}) do |(k, v), res|
-        res[k] = CGI.escape(v.to_s)
+        res[k] = URI.escape(v.to_s)
       end
 
       path = path_template.call(params) % escaped_path_params
@@ -41,7 +41,7 @@ module BrickFTP
       params = normalize_params(params)
 
       pairs = build_query_params_from(params).each_with_object([]) do |(k, v), res|
-        res << "#{CGI.escape(k.to_s)}=#{CGI.escape(v.to_s)}"
+        res << "#{URI.escape(k.to_s)}=#{URI.escape(v.to_s)}"
       end
       pairs.join('&')
     end
