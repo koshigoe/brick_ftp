@@ -1,3 +1,5 @@
+require 'erb'
+
 module BrickFTP
   class APIComponent
     attr_reader :path_template, :query_keys
@@ -12,7 +14,7 @@ module BrickFTP
 
       path_params = build_path_params_from(params)
       escaped_path_params = path_params.each_with_object({}) do |(k, v), res|
-        res[k] = CGI.escape(v.to_s)
+        res[k] = ERB::Util.url_encode(v.to_s)
       end
 
       path = path_template.call(params) % escaped_path_params

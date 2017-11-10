@@ -12,7 +12,7 @@ RSpec.describe BrickFTP::APIComponent, type: :lib do
 
   let(:params) do
     {
-      path: 'a/b/c.txt',
+      path: 'a/b/c include spaces.txt',
       page: 1,
       per_page: 1,
       search: 'a/',
@@ -26,7 +26,7 @@ RSpec.describe BrickFTP::APIComponent, type: :lib do
     subject { api_component.path(params) }
 
     context 'params is a Hash' do
-      it { is_expected.to eq '/api/rest/v1/folders/a%2Fb%2Fc.txt?page=1&per_page=1&search=a%2F&sort_by%5Bpath%5D=asc&sort_by%5Bsize%5D=asc&sort_by%5Bmodified_at_datetime%5D=asc' }
+      it { is_expected.to eq '/api/rest/v1/folders/a%2Fb%2Fc%20include%20spaces.txt?page=1&per_page=1&search=a%2F&sort_by%5Bpath%5D=asc&sort_by%5Bsize%5D=asc&sort_by%5Bmodified_at_datetime%5D=asc' }
     end
 
     context 'params is not a Hash' do
@@ -56,7 +56,7 @@ RSpec.describe BrickFTP::APIComponent, type: :lib do
 
     context 'params is a Hash' do
       it do
-        is_expected.to eq(path: 'a/b/c.txt')
+        is_expected.to eq(path: 'a/b/c include spaces.txt')
       end
     end
 
