@@ -12,6 +12,7 @@ module BrickFTP
       attribute :crc32
       attribute :md5
       attribute :download_uri
+      attribute :display_name
       attribute :provided_mtime
       attribute :permissions
     end
