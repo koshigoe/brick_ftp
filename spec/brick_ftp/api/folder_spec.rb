@@ -23,6 +23,7 @@ RSpec.describe BrickFTP::API::Folder, type: :lib do
         {
           "id" => 1,
           "path" => "Engineering Candidates/R\u00e9sum\u00e9s/Needs Review",
+          "display_name" => "Needs Review",
           "type" => "directory",
           "size" => nil,
           "mtime" => "2014-05-15T20:26:18+00:00",
@@ -34,6 +35,7 @@ RSpec.describe BrickFTP::API::Folder, type: :lib do
         {
           "id" => 2,
           "path" => "Engineering Candidates/R\u00e9sum\u00e9s/John Smith.docx",
+          "display_name" => "John Smith.docx",
           "type" => "file",
           "size" => 61440,
           "mtime" => "2014-05-15T18:34:51+00:00",
@@ -45,6 +47,7 @@ RSpec.describe BrickFTP::API::Folder, type: :lib do
         {
           "id" => 3,
           "path" => "Engineering Candidates/R\u00e9sum\u00e9s/Mary Jones.pdf",
+          "display_name" => "Mary Jones.pdf",
           "type" => "file",
           "size" => 19946,
           "mtime" => "2014-05-15T18:36:03+00:00",
@@ -70,6 +73,7 @@ RSpec.describe BrickFTP::API::Folder, type: :lib do
       folders = subject
       expect(folders.last.id).to eq 3
       expect(folders.last.path).to eq "Engineering Candidates/R\u00e9sum\u00e9s/Mary Jones.pdf"
+      expect(folders.last.display_name).to eq "Mary Jones.pdf"
       expect(folders.last.type).to eq "file"
       expect(folders.last.size).to eq 19946
       expect(folders.last.mtime).to eq "2014-05-15T18:36:03+00:00"

@@ -6,6 +6,7 @@ module BrickFTP
 
       attribute :id
       attribute :path
+      attribute :display_name
       attribute :type
       attribute :size
       attribute :mtime
