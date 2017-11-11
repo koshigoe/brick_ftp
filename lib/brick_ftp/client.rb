@@ -373,5 +373,11 @@ module BrickFTP
 
       BrickFTP::API::User.new(id: user_or_id)
     end
+
+    def instantize_group(group_or_id)
+      return group_or_id if group_or_id.is_a?(BrickFTP::API::Group)
+
+      BrickFTP::API::Group.new(id: group_or_id)
+    end
   end
 end
