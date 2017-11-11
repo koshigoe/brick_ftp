@@ -125,10 +125,20 @@ RSpec.describe BrickFTP::Client, type: :lib do
     end
 
     describe '#delete_group' do
-      let(:group) { BrickFTP::API::Group.new(id: 1) }
-      it 'delegate BrickFTP::API::Group#destroy' do
-        expect(group).to receive(:destroy)
-        described_class.new.delete_group(group)
+      context 'given group as object' do
+        let(:group) { BrickFTP::API::Group.new(id: 1) }
+        it 'delegate BrickFTP::API::Group#destroy' do
+          expect(group).to receive(:destroy)
+          described_class.new.delete_group(group)
+        end
+      end
+
+      context 'given group as id' do
+        let(:group) { 1 }
+        it 'delegate BrickFTP::API::Group#destroy' do
+          expect(BrickFTP::API::Group).to receive_message_chain(:new, :destroy).with(id: 1).with(no_args)
+          described_class.new.delete_group(group)
+        end
       end
     end
   end

@@ -85,10 +85,10 @@ module BrickFTP
 
     # Delete a group.
     # @see https://brickftp.com/ja/docs/rest-api/groups/
-    # @param group [BrickFTP::API::Group] group object.
+    # @param group_or_id [BrickFTP::API::Group, Integer] group object or group id.
     # @return [Boolean] return true.
-    def delete_group(group)
-      group.destroy
+    def delete_group(group_or_id)
+      instantize_group(group_or_id).destroy
     end
 
     # List all permissions on the current site.
