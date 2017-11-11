@@ -9,6 +9,8 @@ Changelog
 
 ### Enhancements:
 
+- [#65](https://github.com/koshigoe/brick_ftp/pull/65) Allow to specify resource as ID
+
 ### Fixed Bugs:
 
 
