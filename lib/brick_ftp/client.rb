@@ -38,11 +38,11 @@ module BrickFTP
 
     # Update an existing user.
     # @see https://brickftp.com/ja/docs/rest-api/users/
-    # @param user [BrickFTP::API::User] user object.
+    # @param user_or_id [BrickFTP::API::User, Integer] user object or user id.
     # @param attributes [Hash] User's attributes.
     # @return [BrickFTP::API::User] user object.
-    def update_user(user, attributes)
-      user.update(attributes)
+    def update_user(user_or_id, attributes)
+      instantize_user(user_or_id).update(attributes)
     end
 
     # Delete a user.

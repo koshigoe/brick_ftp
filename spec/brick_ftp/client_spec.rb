@@ -42,11 +42,22 @@ RSpec.describe BrickFTP::Client, type: :lib do
     end
 
     describe '#update_user' do
-      let(:user) { BrickFTP::API::User.new(id: 1) }
-      let(:attributes) { {} }
-      it 'delegate BrickFTP::API::User#update' do
-        expect(user).to receive(:update).with(attributes)
-        described_class.new.update_user(user, attributes)
+      context 'given user as object' do
+        let(:user) { BrickFTP::API::User.new(id: 1) }
+        let(:attributes) { {} }
+        it 'delegate BrickFTP::API::User#update' do
+          expect(user).to receive(:update).with(attributes)
+          described_class.new.update_user(user, attributes)
+        end
+      end
+
+      context 'given user as id' do
+        let(:user) { 1 }
+        let(:attributes) { {} }
+        it 'delegate BrickFTP::API::User#update' do
+          expect(BrickFTP::API::User).to receive_message_chain(:new, :update).with(id: 1).with(attributes)
+          described_class.new.update_user(user, attributes)
+        end
       end
     end
 
