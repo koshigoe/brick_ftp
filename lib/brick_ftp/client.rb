@@ -385,5 +385,11 @@ module BrickFTP
 
       BrickFTP::API::Permission.new(id: permission_or_id)
     end
+
+    def instantize_notification(notification_or_id)
+      return notification_or_id if notification_or_id.is_a?(BrickFTP::API::Notification)
+
+      BrickFTP::API::Notification.new(id: notification_or_id)
+    end
   end
 end
