@@ -365,5 +365,13 @@ module BrickFTP
     def site_usage
       BrickFTP::API::SiteUsage.find
     end
+
+    private
+
+    def instantize_user(user_or_id)
+      return user_or_id if user_or_id.is_a?(BrickFTP::API::User)
+
+      BrickFTP::API::User.new(id: user_or_id)
+    end
   end
 end
