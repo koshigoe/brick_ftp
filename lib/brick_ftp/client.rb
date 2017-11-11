@@ -344,11 +344,11 @@ module BrickFTP
 
     # Delete a file.
     # @see https://brickftp.com/ja/docs/rest-api/file-operations/
-    # @param file [BrickFTP::API::File] file object.
+    # @param file_or_path [BrickFTP::API::File, String] file object or file(folder) path.
     # @param recursive: [Boolean]
     # @return [Boolean] return true.
-    def delete_file(file, recursive: false)
-      file.destroy(recursive: recursive)
+    def delete_file(file_or_path, recursive: false)
+      instantize_file(file_or_path).destroy(recursive: recursive)
     end
 
     # Upload file.
