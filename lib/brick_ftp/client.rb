@@ -397,5 +397,11 @@ module BrickFTP
 
       BrickFTP::API::Bundle.new(id: bundle_or_id)
     end
+
+    def instantize_behavior(behavior_or_id)
+      return behavior_or_id if behavior_or_id.is_a?(BrickFTP::API::Behavior)
+
+      BrickFTP::API::Behavior.new(id: behavior_or_id)
+    end
   end
 end
