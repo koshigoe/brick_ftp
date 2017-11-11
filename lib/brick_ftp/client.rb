@@ -215,10 +215,10 @@ module BrickFTP
 
     # Delete a bundle.
     # @see https://brickftp.com/ja/docs/rest-api/bundles/
-    # @param bundle [BrickFTP::API::Bundle] bundle object.
+    # @param bundle_or_id [BrickFTP::API::Bundle, Integer] bundle object or bundle id.
     # @return [Boolean] return true.
-    def delete_bundle(bundle)
-      bundle.destroy
+    def delete_bundle(bundle_or_id)
+      instantize_bundle(bundle_or_id).destroy
     end
 
     # List the contents of a bundle.

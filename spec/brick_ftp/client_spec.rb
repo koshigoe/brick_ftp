@@ -280,10 +280,20 @@ RSpec.describe BrickFTP::Client, type: :lib do
     end
 
     describe '#delete_bundle' do
-      let(:bundle) { BrickFTP::API::Bundle.new(id: 1) }
-      it 'delegate BrickFTP::API::Bundle#destroy' do
-        expect(bundle).to receive(:destroy)
-        described_class.new.delete_bundle(bundle)
+      context 'given bundle as object' do
+        let(:bundle) { BrickFTP::API::Bundle.new(id: 1) }
+        it 'delegate BrickFTP::API::Bundle#destroy' do
+          expect(bundle).to receive(:destroy)
+          described_class.new.delete_bundle(bundle)
+        end
+      end
+
+      context 'given bundle as id' do
+        let(:bundle) { 1 }
+        it 'delegate BrickFTP::API::Bundle#destroy' do
+          expect(BrickFTP::API::Bundle).to receive_message_chain(:new, :destroy).with(id: 1).with(no_args)
+          described_class.new.delete_bundle(bundle)
+        end
       end
     end
 
