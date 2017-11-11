@@ -379,5 +379,11 @@ module BrickFTP
 
       BrickFTP::API::Group.new(id: group_or_id)
     end
+
+    def instantize_permission(permission_or_id)
+      return permission_or_id if permission_or_id.is_a?(BrickFTP::API::Permission)
+
+      BrickFTP::API::Permission.new(id: permission_or_id)
+    end
   end
 end
