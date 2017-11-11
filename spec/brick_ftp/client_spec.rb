@@ -42,19 +42,40 @@ RSpec.describe BrickFTP::Client, type: :lib do
     end
 
     describe '#update_user' do
-      let(:user) { BrickFTP::API::User.new(id: 1) }
-      let(:attributes) { {} }
-      it 'delegate BrickFTP::API::User#update' do
-        expect(user).to receive(:update).with(attributes)
-        described_class.new.update_user(user, attributes)
+      context 'given user as object' do
+        let(:user) { BrickFTP::API::User.new(id: 1) }
+        let(:attributes) { {} }
+        it 'delegate BrickFTP::API::User#update' do
+          expect(user).to receive(:update).with(attributes)
+          described_class.new.update_user(user, attributes)
+        end
+      end
+
+      context 'given user as id' do
+        let(:user) { 1 }
+        let(:attributes) { {} }
+        it 'delegate BrickFTP::API::User#update' do
+          expect(BrickFTP::API::User).to receive_message_chain(:new, :update).with(id: 1).with(attributes)
+          described_class.new.update_user(user, attributes)
+        end
       end
     end
 
     describe '#delete_user' do
-      let(:user) { BrickFTP::API::User.new(id: 1) }
-      it 'delegate BrickFTP::API::User#destroy' do
-        expect(user).to receive(:destroy)
-        described_class.new.delete_user(user)
+      context 'given user as object' do
+        let(:user) { BrickFTP::API::User.new(id: 1) }
+        it 'delegate BrickFTP::API::User#destroy' do
+          expect(user).to receive(:destroy)
+          described_class.new.delete_user(user)
+        end
+      end
+
+      context 'given user as id' do
+        let(:user) { 1 }
+        it 'delegate BrickFTP::API::User#destroy' do
+          expect(BrickFTP::API::User).to receive_message_chain(:new, :destroy).with(id: 1).with(no_args)
+          described_class.new.delete_user(user)
+        end
       end
     end
   end
@@ -84,19 +105,40 @@ RSpec.describe BrickFTP::Client, type: :lib do
     end
 
     describe '#update_group' do
-      let(:group) { BrickFTP::API::Group.new(id: 1) }
-      let(:attributes) { {} }
-      it 'delegate BrickFTP::API::Group#update' do
-        expect(group).to receive(:update).with(attributes)
-        described_class.new.update_group(group, attributes)
+      context 'given group as object' do
+        let(:group) { BrickFTP::API::Group.new(id: 1) }
+        let(:attributes) { {} }
+        it 'delegate BrickFTP::API::Group#update' do
+          expect(group).to receive(:update).with(attributes)
+          described_class.new.update_group(group, attributes)
+        end
+      end
+
+      context 'given group as id' do
+        let(:group) { 1 }
+        let(:attributes) { {} }
+        it 'delegate BrickFTP::API::Group#update' do
+          expect(BrickFTP::API::Group).to receive_message_chain(:new, :update).with(id: 1).with(attributes)
+          described_class.new.update_group(group, attributes)
+        end
       end
     end
 
     describe '#delete_group' do
-      let(:group) { BrickFTP::API::Group.new(id: 1) }
-      it 'delegate BrickFTP::API::Group#destroy' do
-        expect(group).to receive(:destroy)
-        described_class.new.delete_group(group)
+      context 'given group as object' do
+        let(:group) { BrickFTP::API::Group.new(id: 1) }
+        it 'delegate BrickFTP::API::Group#destroy' do
+          expect(group).to receive(:destroy)
+          described_class.new.delete_group(group)
+        end
+      end
+
+      context 'given group as id' do
+        let(:group) { 1 }
+        it 'delegate BrickFTP::API::Group#destroy' do
+          expect(BrickFTP::API::Group).to receive_message_chain(:new, :destroy).with(id: 1).with(no_args)
+          described_class.new.delete_group(group)
+        end
       end
     end
   end
@@ -118,10 +160,20 @@ RSpec.describe BrickFTP::Client, type: :lib do
     end
 
     describe '#delete_permission' do
-      let(:permission) { BrickFTP::API::Permission.new(id: 1) }
-      it 'delegate BrickFTP::API::Permission#destroy' do
-        expect(permission).to receive(:destroy)
-        described_class.new.delete_permission(permission)
+      context 'given permission as object' do
+        let(:permission) { BrickFTP::API::Permission.new(id: 1) }
+        it 'delegate BrickFTP::API::Permission#destroy' do
+          expect(permission).to receive(:destroy)
+          described_class.new.delete_permission(permission)
+        end
+      end
+
+      context 'given permission as id' do
+        let(:permission) { 1 }
+        it 'delegate BrickFTP::API::Permission#destroy' do
+          expect(BrickFTP::API::Permission).to receive_message_chain(:new, :destroy).with(id: 1).with(no_args)
+          described_class.new.delete_permission(permission)
+        end
       end
     end
   end
@@ -143,10 +195,20 @@ RSpec.describe BrickFTP::Client, type: :lib do
     end
 
     describe '#delete_notification' do
-      let(:notification) { BrickFTP::API::Notification.new(id: 1) }
-      it 'delegate BrickFTP::API::Notification#destroy' do
-        expect(notification).to receive(:destroy)
-        described_class.new.delete_notification(notification)
+      context 'given notification as object' do
+        let(:notification) { BrickFTP::API::Notification.new(id: 1) }
+        it 'delegate BrickFTP::API::Notification#destroy' do
+          expect(notification).to receive(:destroy)
+          described_class.new.delete_notification(notification)
+        end
+      end
+
+      context 'given notification as id' do
+        let(:notification) { 1 }
+        it 'delegate BrickFTP::API::Notification#destroy' do
+          expect(BrickFTP::API::Notification).to receive_message_chain(:new, :destroy).with(id: 1).with(no_args)
+          described_class.new.delete_notification(notification)
+        end
       end
     end
   end
@@ -218,10 +280,20 @@ RSpec.describe BrickFTP::Client, type: :lib do
     end
 
     describe '#delete_bundle' do
-      let(:bundle) { BrickFTP::API::Bundle.new(id: 1) }
-      it 'delegate BrickFTP::API::Bundle#destroy' do
-        expect(bundle).to receive(:destroy)
-        described_class.new.delete_bundle(bundle)
+      context 'given bundle as object' do
+        let(:bundle) { BrickFTP::API::Bundle.new(id: 1) }
+        it 'delegate BrickFTP::API::Bundle#destroy' do
+          expect(bundle).to receive(:destroy)
+          described_class.new.delete_bundle(bundle)
+        end
+      end
+
+      context 'given bundle as id' do
+        let(:bundle) { 1 }
+        it 'delegate BrickFTP::API::Bundle#destroy' do
+          expect(BrickFTP::API::Bundle).to receive_message_chain(:new, :destroy).with(id: 1).with(no_args)
+          described_class.new.delete_bundle(bundle)
+        end
       end
     end
 
@@ -267,19 +339,40 @@ RSpec.describe BrickFTP::Client, type: :lib do
     end
 
     describe '#update_behavior' do
-      let(:behavior) { BrickFTP::API::Behavior.new(id: 1) }
-      let(:attributes) { {} }
-      it 'delegate BrickFTP::API::Behavior#update' do
-        expect(behavior).to receive(:update).with(attributes)
-        described_class.new.update_behavior(behavior, attributes)
+      context 'given behavior as object' do
+        let(:behavior) { BrickFTP::API::Behavior.new(id: 1) }
+        let(:attributes) { {} }
+        it 'delegate BrickFTP::API::Behavior#update' do
+          expect(behavior).to receive(:update).with(attributes)
+          described_class.new.update_behavior(behavior, attributes)
+        end
+      end
+
+      context 'given behavior as id' do
+        let(:behavior) { 1 }
+        let(:attributes) { {} }
+        it 'delegate BrickFTP::API::Behavior#update' do
+          expect(BrickFTP::API::Behavior).to receive_message_chain(:new, :update).with(id: 1).with(attributes)
+          described_class.new.update_behavior(behavior, attributes)
+        end
       end
     end
 
     describe '#delete_behavior' do
-      let(:behavior) { BrickFTP::API::Behavior.new(id: 1) }
-      it 'delegate BrickFTP::API::Behavior#destroy' do
-        expect(behavior).to receive(:destroy)
-        described_class.new.delete_behavior(behavior)
+      context 'given behavior as object' do
+        let(:behavior) { BrickFTP::API::Behavior.new(id: 1) }
+        it 'delegate BrickFTP::API::Behavior#destroy' do
+          expect(behavior).to receive(:destroy)
+          described_class.new.delete_behavior(behavior)
+        end
+      end
+
+      context 'given behavior as id' do
+        let(:behavior) { 1 }
+        it 'delegate BrickFTP::API::Behavior#destroy' do
+          expect(BrickFTP::API::Behavior).to receive_message_chain(:new, :destroy).with(id: 1).with(no_args)
+          described_class.new.delete_behavior(behavior)
+        end
       end
     end
 
@@ -360,19 +453,39 @@ RSpec.describe BrickFTP::Client, type: :lib do
     end
 
     describe '#delete_file' do
-      let(:file) { BrickFTP::API::File.new(id: 'a/b') }
+      context 'given file as object' do
+        let(:file) { BrickFTP::API::File.new(path: 'a/b') }
 
-      context 'without options' do
-        it 'delegate BrickFTP::API::File#destroy' do
-          expect(file).to receive(:destroy).with(recursive: false)
-          described_class.new.delete_file(file)
+        context 'without options' do
+          it 'delegate BrickFTP::API::File#destroy' do
+            expect(file).to receive(:destroy).with(recursive: false)
+            described_class.new.delete_file(file)
+          end
+        end
+
+        context 'recursive: true' do
+          it 'delegate BrickFTP::API::File#destroy' do
+            expect(file).to receive(:destroy).with(recursive: true)
+            described_class.new.delete_file(file, recursive: true)
+          end
         end
       end
 
-      context 'recursive: true' do
-        it 'delegate BrickFTP::API::File#destroy' do
-          expect(file).to receive(:destroy).with(recursive: true)
-          described_class.new.delete_file(file, recursive: true)
+      context 'given file as path' do
+        let(:file) { 'a/b' }
+
+        context 'without options' do
+          it 'delegate BrickFTP::API::File#destroy' do
+            expect(BrickFTP::API::File).to receive_message_chain(:new, :destroy).with(path: 'a/b').with(recursive: false)
+            described_class.new.delete_file(file)
+          end
+        end
+
+        context 'recursive: true' do
+          it 'delegate BrickFTP::API::File#destroy' do
+            expect(BrickFTP::API::File).to receive_message_chain(:new, :destroy).with(path: 'a/b').with(recursive: true)
+            described_class.new.delete_file(file, recursive: true)
+          end
         end
       end
     end

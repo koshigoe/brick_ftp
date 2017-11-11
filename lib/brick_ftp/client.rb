@@ -38,19 +38,19 @@ module BrickFTP
 
     # Update an existing user.
     # @see https://brickftp.com/ja/docs/rest-api/users/
-    # @param user [BrickFTP::API::User] user object.
+    # @param user_or_id [BrickFTP::API::User, Integer] user object or user id.
     # @param attributes [Hash] User's attributes.
     # @return [BrickFTP::API::User] user object.
-    def update_user(user, attributes)
-      user.update(attributes)
+    def update_user(user_or_id, attributes)
+      instantize_user(user_or_id).update(attributes)
     end
 
     # Delete a user.
     # @see https://brickftp.com/ja/docs/rest-api/users/
-    # @param user [BrickFTP::API::User] user object.
+    # @param user_or_id [BrickFTP::API::User, Integer] user object or user id.
     # @return [Boolean] return true.
-    def delete_user(user)
-      user.destroy
+    def delete_user(user_or_id)
+      instantize_user(user_or_id).destroy
     end
 
     # List all groups on the current site.
@@ -76,19 +76,19 @@ module BrickFTP
 
     # Update an existing group.
     # @see https://brickftp.com/ja/docs/rest-api/groups/
-    # @param group [BrickFTP::API::Group] group object.
+    # @param group_or_id [BrickFTP::API::Group, Integer] group object or group id.
     # @param attributes [Hash] Group's attributes.
     # @return [BrickFTP::API::Group] group object.
-    def update_group(group, attributes)
-      group.update(attributes)
+    def update_group(group_or_id, attributes)
+      instantize_group(group_or_id).update(attributes)
     end
 
     # Delete a group.
     # @see https://brickftp.com/ja/docs/rest-api/groups/
-    # @param group [BrickFTP::API::Group] group object.
+    # @param group_or_id [BrickFTP::API::Group, Integer] group object or group id.
     # @return [Boolean] return true.
-    def delete_group(group)
-      group.destroy
+    def delete_group(group_or_id)
+      instantize_group(group_or_id).destroy
     end
 
     # List all permissions on the current site.
@@ -106,10 +106,10 @@ module BrickFTP
 
     # Delete a permission.
     # @see https://brickftp.com/ja/docs/rest-api/permissions/
-    # @param permission [BrickFTP::API::Permission] permission object.
+    # @param permission_or_id [BrickFTP::API::Permission, Integer] permission object or permission id.
     # @return [Boolean] return true.
-    def delete_permission(permission)
-      permission.destroy
+    def delete_permission(permission_or_id)
+      instantize_permission(permission_or_id).destroy
     end
 
     # List all notifications on the current site.
@@ -127,10 +127,10 @@ module BrickFTP
 
     # Delete a notification.
     # @see https://brickftp.com/ja/docs/rest-api/notifications/
-    # @param notification [BrickFTP::API::Notification] notification object.
+    # @param notification_or_id [BrickFTP::API::Notification, Integer] notification object or notification id.
     # @return [Boolean] return true.
-    def delete_notification(notification)
-      notification.destroy
+    def delete_notification(notification_or_id)
+      instantize_notification(notification_or_id).destroy
     end
 
     # Show the entire history for the current site.
@@ -215,10 +215,10 @@ module BrickFTP
 
     # Delete a bundle.
     # @see https://brickftp.com/ja/docs/rest-api/bundles/
-    # @param bundle [BrickFTP::API::Bundle] bundle object.
+    # @param bundle_or_id [BrickFTP::API::Bundle, Integer] bundle object or bundle id.
     # @return [Boolean] return true.
-    def delete_bundle(bundle)
-      bundle.destroy
+    def delete_bundle(bundle_or_id)
+      instantize_bundle(bundle_or_id).destroy
     end
 
     # List the contents of a bundle.
@@ -265,19 +265,19 @@ module BrickFTP
 
     # Update an existing behavior.
     # @see https://brickftp.com/ja/docs/rest-api/behaviors/
-    # @param behavior [BrickFTP::API::Behavior] behavior object.
+    # @param behavior_or_id [BrickFTP::API::Behavior, Integer] behavior object or behavior id.
     # @param attributes [Hash] Behavior's attributes.
     # @return [BrickFTP::API::Behavior] behavior object.
-    def update_behavior(behavior, attributes)
-      behavior.update(attributes)
+    def update_behavior(behavior_or_id, attributes)
+      instantize_behavior(behavior_or_id).update(attributes)
     end
 
     # Delete a behavior.
     # @see https://brickftp.com/ja/docs/rest-api/behaviors/
-    # @param behavior [BrickFTP::API::Behavior] behavior object.
+    # @param behavior_or_id [BrickFTP::API::Behavior, Integer] behavior object or behavior id.
     # @return [Boolean] return true.
-    def delete_behavior(behavior)
-      behavior.destroy
+    def delete_behavior(behavior_or_id)
+      instantize_behavior(behavior_or_id).destroy
     end
 
     # shows the behaviors that apply to the given path.
@@ -344,11 +344,11 @@ module BrickFTP
 
     # Delete a file.
     # @see https://brickftp.com/ja/docs/rest-api/file-operations/
-    # @param file [BrickFTP::API::File] file object.
+    # @param file_or_path [BrickFTP::API::File, String] file object or file(folder) path.
     # @param recursive: [Boolean]
     # @return [Boolean] return true.
-    def delete_file(file, recursive: false)
-      file.destroy(recursive: recursive)
+    def delete_file(file_or_path, recursive: false)
+      instantize_file(file_or_path).destroy(recursive: recursive)
     end
 
     # Upload file.
@@ -364,6 +364,50 @@ module BrickFTP
     # @return [BrickFTP::API::SiteUsage]
     def site_usage
       BrickFTP::API::SiteUsage.find
+    end
+
+    private
+
+    def instantize_user(user_or_id)
+      return user_or_id if user_or_id.is_a?(BrickFTP::API::User)
+
+      BrickFTP::API::User.new(id: user_or_id)
+    end
+
+    def instantize_group(group_or_id)
+      return group_or_id if group_or_id.is_a?(BrickFTP::API::Group)
+
+      BrickFTP::API::Group.new(id: group_or_id)
+    end
+
+    def instantize_permission(permission_or_id)
+      return permission_or_id if permission_or_id.is_a?(BrickFTP::API::Permission)
+
+      BrickFTP::API::Permission.new(id: permission_or_id)
+    end
+
+    def instantize_notification(notification_or_id)
+      return notification_or_id if notification_or_id.is_a?(BrickFTP::API::Notification)
+
+      BrickFTP::API::Notification.new(id: notification_or_id)
+    end
+
+    def instantize_bundle(bundle_or_id)
+      return bundle_or_id if bundle_or_id.is_a?(BrickFTP::API::Bundle)
+
+      BrickFTP::API::Bundle.new(id: bundle_or_id)
+    end
+
+    def instantize_behavior(behavior_or_id)
+      return behavior_or_id if behavior_or_id.is_a?(BrickFTP::API::Behavior)
+
+      BrickFTP::API::Behavior.new(id: behavior_or_id)
+    end
+
+    def instantize_file(file_or_path)
+      return file_or_path if file_or_path.is_a?(BrickFTP::API::File)
+
+      BrickFTP::API::File.new(path: file_or_path)
     end
   end
 end
