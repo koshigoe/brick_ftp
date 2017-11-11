@@ -106,10 +106,10 @@ module BrickFTP
 
     # Delete a permission.
     # @see https://brickftp.com/ja/docs/rest-api/permissions/
-    # @param permission [BrickFTP::API::Permission] permission object.
+    # @param permission_or_id [BrickFTP::API::Permission, Integer] permission object or permission id.
     # @return [Boolean] return true.
-    def delete_permission(permission)
-      permission.destroy
+    def delete_permission(permission_or_id)
+      instantize_permission(permission_or_id).destroy
     end
 
     # List all notifications on the current site.

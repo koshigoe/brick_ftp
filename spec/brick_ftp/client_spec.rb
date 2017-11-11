@@ -160,10 +160,20 @@ RSpec.describe BrickFTP::Client, type: :lib do
     end
 
     describe '#delete_permission' do
-      let(:permission) { BrickFTP::API::Permission.new(id: 1) }
-      it 'delegate BrickFTP::API::Permission#destroy' do
-        expect(permission).to receive(:destroy)
-        described_class.new.delete_permission(permission)
+      context 'given permission as object' do
+        let(:permission) { BrickFTP::API::Permission.new(id: 1) }
+        it 'delegate BrickFTP::API::Permission#destroy' do
+          expect(permission).to receive(:destroy)
+          described_class.new.delete_permission(permission)
+        end
+      end
+
+      context 'given permission as id' do
+        let(:permission) { 1 }
+        it 'delegate BrickFTP::API::Permission#destroy' do
+          expect(BrickFTP::API::Permission).to receive_message_chain(:new, :destroy).with(id: 1).with(no_args)
+          described_class.new.delete_permission(permission)
+        end
       end
     end
   end
