@@ -127,10 +127,10 @@ module BrickFTP
 
     # Delete a notification.
     # @see https://brickftp.com/ja/docs/rest-api/notifications/
-    # @param notification [BrickFTP::API::Notification] notification object.
+    # @param notification_or_id [BrickFTP::API::Notification, Integer] notification object or notification id.
     # @return [Boolean] return true.
-    def delete_notification(notification)
-      notification.destroy
+    def delete_notification(notification_or_id)
+      instantize_notification(notification_or_id).destroy
     end
 
     # Show the entire history for the current site.

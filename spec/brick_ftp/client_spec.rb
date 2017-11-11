@@ -195,10 +195,20 @@ RSpec.describe BrickFTP::Client, type: :lib do
     end
 
     describe '#delete_notification' do
-      let(:notification) { BrickFTP::API::Notification.new(id: 1) }
-      it 'delegate BrickFTP::API::Notification#destroy' do
-        expect(notification).to receive(:destroy)
-        described_class.new.delete_notification(notification)
+      context 'given notification as object' do
+        let(:notification) { BrickFTP::API::Notification.new(id: 1) }
+        it 'delegate BrickFTP::API::Notification#destroy' do
+          expect(notification).to receive(:destroy)
+          described_class.new.delete_notification(notification)
+        end
+      end
+
+      context 'given notification as id' do
+        let(:notification) { 1 }
+        it 'delegate BrickFTP::API::Notification#destroy' do
+          expect(BrickFTP::API::Notification).to receive_message_chain(:new, :destroy).with(id: 1).with(no_args)
+          described_class.new.delete_notification(notification)
+        end
       end
     end
   end
