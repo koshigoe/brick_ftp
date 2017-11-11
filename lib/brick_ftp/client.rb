@@ -274,10 +274,10 @@ module BrickFTP
 
     # Delete a behavior.
     # @see https://brickftp.com/ja/docs/rest-api/behaviors/
-    # @param behavior [BrickFTP::API::Behavior] behavior object.
+    # @param behavior_or_id [BrickFTP::API::Behavior, Integer] behavior object or behavior id.
     # @return [Boolean] return true.
-    def delete_behavior(behavior)
-      behavior.destroy
+    def delete_behavior(behavior_or_id)
+      instantize_behavior(behavior_or_id).destroy
     end
 
     # shows the behaviors that apply to the given path.

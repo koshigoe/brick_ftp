@@ -359,10 +359,20 @@ RSpec.describe BrickFTP::Client, type: :lib do
     end
 
     describe '#delete_behavior' do
-      let(:behavior) { BrickFTP::API::Behavior.new(id: 1) }
-      it 'delegate BrickFTP::API::Behavior#destroy' do
-        expect(behavior).to receive(:destroy)
-        described_class.new.delete_behavior(behavior)
+      context 'given behavior as object' do
+        let(:behavior) { BrickFTP::API::Behavior.new(id: 1) }
+        it 'delegate BrickFTP::API::Behavior#destroy' do
+          expect(behavior).to receive(:destroy)
+          described_class.new.delete_behavior(behavior)
+        end
+      end
+
+      context 'given behavior as id' do
+        let(:behavior) { 1 }
+        it 'delegate BrickFTP::API::Behavior#destroy' do
+          expect(BrickFTP::API::Behavior).to receive_message_chain(:new, :destroy).with(id: 1).with(no_args)
+          described_class.new.delete_behavior(behavior)
+        end
       end
     end
 
