@@ -391,5 +391,11 @@ module BrickFTP
 
       BrickFTP::API::Notification.new(id: notification_or_id)
     end
+
+    def instantize_bundle(bundle_or_id)
+      return bundle_or_id if bundle_or_id.is_a?(BrickFTP::API::Bundle)
+
+      BrickFTP::API::Bundle.new(id: bundle_or_id)
+    end
   end
 end
