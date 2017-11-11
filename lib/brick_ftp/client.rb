@@ -403,5 +403,11 @@ module BrickFTP
 
       BrickFTP::API::Behavior.new(id: behavior_or_id)
     end
+
+    def instantize_file(file_or_path)
+      return file_or_path if file_or_path.is_a?(BrickFTP::API::File)
+
+      BrickFTP::API::File.new(path: file_or_path)
+    end
   end
 end
