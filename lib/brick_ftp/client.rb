@@ -47,10 +47,10 @@ module BrickFTP
 
     # Delete a user.
     # @see https://brickftp.com/ja/docs/rest-api/users/
-    # @param user [BrickFTP::API::User] user object.
+    # @param user_or_id [BrickFTP::API::User, Integer] user object or user id.
     # @return [Boolean] return true.
-    def delete_user(user)
-      user.destroy
+    def delete_user(user_or_id)
+      instantize_user(user_or_id).destroy
     end
 
     # List all groups on the current site.

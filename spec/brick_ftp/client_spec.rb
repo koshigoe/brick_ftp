@@ -62,10 +62,20 @@ RSpec.describe BrickFTP::Client, type: :lib do
     end
 
     describe '#delete_user' do
-      let(:user) { BrickFTP::API::User.new(id: 1) }
-      it 'delegate BrickFTP::API::User#destroy' do
-        expect(user).to receive(:destroy)
-        described_class.new.delete_user(user)
+      context 'given user as object' do
+        let(:user) { BrickFTP::API::User.new(id: 1) }
+        it 'delegate BrickFTP::API::User#destroy' do
+          expect(user).to receive(:destroy)
+          described_class.new.delete_user(user)
+        end
+      end
+
+      context 'given user as id' do
+        let(:user) { 1 }
+        it 'delegate BrickFTP::API::User#destroy' do
+          expect(BrickFTP::API::User).to receive_message_chain(:new, :destroy).with(id: 1).with(no_args)
+          described_class.new.delete_user(user)
+        end
       end
     end
   end
