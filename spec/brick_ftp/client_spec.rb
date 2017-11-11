@@ -105,11 +105,22 @@ RSpec.describe BrickFTP::Client, type: :lib do
     end
 
     describe '#update_group' do
-      let(:group) { BrickFTP::API::Group.new(id: 1) }
-      let(:attributes) { {} }
-      it 'delegate BrickFTP::API::Group#update' do
-        expect(group).to receive(:update).with(attributes)
-        described_class.new.update_group(group, attributes)
+      context 'given group as object' do
+        let(:group) { BrickFTP::API::Group.new(id: 1) }
+        let(:attributes) { {} }
+        it 'delegate BrickFTP::API::Group#update' do
+          expect(group).to receive(:update).with(attributes)
+          described_class.new.update_group(group, attributes)
+        end
+      end
+
+      context 'given group as id' do
+        let(:group) { 1 }
+        let(:attributes) { {} }
+        it 'delegate BrickFTP::API::Group#update' do
+          expect(BrickFTP::API::Group).to receive_message_chain(:new, :update).with(id: 1).with(attributes)
+          described_class.new.update_group(group, attributes)
+        end
       end
     end
 

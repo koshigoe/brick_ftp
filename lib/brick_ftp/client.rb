@@ -76,11 +76,11 @@ module BrickFTP
 
     # Update an existing group.
     # @see https://brickftp.com/ja/docs/rest-api/groups/
-    # @param group [BrickFTP::API::Group] group object.
+    # @param group_or_id [BrickFTP::API::Group, Integer] group object or group id.
     # @param attributes [Hash] Group's attributes.
     # @return [BrickFTP::API::Group] group object.
-    def update_group(group, attributes)
-      group.update(attributes)
+    def update_group(group_or_id, attributes)
+      instantize_group(group_or_id).update(attributes)
     end
 
     # Delete a group.
