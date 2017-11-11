@@ -265,11 +265,11 @@ module BrickFTP
 
     # Update an existing behavior.
     # @see https://brickftp.com/ja/docs/rest-api/behaviors/
-    # @param behavior [BrickFTP::API::Behavior] behavior object.
+    # @param behavior_or_id [BrickFTP::API::Behavior, Integer] behavior object or behavior id.
     # @param attributes [Hash] Behavior's attributes.
     # @return [BrickFTP::API::Behavior] behavior object.
-    def update_behavior(behavior, attributes)
-      behavior.update(attributes)
+    def update_behavior(behavior_or_id, attributes)
+      instantize_behavior(behavior_or_id).update(attributes)
     end
 
     # Delete a behavior.

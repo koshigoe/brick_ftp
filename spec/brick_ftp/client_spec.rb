@@ -339,11 +339,22 @@ RSpec.describe BrickFTP::Client, type: :lib do
     end
 
     describe '#update_behavior' do
-      let(:behavior) { BrickFTP::API::Behavior.new(id: 1) }
-      let(:attributes) { {} }
-      it 'delegate BrickFTP::API::Behavior#update' do
-        expect(behavior).to receive(:update).with(attributes)
-        described_class.new.update_behavior(behavior, attributes)
+      context 'given behavior as object' do
+        let(:behavior) { BrickFTP::API::Behavior.new(id: 1) }
+        let(:attributes) { {} }
+        it 'delegate BrickFTP::API::Behavior#update' do
+          expect(behavior).to receive(:update).with(attributes)
+          described_class.new.update_behavior(behavior, attributes)
+        end
+      end
+
+      context 'given behavior as id' do
+        let(:behavior) { 1 }
+        let(:attributes) { {} }
+        it 'delegate BrickFTP::API::Behavior#update' do
+          expect(BrickFTP::API::Behavior).to receive_message_chain(:new, :update).with(id: 1).with(attributes)
+          described_class.new.update_behavior(behavior, attributes)
+        end
       end
     end
 
