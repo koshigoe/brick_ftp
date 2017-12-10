@@ -354,7 +354,7 @@ module BrickFTP
     # Upload file.
     # @see https://brickftp.com/ja/docs/rest-api/file-uploading/
     # @param path [String]
-    # @param source [String] path for source file.
+    # @param source [IO] source `data` (not `path`) to upload
     # @return [BrickFTP::API::FileUpload]
     def upload_file(path:, source:)
       BrickFTP::API::FileOperation::Upload.create(path: path, source: source)
