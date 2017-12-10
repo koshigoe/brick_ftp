@@ -11,6 +11,8 @@ Changelog
 
 ### Fixed Bugs:
 
+- [#67](https://github.com/koshigoe/brick_ftp/pull/67) Fix wrong API document.
+
 
 [v0.5.0](https://github.com/koshigoe/brick_ftp/compare/v0.4.2...v0.5.0)
 ----
