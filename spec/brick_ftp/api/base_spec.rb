@@ -7,6 +7,7 @@ RSpec.describe BrickFTP::API::Base do
 
       attribute :id
       attribute :value
+      attribute :send
     end
   end
 
@@ -61,18 +62,27 @@ RSpec.describe BrickFTP::API::Base do
   describe '#as_json' do
     subject { api.new(id: '1', value: 'v').as_json }
 
-    it { is_expected.to eq(id: '1', value: 'v') }
+    it { is_expected.to eq(id: '1', value: 'v', send: nil) }
   end
 
   describe '#to_json' do
     subject { api.new(id: '1', value: 'v').to_json }
 
-    it { is_expected.to eq({ id: '1', value: 'v' }.to_json) }
+    it { is_expected.to eq({ id: '1', value: 'v', send: nil }.to_json) }
   end
 
-  describe '#sanitize_instance_variable_name' do
-    it 'should not error on params with question marks' do
-      expect{api.new(subfolders_locked?: true)}.to_not raise_error
-    end
+  describe '#properties' do
+    subject { api.new(id: 1, value: 'v', send: 's').properties }
+
+    it { is_expected.to eq('id' => 1, 'value' => 'v', 'send' => 's') }
+  end
+
+  describe 'accessor' do
+    subject { api.new(id: 1, value: 'v', send: 's') }
+
+    it { expect(subject.id).to eq 1 }
+    it { expect(subject.value).to eq 'v' }
+    it { expect { subject.send }.to raise_error(ArgumentError) }
+    it { expect(subject.properties['send']).to eq 's' }
   end
 end

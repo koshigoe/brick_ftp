@@ -14,6 +14,7 @@ module BrickFTP
       attribute :md5
       attribute :provided_mtime
       attribute :permissions
+      attribute :subfolders_locked?
     end
   end
 end

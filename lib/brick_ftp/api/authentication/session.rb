@@ -15,7 +15,7 @@ module BrickFTP
 
         def destroy
           super.tap do
-            @id = nil
+            delete_property(:id)
             BrickFTP.config.session = nil
           end
         end

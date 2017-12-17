@@ -11,6 +11,13 @@ Changelog
 
 ### Fixed Bugs:
 
+### Breaking Changes:
+
+- [#72](https://github.com/koshigoe/brick_ftp/pull/72) Improve accessor of API properties
+    - Cannot access some API properties named same as methods of Ruby's Object.
+        - e.g. `send` property of [File Uploading](https://brickftp.com/docs/rest-api/file-uploading/)
+        - Use `#properties` to access properties
+
 
 [v0.5.1](https://github.com/koshigoe/brick_ftp/compare/v0.5.0...v0.5.1)
 ----

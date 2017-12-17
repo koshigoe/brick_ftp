@@ -70,7 +70,7 @@ RSpec.describe BrickFTP::API::FileOperation::Upload, type: :lib do
         expect(upload.partsize).to eq 5242880
         expect(upload.part_number).to eq 1
         expect(upload.available_parts).to eq 10000
-        expect(upload.send).to eq("partsize" => "required-parameter Content-Length", "partdata" => "body")
+        expect(upload.properties['send']).to eq("partsize" => "required-parameter Content-Length", "partdata" => "body")
         expect(upload.headers).to eq({})
         expect(upload.parameters).to eq({})
         expect(upload.id).to eq 1

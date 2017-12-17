@@ -39,8 +39,12 @@ module BrickFTP
         new(data.symbolize_keys)
       end
 
+      # @return [Hash{String => Object}] Key Value pairs of API properties
+      attr_reader :properties
+
       def initialize(params = {})
-        params.each { |k, v| instance_variable_set(:"@#{sanitize_instance_variable_name(k)}", v) }
+        @properties = {}
+        params.each { |k, v| write_property(k, v) }
       end
 
       def update(params = {})
@@ -51,7 +55,7 @@ module BrickFTP
           self.class.api_path_for(:update, self),
           params: self.class.api_component_for(:update).except_path_and_query(params)
         )
-        data.each { |k, v| instance_variable_set(:"@#{k}", v) }
+        data.each { |k, v| write_property(k, v) }
 
         self
       end
@@ -69,7 +73,7 @@ module BrickFTP
       end
 
       def as_json
-        self.class.attributes.each_with_object({}) { |name, res| res[name] = send(name) }
+        self.class.attributes.each_with_object({}) { |name, res| res[name] = read_property(name) }
       end
 
       def to_json
@@ -78,8 +82,26 @@ module BrickFTP
 
       private
 
-      def sanitize_instance_variable_name(name)
-        name.to_s.gsub(/\W/, '')
+      def write_property(key, value)
+        properties[key.to_s] = value
+      end
+
+      def read_property(key)
+        properties[key.to_s]
+      end
+
+      def delete_property(key)
+        properties.delete(key.to_s)
+      end
+
+      def respond_to_missing?(method_name, _include_private)
+        self.class.attributes.include?(method_name.to_sym)
+      end
+
+      def method_missing(method_name, *args)
+        super unless self.class.attributes.include?(method_name.to_sym)
+
+        read_property(method_name)
       end
     end
   end
