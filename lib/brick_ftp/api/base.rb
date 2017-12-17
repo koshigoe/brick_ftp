@@ -92,6 +92,16 @@ module BrickFTP
       def read_property(key)
         properties[key.to_s]
       end
+
+      def respond_to_missing?(method_name, _include_private)
+        self.class.attributes.include?(method_name.to_sym)
+      end
+
+      def method_missing(method_name, *args)
+        super unless self.class.attributes.include?(method_name.to_sym)
+
+        read_property(method_name)
+      end
     end
   end
 end
