@@ -39,6 +39,7 @@ module BrickFTP
         new(data.symbolize_keys)
       end
 
+      # @return [Hash{String => Object}] Key Value pairs of API properties
       attr_reader :properties
 
       def initialize(params = {})
