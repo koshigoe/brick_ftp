@@ -93,6 +93,10 @@ module BrickFTP
         properties[key.to_s]
       end
 
+      def delete_property(key)
+        properties.delete(key.to_s)
+      end
+
       def respond_to_missing?(method_name, _include_private)
         self.class.attributes.include?(method_name.to_sym)
       end
