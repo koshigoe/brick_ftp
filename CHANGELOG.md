@@ -2,10 +2,22 @@ Changelog
 ====
 
 
-[unreleased](https://github.com/koshigoe/brick_ftp/compare/v0.5.1...master)
+[unreleased](https://github.com/koshigoe/brick_ftp/compare/v0.6.0...master)
 ----
 
-[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v0.5.1...master)
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v0.6.0...master)
+
+### Enhancements:
+
+### Fixed Bugs:
+
+### Breaking Changes:
+
+
+[v0.6.0](https://github.com/koshigoe/brick_ftp/compare/v0.5.1...v0.6.0)
+----
+
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v0.5.1...v0.6.0)
 
 ### Enhancements:
 
