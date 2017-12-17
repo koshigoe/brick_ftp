@@ -80,8 +80,6 @@ module BrickFTP
         as_json.to_json
       end
 
-      private
-
       def write_property(key, value)
         properties[key.to_s] = value
       end
@@ -93,6 +91,8 @@ module BrickFTP
       def delete_property(key)
         properties.delete(key.to_s)
       end
+
+      private
 
       def respond_to_missing?(method_name, _include_private)
         self.class.attributes.include?(method_name.to_sym)

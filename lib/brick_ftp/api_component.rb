@@ -68,7 +68,7 @@ module BrickFTP
       when BrickFTP::API::Base
         keys = path_variables(params) + query_keys
         keys.each_with_object({}) do |key, res|
-          res[key] = params.send(key)
+          res[key] = params.read_property(key)
         end
       else
         keys = path_variables(params) + query_keys
