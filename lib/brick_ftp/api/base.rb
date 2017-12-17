@@ -39,8 +39,11 @@ module BrickFTP
         new(data.symbolize_keys)
       end
 
+      attr_reader :properties
+
       def initialize(params = {})
-        params.each { |k, v| instance_variable_set(:"@#{sanitize_instance_variable_name(k)}", v) }
+        @properties = {}
+        params.each { |k, v| write_property(k, v) }
       end
 
       def update(params = {})
@@ -51,7 +54,7 @@ module BrickFTP
           self.class.api_path_for(:update, self),
           params: self.class.api_component_for(:update).except_path_and_query(params)
         )
-        data.each { |k, v| instance_variable_set(:"@#{k}", v) }
+        data.each { |k, v| write_property(k, v) }
 
         self
       end
@@ -80,6 +83,14 @@ module BrickFTP
 
       def sanitize_instance_variable_name(name)
         name.to_s.gsub(/\W/, '')
+      end
+
+      def write_property(key, value)
+        properties[key.to_s] = value
+      end
+
+      def read_property(key)
+        properties[key.to_s]
       end
     end
   end
