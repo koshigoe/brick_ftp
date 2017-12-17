@@ -31,6 +31,7 @@ RSpec.describe BrickFTP::API::Folder, type: :lib do
           "md5" => nil,
           'provided_mtime' => '2014-05-15T20:26:18+00:00',
           'permissions' => 'rwd',
+          'subfolders_locked?' => false,
         },
         {
           "id" => 2,
@@ -43,6 +44,7 @@ RSpec.describe BrickFTP::API::Folder, type: :lib do
           "md5" => "b67236f5bcd29d1307d574fb9fe585b5",
           'provided_mtime' => '2014-05-15T18:34:51+00:00',
           'permissions' => 'rwd',
+          'subfolders_locked?' => false,
         },
         {
           "id" => 3,
@@ -55,6 +57,7 @@ RSpec.describe BrickFTP::API::Folder, type: :lib do
           "md5" => "02c442ecc0d499bf443fa8fd444c2933",
           'provided_mtime' => '2014-05-15T18:36:03+00:00',
           'permissions' => 'rwd',
+          'subfolders_locked?' => false,
         }
       ]
     end
@@ -81,6 +84,7 @@ RSpec.describe BrickFTP::API::Folder, type: :lib do
       expect(folders.last.md5).to eq "02c442ecc0d499bf443fa8fd444c2933"
       expect(folders.last.provided_mtime).to eq '2014-05-15T18:36:03+00:00'
       expect(folders.last.permissions).to eq 'rwd'
+      expect(folders.last.subfolders_locked?).to eq false
     end
   end
 
