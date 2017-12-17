@@ -69,4 +69,10 @@ RSpec.describe BrickFTP::API::Base do
 
     it { is_expected.to eq({ id: '1', value: 'v' }.to_json) }
   end
+
+  describe '#sanitize_instance_variable_name' do
+    it 'should not error on params with question marks' do
+      expect{api.new(subfolders_locked?: true)}.to_not raise_error
+    end
+  end
 end
