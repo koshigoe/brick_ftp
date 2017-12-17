@@ -40,7 +40,7 @@ module BrickFTP
       end
 
       def initialize(params = {})
-        params.each { |k, v| instance_variable_set(:"@#{k}", v) }
+        params.each { |k, v| instance_variable_set(:"@#{sanitize_instance_variable_name(k)}", v) }
       end
 
       def update(params = {})
@@ -74,6 +74,12 @@ module BrickFTP
 
       def to_json
         as_json.to_json
+      end
+
+      private
+
+      def sanitize_instance_variable_name(name)
+        name.to_s.gsub(/\W/, '')
       end
     end
   end
