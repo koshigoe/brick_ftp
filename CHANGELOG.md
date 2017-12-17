@@ -2,7 +2,17 @@ Changelog
 ====
 
 
-[unreleased](https://github.com/koshigoe/brick_ftp/compare/v0.5.0...master)
+[unreleased](https://github.com/koshigoe/brick_ftp/compare/v0.5.1...master)
+----
+
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v0.5.1...master)
+
+### Enhancements:
+
+### Fixed Bugs:
+
+
+[v0.5.1](https://github.com/koshigoe/brick_ftp/compare/v0.5.0...v0.5.1)
 ----
 
 [Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v0.5.0...master)
@@ -12,6 +22,7 @@ Changelog
 ### Fixed Bugs:
 
 - [#67](https://github.com/koshigoe/brick_ftp/pull/67) Fix wrong API document.
+- [#69](https://github.com/koshigoe/brick_ftp/pull/69) sanitize instance variable names (fixed by [terencedignon](https://github.com/terencedignon))
 
 
 [v0.5.0](https://github.com/koshigoe/brick_ftp/compare/v0.4.2...v0.5.0)
