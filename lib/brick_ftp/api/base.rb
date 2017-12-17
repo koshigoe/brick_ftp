@@ -82,10 +82,6 @@ module BrickFTP
 
       private
 
-      def sanitize_instance_variable_name(name)
-        name.to_s.gsub(/\W/, '')
-      end
-
       def write_property(key, value)
         properties[key.to_s] = value
       end
