@@ -34,7 +34,7 @@ Changelog
 [v0.5.1](https://github.com/koshigoe/brick_ftp/compare/v0.5.0...v0.5.1)
 ----
 
-[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v0.5.0...master)
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v0.5.0...v0.5.1)
 
 ### Enhancements:
 
