@@ -37,7 +37,6 @@ module BrickFTP
         else
           readonly_attributes << name.to_sym
         end
-        attr_reader name.to_s.tr('-', '_')
       end
 
       # Return all attributes.
