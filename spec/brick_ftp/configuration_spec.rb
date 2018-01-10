@@ -1,6 +1,23 @@
 require 'spec_helper'
 
 RSpec.describe BrickFTP::Configuration, type: :lib do
+  describe '.default_config_file_path' do
+    subject { described_class.default_config_file_path }
+
+    context 'with $HOME' do
+      it 'return $HOME/.brick_ftp/config' do
+        is_expected.to eq "#{ENV['HOME']}/.brick_ftp/config"
+      end
+    end
+
+    context 'without $HOME' do
+      it 'return nil' do
+        expect(File).to receive(:expand_path).with('~/.brick_ftp/config').and_raise(ArgumentError)
+        is_expected.to be_nil
+      end
+    end
+  end
+
   describe '#initialize' do
     subject { described_class.new(options) }
 

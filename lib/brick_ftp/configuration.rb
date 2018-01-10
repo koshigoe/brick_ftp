@@ -49,6 +49,13 @@ module BrickFTP
       end
     end
 
+    def self.default_config_file_path
+      File.expand_path('~/.brick_ftp/config')
+    rescue ArgumentError
+      # couldn't find login name -- expanding `~'
+      nil
+    end
+
     def initialize(profile: DEFAULT_PROFILE, config_file_path: CONFIG_FILE_PATH)
       @profile = profile
       @config_file_path = config_file_path
