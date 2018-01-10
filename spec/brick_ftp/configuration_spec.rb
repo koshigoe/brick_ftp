@@ -1,14 +1,29 @@
 require 'spec_helper'
 
 RSpec.describe BrickFTP::Configuration, type: :lib do
+  describe '.default_config_file_path' do
+    subject { described_class.default_config_file_path }
+
+    context 'with $HOME' do
+      it 'return $HOME/.brick_ftp/config' do
+        is_expected.to eq "#{ENV['HOME']}/.brick_ftp/config"
+      end
+    end
+
+    context 'without $HOME' do
+      it 'return nil' do
+        expect(File).to receive(:expand_path).with('~/.brick_ftp/config').and_raise(ArgumentError)
+        is_expected.to be_nil
+      end
+    end
+  end
+
   describe '#initialize' do
     subject { described_class.new(options) }
 
     let(:options) { {} }
 
-    context 'inifile does not exist' do
-      before { options[:config_file_path] = File.expand_path('../../data/config-not-exist', __FILE__) }
-
+    shared_examples_for 'inifile does not exist' do
       context 'with environment variable' do
         around do |example|
           begin
@@ -51,6 +66,16 @@ RSpec.describe BrickFTP::Configuration, type: :lib do
       it 'set read_timeout default value' do
         expect(subject.read_timeout).to eq 30
       end
+    end
+
+    context 'config file path is wrong' do
+      before { options[:config_file_path] = File.expand_path('../../data/config-not-exist', __FILE__) }
+      it_behaves_like 'inifile does not exist'
+    end
+
+    context 'config file path is nil' do
+      before { options[:config_file_path] = nil }
+      it_behaves_like 'inifile does not exist'
     end
 
     context 'inifile exists' do
