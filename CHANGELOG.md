@@ -2,14 +2,28 @@ Changelog
 ====
 
 
-[unreleased](https://github.com/koshigoe/brick_ftp/compare/v0.6.0...master)
+[unreleased](https://github.com/koshigoe/brick_ftp/compare/v0.6.1...master)
 ----
 
-[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v0.6.0...master)
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v0.6.1...master)
 
 ### Enhancements:
 
 ### Fixed Bugs:
+
+### Breaking Changes:
+
+
+[v0.6.1](https://github.com/koshigoe/brick_ftp/compare/v0.6.0...v0.6.1)
+----
+
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v0.6.0...v0.6.1)
+
+### Enhancements:
+
+### Fixed Bugs:
+
+- [#76](https://github.com/koshigoe/brick_ftp/pull/76) Don't raise unexpected exception even if it can't expand path `~`.
 
 ### Breaking Changes:
 
