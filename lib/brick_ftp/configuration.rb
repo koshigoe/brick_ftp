@@ -38,7 +38,6 @@ module BrickFTP
     DEFAULT_READ_TIMEOUT = 30
 
     DEFAULT_PROFILE = 'global'.freeze
-    CONFIG_FILE_PATH = File.expand_path('~/.brick_ftp/config').freeze
     # Name of storable configurations. (TODO: log_path, log_level, log_formatter)
     STORABLE_CONFIGURATION_KEYS = %w(subdomain api_key open_timeout read_timeout).freeze
 
@@ -55,6 +54,7 @@ module BrickFTP
       # couldn't find login name -- expanding `~'
       nil
     end
+    CONFIG_FILE_PATH = default_config_file_path
 
     def initialize(profile: DEFAULT_PROFILE, config_file_path: CONFIG_FILE_PATH)
       @profile = profile
@@ -107,7 +107,7 @@ module BrickFTP
     attr_reader :inifile, :dirty_attributes
 
     def load_config_file(config_file_path)
-      @inifile = if File.exist?(config_file_path)
+      @inifile = if config_file_path && File.exist?(config_file_path)
                    IniFile.load(config_file_path, encoding: 'UTF-8')
                  else
                    IniFile.new(filename: config_file_path, encoding: 'UTF-8')
