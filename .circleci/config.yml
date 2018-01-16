@@ -13,5 +13,8 @@ jobs:
           name: Rubocop
           command: rubocop
       - run:
+          name: YARDoc
+          command: yardoc --fail-on-warning lib
+      - run:
           name: RSpec
           command: rspec
