@@ -9,19 +9,19 @@ RSpec.describe BrickFTP::API::FolderBehavior, type: :lib do
     let(:behaviors) do
       [
         {
-          "id" => 44,
-          "path" => "Incoming",
-          "behavior" => "webhook",
-          "value" => [
-            "https://a.mywebhookhandler.com"
+          'id' => 44,
+          'path' => 'Incoming',
+          'behavior' => 'webhook',
+          'value' => [
+            'https://a.mywebhookhandler.com'
           ]
         },
         {
-          "id" => 45,
-          "path" => "Incoming",
-          "behavior" => "webhook",
-          "value" => [
-            "https://b.mywebhookhandler.com"
+          'id' => 45,
+          'path' => 'Incoming',
+          'behavior' => 'webhook',
+          'value' => [
+            'https://b.mywebhookhandler.com'
           ]
         }
       ]
@@ -40,7 +40,7 @@ RSpec.describe BrickFTP::API::FolderBehavior, type: :lib do
     it 'set attributes' do
       downloads = subject
       expect(downloads.first.id).to eq 44
-      expect(downloads.first.path).to eq "Incoming"
+      expect(downloads.first.path).to eq 'Incoming'
       expect(downloads.first.behavior).to eq 'webhook'
       expect(downloads.first.value).to eq %w[https://a.mywebhookhandler.com]
     end

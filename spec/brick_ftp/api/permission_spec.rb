@@ -9,18 +9,18 @@ RSpec.describe BrickFTP::API::Permission, type: :lib do
     let(:permissions) do
       [
         {
-          "id" => 2,
-          "path" => "a/b/c",
-          "permission" => "writeonly",
-          "group_id" => nil,
-          "user_id" => 5
+          'id' => 2,
+          'path' => 'a/b/c',
+          'permission' => 'writeonly',
+          'group_id' => nil,
+          'user_id' => 5
         },
         {
-          "id" => 3,
-          "path" => "a/b",
-          "permission" => "readonly",
-          "group_id" => 2,
-          "user_id" => nil
+          'id' => 3,
+          'path' => 'a/b',
+          'permission' => 'readonly',
+          'group_id' => 2,
+          'user_id' => nil
         }
       ]
     end
@@ -38,8 +38,8 @@ RSpec.describe BrickFTP::API::Permission, type: :lib do
     it 'set attributes' do
       groups = subject
       expect(groups.first.id).to eq 2
-      expect(groups.first.path).to eq "a/b/c"
-      expect(groups.first.permission).to eq "writeonly"
+      expect(groups.first.path).to eq 'a/b/c'
+      expect(groups.first.permission).to eq 'writeonly'
       expect(groups.first.group_id).to eq nil
       expect(groups.first.user_id).to eq 5
     end
@@ -51,19 +51,19 @@ RSpec.describe BrickFTP::API::Permission, type: :lib do
     context 'success' do
       let(:params) do
         {
-          "path" => "a/b/c/d",
-          "permission" => "writeonly",
-          "user_id" => "10"
+          'path' => 'a/b/c/d',
+          'permission' => 'writeonly',
+          'user_id' => '10'
         }
       end
 
       let(:permission) do
         {
-          "id" => 3,
-          "path" => "a/b/c/d",
-          "permission" => "writeonly",
-          "group_id" => nil,
-          "user_id" => 10
+          'id' => 3,
+          'path' => 'a/b/c/d',
+          'permission' => 'writeonly',
+          'group_id' => nil,
+          'user_id' => 10
         }
       end
 
@@ -80,8 +80,8 @@ RSpec.describe BrickFTP::API::Permission, type: :lib do
       it 'set attributes' do
         group = subject
         expect(group.id).to eq 3
-        expect(group.path).to eq "a/b/c/d"
-        expect(group.permission).to eq "writeonly"
+        expect(group.path).to eq 'a/b/c/d'
+        expect(group.permission).to eq 'writeonly'
         expect(group.group_id).to eq nil
         expect(group.user_id).to eq 10
       end

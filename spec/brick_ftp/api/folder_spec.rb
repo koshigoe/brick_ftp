@@ -11,7 +11,7 @@ RSpec.describe BrickFTP::API::Folder, type: :lib do
         path: "Engineering Candidates/R\u00e9sum\u00e9s",
         page: 1,
         per_page: 10,
-        search: "Engineering Candidates/",
+        search: 'Engineering Candidates/',
         'sort_by[path]' => 'asc',
         'sort_by[size]' => 'asc',
         'sort_by[modified_at_datetime]' => 'asc',
@@ -21,40 +21,40 @@ RSpec.describe BrickFTP::API::Folder, type: :lib do
     let(:folders) do
       [
         {
-          "id" => 1,
-          "path" => "Engineering Candidates/R\u00e9sum\u00e9s/Needs Review",
-          "display_name" => "Needs Review",
-          "type" => "directory",
-          "size" => nil,
-          "mtime" => "2014-05-15T20:26:18+00:00",
-          "crc32" => nil,
-          "md5" => nil,
+          'id' => 1,
+          'path' => "Engineering Candidates/R\u00e9sum\u00e9s/Needs Review",
+          'display_name' => 'Needs Review',
+          'type' => 'directory',
+          'size' => nil,
+          'mtime' => '2014-05-15T20:26:18+00:00',
+          'crc32' => nil,
+          'md5' => nil,
           'provided_mtime' => '2014-05-15T20:26:18+00:00',
           'permissions' => 'rwd',
           'subfolders_locked?' => false,
         },
         {
-          "id" => 2,
-          "path" => "Engineering Candidates/R\u00e9sum\u00e9s/John Smith.docx",
-          "display_name" => "John Smith.docx",
-          "type" => "file",
-          "size" => 61_440,
-          "mtime" => "2014-05-15T18:34:51+00:00",
-          "crc32" => "f341cc60",
-          "md5" => "b67236f5bcd29d1307d574fb9fe585b5",
+          'id' => 2,
+          'path' => "Engineering Candidates/R\u00e9sum\u00e9s/John Smith.docx",
+          'display_name' => 'John Smith.docx',
+          'type' => 'file',
+          'size' => 61_440,
+          'mtime' => '2014-05-15T18:34:51+00:00',
+          'crc32' => 'f341cc60',
+          'md5' => 'b67236f5bcd29d1307d574fb9fe585b5',
           'provided_mtime' => '2014-05-15T18:34:51+00:00',
           'permissions' => 'rwd',
           'subfolders_locked?' => false,
         },
         {
-          "id" => 3,
-          "path" => "Engineering Candidates/R\u00e9sum\u00e9s/Mary Jones.pdf",
-          "display_name" => "Mary Jones.pdf",
-          "type" => "file",
-          "size" => 19_946,
-          "mtime" => "2014-05-15T18:36:03+00:00",
-          "crc32" => "a720a234",
-          "md5" => "02c442ecc0d499bf443fa8fd444c2933",
+          'id' => 3,
+          'path' => "Engineering Candidates/R\u00e9sum\u00e9s/Mary Jones.pdf",
+          'display_name' => 'Mary Jones.pdf',
+          'type' => 'file',
+          'size' => 19_946,
+          'mtime' => '2014-05-15T18:36:03+00:00',
+          'crc32' => 'a720a234',
+          'md5' => '02c442ecc0d499bf443fa8fd444c2933',
           'provided_mtime' => '2014-05-15T18:36:03+00:00',
           'permissions' => 'rwd',
           'subfolders_locked?' => false,
@@ -76,12 +76,12 @@ RSpec.describe BrickFTP::API::Folder, type: :lib do
       folders = subject
       expect(folders.last.id).to eq 3
       expect(folders.last.path).to eq "Engineering Candidates/R\u00e9sum\u00e9s/Mary Jones.pdf"
-      expect(folders.last.display_name).to eq "Mary Jones.pdf"
-      expect(folders.last.type).to eq "file"
+      expect(folders.last.display_name).to eq 'Mary Jones.pdf'
+      expect(folders.last.type).to eq 'file'
       expect(folders.last.size).to eq 19_946
-      expect(folders.last.mtime).to eq "2014-05-15T18:36:03+00:00"
-      expect(folders.last.crc32).to eq "a720a234"
-      expect(folders.last.md5).to eq "02c442ecc0d499bf443fa8fd444c2933"
+      expect(folders.last.mtime).to eq '2014-05-15T18:36:03+00:00'
+      expect(folders.last.crc32).to eq 'a720a234'
+      expect(folders.last.md5).to eq '02c442ecc0d499bf443fa8fd444c2933'
       expect(folders.last.provided_mtime).to eq '2014-05-15T18:36:03+00:00'
       expect(folders.last.permissions).to eq 'rwd'
       expect(folders.last.subfolders_locked?).to eq false

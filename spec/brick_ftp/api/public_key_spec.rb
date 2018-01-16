@@ -9,10 +9,10 @@ RSpec.describe BrickFTP::API::PublicKey, type: :lib do
     before do
       public_keys = [
         {
-          "id" => 1217,
-          "title" => "TEST",
-          "fingerprint" => "1b:11:87:39:5c:88:05:ec:cc:41:33:90:b0:70:e2:8b",
-          "created_at" => "2016-09-30T01:14:26-04:00"
+          'id' => 1217,
+          'title' => 'TEST',
+          'fingerprint' => '1b:11:87:39:5c:88:05:ec:cc:41:33:90:b0:70:e2:8b',
+          'created_at' => '2016-09-30T01:14:26-04:00'
         }
       ]
       stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/users/1/public_keys.json')
@@ -43,10 +43,10 @@ RSpec.describe BrickFTP::API::PublicKey, type: :lib do
 
     before do
       public_key = {
-        "id" => 1217,
-        "title" => "TEST",
-        "fingerprint" => "1b:11:87:39:5c:88:05:ec:cc:41:33:90:b0:70:e2:8b",
-        "created_at" => "2016-09-30T01:14:26-04:00"
+        'id' => 1217,
+        'title' => 'TEST',
+        'fingerprint' => '1b:11:87:39:5c:88:05:ec:cc:41:33:90:b0:70:e2:8b',
+        'created_at' => '2016-09-30T01:14:26-04:00'
       }
       stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/users/1/public_keys.json')
         .with(body: attributes.to_json, basic_auth: ['xxxxxxxx', 'x'])

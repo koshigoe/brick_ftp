@@ -9,26 +9,26 @@ RSpec.describe BrickFTP::API::History::File, type: :lib do
     let(:history) do
       [
         {
-          "id" => 878_672_966,
-          "when" => "2015-09-30T18:58:39-04:00",
-          "user_id" => 54_321,
-          "username" => "justice.london",
-          "action" => "read",
-          "path" => "archive.zip",
-          "source" => "archive.zip",
-          "ip" => "86.75.30.9",
-          "interface" => "sftp"
+          'id' => 878_672_966,
+          'when' => '2015-09-30T18:58:39-04:00',
+          'user_id' => 54_321,
+          'username' => 'justice.london',
+          'action' => 'read',
+          'path' => 'archive.zip',
+          'source' => 'archive.zip',
+          'ip' => '86.75.30.9',
+          'interface' => 'sftp'
         },
         {
-          "id" => 878_672_238,
-          "when" => "2015-09-30T18:58:16-04:00",
-          "user_id" => 12_345,
-          "username" => "fred.admin",
-          "action" => "read",
-          "path" => "archive.zip",
-          "source" => "archive.zip",
-          "ip" => "172.19.113.171",
-          "interface" => "sftp"
+          'id' => 878_672_238,
+          'when' => '2015-09-30T18:58:16-04:00',
+          'user_id' => 12_345,
+          'username' => 'fred.admin',
+          'action' => 'read',
+          'path' => 'archive.zip',
+          'source' => 'archive.zip',
+          'ip' => '172.19.113.171',
+          'interface' => 'sftp'
         }
       ]
     end

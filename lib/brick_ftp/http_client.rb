@@ -99,7 +99,7 @@ module BrickFTP
         req.body = params.to_json unless params.empty?
       when params.is_a?(IO)
         req.body_stream = params
-        req["Content-Length"] = params.size
+        req['Content-Length'] = params.size
       end
 
       start = Time.now

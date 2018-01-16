@@ -17,35 +17,35 @@ RSpec.describe BrickFTP::API::History::Site, type: :lib do
     let(:history) do
       [
         {
-          "id" => 869_831_023,
-          "when" => "2015-09-19T22:30:20-04:00",
-          "user_id" => 12_345,
-          "username" => "fred.admin",
-          "action" => "login",
-          "ip" => "172.19.113.171",
-          "interface" => "ftp"
+          'id' => 869_831_023,
+          'when' => '2015-09-19T22:30:20-04:00',
+          'user_id' => 12_345,
+          'username' => 'fred.admin',
+          'action' => 'login',
+          'ip' => '172.19.113.171',
+          'interface' => 'ftp'
         },
         {
-          "id" => 814_350_298,
-          "when" => "2015-06-25T14:32:20-04:00",
-          "user_id" => 12_345,
-          "username" => "fred.admin",
-          "action" => "permission_create",
-          "path" => "Files for bob.user",
-          "source" => "Files for bob.user",
-          "targets" => {
-            "user" => {
-              "id" => 23_451,
-              "username" => "bob.user"
+          'id' => 814_350_298,
+          'when' => '2015-06-25T14:32:20-04:00',
+          'user_id' => 12_345,
+          'username' => 'fred.admin',
+          'action' => 'permission_create',
+          'path' => 'Files for bob.user',
+          'source' => 'Files for bob.user',
+          'targets' => {
+            'user' => {
+              'id' => 23_451,
+              'username' => 'bob.user'
             },
-            "permission" => {
-              "id" => 67_543,
-              "permission" => "full",
-              "recursive" => true
+            'permission' => {
+              'id' => 67_543,
+              'permission' => 'full',
+              'recursive' => true
             }
           },
-          "ip" => "172.19.113.171",
-          "interface" => "web"
+          'ip' => '172.19.113.171',
+          'interface' => 'web'
         }
       ]
     end
@@ -71,14 +71,14 @@ RSpec.describe BrickFTP::API::History::Site, type: :lib do
       expect(history.last.source).to eq 'Files for bob.user'
       expect(history.last.targets)
         .to eq(
-          "user" => {
-            "id" => 23_451,
-            "username" => "bob.user"
+          'user' => {
+            'id' => 23_451,
+            'username' => 'bob.user'
           },
-          "permission" => {
-            "id" => 67_543,
-            "permission" => "full",
-            "recursive" => true
+          'permission' => {
+            'id' => 67_543,
+            'permission' => 'full',
+            'recursive' => true
           }
         )
       expect(history.last.ip).to eq '172.19.113.171'

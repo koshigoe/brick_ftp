@@ -9,25 +9,25 @@ RSpec.describe BrickFTP::API::Bundle, type: :lib do
     let(:bundles) do
       [
         {
-          "id" => 212_228,
-          "code" => "4d3d3d3d3",
-          "url" => "https://site.brickftp.com/f/4d3d3d3d3",
-          "user_id" => 12_345,
-          "created_at" => "2015-10-14T12:52:25-04:00",
-          "paths" => [
-            "accounts.xls"
+          'id' => 212_228,
+          'code' => '4d3d3d3d3',
+          'url' => 'https://site.brickftp.com/f/4d3d3d3d3',
+          'user_id' => 12_345,
+          'created_at' => '2015-10-14T12:52:25-04:00',
+          'paths' => [
+            'accounts.xls'
           ]
         },
         {
-          "id" => 212_468,
-          "code" => "012345678",
-          "url" => "https://site.brickftp.com/f/012345678",
-          "user_id" => 12_345,
-          "created_at" => "2015-10-14T19:07:45-04:00",
-          "paths" => [
-            "cloud/images",
-            "cloud/documents",
-            "backup.zip"
+          'id' => 212_468,
+          'code' => '012345678',
+          'url' => 'https://site.brickftp.com/f/012345678',
+          'user_id' => 12_345,
+          'created_at' => '2015-10-14T19:07:45-04:00',
+          'paths' => [
+            'cloud/images',
+            'cloud/documents',
+            'backup.zip'
           ]
         }
       ]
@@ -46,11 +46,11 @@ RSpec.describe BrickFTP::API::Bundle, type: :lib do
     it 'set attributes' do
       groups = subject
       expect(groups.first.id).to eq 212_228
-      expect(groups.first.code).to eq "4d3d3d3d3"
-      expect(groups.first.url).to eq "https://site.brickftp.com/f/4d3d3d3d3"
+      expect(groups.first.code).to eq '4d3d3d3d3'
+      expect(groups.first.url).to eq 'https://site.brickftp.com/f/4d3d3d3d3'
       expect(groups.first.user_id).to eq 12_345
-      expect(groups.first.created_at).to eq "2015-10-14T12:52:25-04:00"
-      expect(groups.first.paths).to eq ["accounts.xls"]
+      expect(groups.first.created_at).to eq '2015-10-14T12:52:25-04:00'
+      expect(groups.first.paths).to eq ['accounts.xls']
     end
   end
 
@@ -59,13 +59,13 @@ RSpec.describe BrickFTP::API::Bundle, type: :lib do
 
     let(:bundle) do
       {
-        "id" =>  212_228,
-        "code" =>  "4d3d3d3d3",
-        "url" => "https://site.brickftp.com/f/4d3d3d3d3",
-        "user_id" =>  12_345,
-        "created_at" =>  "2015-10-14T12:52:25-04:00",
-        "paths" =>  [
-          "accounts.xls"
+        'id' =>  212_228,
+        'code' =>  '4d3d3d3d3',
+        'url' => 'https://site.brickftp.com/f/4d3d3d3d3',
+        'user_id' =>  12_345,
+        'created_at' =>  '2015-10-14T12:52:25-04:00',
+        'paths' =>  [
+          'accounts.xls'
         ]
       }
     end
@@ -84,11 +84,11 @@ RSpec.describe BrickFTP::API::Bundle, type: :lib do
       it 'set attributes' do
         group = subject
         expect(group.id).to eq 212_228
-        expect(group.code).to eq "4d3d3d3d3"
-        expect(group.url).to eq "https://site.brickftp.com/f/4d3d3d3d3"
+        expect(group.code).to eq '4d3d3d3d3'
+        expect(group.url).to eq 'https://site.brickftp.com/f/4d3d3d3d3'
         expect(group.user_id).to eq 12_345
-        expect(group.created_at).to eq "2015-10-14T12:52:25-04:00"
-        expect(group.paths).to eq ["accounts.xls"]
+        expect(group.created_at).to eq '2015-10-14T12:52:25-04:00'
+        expect(group.paths).to eq ['accounts.xls']
       end
     end
 
@@ -111,23 +111,23 @@ RSpec.describe BrickFTP::API::Bundle, type: :lib do
     context 'success' do
       let(:params) do
         {
-          "paths" =>  [
-            "cloud/images",
-            "backup.zip"
+          'paths' =>  [
+            'cloud/images',
+            'backup.zip'
           ]
         }
       end
 
       let(:bundle) do
         {
-          "id" =>  221_260,
-          "code" =>  "a0b1c2d3e",
-          "url" => "https://site.brickftp.com/f/a0b1c2d3e",
-          "user_id" =>  nil,
-          "created_at" =>  "2015-11-12T15:49:30-05:00",
-          "paths" =>  [
-            "cloud/images",
-            "backup.zip"
+          'id' =>  221_260,
+          'code' =>  'a0b1c2d3e',
+          'url' => 'https://site.brickftp.com/f/a0b1c2d3e',
+          'user_id' =>  nil,
+          'created_at' =>  '2015-11-12T15:49:30-05:00',
+          'paths' =>  [
+            'cloud/images',
+            'backup.zip'
           ]
         }
       end
@@ -145,14 +145,14 @@ RSpec.describe BrickFTP::API::Bundle, type: :lib do
       it 'set attributes' do
         group = subject
         expect(group.id).to eq 221_260
-        expect(group.code).to eq "a0b1c2d3e"
+        expect(group.code).to eq 'a0b1c2d3e'
         expect(group.url).to eq 'https://site.brickftp.com/f/a0b1c2d3e'
         expect(group.user_id).to eq nil
         expect(group.created_at).to eq '2015-11-12T15:49:30-05:00'
         expect(group.paths)
           .to eq([
-                   "cloud/images",
-                   "backup.zip"
+                   'cloud/images',
+                   'backup.zip'
                  ])
       end
     end

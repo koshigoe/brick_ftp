@@ -9,35 +9,35 @@ RSpec.describe BrickFTP::API::BundleContent, type: :lib do
     context 'success' do
       let(:params) do
         {
-          code: "a0b1c2d3e",
-          host: "justin.brickftp.com",
+          code: 'a0b1c2d3e',
+          host: 'justin.brickftp.com',
         }
       end
 
       let(:request_params) do
         {
-          code: "a0b1c2d3e",
-          host: "justin.brickftp.com",
+          code: 'a0b1c2d3e',
+          host: 'justin.brickftp.com',
         }
       end
 
       let(:contents) do
         [
           {
-            "id" => 1,
-            "path" => "cloud",
-            "type" => "directory",
-            "size" => nil,
-            "crc32" => nil,
-            "md5" => nil
+            'id' => 1,
+            'path' => 'cloud',
+            'type' => 'directory',
+            'size' => nil,
+            'crc32' => nil,
+            'md5' => nil
           },
           {
-            "id" => 2,
-            "path" => "backup.zip",
-            "type" => "file",
-            "size" => 209_715_200,
-            "crc32" => "674135a9",
-            "md5" => "3389a0b30e05ef6613ccbdae5d9ec0bd"
+            'id' => 2,
+            'path' => 'backup.zip',
+            'type' => 'file',
+            'size' => 209_715_200,
+            'crc32' => '674135a9',
+            'md5' => '3389a0b30e05ef6613ccbdae5d9ec0bd'
           }
         ]
       end
@@ -56,7 +56,7 @@ RSpec.describe BrickFTP::API::BundleContent, type: :lib do
         it 'set attributes' do
           contents = subject
           expect(contents.last.id).to eq 2
-          expect(contents.last.path).to eq "backup.zip"
+          expect(contents.last.path).to eq 'backup.zip'
           expect(contents.last.type).to eq 'file'
           expect(contents.last.size).to eq 209_715_200
           expect(contents.last.crc32).to eq '674135a9'

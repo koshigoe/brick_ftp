@@ -9,22 +9,22 @@ RSpec.describe BrickFTP::API::History::Login, type: :lib do
     let(:history) do
       [
         {
-          "id" => 904_593_281,
-          "when" => "2015-10-28T14:03:08-04:00",
-          "user_id" => 54_321,
-          "username" => "justice.london",
-          "action" => "login",
-          "ip" => "86.75.30.9",
-          "interface" => "web"
+          'id' => 904_593_281,
+          'when' => '2015-10-28T14:03:08-04:00',
+          'user_id' => 54_321,
+          'username' => 'justice.london',
+          'action' => 'login',
+          'ip' => '86.75.30.9',
+          'interface' => 'web'
         },
         {
-          "id" => 903_766_417,
-          "when" => "2015-10-27T15:06:43-04:00",
-          "user_id" => 12_345,
-          "username" => "fred.admin",
-          "action" => "login",
-          "ip" => "172.19.113.171",
-          "interface" => "web"
+          'id' => 903_766_417,
+          'when' => '2015-10-27T15:06:43-04:00',
+          'user_id' => 12_345,
+          'username' => 'fred.admin',
+          'action' => 'login',
+          'ip' => '172.19.113.171',
+          'interface' => 'web'
         }
       ]
     end

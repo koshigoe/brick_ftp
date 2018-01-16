@@ -9,24 +9,24 @@ RSpec.describe BrickFTP::API::History::User, type: :lib do
     let(:history) do
       [
         {
-          "id" => 903_767_970,
-          "when" => "2015-10-27T15:09:55-04:00",
-          "user_id" => 54_321,
-          "username" => "justice.london",
-          "action" => "create",
-          "path" => "accounts.xls",
-          "destination" => "accounts.xls",
-          "ip" => "86.75.30.9",
-          "interface" => "ftp"
+          'id' => 903_767_970,
+          'when' => '2015-10-27T15:09:55-04:00',
+          'user_id' => 54_321,
+          'username' => 'justice.london',
+          'action' => 'create',
+          'path' => 'accounts.xls',
+          'destination' => 'accounts.xls',
+          'ip' => '86.75.30.9',
+          'interface' => 'ftp'
         },
         {
-          "id" => 903_766_146,
-          "when" => "2015-10-27T15:05:55-04:00",
-          "user_id" => 54_321,
-          "username" => "justice.london",
-          "action" => "login",
-          "ip" => "86.75.30.9",
-          "interface" => "ftp"
+          'id' => 903_766_146,
+          'when' => '2015-10-27T15:05:55-04:00',
+          'user_id' => 54_321,
+          'username' => 'justice.london',
+          'action' => 'login',
+          'ip' => '86.75.30.9',
+          'interface' => 'ftp'
         }
       ]
     end
