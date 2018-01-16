@@ -1,9 +1,9 @@
 module BrickFTP
   module API
     class BundleContent < Base
-      endpoint :post, :index, ->(params) {
+      endpoint :post, :index, ->(params) do
         params.key?(:path) ? '/api/rest/v1/bundles/folders/%{path}' : '/api/rest/v1/bundles/folders'
-      }
+      end
 
       attribute :id
       attribute :path
