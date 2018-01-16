@@ -23,10 +23,10 @@ module BrickFTP
     attr_accessor :logger
     # Log level
     # @return [Integer]
-    attr_accessor :log_level
+    attr_reader :log_level
     # Log formatter
     # @return [Logger::Formatter]
-    attr_accessor :log_formatter
+    attr_reader :log_formatter
     # Open timeout
     # @return [Integer]
     attr_accessor :open_timeout
@@ -104,7 +104,7 @@ module BrickFTP
 
     private
 
-    attr_reader :inifile, :dirty_attributes
+    attr_reader :inifile
 
     def load_config_file(config_file_path)
       @inifile = if config_file_path && File.exist?(config_file_path)
