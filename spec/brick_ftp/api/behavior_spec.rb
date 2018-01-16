@@ -206,8 +206,8 @@ RSpec.describe BrickFTP::API::Behavior, type: :lib do
 
     before do
       stub_request(:delete, 'https://koshigoe.brickftp.com/api/rest/v1/behaviors/39.json')
-          .with(basic_auth: ['xxxxxxxx', 'x'])
-          .to_return(body: '[]')
+        .with(basic_auth: ['xxxxxxxx', 'x'])
+        .to_return(body: '[]')
     end
 
     it 'return true' do
