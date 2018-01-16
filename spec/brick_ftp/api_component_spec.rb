@@ -16,9 +16,9 @@ RSpec.describe BrickFTP::APIComponent, type: :lib do
       page: 1,
       per_page: 1,
       search: 'a/',
-     :'sort_by[path]' => 'asc',
-     :'sort_by[size]' => 'asc',
-     :'sort_by[modified_at_datetime]' => 'asc',
+      :'sort_by[path]' => 'asc',
+      :'sort_by[size]' => 'asc',
+      :'sort_by[modified_at_datetime]' => 'asc',
     }
   end
 
