@@ -104,14 +104,14 @@ module BrickFTP
 
       start = Time.now
       begin
-        logger.debug 'Request headers: %{headers}' % { headers: req.each_capitalized.map { |k, v| "#{k}: #{v}" } }
-        logger.debug 'Request body: %{body}' % { body: req.body }
+        logger.debug format('Request headers: %{headers}', headers: req.each_capitalized.map { |k, v| "#{k}: #{v}" })
+        logger.debug format('Request body: %{body}', body: req.body)
         @conn.request(req).tap do |res|
-          logger.debug 'Response headers: %{headers}' % { headers: res.each_capitalized.map { |k, v| "#{k}: #{v}" } }
-          logger.debug 'Response body: %{body}' % { body: res.body }
+          logger.debug format('Response headers: %{headers}', headers: res.each_capitalized.map { |k, v| "#{k}: #{v}" })
+          logger.debug format('Response body: %{body}', body: res.body)
         end
       ensure
-        logger.info 'Complete %{method} %{path} (%{time} ms)' % { method: method.upcase, path: path, time: (Time.now - start) * 1000 }
+        logger.info format('Complete %{method} %{path} (%{time} ms)', method: method.upcase, path: path, time: (Time.now - start) * 1000)
       end
     end
 
