@@ -20,14 +20,14 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.12"
+  spec.add_development_dependency "pry", "~> 0.10"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "rubocop", "~> 0.52"
   spec.add_development_dependency "webmock", "~> 2.1"
   spec.add_development_dependency "yard", "~> 0.9"
-  spec.add_development_dependency "pry", "~> 0.10"
-  spec.add_development_dependency "rubocop", "~> 0.52"
 
   spec.add_dependency 'deep_hash_transform', '~> 1.0'
-  spec.add_dependency 'thor', '~> 0.19.1'
   spec.add_dependency 'inifile', '~> 3.0.0'
+  spec.add_dependency 'thor', '~> 0.19.1'
 end
