@@ -80,7 +80,7 @@ RSpec.describe BrickFTP::API::History::Site, type: :lib do
                 "permission" => "full",
                 "recursive" => true
               }
-            )
+        )
       expect(history.last.ip).to eq '172.19.113.171'
       expect(history.last.interface).to eq 'web'
     end
