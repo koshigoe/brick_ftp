@@ -35,7 +35,7 @@ RSpec.describe BrickFTP::API::Bundle, type: :lib do
 
     before do
       stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/bundles.json')
-        .with(basic_auth: ['xxxxxxxx', 'x'])
+        .with(basic_auth: %w[xxxxxxxx x])
         .to_return(body: bundles.to_json)
     end
 
@@ -73,7 +73,7 @@ RSpec.describe BrickFTP::API::Bundle, type: :lib do
     context 'exists' do
       before do
         stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/bundles/212228.json')
-          .with(basic_auth: ['xxxxxxxx', 'x'])
+          .with(basic_auth: %w[xxxxxxxx x])
           .to_return(body: bundle.to_json)
       end
 
@@ -95,7 +95,7 @@ RSpec.describe BrickFTP::API::Bundle, type: :lib do
     context 'not exists' do
       before do
         stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/bundles/212228.json')
-          .with(basic_auth: ['xxxxxxxx', 'x'])
+          .with(basic_auth: %w[xxxxxxxx x])
           .to_return(body: '[]')
       end
 
@@ -134,7 +134,7 @@ RSpec.describe BrickFTP::API::Bundle, type: :lib do
 
       before do
         stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/bundles.json')
-          .with(body: params.to_json, basic_auth: ['xxxxxxxx', 'x'])
+          .with(body: params.to_json, basic_auth: %w[xxxxxxxx x])
           .to_return(status: 201, body: bundle.to_json)
       end
 
@@ -162,7 +162,7 @@ RSpec.describe BrickFTP::API::Bundle, type: :lib do
 
       before do
         stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/bundles.json')
-          .with(basic_auth: ['xxxxxxxx', 'x'])
+          .with(basic_auth: %w[xxxxxxxx x])
           .to_return(status: 500, body: { 'error' => 'xxxxxxxx', 'http-code' => '500' }.to_json)
       end
 
@@ -179,7 +179,7 @@ RSpec.describe BrickFTP::API::Bundle, type: :lib do
 
     before do
       stub_request(:delete, 'https://koshigoe.brickftp.com/api/rest/v1/bundles/125108.json')
-        .with(basic_auth: ['xxxxxxxx', 'x'])
+        .with(basic_auth: %w[xxxxxxxx x])
         .to_return(body: '[]')
     end
 

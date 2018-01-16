@@ -56,7 +56,7 @@ RSpec.describe BrickFTP::API::SiteUsage, type: :lib do
         'updated_at' => '2016-10-19T00:10:02-04:00',
       }
       stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/site/usage')
-        .with(basic_auth: ['xxxxxxxx', 'x'])
+        .with(basic_auth: %w[xxxxxxxx x])
         .to_return(body: usage.to_json)
     end
 

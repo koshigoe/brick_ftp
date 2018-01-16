@@ -43,7 +43,7 @@ RSpec.describe BrickFTP::API::FileOperation::Upload, type: :lib do
 
       before do
         stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/files/NewFile.txt')
-          .with(basic_auth: ['xxxxxxxx', 'x'], body: { action: 'put' }.to_json)
+          .with(basic_auth: %w[xxxxxxxx x], body: { action: 'put' }.to_json)
           .to_return(status: 200, body: step1.to_json)
 
         stub_request(:put, 'https://s3.amazonaws.com/objects.brickftp.com/metadata/1/6eee7ad0-bf75-0131-71fc-0eeabbd7a8b4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIEWLY3MN4YGZQOWA%2F20140516%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20140516T221456Z&X-Amz-Expires=180&X-Amz-SignedHeaders=host&partNumber=1&uploadId=xQDI8q.aDdWdWIvSpRGLOFqnPQqJoMGZ88r9g_q7z2gW6U4rNZx8Zb_Wh9m07TDJM1x4rCTM18UCzdXaYjJu.SBH89LAiA4ye698TfMPyam4BO7ifs7HLuiBPrEW.zIz&X-Amz-Signature=69bc7be37c8c42096e78aa4ff752f073ea890481c5f76eac5ad40a5ab9466997')
@@ -51,7 +51,7 @@ RSpec.describe BrickFTP::API::FileOperation::Upload, type: :lib do
           .to_return(status: 200, body: '')
 
         stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/files/NewFile.txt')
-          .with(basic_auth: ['xxxxxxxx', 'x'], body: { action: 'end', ref: 'put-378670' }.to_json)
+          .with(basic_auth: %w[xxxxxxxx x], body: { action: 'end', ref: 'put-378670' }.to_json)
           .to_return(status: 200, body: step3.to_json)
       end
 
@@ -87,7 +87,7 @@ RSpec.describe BrickFTP::API::FileOperation::Upload, type: :lib do
 
       before do
         stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/files/NewFile.txt')
-          .with(basic_auth: ['xxxxxxxx', 'x'])
+          .with(basic_auth: %w[xxxxxxxx x])
           .to_return(status: 500, body: { 'error' => 'xxxxxxxx', 'http-code' => '500' }.to_json)
       end
 

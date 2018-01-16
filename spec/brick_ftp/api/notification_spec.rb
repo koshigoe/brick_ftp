@@ -25,7 +25,7 @@ RSpec.describe BrickFTP::API::Notification, type: :lib do
 
     before do
       stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/notifications.json')
-        .with(basic_auth: ['xxxxxxxx', 'x'])
+        .with(basic_auth: %w[xxxxxxxx x])
         .to_return(body: notifications.to_json)
     end
 
@@ -64,7 +64,7 @@ RSpec.describe BrickFTP::API::Notification, type: :lib do
 
       before do
         stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/notifications.json')
-          .with(body: params.to_json, basic_auth: ['xxxxxxxx', 'x'])
+          .with(body: params.to_json, basic_auth: %w[xxxxxxxx x])
           .to_return(status: 201, body: notification.to_json)
       end
 
@@ -86,7 +86,7 @@ RSpec.describe BrickFTP::API::Notification, type: :lib do
 
       before do
         stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/notifications.json')
-          .with(basic_auth: ['xxxxxxxx', 'x'])
+          .with(basic_auth: %w[xxxxxxxx x])
           .to_return(status: 500, body: { 'error' => 'xxxxxxxx', 'http-code' => '500' }.to_json)
       end
 
@@ -103,7 +103,7 @@ RSpec.describe BrickFTP::API::Notification, type: :lib do
 
     before do
       stub_request(:delete, 'https://koshigoe.brickftp.com/api/rest/v1/notifications/125108.json')
-        .with(basic_auth: ['xxxxxxxx', 'x'])
+        .with(basic_auth: %w[xxxxxxxx x])
         .to_return(body: '[]')
     end
 

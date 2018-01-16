@@ -46,7 +46,7 @@ RSpec.describe BrickFTP::API::User, type: :lib do
         },
       ]
       stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/users.json')
-        .with(basic_auth: ['xxxxxxxx', 'x'])
+        .with(basic_auth: %w[xxxxxxxx x])
         .to_return(body: users.to_json)
     end
 
@@ -99,7 +99,7 @@ RSpec.describe BrickFTP::API::User, type: :lib do
           'user_root' => 'API',
         }
         stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/users/2.json')
-          .with(basic_auth: ['xxxxxxxx', 'x'])
+          .with(basic_auth: %w[xxxxxxxx x])
           .to_return(body: user.to_json)
       end
 
@@ -131,7 +131,7 @@ RSpec.describe BrickFTP::API::User, type: :lib do
     context 'not exists' do
       before do
         stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/users/2.json')
-          .with(basic_auth: ['xxxxxxxx', 'x'])
+          .with(basic_auth: %w[xxxxxxxx x])
           .to_return(body: '[]')
       end
 
@@ -193,7 +193,7 @@ RSpec.describe BrickFTP::API::User, type: :lib do
           'site_admin' => false,
         }
         stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/users.json')
-          .with(body: params.to_json, basic_auth: ['xxxxxxxx', 'x'])
+          .with(body: params.to_json, basic_auth: %w[xxxxxxxx x])
           .to_return(status: 201, body: body.to_json)
       end
 
@@ -233,7 +233,7 @@ RSpec.describe BrickFTP::API::User, type: :lib do
 
       before do
         stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/users.json')
-          .with(basic_auth: ['xxxxxxxx', 'x'])
+          .with(basic_auth: %w[xxxxxxxx x])
           .to_return(status: 500, body: { 'error' => 'xxxxxxxx', 'http-code' => '500' }.to_json)
       end
 
@@ -276,7 +276,7 @@ RSpec.describe BrickFTP::API::User, type: :lib do
           'site_admin' => false,
         }
         stub_request(:put, 'https://koshigoe.brickftp.com/api/rest/v1/users/125108.json')
-          .with(body: params.to_json, basic_auth: ['xxxxxxxx', 'x'])
+          .with(body: params.to_json, basic_auth: %w[xxxxxxxx x])
           .to_return(body: body.to_json)
       end
 
@@ -292,7 +292,7 @@ RSpec.describe BrickFTP::API::User, type: :lib do
     context 'failure' do
       before do
         stub_request(:put, 'https://koshigoe.brickftp.com/api/rest/v1/users/125108.json')
-          .with(basic_auth: ['xxxxxxxx', 'x'])
+          .with(basic_auth: %w[xxxxxxxx x])
           .to_return(status: 500, body: { 'error' => 'xxxxxxxx', 'http-code' => '500' }.to_json)
       end
 
@@ -309,7 +309,7 @@ RSpec.describe BrickFTP::API::User, type: :lib do
 
     before do
       stub_request(:delete, 'https://koshigoe.brickftp.com/api/rest/v1/users/125108.json')
-        .with(basic_auth: ['xxxxxxxx', 'x'])
+        .with(basic_auth: %w[xxxxxxxx x])
         .to_return(body: '[]')
     end
 

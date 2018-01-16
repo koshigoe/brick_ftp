@@ -16,7 +16,7 @@ RSpec.describe BrickFTP::API::PublicKey, type: :lib do
         },
       ]
       stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/users/1/public_keys.json')
-        .with(basic_auth: ['xxxxxxxx', 'x'])
+        .with(basic_auth: %w[xxxxxxxx x])
         .to_return(body: public_keys.to_json)
     end
 
@@ -49,7 +49,7 @@ RSpec.describe BrickFTP::API::PublicKey, type: :lib do
         'created_at' => '2016-09-30T01:14:26-04:00',
       }
       stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/users/1/public_keys.json')
-        .with(body: attributes.to_json, basic_auth: ['xxxxxxxx', 'x'])
+        .with(body: attributes.to_json, basic_auth: %w[xxxxxxxx x])
         .to_return(status: 201, body: public_key.to_json)
     end
 
@@ -80,7 +80,7 @@ RSpec.describe BrickFTP::API::PublicKey, type: :lib do
 
     before do
       stub_request(:delete, 'https://koshigoe.brickftp.com/api/rest/v1/public_keys/1.json')
-        .with(basic_auth: ['xxxxxxxx', 'x'])
+        .with(basic_auth: %w[xxxxxxxx x])
         .to_return(body: '[]')
     end
 

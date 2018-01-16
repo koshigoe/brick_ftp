@@ -64,7 +64,7 @@ RSpec.describe BrickFTP::API::Folder, type: :lib do
 
     before do
       stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/folders/Engineering%20Candidates%2FR%C3%A9sum%C3%A9s?page=1&per_page=10&search=Engineering%20Candidates%2F&sort_by%5Bmodified_at_datetime%5D=asc&sort_by%5Bpath%5D=asc&sort_by%5Bsize%5D=asc')
-        .with(basic_auth: ['xxxxxxxx', 'x'])
+        .with(basic_auth: %w[xxxxxxxx x])
         .to_return(body: folders.to_json)
     end
 
@@ -94,7 +94,7 @@ RSpec.describe BrickFTP::API::Folder, type: :lib do
     context 'success' do
       before do
         stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/folders/path')
-          .with(basic_auth: ['xxxxxxxx', 'x'])
+          .with(basic_auth: %w[xxxxxxxx x])
           .to_return(status: 201, body: '[]')
       end
 
@@ -106,7 +106,7 @@ RSpec.describe BrickFTP::API::Folder, type: :lib do
     context 'failure' do
       before do
         stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/folders/path')
-          .with(basic_auth: ['xxxxxxxx', 'x'])
+          .with(basic_auth: %w[xxxxxxxx x])
           .to_return(status: 500, body: { 'error' => 'xxxxxxxx', 'http-code' => '500' }.to_json)
       end
 

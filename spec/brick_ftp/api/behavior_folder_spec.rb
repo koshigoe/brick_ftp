@@ -29,7 +29,7 @@ RSpec.describe BrickFTP::API::FolderBehavior, type: :lib do
 
     before do
       stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/behaviors/folders/Incoming?recursive=1')
-        .with(basic_auth: ['xxxxxxxx', 'x'])
+        .with(basic_auth: %w[xxxxxxxx x])
         .to_return(status: 200, body: behaviors.to_json)
     end
 

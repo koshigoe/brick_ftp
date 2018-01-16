@@ -27,7 +27,7 @@ RSpec.describe BrickFTP::API::File, type: :lib do
       context 'without query action=stat' do
         before do
           stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/files/Engineering%20Candidates%2FJohn%20Smith.docx')
-            .with(basic_auth: ['xxxxxxxx', 'x'])
+            .with(basic_auth: %w[xxxxxxxx x])
             .to_return(body: file.to_json)
         end
 
@@ -57,7 +57,7 @@ RSpec.describe BrickFTP::API::File, type: :lib do
         before do
           file.delete('download_uri')
           stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/files/Engineering%20Candidates%2FJohn%20Smith.docx?action=stat')
-            .with(basic_auth: ['xxxxxxxx', 'x'])
+            .with(basic_auth: %w[xxxxxxxx x])
             .to_return(body: file.to_json)
         end
 
@@ -85,7 +85,7 @@ RSpec.describe BrickFTP::API::File, type: :lib do
     context 'not exists' do
       before do
         stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/files/Engineering%20Candidates%2FJohn%20Smith.docx')
-          .with(basic_auth: ['xxxxxxxx', 'x'])
+          .with(basic_auth: %w[xxxxxxxx x])
           .to_return(body: '[]')
       end
 
@@ -103,7 +103,7 @@ RSpec.describe BrickFTP::API::File, type: :lib do
 
       before do
         stub_request(:delete, 'https://koshigoe.brickftp.com/api/rest/v1/files/Engineering%20Candidates%2FJohn%20Smith.docx')
-          .with(basic_auth: ['xxxxxxxx', 'x'])
+          .with(basic_auth: %w[xxxxxxxx x])
           .to_return(body: '[]')
       end
 
@@ -119,7 +119,7 @@ RSpec.describe BrickFTP::API::File, type: :lib do
 
       before do
         stub_request(:delete, 'https://koshigoe.brickftp.com/api/rest/v1/files/Engineering%20Candidates')
-          .with(basic_auth: ['xxxxxxxx', 'x'], headers: { 'Depth' => 'infinity' })
+          .with(basic_auth: %w[xxxxxxxx x], headers: { 'Depth' => 'infinity' })
           .to_return(body: '[]')
       end
 

@@ -52,7 +52,7 @@ RSpec.describe BrickFTP::API::History::Site, type: :lib do
 
     before do
       stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/history.json?page=1&per_page=2&start_at=2015-09-19T22%3A30%3A20-04%3A00')
-        .with(basic_auth: ['xxxxxxxx', 'x'])
+        .with(basic_auth: %w[xxxxxxxx x])
         .to_return(body: history.to_json)
     end
 

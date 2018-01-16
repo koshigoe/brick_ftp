@@ -33,7 +33,7 @@ RSpec.describe BrickFTP::API::History::User, type: :lib do
 
     before do
       stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/history/users/1.json')
-        .with(basic_auth: ['xxxxxxxx', 'x'])
+        .with(basic_auth: %w[xxxxxxxx x])
         .to_return(body: history.to_json)
     end
 

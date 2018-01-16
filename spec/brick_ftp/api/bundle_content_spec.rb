@@ -45,7 +45,7 @@ RSpec.describe BrickFTP::API::BundleContent, type: :lib do
       shared_examples_for 'BundleContent' do
         before do
           stub_request(:post, request_url)
-            .with(body: request_params.to_json, basic_auth: ['xxxxxxxx', 'x'])
+            .with(body: request_params.to_json, basic_auth: %w[xxxxxxxx x])
             .to_return(status: 200, body: contents.to_json)
         end
 
@@ -81,7 +81,7 @@ RSpec.describe BrickFTP::API::BundleContent, type: :lib do
 
       before do
         stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/bundles/folders')
-          .with(basic_auth: ['xxxxxxxx', 'x'])
+          .with(basic_auth: %w[xxxxxxxx x])
           .to_return(status: 500, body: { 'error' => 'xxxxxxxx', 'http-code' => '500' }.to_json)
       end
 
