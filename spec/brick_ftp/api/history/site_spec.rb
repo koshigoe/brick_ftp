@@ -71,15 +71,15 @@ RSpec.describe BrickFTP::API::History::Site, type: :lib do
       expect(history.last.source).to eq 'Files for bob.user'
       expect(history.last.targets)
         .to eq(
-              "user" => {
-                "id" => 23451,
-                "username" => "bob.user"
-              },
-              "permission" => {
-                "id" => 67543,
-                "permission" => "full",
-                "recursive" => true
-              }
+          "user" => {
+            "id" => 23451,
+            "username" => "bob.user"
+          },
+          "permission" => {
+            "id" => 67543,
+            "permission" => "full",
+            "recursive" => true
+          }
         )
       expect(history.last.ip).to eq '172.19.113.171'
       expect(history.last.interface).to eq 'web'

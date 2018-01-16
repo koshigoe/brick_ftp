@@ -91,12 +91,12 @@ RSpec.describe BrickFTP::APIComponent, type: :lib do
       it do
         is_expected
           .to eq(
-                page: 1,
-                per_page: 1,
-                search: 'a/',
-                :'sort_by[path]' => 'asc',
-                :'sort_by[size]' => 'asc',
-                :'sort_by[modified_at_datetime]' => 'asc'
+            page: 1,
+            per_page: 1,
+            search: 'a/',
+            :'sort_by[path]' => 'asc',
+            :'sort_by[size]' => 'asc',
+            :'sort_by[modified_at_datetime]' => 'asc'
           )
       end
     end
@@ -106,12 +106,12 @@ RSpec.describe BrickFTP::APIComponent, type: :lib do
       it do
         is_expected
           .to eq(
-                page: 1,
-                per_page: 1,
-                search: 1,
-                :'sort_by[path]' => 1,
-                :'sort_by[size]' => 1,
-                :'sort_by[modified_at_datetime]' => 1
+            page: 1,
+            per_page: 1,
+            search: 1,
+            :'sort_by[path]' => 1,
+            :'sort_by[size]' => 1,
+            :'sort_by[modified_at_datetime]' => 1
           )
       end
     end
