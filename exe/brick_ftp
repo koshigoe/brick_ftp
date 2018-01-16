@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 root = File.dirname(File.dirname(__FILE__))
-$:.unshift(File.join(root, 'lib'))
+$LOAD_PATH.unshift(File.join(root, 'lib'))
 
 require 'brick_ftp'
 

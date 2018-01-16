@@ -11,7 +11,7 @@ RSpec.describe BrickFTP::API::FileOperation::Move, type: :lib do
 
       before do
         stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/files/path')
-          .with(basic_auth: ['xxxxxxxx', 'x'])
+          .with(basic_auth: %w[xxxxxxxx x])
           .to_return(status: 200, body: '[]')
       end
 
@@ -25,7 +25,7 @@ RSpec.describe BrickFTP::API::FileOperation::Move, type: :lib do
 
       before do
         stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/files/path')
-          .with(basic_auth: ['xxxxxxxx', 'x'])
+          .with(basic_auth: %w[xxxxxxxx x])
           .to_return(status: 500, body: { 'error' => 'xxxxxxxx', 'http-code' => '500' }.to_json)
       end
 

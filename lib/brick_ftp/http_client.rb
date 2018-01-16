@@ -8,7 +8,7 @@ module BrickFTP
       def initialize(response)
         begin
           error = JSON.parse(response.body)
-        rescue
+        rescue StandardError
           error = { 'http-code' => response.code, 'error' => "#{response.message}, #{response.body}" }
         end
 
@@ -80,6 +80,8 @@ module BrickFTP
 
     private
 
+    # FIXME: Metrics/AbcSize, Metrics/MethodLength
+    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def request(method, path, params: {}, headers: {})
       req = Net::HTTP.const_get(method.to_s.capitalize).new(path, headers)
       req['User-Agent'] = USER_AGENT
@@ -99,21 +101,28 @@ module BrickFTP
         req.body = params.to_json unless params.empty?
       when params.is_a?(IO)
         req.body_stream = params
-        req["Content-Length"] = params.size
+        req['Content-Length'] = params.size
       end
 
       start = Time.now
       begin
-        logger.debug 'Request headers: %{headers}' % { headers: req.each_capitalized.map { |k, v| "#{k}: #{v}" } }
-        logger.debug 'Request body: %{body}' % { body: req.body }
+        logger.debug format('Request headers: %{headers}', headers: req.each_capitalized.map { |k, v| "#{k}: #{v}" })
+        logger.debug format('Request body: %{body}', body: req.body)
         @conn.request(req).tap do |res|
-          logger.debug 'Response headers: %{headers}' % { headers: res.each_capitalized.map { |k, v| "#{k}: #{v}" } }
-          logger.debug 'Response body: %{body}' % { body: res.body }
+          logger.debug format('Response headers: %{headers}', headers: res.each_capitalized.map { |k, v| "#{k}: #{v}" })
+          logger.debug format('Response body: %{body}', body: res.body)
         end
       ensure
-        logger.info 'Complete %{method} %{path} (%{time} ms)' % { method: method.upcase, path: path, time: (Time.now - start) * 1000 }
+        message = format(
+          'Complete %{method} %{path} (%{time} ms)',
+          method: method.upcase,
+          path: path,
+          time: (Time.now - start) * 1000
+        )
+        logger.info message
       end
     end
+    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
     def logger
       BrickFTP.logger

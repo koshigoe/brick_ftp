@@ -9,23 +9,23 @@ RSpec.describe BrickFTP::API::Notification, type: :lib do
     let(:notifications) do
       [
         {
-          "id" => 2,
-          "path" => "a/b/c",
-          "username" => "stork",
-          "user_id" => 5
+          'id' => 2,
+          'path' => 'a/b/c',
+          'username' => 'stork',
+          'user_id' => 5,
         },
         {
-          "id" => 3,
-          "path" => "a/b",
-          "username" => "zaphod",
-          "user_id" => 6
-        }
+          'id' => 3,
+          'path' => 'a/b',
+          'username' => 'zaphod',
+          'user_id' => 6,
+        },
       ]
     end
 
     before do
       stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/notifications.json')
-        .with(basic_auth: ['xxxxxxxx', 'x'])
+        .with(basic_auth: %w[xxxxxxxx x])
         .to_return(body: notifications.to_json)
     end
 
@@ -36,8 +36,8 @@ RSpec.describe BrickFTP::API::Notification, type: :lib do
     it 'set attributes' do
       groups = subject
       expect(groups.first.id).to eq 2
-      expect(groups.first.path).to eq "a/b/c"
-      expect(groups.first.username).to eq "stork"
+      expect(groups.first.path).to eq 'a/b/c'
+      expect(groups.first.username).to eq 'stork'
       expect(groups.first.user_id).to eq 5
     end
   end
@@ -48,23 +48,23 @@ RSpec.describe BrickFTP::API::Notification, type: :lib do
     context 'success' do
       let(:params) do
         {
-          "path" => "a/b/c/d",
-          "user_id" => "10"
+          'path' => 'a/b/c/d',
+          'user_id' => '10',
         }
       end
 
       let(:notification) do
         {
-          "id" => "7",
-          "path" => "a/b/c/d",
-          "user_id" => "10",
-          "username" => "fred"
+          'id' => '7',
+          'path' => 'a/b/c/d',
+          'user_id' => '10',
+          'username' => 'fred',
         }
       end
 
       before do
         stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/notifications.json')
-          .with(body: params.to_json, basic_auth: ['xxxxxxxx', 'x'])
+          .with(body: params.to_json, basic_auth: %w[xxxxxxxx x])
           .to_return(status: 201, body: notification.to_json)
       end
 
@@ -75,7 +75,7 @@ RSpec.describe BrickFTP::API::Notification, type: :lib do
       it 'set attributes' do
         group = subject
         expect(group.id).to eq '7'
-        expect(group.path).to eq "a/b/c/d"
+        expect(group.path).to eq 'a/b/c/d'
         expect(group.user_id).to eq '10'
         expect(group.username).to eq 'fred'
       end
@@ -86,7 +86,7 @@ RSpec.describe BrickFTP::API::Notification, type: :lib do
 
       before do
         stub_request(:post, 'https://koshigoe.brickftp.com/api/rest/v1/notifications.json')
-          .with(basic_auth: ['xxxxxxxx', 'x'])
+          .with(basic_auth: %w[xxxxxxxx x])
           .to_return(status: 500, body: { 'error' => 'xxxxxxxx', 'http-code' => '500' }.to_json)
       end
 
@@ -99,12 +99,12 @@ RSpec.describe BrickFTP::API::Notification, type: :lib do
   describe '#destroy' do
     subject { notification.destroy }
 
-    let(:notification) { described_class.new(id: 125108) }
+    let(:notification) { described_class.new(id: 125_108) }
 
     before do
       stub_request(:delete, 'https://koshigoe.brickftp.com/api/rest/v1/notifications/125108.json')
-          .with(basic_auth: ['xxxxxxxx', 'x'])
-          .to_return(body: '[]')
+        .with(basic_auth: %w[xxxxxxxx x])
+        .to_return(body: '[]')
     end
 
     it 'return true' do

@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:latest
+    working_directory: /home/circleci/app
+    steps:
+      - checkout
+      - run:
+          name: Install gems
+          command: bundle install
+      - run:
+          name: Rubocop
+          command: rubocop
+      - run:
+          name: RSpec
+          command: rspec
