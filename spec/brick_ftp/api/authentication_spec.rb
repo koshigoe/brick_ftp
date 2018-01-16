@@ -15,7 +15,7 @@ RSpec.describe BrickFTP::API::Authentication, type: :lib do
     end
 
     it 'value is session id' do
-      expect(subject.value).to eq %w(xxxxxxxx)
+      expect(subject.value).to eq %w[xxxxxxxx]
     end
   end
 

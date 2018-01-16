@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["koshigoe"]
   spec.email         = ["koshigoeb@gmail.com"]
 
-  spec.summary       = %q{BrickFTP's REST API client.}
-  spec.description   = %q{BrickFTP's REST API client.}
+  spec.summary       = %q(BrickFTP's REST API client.)
+  spec.description   = %q(BrickFTP's REST API client.)
   spec.homepage      = "https://github.com/koshigoe/brick_ftp"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }

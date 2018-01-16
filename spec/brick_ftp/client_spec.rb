@@ -306,7 +306,7 @@ RSpec.describe BrickFTP::Client, type: :lib do
     end
 
     describe '#list_bundle_downloads' do
-      let(:query) { { code: 'a0b1c2d3e', host: 'justin.brickftp.com', paths: %w(cloud/images/image1.jpg backup.zip) } }
+      let(:query) { { code: 'a0b1c2d3e', host: 'justin.brickftp.com', paths: %w[cloud/images/image1.jpg backup.zip] } }
       it 'delegate BrickFTP::API::BundleDownload.all' do
         expect(BrickFTP::API::BundleDownload).to receive(:all).with(query)
         described_class.new.list_bundle_downloads(query)

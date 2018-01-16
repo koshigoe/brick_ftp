@@ -39,7 +39,7 @@ module BrickFTP
 
     DEFAULT_PROFILE = 'global'.freeze
     # Name of storable configurations. (TODO: log_path, log_level, log_formatter)
-    STORABLE_CONFIGURATION_KEYS = %w(subdomain api_key open_timeout read_timeout).freeze
+    STORABLE_CONFIGURATION_KEYS = %w[subdomain api_key open_timeout read_timeout].freeze
 
     STORABLE_CONFIGURATION_KEYS.each do |name|
       define_method("#{name}=") do |value|

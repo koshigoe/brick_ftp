@@ -14,7 +14,7 @@ RSpec.describe BrickFTP::API::Base do
   describe '.endpoint' do
     it 'define endpoint' do
       api.endpoint :get, :show, '/path/to/resource/%{param1}/%{param2}', :param1, :param2
-      expect(api.endpoints[:show]).to eq(http_method: :get, path_template: '/path/to/resource/%{param1}/%{param2}', query_keys: %i(param1 param2))
+      expect(api.endpoints[:show]).to eq(http_method: :get, path_template: '/path/to/resource/%{param1}/%{param2}', query_keys: %i[param1 param2])
     end
   end
 

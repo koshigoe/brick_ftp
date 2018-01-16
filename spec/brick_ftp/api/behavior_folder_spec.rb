@@ -42,7 +42,7 @@ RSpec.describe BrickFTP::API::FolderBehavior, type: :lib do
       expect(downloads.first.id).to eq 44
       expect(downloads.first.path).to eq "Incoming"
       expect(downloads.first.behavior).to eq 'webhook'
-      expect(downloads.first.value).to eq %w(https://a.mywebhookhandler.com)
+      expect(downloads.first.value).to eq %w[https://a.mywebhookhandler.com]
     end
   end
 end

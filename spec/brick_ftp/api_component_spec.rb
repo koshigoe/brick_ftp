@@ -4,7 +4,7 @@ RSpec.describe BrickFTP::APIComponent, type: :lib do
   let(:api_component) do
     described_class.new(
       path_template,
-      %i(page per_page search sort_by[path] sort_by[size] sort_by[modified_at_datetime])
+      %i[page per_page search sort_by[path] sort_by[size] sort_by[modified_at_datetime]]
     )
   end
 

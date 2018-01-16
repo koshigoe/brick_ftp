@@ -43,7 +43,7 @@ RSpec.describe BrickFTP::API::Behavior, type: :lib do
       expect(downloads.first.id).to eq 38
       expect(downloads.first.path).to eq "Finance"
       expect(downloads.first.behavior).to eq 'webhook'
-      expect(downloads.first.value).to eq %w(https://a.mywebhookhandler.com)
+      expect(downloads.first.value).to eq %w[https://a.mywebhookhandler.com]
     end
   end
 
@@ -77,7 +77,7 @@ RSpec.describe BrickFTP::API::Behavior, type: :lib do
         expect(behavior.id).to eq 38
         expect(behavior.path).to eq "Finance"
         expect(behavior.behavior).to eq "webhook"
-        expect(behavior.value).to eq %w(https://a.mywebhookhandler.com)
+        expect(behavior.value).to eq %w[https://a.mywebhookhandler.com]
       end
     end
 
@@ -134,7 +134,7 @@ RSpec.describe BrickFTP::API::Behavior, type: :lib do
         expect(behavior.id).to eq 39
         expect(behavior.path).to eq "cloud/images"
         expect(behavior.behavior).to eq "webhook"
-        expect(behavior.value).to eq %w(https://d.mywebhookhandler.com)
+        expect(behavior.value).to eq %w[https://d.mywebhookhandler.com]
       end
     end
 
@@ -157,7 +157,7 @@ RSpec.describe BrickFTP::API::Behavior, type: :lib do
     subject { behavior.update(params) }
 
     let(:behavior) { described_class.new(id: 39, value: []) }
-    let(:params) { { value: %w(https://e.mywebhookhandler.com) } }
+    let(:params) { { value: %w[https://e.mywebhookhandler.com] } }
 
     context 'success' do
       let(:updated_behavior) do

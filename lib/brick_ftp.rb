@@ -43,7 +43,7 @@ require 'brick_ftp/cli/main'
 
 module BrickFTP
   # https://brickftp.com/redundancy/
-  IP_ADDRESSES = %w(
+  IP_ADDRESSES = %w[
     54.193.69.72
     54.193.69.200
     54.193.65.189
@@ -72,7 +72,7 @@ module BrickFTP
     52.29.176.178
     54.207.27.239
     52.68.4.44
-  ).freeze
+  ].freeze
 
   # Return configuration.
   # If it has not been configured yet, initialize configuration.
