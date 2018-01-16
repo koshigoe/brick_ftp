@@ -24,7 +24,7 @@ RSpec.describe BrickFTP::API::BundleDownload, type: :lib do
             "id" => 1,
             "path" => "cloud/images/image1.jpg",
             "type" => "file",
-            "size" => 842665,
+            "size" => 842_665,
             "crc32" => "bb9d7277",
             "md5" => "9a3ec51abac56e35d2865b376c9658ec",
             "download_uri" => "https://s3.amazonaws.com/objects.brickftp.com/metadata/10099/2e2376c0-7527-0133-21fb-0a2d4abb99a7?AWSAccessKeyId=AKIAIEWLY3MN4YGZQOWA\u0026Signature=spXByI%2BBFThcB%2FwFkPUZcIXtRzE%3D\u0026Expires=1448404172\u0026response-content-disposition=attachment;%20filename=%22image1.jpg%22"
@@ -33,7 +33,7 @@ RSpec.describe BrickFTP::API::BundleDownload, type: :lib do
             "id" => 2,
             "path" => "backup.zip",
             "type" => "file",
-            "size" => 209715200,
+            "size" => 209_715_200,
             "crc32" => "674135a9",
             "md5" => "3389a0b30e05ef6613ccbdae5d9ec0bd",
             "download_uri" => "https://s3.amazonaws.com/objects.brickftp.com/metadata/10099/dbf4f3d0-4a7a-0133-bd45-0ea6408b29c1?AWSAccessKeyId=AKIAIEWLY3MN4YGZQOWA\u0026Signature=ArRo7x7It2%2BQQwCmiapwTFAJBSE%3D\u0026Expires=1448404172\u0026response-content-disposition=attachment;%20filename=%22backup.zip%22"
@@ -56,7 +56,7 @@ RSpec.describe BrickFTP::API::BundleDownload, type: :lib do
         expect(downloads.last.id).to eq 2
         expect(downloads.last.path).to eq "backup.zip"
         expect(downloads.last.type).to eq 'file'
-        expect(downloads.last.size).to eq 209715200
+        expect(downloads.last.size).to eq 209_715_200
         expect(downloads.last.crc32).to eq '674135a9'
         expect(downloads.last.md5).to eq '3389a0b30e05ef6613ccbdae5d9ec0bd'
         expect(downloads.last.download_uri).to eq "https://s3.amazonaws.com/objects.brickftp.com/metadata/10099/dbf4f3d0-4a7a-0133-bd45-0ea6408b29c1?AWSAccessKeyId=AKIAIEWLY3MN4YGZQOWA\u0026Signature=ArRo7x7It2%2BQQwCmiapwTFAJBSE%3D\u0026Expires=1448404172\u0026response-content-disposition=attachment;%20filename=%22backup.zip%22"

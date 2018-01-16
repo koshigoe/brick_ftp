@@ -99,7 +99,7 @@ RSpec.describe BrickFTP::API::Notification, type: :lib do
   describe '#destroy' do
     subject { notification.destroy }
 
-    let(:notification) { described_class.new(id: 125108) }
+    let(:notification) { described_class.new(id: 125_108) }
 
     before do
       stub_request(:delete, 'https://koshigoe.brickftp.com/api/rest/v1/notifications/125108.json')

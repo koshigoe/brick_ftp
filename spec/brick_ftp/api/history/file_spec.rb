@@ -9,9 +9,9 @@ RSpec.describe BrickFTP::API::History::File, type: :lib do
     let(:history) do
       [
         {
-          "id" => 878672966,
+          "id" => 878_672_966,
           "when" => "2015-09-30T18:58:39-04:00",
-          "user_id" => 54321,
+          "user_id" => 54_321,
           "username" => "justice.london",
           "action" => "read",
           "path" => "archive.zip",
@@ -20,9 +20,9 @@ RSpec.describe BrickFTP::API::History::File, type: :lib do
           "interface" => "sftp"
         },
         {
-          "id" => 878672238,
+          "id" => 878_672_238,
           "when" => "2015-09-30T18:58:16-04:00",
-          "user_id" => 12345,
+          "user_id" => 12_345,
           "username" => "fred.admin",
           "action" => "read",
           "path" => "archive.zip",
@@ -45,9 +45,9 @@ RSpec.describe BrickFTP::API::History::File, type: :lib do
 
     it 'set attributes' do
       history = subject
-      expect(history.first.id).to eq 878672966
+      expect(history.first.id).to eq 878_672_966
       expect(history.first.when).to eq '2015-09-30T18:58:39-04:00'
-      expect(history.first.user_id).to eq 54321
+      expect(history.first.user_id).to eq 54_321
       expect(history.first.username).to eq 'justice.london'
       expect(history.first.action).to eq 'read'
       expect(history.first.path).to eq 'archive.zip'

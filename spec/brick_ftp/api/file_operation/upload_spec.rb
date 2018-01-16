@@ -17,9 +17,9 @@ RSpec.describe BrickFTP::API::FileOperation::Upload, type: :lib do
           "ask_about_overwrites" => false,
           "http_method" => "PUT",
           "upload_uri" => "https://s3.amazonaws.com/objects.brickftp.com/metadata/1/6eee7ad0-bf75-0131-71fc-0eeabbd7a8b4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIEWLY3MN4YGZQOWA%2F20140516%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20140516T221456Z&X-Amz-Expires=180&X-Amz-SignedHeaders=host&partNumber=1&uploadId=xQDI8q.aDdWdWIvSpRGLOFqnPQqJoMGZ88r9g_q7z2gW6U4rNZx8Zb_Wh9m07TDJM1x4rCTM18UCzdXaYjJu.SBH89LAiA4ye698TfMPyam4BO7ifs7HLuiBPrEW.zIz&X-Amz-Signature=69bc7be37c8c42096e78aa4ff752f073ea890481c5f76eac5ad40a5ab9466997",
-          "partsize" => 5242880,
+          "partsize" => 5_242_880,
           "part_number" => 1,
-          "available_parts" => 10000,
+          "available_parts" => 10_000,
           "send" => {
             "partsize" => "required-parameter Content-Length",
             "partdata" => "body"
@@ -67,9 +67,9 @@ RSpec.describe BrickFTP::API::FileOperation::Upload, type: :lib do
         expect(upload.ask_about_overwrites).to eq false
         expect(upload.http_method).to eq 'PUT'
         expect(upload.upload_uri).to eq "https://s3.amazonaws.com/objects.brickftp.com/metadata/1/6eee7ad0-bf75-0131-71fc-0eeabbd7a8b4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIEWLY3MN4YGZQOWA%2F20140516%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20140516T221456Z&X-Amz-Expires=180&X-Amz-SignedHeaders=host&partNumber=1&uploadId=xQDI8q.aDdWdWIvSpRGLOFqnPQqJoMGZ88r9g_q7z2gW6U4rNZx8Zb_Wh9m07TDJM1x4rCTM18UCzdXaYjJu.SBH89LAiA4ye698TfMPyam4BO7ifs7HLuiBPrEW.zIz&X-Amz-Signature=69bc7be37c8c42096e78aa4ff752f073ea890481c5f76eac5ad40a5ab9466997"
-        expect(upload.partsize).to eq 5242880
+        expect(upload.partsize).to eq 5_242_880
         expect(upload.part_number).to eq 1
-        expect(upload.available_parts).to eq 10000
+        expect(upload.available_parts).to eq 10_000
         expect(upload.properties['send']).to eq("partsize" => "required-parameter Content-Length", "partdata" => "body")
         expect(upload.headers).to eq({})
         expect(upload.parameters).to eq({})

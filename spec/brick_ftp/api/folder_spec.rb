@@ -38,7 +38,7 @@ RSpec.describe BrickFTP::API::Folder, type: :lib do
           "path" => "Engineering Candidates/R\u00e9sum\u00e9s/John Smith.docx",
           "display_name" => "John Smith.docx",
           "type" => "file",
-          "size" => 61440,
+          "size" => 61_440,
           "mtime" => "2014-05-15T18:34:51+00:00",
           "crc32" => "f341cc60",
           "md5" => "b67236f5bcd29d1307d574fb9fe585b5",
@@ -51,7 +51,7 @@ RSpec.describe BrickFTP::API::Folder, type: :lib do
           "path" => "Engineering Candidates/R\u00e9sum\u00e9s/Mary Jones.pdf",
           "display_name" => "Mary Jones.pdf",
           "type" => "file",
-          "size" => 19946,
+          "size" => 19_946,
           "mtime" => "2014-05-15T18:36:03+00:00",
           "crc32" => "a720a234",
           "md5" => "02c442ecc0d499bf443fa8fd444c2933",
@@ -78,7 +78,7 @@ RSpec.describe BrickFTP::API::Folder, type: :lib do
       expect(folders.last.path).to eq "Engineering Candidates/R\u00e9sum\u00e9s/Mary Jones.pdf"
       expect(folders.last.display_name).to eq "Mary Jones.pdf"
       expect(folders.last.type).to eq "file"
-      expect(folders.last.size).to eq 19946
+      expect(folders.last.size).to eq 19_946
       expect(folders.last.mtime).to eq "2014-05-15T18:36:03+00:00"
       expect(folders.last.crc32).to eq "a720a234"
       expect(folders.last.md5).to eq "02c442ecc0d499bf443fa8fd444c2933"

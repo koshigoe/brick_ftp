@@ -35,7 +35,7 @@ RSpec.describe BrickFTP::API::BundleContent, type: :lib do
             "id" => 2,
             "path" => "backup.zip",
             "type" => "file",
-            "size" => 209715200,
+            "size" => 209_715_200,
             "crc32" => "674135a9",
             "md5" => "3389a0b30e05ef6613ccbdae5d9ec0bd"
           }
@@ -58,7 +58,7 @@ RSpec.describe BrickFTP::API::BundleContent, type: :lib do
           expect(contents.last.id).to eq 2
           expect(contents.last.path).to eq "backup.zip"
           expect(contents.last.type).to eq 'file'
-          expect(contents.last.size).to eq 209715200
+          expect(contents.last.size).to eq 209_715_200
           expect(contents.last.crc32).to eq '674135a9'
           expect(contents.last.md5).to eq '3389a0b30e05ef6613ccbdae5d9ec0bd'
         end

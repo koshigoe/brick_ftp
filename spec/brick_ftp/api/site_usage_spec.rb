@@ -8,37 +8,37 @@ RSpec.describe BrickFTP::API::SiteUsage, type: :lib do
 
     before do
       usage = {
-        "id" => 12345,
-        "live_current_storage" => 367270573,
-        "current_storage" => 367270573,
+        "id" => 12_345,
+        "live_current_storage" => 367_270_573,
+        "current_storage" => 367_270_573,
         "usage_by_top_level_dir" => [
           [
             "Images",
-            189998503
+            189_998_503
           ],
           [
             "Documents",
-            65536
+            65_536
           ],
           [
             "Music",
-            5701171
+            5_701_171
           ],
           [
             "Sales",
-            1988464
+            1_988_464
           ],
           [
             "Code",
-            232131
+            232_131
           ],
           [
             "Other",
-            1141220
+            1_141_220
           ],
           [
             "* Files In Root Folder",
-            65596
+            65_596
           ],
           [
             "* Files Deleted But Retained As Backups Under Your Backup Settings",
@@ -46,10 +46,10 @@ RSpec.describe BrickFTP::API::SiteUsage, type: :lib do
           ],
           [
             "* Files Deleted But Uploaded Within Past 30 Days (minimum file billing length)",
-            168012416
+            168_012_416
           ]
         ],
-        "high_water_storage" => 8062401756,
+        "high_water_storage" => 8_062_401_756,
         "start_at" => "2015-05-28T12:22:15-04:00",
         "end_at" => nil,
         "created_at" => "2015-05-28T12:22:15-04:00",
@@ -66,22 +66,22 @@ RSpec.describe BrickFTP::API::SiteUsage, type: :lib do
 
     it 'set attributes' do
       usage = subject
-      expect(usage.id).to eq 12345
-      expect(usage.live_current_storage).to eq 367270573
-      expect(usage.current_storage).to eq 367270573
+      expect(usage.id).to eq 12_345
+      expect(usage.live_current_storage).to eq 367_270_573
+      expect(usage.current_storage).to eq 367_270_573
       usage_by_top_level_dir = [
-        ["Images", 189998503],
-        ["Documents", 65536],
-        ["Music", 5701171],
-        ["Sales", 1988464],
-        ["Code", 232131],
-        ["Other", 1141220],
-        ["* Files In Root Folder", 65596],
+        ["Images", 189_998_503],
+        ["Documents", 65_536],
+        ["Music", 5_701_171],
+        ["Sales", 1_988_464],
+        ["Code", 232_131],
+        ["Other", 1_141_220],
+        ["* Files In Root Folder", 65_596],
         ["* Files Deleted But Retained As Backups Under Your Backup Settings", 0],
-        ["* Files Deleted But Uploaded Within Past 30 Days (minimum file billing length)", 168012416],
+        ["* Files Deleted But Uploaded Within Past 30 Days (minimum file billing length)", 168_012_416],
       ]
       expect(usage.usage_by_top_level_dir).to eq usage_by_top_level_dir
-      expect(usage.high_water_storage).to eq 8062401756
+      expect(usage.high_water_storage).to eq 8_062_401_756
       expect(usage.start_at).to eq "2015-05-28T12:22:15-04:00"
       expect(usage.end_at).to eq nil
       expect(usage.created_at).to eq "2015-05-28T12:22:15-04:00"

@@ -169,7 +169,7 @@ RSpec.describe BrickFTP::API::User, type: :lib do
 
       before do
         body = {
-          "id" => 125108,
+          "id" => 125_108,
           "username" => "johndoe",
           "authentication_method" => "password",
           "last_login_at" => nil,
@@ -203,7 +203,7 @@ RSpec.describe BrickFTP::API::User, type: :lib do
 
       it 'set attributes' do
         user = subject
-        expect(user.id).to eq 125108
+        expect(user.id).to eq 125_108
         expect(user.username).to eq "johndoe"
         expect(user.authentication_method).to eq "password"
         expect(user.last_login_at).to eq nil
@@ -246,13 +246,13 @@ RSpec.describe BrickFTP::API::User, type: :lib do
   describe '#update' do
     subject { user.update(params) }
 
-    let(:user) { described_class.new(id: 125108, username: 'johndoe') }
+    let(:user) { described_class.new(id: 125_108, username: 'johndoe') }
     let(:params) { { name: 'JOHN DOE' } }
 
     context 'success' do
       before do
         body = {
-          "id" => 125108,
+          "id" => 125_108,
           "username" => "johndoe",
           "authentication_method" => "password",
           "last_login_at" => nil,
@@ -305,7 +305,7 @@ RSpec.describe BrickFTP::API::User, type: :lib do
   describe '#destroy' do
     subject { user.destroy }
 
-    let(:user) { described_class.new(id: 125108) }
+    let(:user) { described_class.new(id: 125_108) }
 
     before do
       stub_request(:delete, 'https://koshigoe.brickftp.com/api/rest/v1/users/125108.json')

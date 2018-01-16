@@ -151,13 +151,13 @@ RSpec.describe BrickFTP::API::Group, type: :lib do
   describe '#update' do
     subject { group.update(params) }
 
-    let(:group) { described_class.new(id: 125108) }
+    let(:group) { described_class.new(id: 125_108) }
     let(:params) { { notes: 'New notes' } }
 
     context 'success' do
       let(:updated_group) do
         {
-          "id" => 125108,
+          "id" => 125_108,
           "name" => "name",
           "notes" => "New notes",
           "user_id" => "",
@@ -195,7 +195,7 @@ RSpec.describe BrickFTP::API::Group, type: :lib do
   describe '#destroy' do
     subject { group.destroy }
 
-    let(:group) { described_class.new(id: 125108) }
+    let(:group) { described_class.new(id: 125_108) }
 
     before do
       stub_request(:delete, 'https://koshigoe.brickftp.com/api/rest/v1/groups/125108.json')

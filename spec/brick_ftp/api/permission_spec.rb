@@ -105,7 +105,7 @@ RSpec.describe BrickFTP::API::Permission, type: :lib do
   describe '#destroy' do
     subject { permission.destroy }
 
-    let(:permission) { described_class.new(id: 125108) }
+    let(:permission) { described_class.new(id: 125_108) }
 
     before do
       stub_request(:delete, 'https://koshigoe.brickftp.com/api/rest/v1/permissions/125108.json')
