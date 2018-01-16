@@ -8,7 +8,7 @@ module BrickFTP
       def initialize(response)
         begin
           error = JSON.parse(response.body)
-        rescue
+        rescue StandardError
           error = { 'http-code' => response.code, 'error' => "#{response.message}, #{response.body}" }
         end
 
