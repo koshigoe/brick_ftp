@@ -39,7 +39,9 @@ RSpec.describe BrickFTP::API::PublicKey, type: :lib do
     let(:params) { path_params.merge(attributes) }
     let(:path_params) { { user_id: 1 } }
     let(:attributes) { { title: 'new key', public_key: public_key } }
+    # rubocop:disable Metrics/LineLength
     let(:public_key) { 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0bhSqoXErPk7tvtmjw2xD6+ql/yg/0I3K+jC+q2nkmrg34gU9tk9eG38wuALMT4MyP3iW9os3c1A4MwBZRnmuBAEBvmHMFKvEvWE2txxBZ9FZJU2KOg0kWnOFrPbIk1Eu+ndkbaJg8T2D4kJXfKtx6C/ArYlJqkA24wlxA/kTkwzJFFs9CqpYJPEVkut+JoecfW7LKiPIxEt+8wLuKLAwz83mtzW/s3oma0H5z5z5TAP96Yim9bGAL+AgY0qsJZKhzc0fcQ0B80BDO7XbdOipffCRmb0UuiK4OC5Z7va1XD5PkAIo143eg4mU57RskfXbHR5NLrt2ozdXCXLmavrh' }
+    # rubocop:enable Metrics/LineLength
 
     before do
       public_key = {

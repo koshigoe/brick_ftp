@@ -80,6 +80,8 @@ module BrickFTP
 
     private
 
+    # FIXME: Metrics/AbcSize, Metrics/MethodLength
+    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def request(method, path, params: {}, headers: {})
       req = Net::HTTP.const_get(method.to_s.capitalize).new(path, headers)
       req['User-Agent'] = USER_AGENT
@@ -111,9 +113,16 @@ module BrickFTP
           logger.debug format('Response body: %{body}', body: res.body)
         end
       ensure
-        logger.info format('Complete %{method} %{path} (%{time} ms)', method: method.upcase, path: path, time: (Time.now - start) * 1000)
+        message = format(
+          'Complete %{method} %{path} (%{time} ms)',
+          method: method.upcase,
+          path: path,
+          time: (Time.now - start) * 1000
+        )
+        logger.info message
       end
     end
+    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
     def logger
       BrickFTP.logger

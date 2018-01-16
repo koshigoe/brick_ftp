@@ -136,7 +136,8 @@ module BrickFTP
     # Show the entire history for the current site.
     # @see https://brickftp.com/ja/docs/rest-api/history/
     # @param page [Integer] Page number of items to return in this request.
-    # @param per_page [Integer] Requested number of items returned per request. Default: 1000, maximum: 10000. Leave blank for default (strongly recommended).
+    # @param per_page [Integer] Requested number of items returned per request. Default: 1000, maximum: 10000.
+    #   Leave blank for default (strongly recommended).
     # @param start_at [String] Date and time in the history to start from.
     # @return [Array] array of `BrickFTP::API::History::Site`
     def list_site_history(page: nil, per_page: nil, start_at: nil)
@@ -147,7 +148,8 @@ module BrickFTP
     # Show login history only.
     # @see https://brickftp.com/ja/docs/rest-api/history/
     # @param page [Integer] Page number of items to return in this request.
-    # @param per_page [Integer] Requested number of items returned per request. Default: 1000, maximum: 10000. Leave blank for default (strongly recommended).
+    # @param per_page [Integer] Requested number of items returned per request. Default: 1000, maximum: 10000.
+    #   Leave blank for default (strongly recommended).
     # @param start_at [String] Date and time in the history to start from.
     # @return [Array] array of `BrickFTP::API::History::Login`
     def list_login_history(page: nil, per_page: nil, start_at: nil)
@@ -159,7 +161,8 @@ module BrickFTP
     # @see https://brickftp.com/ja/docs/rest-api/history/
     # @param user_id [Integer] User ID.
     # @param page [Integer] Page number of items to return in this request.
-    # @param per_page [Integer] Requested number of items returned per request. Default: 1000, maximum: 10000. Leave blank for default (strongly recommended).
+    # @param per_page [Integer] Requested number of items returned per request.
+    #   Default: 1000, maximum: 10000. Leave blank for default (strongly recommended).
     # @param start_at [String] Date and time in the history to start from.
     # @return [Array] array of `BrickFTP::API::History::User`
     def list_user_history(user_id:, page: nil, per_page: nil, start_at: nil)
@@ -171,7 +174,8 @@ module BrickFTP
     # @see https://brickftp.com/ja/docs/rest-api/history/
     # @param path [String] path of folder.
     # @param page [Integer] Page number of items to return in this request.
-    # @param per_page [Integer] Requested number of items returned per request. Default: 1000, maximum: 10000. Leave blank for default (strongly recommended).
+    # @param per_page [Integer] Requested number of items returned per request.
+    #   Default: 1000, maximum: 10000. Leave blank for default (strongly recommended).
     # @param start_at [String] Date and time in the history to start from.
     # @return [Array] array of `BrickFTP::API::History::Folder`
     def list_folder_history(path:, page: nil, per_page: nil, start_at: nil)
@@ -183,7 +187,8 @@ module BrickFTP
     # @see https://brickftp.com/ja/docs/rest-api/history/
     # @param path [String] path of file.
     # @param page [Integer] Page number of items to return in this request.
-    # @param per_page [Integer] Requested number of items returned per request. Default: 1000, maximum: 10000. Leave blank for default (strongly recommended).
+    # @param per_page [Integer] Requested number of items returned per request.
+    #   Default: 1000, maximum: 10000. Leave blank for default (strongly recommended).
     # @param start_at [String] Date and time in the history to start from.
     # @return [Array] array of `BrickFTP::API::History::File`
     def list_file_history(path:, page: nil, per_page: nil, start_at: nil)
@@ -291,13 +296,17 @@ module BrickFTP
     # @see https://brickftp.com/ja/docs/rest-api/file-operations/
     # @param path [String]
     # @param page [Integer] Page number of items to return in this request.
-    # @param per_page [Integer] Requested number of items returned per request. Maximum: 5000, leave blank for default (strongly recommended).
+    # @param per_page [Integer] Requested number of items returned per request.
+    #   Maximum: 5000, leave blank for default (strongly recommended).
     # @param search [String] Only return items matching the given search text.
-    # @param sort_by_path [String] Sort by file name, and value is either asc or desc to indicate normal or reverse sort. (Note that sort_by[path] = asc is the default.)
-    # @param sort_by_size [String] Sort by file size, and value is either asc or desc to indicate smaller files first or larger files first, respectively.
-    # @param sort_by_modified_at_datetime [String] Sort by modification time, and value is either asc or desc to indicate older files first or newer files first, respectively.
+    # @param sort_by_path [String] Sort by file name, and value is either asc or desc to indicate normal or reverse sort.
+    #   (Note that sort_by[path] = asc is the default.)
+    # @param sort_by_size [String] Sort by file size, and value is either asc or desc to indicate smaller files
+    #   first or larger files first, respectively.
+    # @param sort_by_modified_at_datetime [String] Sort by modification time, and value is either asc or desc to
+    #   indicate older files first or newer files first, respectively.
     # @return [Array] array of BrickFTP::API::Folder.
-    def list_folders(path:, page: nil, per_page: nil, search: nil, sort_by_path: nil, sort_by_size: nil, sort_by_modified_at_datetime: nil)
+    def list_folders(path:, page: nil, per_page: nil, search: nil, sort_by_path: nil, sort_by_size: nil, sort_by_modified_at_datetime: nil) # rubocop:disable Metrics/LineLength
       query = { path: path, page: page, per_page: per_page, search: search }.reject { |_, v| v.nil? }
       query[:'sort_by[path]'] = sort_by_path if sort_by_path
       query[:'sort_by[size]'] = sort_by_size if sort_by_size
