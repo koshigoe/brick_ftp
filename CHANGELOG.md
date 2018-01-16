@@ -9,6 +9,8 @@ Changelog
 
 ### Enhancements:
 
+- [#80](https://github.com/koshigoe/brick_ftp/pull/80) Use Rubocop.
+
 ### Fixed Bugs:
 
 ### Breaking Changes:
