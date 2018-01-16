@@ -12,20 +12,20 @@ RSpec.describe BrickFTP::API::Group, type: :lib do
           'id' => 3,
           'name' => 'HR',
           'notes' => 'Has access to HR folders only',
-          'user_ids' => ''
+          'user_ids' => '',
         },
         {
           'id' => 1,
           'name' => 'Management',
           'notes' => 'Has access to all areas => Ops, HR, and Board',
-          'user_ids' => '3'
+          'user_ids' => '3',
         },
         {
           'id' => 2,
           'name' => 'Operations',
           'notes' => 'Has access to Ops folders only',
-          'user_ids' => '2,9'
-        }
+          'user_ids' => '2,9',
+        },
       ]
     end
 
@@ -56,7 +56,7 @@ RSpec.describe BrickFTP::API::Group, type: :lib do
         'id' => 2,
         'name' => 'Operations',
         'notes' => 'Has access to Ops folders only',
-        'user_ids' => '2,10'
+        'user_ids' => '2,10',
       }
     end
 
@@ -101,7 +101,7 @@ RSpec.describe BrickFTP::API::Group, type: :lib do
         {
           'name' => 'Chicago Office',
           'notes' => 'For members of our Chicago Office',
-          'user_ids' => '3,7,9'
+          'user_ids' => '3,7,9',
         }
       end
 
@@ -110,7 +110,7 @@ RSpec.describe BrickFTP::API::Group, type: :lib do
           'id' => 1,
           'name' => 'Chicago Office',
           'notes' => 'For members of our Chicago Office',
-          'user_ids' => '3,7,9'
+          'user_ids' => '3,7,9',
         }
       end
 

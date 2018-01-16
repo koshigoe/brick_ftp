@@ -14,46 +14,46 @@ RSpec.describe BrickFTP::API::SiteUsage, type: :lib do
         'usage_by_top_level_dir' => [
           [
             'Images',
-            189_998_503
+            189_998_503,
           ],
           [
             'Documents',
-            65_536
+            65_536,
           ],
           [
             'Music',
-            5_701_171
+            5_701_171,
           ],
           [
             'Sales',
-            1_988_464
+            1_988_464,
           ],
           [
             'Code',
-            232_131
+            232_131,
           ],
           [
             'Other',
-            1_141_220
+            1_141_220,
           ],
           [
             '* Files In Root Folder',
-            65_596
+            65_596,
           ],
           [
             '* Files Deleted But Retained As Backups Under Your Backup Settings',
-            0
+            0,
           ],
           [
             '* Files Deleted But Uploaded Within Past 30 Days (minimum file billing length)',
-            168_012_416
-          ]
+            168_012_416,
+          ],
         ],
         'high_water_storage' => 8_062_401_756,
         'start_at' => '2015-05-28T12:22:15-04:00',
         'end_at' => nil,
         'created_at' => '2015-05-28T12:22:15-04:00',
-        'updated_at' => '2016-10-19T00:10:02-04:00'
+        'updated_at' => '2016-10-19T00:10:02-04:00',
       }
       stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/site/usage')
         .with(basic_auth: ['xxxxxxxx', 'x'])

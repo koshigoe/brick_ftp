@@ -24,7 +24,7 @@ RSpec.describe BrickFTP::API::User, type: :lib do
           'self_managed' => true,
           'require_password_change' => false,
           'allowed_ips' => '',
-          'user_root' => 'API'
+          'user_root' => 'API',
         },
         {
           'id' => 3,
@@ -42,8 +42,8 @@ RSpec.describe BrickFTP::API::User, type: :lib do
           'self_managed' => true,
           'require_password_change' => false,
           'allowed_ips' => '',
-          'user_root' => 'Zaphod'
-        }
+          'user_root' => 'Zaphod',
+        },
       ]
       stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/users.json')
         .with(basic_auth: ['xxxxxxxx', 'x'])
@@ -96,7 +96,7 @@ RSpec.describe BrickFTP::API::User, type: :lib do
           'self_managed' => true,
           'require_password_change' => false,
           'allowed_ips' => '',
-          'user_root' => 'API'
+          'user_root' => 'API',
         }
         stub_request(:get, 'https://koshigoe.brickftp.com/api/rest/v1/users/2.json')
           .with(basic_auth: ['xxxxxxxx', 'x'])
@@ -163,7 +163,7 @@ RSpec.describe BrickFTP::API::User, type: :lib do
           require_password_change: false,
           allowed_ips: '',
           user_root: '',
-          grant_permission: 'read'
+          grant_permission: 'read',
         }
       end
 

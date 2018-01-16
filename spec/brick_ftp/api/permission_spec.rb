@@ -13,15 +13,15 @@ RSpec.describe BrickFTP::API::Permission, type: :lib do
           'path' => 'a/b/c',
           'permission' => 'writeonly',
           'group_id' => nil,
-          'user_id' => 5
+          'user_id' => 5,
         },
         {
           'id' => 3,
           'path' => 'a/b',
           'permission' => 'readonly',
           'group_id' => 2,
-          'user_id' => nil
-        }
+          'user_id' => nil,
+        },
       ]
     end
 
@@ -53,7 +53,7 @@ RSpec.describe BrickFTP::API::Permission, type: :lib do
         {
           'path' => 'a/b/c/d',
           'permission' => 'writeonly',
-          'user_id' => '10'
+          'user_id' => '10',
         }
       end
 
@@ -63,7 +63,7 @@ RSpec.describe BrickFTP::API::Permission, type: :lib do
           'path' => 'a/b/c/d',
           'permission' => 'writeonly',
           'group_id' => nil,
-          'user_id' => 10
+          'user_id' => 10,
         }
       end
 

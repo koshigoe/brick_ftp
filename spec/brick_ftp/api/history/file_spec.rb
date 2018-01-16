@@ -17,7 +17,7 @@ RSpec.describe BrickFTP::API::History::File, type: :lib do
           'path' => 'archive.zip',
           'source' => 'archive.zip',
           'ip' => '86.75.30.9',
-          'interface' => 'sftp'
+          'interface' => 'sftp',
         },
         {
           'id' => 878_672_238,
@@ -28,8 +28,8 @@ RSpec.describe BrickFTP::API::History::File, type: :lib do
           'path' => 'archive.zip',
           'source' => 'archive.zip',
           'ip' => '172.19.113.171',
-          'interface' => 'sftp'
-        }
+          'interface' => 'sftp',
+        },
       ]
     end
 

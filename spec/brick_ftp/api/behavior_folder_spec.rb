@@ -13,17 +13,17 @@ RSpec.describe BrickFTP::API::FolderBehavior, type: :lib do
           'path' => 'Incoming',
           'behavior' => 'webhook',
           'value' => [
-            'https://a.mywebhookhandler.com'
-          ]
+            'https://a.mywebhookhandler.com',
+          ],
         },
         {
           'id' => 45,
           'path' => 'Incoming',
           'behavior' => 'webhook',
           'value' => [
-            'https://b.mywebhookhandler.com'
-          ]
-        }
+            'https://b.mywebhookhandler.com',
+          ],
+        },
       ]
     end
 

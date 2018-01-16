@@ -23,7 +23,7 @@ RSpec.describe BrickFTP::API::History::Site, type: :lib do
           'username' => 'fred.admin',
           'action' => 'login',
           'ip' => '172.19.113.171',
-          'interface' => 'ftp'
+          'interface' => 'ftp',
         },
         {
           'id' => 814_350_298,
@@ -36,17 +36,17 @@ RSpec.describe BrickFTP::API::History::Site, type: :lib do
           'targets' => {
             'user' => {
               'id' => 23_451,
-              'username' => 'bob.user'
+              'username' => 'bob.user',
             },
             'permission' => {
               'id' => 67_543,
               'permission' => 'full',
-              'recursive' => true
-            }
+              'recursive' => true,
+            },
           },
           'ip' => '172.19.113.171',
-          'interface' => 'web'
-        }
+          'interface' => 'web',
+        },
       ]
     end
 
@@ -73,12 +73,12 @@ RSpec.describe BrickFTP::API::History::Site, type: :lib do
         .to eq(
           'user' => {
             'id' => 23_451,
-            'username' => 'bob.user'
+            'username' => 'bob.user',
           },
           'permission' => {
             'id' => 67_543,
             'permission' => 'full',
-            'recursive' => true
+            'recursive' => true,
           }
         )
       expect(history.last.ip).to eq '172.19.113.171'

@@ -15,8 +15,8 @@ RSpec.describe BrickFTP::API::Bundle, type: :lib do
           'user_id' => 12_345,
           'created_at' => '2015-10-14T12:52:25-04:00',
           'paths' => [
-            'accounts.xls'
-          ]
+            'accounts.xls',
+          ],
         },
         {
           'id' => 212_468,
@@ -27,9 +27,9 @@ RSpec.describe BrickFTP::API::Bundle, type: :lib do
           'paths' => [
             'cloud/images',
             'cloud/documents',
-            'backup.zip'
-          ]
-        }
+            'backup.zip',
+          ],
+        },
       ]
     end
 
@@ -65,8 +65,8 @@ RSpec.describe BrickFTP::API::Bundle, type: :lib do
         'user_id' =>  12_345,
         'created_at' =>  '2015-10-14T12:52:25-04:00',
         'paths' =>  [
-          'accounts.xls'
-        ]
+          'accounts.xls',
+        ],
       }
     end
 
@@ -113,8 +113,8 @@ RSpec.describe BrickFTP::API::Bundle, type: :lib do
         {
           'paths' =>  [
             'cloud/images',
-            'backup.zip'
-          ]
+            'backup.zip',
+          ],
         }
       end
 
@@ -127,8 +127,8 @@ RSpec.describe BrickFTP::API::Bundle, type: :lib do
           'created_at' =>  '2015-11-12T15:49:30-05:00',
           'paths' =>  [
             'cloud/images',
-            'backup.zip'
-          ]
+            'backup.zip',
+          ],
         }
       end
 
@@ -152,7 +152,7 @@ RSpec.describe BrickFTP::API::Bundle, type: :lib do
         expect(group.paths)
           .to eq([
                    'cloud/images',
-                   'backup.zip'
+                   'backup.zip',
                  ])
       end
     end

@@ -12,14 +12,14 @@ RSpec.describe BrickFTP::API::Notification, type: :lib do
           'id' => 2,
           'path' => 'a/b/c',
           'username' => 'stork',
-          'user_id' => 5
+          'user_id' => 5,
         },
         {
           'id' => 3,
           'path' => 'a/b',
           'username' => 'zaphod',
-          'user_id' => 6
-        }
+          'user_id' => 6,
+        },
       ]
     end
 
@@ -49,7 +49,7 @@ RSpec.describe BrickFTP::API::Notification, type: :lib do
       let(:params) do
         {
           'path' => 'a/b/c/d',
-          'user_id' => '10'
+          'user_id' => '10',
         }
       end
 
@@ -58,7 +58,7 @@ RSpec.describe BrickFTP::API::Notification, type: :lib do
           'id' => '7',
           'path' => 'a/b/c/d',
           'user_id' => '10',
-          'username' => 'fred'
+          'username' => 'fred',
         }
       end
 

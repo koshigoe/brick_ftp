@@ -15,7 +15,7 @@ RSpec.describe BrickFTP::API::History::Folder, type: :lib do
           'path' => 'phun/physics1.png',
           'source' => 'phun/physics1.png',
           'ip' => '86.79.30.9',
-          'interface' => 'web'
+          'interface' => 'web',
         },
         {
           'id' => 904_649_269,
@@ -26,8 +26,8 @@ RSpec.describe BrickFTP::API::History::Folder, type: :lib do
           'path' => 'phun/physics1.png',
           'source' => 'phun/physics1.png',
           'ip' => '86.75.30.9',
-          'interface' => 'web'
-        }
+          'interface' => 'web',
+        },
       ]
     end
 

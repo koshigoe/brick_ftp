@@ -22,10 +22,10 @@ RSpec.describe BrickFTP::API::FileOperation::Upload, type: :lib do
           'available_parts' => 10_000,
           'send' => {
             'partsize' => 'required-parameter Content-Length',
-            'partdata' => 'body'
+            'partdata' => 'body',
           },
           'headers' => {},
-          'parameters' => {}
+          'parameters' => {},
         }
       end
 
@@ -37,7 +37,7 @@ RSpec.describe BrickFTP::API::FileOperation::Upload, type: :lib do
           'size' => 412,
           'mtime' => '2014-05-17T05:14:35+00:00',
           'crc32' => nil,
-          'md5' => nil
+          'md5' => nil,
         }
       end
 

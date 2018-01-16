@@ -58,7 +58,7 @@ RSpec.describe BrickFTP::API::Folder, type: :lib do
           'provided_mtime' => '2014-05-15T18:36:03+00:00',
           'permissions' => 'rwd',
           'subfolders_locked?' => false,
-        }
+        },
       ]
     end
 

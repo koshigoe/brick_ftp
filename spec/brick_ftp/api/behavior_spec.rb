@@ -13,8 +13,8 @@ RSpec.describe BrickFTP::API::Behavior, type: :lib do
           'path' => 'Finance',
           'behavior' => 'webhook',
           'value' => [
-            'https://a.mywebhookhandler.com'
-          ]
+            'https://a.mywebhookhandler.com',
+          ],
         },
         {
           'id' => 39,
@@ -22,9 +22,9 @@ RSpec.describe BrickFTP::API::Behavior, type: :lib do
           'behavior' => 'webhook',
           'value' => [
             'https://b.mywebhookhandler.com',
-            'https://c.mywebhookhandler.com'
-          ]
-        }
+            'https://c.mywebhookhandler.com',
+          ],
+        },
       ]
     end
 
@@ -56,8 +56,8 @@ RSpec.describe BrickFTP::API::Behavior, type: :lib do
         'path' => 'Finance',
         'behavior' => 'webhook',
         'value' => [
-          'https://a.mywebhookhandler.com'
-        ]
+          'https://a.mywebhookhandler.com',
+        ],
       }
     end
 
@@ -103,8 +103,8 @@ RSpec.describe BrickFTP::API::Behavior, type: :lib do
           'path' => 'cloud/images',
           'behavior' => 'webhook',
           'value' => [
-            'https://d.mywebhookhandler.com'
-          ]
+            'https://d.mywebhookhandler.com',
+          ],
         }
       end
 
@@ -114,8 +114,8 @@ RSpec.describe BrickFTP::API::Behavior, type: :lib do
           'path' => 'cloud/images',
           'behavior' => 'webhook',
           'value' => [
-            'https://d.mywebhookhandler.com'
-          ]
+            'https://d.mywebhookhandler.com',
+          ],
         }
       end
 
@@ -166,8 +166,8 @@ RSpec.describe BrickFTP::API::Behavior, type: :lib do
           'path' => 'cloud/images',
           'behavior' => 'webhook',
           'value' => [
-            'https://e.mywebhookhandler.com'
-          ]
+            'https://e.mywebhookhandler.com',
+          ],
         }
       end
 

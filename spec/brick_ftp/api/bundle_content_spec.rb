@@ -29,7 +29,7 @@ RSpec.describe BrickFTP::API::BundleContent, type: :lib do
             'type' => 'directory',
             'size' => nil,
             'crc32' => nil,
-            'md5' => nil
+            'md5' => nil,
           },
           {
             'id' => 2,
@@ -37,8 +37,8 @@ RSpec.describe BrickFTP::API::BundleContent, type: :lib do
             'type' => 'file',
             'size' => 209_715_200,
             'crc32' => '674135a9',
-            'md5' => '3389a0b30e05ef6613ccbdae5d9ec0bd'
-          }
+            'md5' => '3389a0b30e05ef6613ccbdae5d9ec0bd',
+          },
         ]
       end
 
