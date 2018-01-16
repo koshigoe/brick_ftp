@@ -67,7 +67,7 @@ module BrickFTP
         BrickFTP::HTTPClient.new.send(
           self.class.endpoints[:delete][:http_method],
           self.class.api_path_for(:delete, self),
-          headers: headers,
+          headers: headers
         )
         true
       end
