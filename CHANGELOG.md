@@ -10,6 +10,7 @@ Changelog
 ### Enhancements:
 
 - [#80](https://github.com/koshigoe/brick_ftp/pull/80) Use Rubocop.
+- [#85](https://github.com/koshigoe/brick_ftp/pull/85) Allow `BrickFTP::Client#upload_file` to multi part uploading.
 
 ### Fixed Bugs:
 

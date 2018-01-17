@@ -491,9 +491,18 @@ RSpec.describe BrickFTP::Client, type: :lib do
     end
 
     describe '#upload_file' do
-      it 'delegate BrickFTP::API::FileOperation::Upload.create' do
-        expect(BrickFTP::API::FileOperation::Upload).to receive(:create).with(path: 'a/b', source: 'b')
-        described_class.new.upload_file(path: 'a/b', source: 'b')
+      context 'without chunk_size option' do
+        it 'delegate BrickFTP::API::FileOperation::Upload.create' do
+          expect(BrickFTP::API::FileOperation::Upload).to receive(:create).with(path: 'a/b', source: 'b', chunk_size: nil)
+          described_class.new.upload_file(path: 'a/b', source: 'b')
+        end
+      end
+
+      context 'with chunk_size option' do
+        it 'delegate BrickFTP::API::FileOperation::Upload.create' do
+          expect(BrickFTP::API::FileOperation::Upload).to receive(:create).with(path: 'a/b', source: 'b', chunk_size: 10)
+          described_class.new.upload_file(path: 'a/b', source: 'b', chunk_size: 10)
+        end
       end
     end
   end
