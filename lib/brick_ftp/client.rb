@@ -364,9 +364,10 @@ module BrickFTP
     # @see https://brickftp.com/ja/docs/rest-api/file-uploading/
     # @param path [String]
     # @param source [IO] source `data` (not `path`) to upload
+    # @param chunk_size [Integer] Size of chunk to multi-part upload.
     # @return [BrickFTP::API::FileUpload]
-    def upload_file(path:, source:)
-      BrickFTP::API::FileOperation::Upload.create(path: path, source: source)
+    def upload_file(path:, source:, chunk_size: nil)
+      BrickFTP::API::FileOperation::Upload.create(path: path, source: source, chunk_size: chunk_size)
     end
 
     # Get usage of site.
