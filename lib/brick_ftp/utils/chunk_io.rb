@@ -1,3 +1,5 @@
+require 'tempfile'
+
 module BrickFTP
   module Utils
     class ChunkIO
@@ -37,16 +39,19 @@ module BrickFTP
       end
 
       def each_chunk
+        eof = false
         offset = 0
-        loop do
-          chunk = StringIO.new
-          copied = IO.copy_stream(io, chunk, chunk_size, offset)
-          break if copied.zero?
+        until eof
+          Tempfile.create do |chunk|
+            copied = IO.copy_stream(io, chunk, chunk_size, offset)
+            eof = copied.zero?
+            next if eof
 
-          offset += copied
-          chunk.rewind
+            offset += copied
+            chunk.rewind
 
-          yield chunk
+            yield chunk
+          end
         end
       end
     end
