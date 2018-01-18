@@ -16,6 +16,8 @@ Changelog
 
 ### Breaking Changes:
 
+- [#87](https://github.com/koshigoe/brick_ftp/pull/87) Support Ruby >= 2.2.0
+
 
 [v0.6.1](https://github.com/koshigoe/brick_ftp/compare/v0.6.0...v0.6.1)
 ----
