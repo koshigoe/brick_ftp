@@ -276,4 +276,35 @@ RSpec.describe BrickFTP::API::FileOperation::UploadingSession, type: :lib do
       end
     end
   end
+
+  describe '.upload' do
+    subject { described_class.upload(upload_uri: upload_uri, data: data) }
+
+    let(:upload_uri) { 'https://example.com/' }
+    let(:data) { open('spec/data/file_upload/source.txt') }
+
+    context 'success' do
+      before do
+        stub_request(:put, 'https://example.com/')
+          .with(body: "This is a test upload file to BrickFTP.\n")
+          .to_return(status: 200, body: '')
+      end
+
+      it 'not raise exception' do
+        expect { subject }.not_to raise_error
+      end
+    end
+
+    context 'failure' do
+      before do
+        stub_request(:put, 'https://example.com/')
+          .with(body: "This is a test upload file to BrickFTP.\n")
+          .to_return(status: 500, body: '')
+      end
+
+      it 'raise BrickFTP::HTTPClient::Error' do
+        expect { subject }.to raise_error BrickFTP::HTTPClient::Error
+      end
+    end
+  end
 end

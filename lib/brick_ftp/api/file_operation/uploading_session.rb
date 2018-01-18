@@ -35,6 +35,17 @@ module BrickFTP
           new(res.symbolize_keys)
         end
 
+        # Upload data.
+        #
+        # @param [String] upload_uri A uplading URL.
+        # @param [IO] data An IO object to upload.
+        #
+        def self.upload(upload_uri:, data:)
+          uri = URI.parse(upload_uri)
+          upload_client = BrickFTP::HTTPClient.new(uri.host)
+          upload_client.put(uri.to_s, params: data)
+        end
+
         # Get uploading URL for multi part uploading.
         #
         # @param [Integer] part_number The part number.
