@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  build: &build
     docker:
       - image: circleci/ruby:latest
     working_directory: /home/circleci/app
@@ -21,3 +21,28 @@ jobs:
       - store_artifacts:
           path: coverage
           destination: coverage
+  ruby-2.2:
+    <<: *build
+    docker:
+      - image: circleci/ruby:2.2
+  ruby-2.3:
+    <<: *build
+    docker:
+      - image: circleci/ruby:2.3
+  ruby-2.4:
+    <<: *build
+    docker:
+      - image: circleci/ruby:2.4
+  ruby-2.5:
+    <<: *build
+    docker:
+      - image: circleci/ruby:2.5
+
+workflows:
+  version: 2
+  build-using-multi-rubies:
+    jobs:
+      - ruby-2.2
+      - ruby-2.3
+      - ruby-2.4
+      - ruby-2.5
