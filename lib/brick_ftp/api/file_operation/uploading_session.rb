@@ -60,6 +60,14 @@ module BrickFTP
             yield at(n)
           end
         end
+
+        # Complete uploading file.
+        #
+        # @return [BrickFTP::API::FileOperation::UploadingResult] A result of uploading file.
+        #
+        def commit
+          UploadingResult.create(path: path, ref: ref)
+        end
       end
     end
   end
