@@ -9,6 +9,8 @@ Changelog
 
 ### Enhancements:
 
+- [#89](https://github.com/koshigoe/brick_ftp/pull/89) [Experimental] Allow to execute each steps of multi part uploading.
+
 ### Fixed Bugs:
 
 ### Breaking Changes:
