@@ -404,9 +404,9 @@ RSpec.describe BrickFTP::Client, type: :lib do
           page: 1,
           per_page: 1,
           search: 'a/b',
-          :'sort_by[path]' => 'asc',
-          :'sort_by[size]' => 'asc',
-          :'sort_by[modified_at_datetime]' => 'asc',
+          'sort_by[path]': 'asc',
+          'sort_by[size]': 'asc',
+          'sort_by[modified_at_datetime]': 'asc',
         }
         expect(BrickFTP::API::Folder).to receive(:all).with(converted_query)
         described_class.new.list_folders(query)
@@ -440,14 +440,14 @@ RSpec.describe BrickFTP::Client, type: :lib do
 
     describe '#move_file' do
       it 'delegate BrickFTP::API::FileOperation::Move.create' do
-        expect(BrickFTP::API::FileOperation::Move).to receive(:create).with(path: 'a/b', :'move-destination' => 'a/B')
+        expect(BrickFTP::API::FileOperation::Move).to receive(:create).with(path: 'a/b', 'move-destination': 'a/B')
         described_class.new.move_file(path: 'a/b', move_destination: 'a/B')
       end
     end
 
     describe '#copy_file' do
       it 'delegate BrickFTP::API::FileOperation::Copy.create' do
-        expect(BrickFTP::API::FileOperation::Copy).to receive(:create).with(path: 'a/b', :'copy-destination' => 'a/B')
+        expect(BrickFTP::API::FileOperation::Copy).to receive(:create).with(path: 'a/b', 'copy-destination': 'a/B')
         described_class.new.copy_file(path: 'a/b', copy_destination: 'a/B')
       end
     end
