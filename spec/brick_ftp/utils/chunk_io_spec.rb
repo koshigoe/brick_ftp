@@ -5,7 +5,7 @@ RSpec.describe BrickFTP::Utils::ChunkIO do
   describe '#each' do
     context 'chunk_size is nil' do
       it 'chunk has whole data' do
-        Tempfile.create do |io|
+        Tempfile.create('spec') do |io|
           io.write('DATA')
           io.rewind
 
@@ -23,7 +23,7 @@ RSpec.describe BrickFTP::Utils::ChunkIO do
 
     context 'chunk_size is not nil' do
       it 'split by chunk_size' do
-        Tempfile.create do |io|
+        Tempfile.create('spec') do |io|
           io.write('DATA')
           io.rewind
 
@@ -41,7 +41,7 @@ RSpec.describe BrickFTP::Utils::ChunkIO do
 
     context 'without block' do
       it 'return Enumerator' do
-        Tempfile.create do |io|
+        Tempfile.create('spec') do |io|
           io.write('DATA')
           io.rewind
 
