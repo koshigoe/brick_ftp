@@ -42,7 +42,7 @@ module BrickFTP
         eof = false
         offset = 0
         until eof
-          Tempfile.create do |chunk|
+          Tempfile.create('chunk-io') do |chunk|
             copied = IO.copy_stream(io, chunk, chunk_size, offset)
             eof = copied.zero?
             next if eof
