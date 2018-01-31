@@ -43,7 +43,7 @@ module BrickFTP
       attr_reader :properties
 
       def initialize(params = {})
-        @properties = {}
+        initialize_properties
         params.each { |k, v| write_property(k, v) }
       end
 
@@ -93,6 +93,11 @@ module BrickFTP
       end
 
       private
+
+      def initialize_properties
+        @properties = {}
+        self.class.attributes.each { |key| write_property(key, nil) }
+      end
 
       def respond_to_missing?(method_name, _include_private)
         self.class.attributes.include?(method_name.to_sym)

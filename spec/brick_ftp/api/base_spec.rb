@@ -67,7 +67,7 @@ RSpec.describe BrickFTP::API::Base do
   describe '#as_json' do
     subject { api.new(id: '1', value: 'v').as_json }
 
-    it { is_expected.to eq(id: '1', value: 'v', send: nil) }
+    it { is_expected.to eq('id' => '1', 'value' => 'v', 'send' => nil) }
   end
 
   describe '#to_json' do
