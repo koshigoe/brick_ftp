@@ -73,7 +73,7 @@ module BrickFTP
       end
 
       def as_json
-        self.class.attributes.each_with_object({}) { |name, res| res[name] = read_property(name) }
+        properties.dup
       end
 
       def to_json
