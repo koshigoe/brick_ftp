@@ -2,16 +2,35 @@ Changelog
 ====
 
 
-[unreleased](https://github.com/koshigoe/brick_ftp/compare/v0.7.1...master)
+[unreleased](https://github.com/koshigoe/brick_ftp/compare/v0.8.0...master)
 ----
 
-[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v0.7.1...master)
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v0.8.0...master)
 
 ### Enhancements:
 
 ### Fixed Bugs:
 
 ### Breaking Changes:
+
+
+[v0.8.0](https://github.com/koshigoe/brick_ftp/compare/v0.7.1...v0.8.0)
+----
+
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v0.7.1...v0.8.0)
+
+### Enhancements:
+
+### Fixed Bugs:
+
+- [#92](https://github.com/koshigoe/brick_ftp/pull/92) Re-Overwrite `as_json` to avoid to too much loop.
+    - fixes [#91](https://github.com/koshigoe/brick_ftp/issues/91)
+
+### Breaking Changes:
+
+- [#92](https://github.com/koshigoe/brick_ftp/pull/92)
+    - Change type of key of returned Hash object from `BrickFTP::API::Base#as_json` to `String`.
+    - Initialize `BrickFTP::API::Base#properties` with all defined attributes.
 
 
 [v0.7.1](https://github.com/koshigoe/brick_ftp/compare/v0.7.0...v0.7.1)
