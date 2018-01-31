@@ -79,6 +79,16 @@ module BrickFTP
         def commit
           UploadingResult.create(path: path, ref: ref)
         end
+
+        # Return single uploading session object.
+        #
+        # NOTE: The `#as_json` method will be overwritten by active_supprt.
+        #
+        # @return [Hash] a JSON serializable object
+        #
+        def as_json
+          properties.dup
+        end
       end
     end
   end
