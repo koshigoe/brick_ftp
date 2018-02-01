@@ -1,4 +1,6 @@
 [![CircleCI](https://circleci.com/gh/koshigoe/brick_ftp/tree/master.svg?style=svg)](https://circleci.com/gh/koshigoe/brick_ftp/tree/master)
+[![codecov](https://codecov.io/gh/koshigoe/brick_ftp/branch/master/graph/badge.svg)](https://codecov.io/gh/koshigoe/brick_ftp)
+
 
 # BrickFTP
 
