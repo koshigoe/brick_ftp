@@ -76,8 +76,8 @@ module BrickFTP
         properties.dup
       end
 
-      def to_json
-        as_json.to_json
+      def to_json(*args)
+        as_json.to_json(*args)
       end
 
       def write_property(key, value)
