@@ -86,7 +86,7 @@ module BrickFTP
         #
         # @return [Hash] a JSON serializable object
         #
-        def as_json
+        def as_json(*_args)
           properties.dup
         end
       end

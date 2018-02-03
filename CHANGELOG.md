@@ -2,12 +2,26 @@ Changelog
 ====
 
 
-[unreleased](https://github.com/koshigoe/brick_ftp/compare/v0.8.0...master)
+[unreleased](https://github.com/koshigoe/brick_ftp/compare/v0.8.1...master)
 ----
 
-[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v0.8.0...master)
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v0.8.1...master)
 
 ### Enhancements:
+
+### Fixed Bugs:
+
+### Breaking Changes:
+
+
+[v0.8.1](https://github.com/koshigoe/brick_ftp/compare/v0.8.0...v0.8.1)
+----
+
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v0.8.0...v0.8.1)
+
+### Enhancements:
+
+- [#94](https://github.com/koshigoe/brick_ftp/pull/94) Fix method signature of `#to_json` and `#as_json`
 
 ### Fixed Bugs:
 
