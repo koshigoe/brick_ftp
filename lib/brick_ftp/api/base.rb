@@ -72,7 +72,7 @@ module BrickFTP
         true
       end
 
-      def as_json
+      def as_json(*_args)
         properties.dup
       end
 
