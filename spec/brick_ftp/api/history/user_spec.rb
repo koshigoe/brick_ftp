@@ -18,6 +18,7 @@ RSpec.describe BrickFTP::API::History::User, type: :lib do
           'destination' => 'accounts.xls',
           'ip' => '86.75.30.9',
           'interface' => 'ftp',
+          'display' => 'Created as account.xls',
         },
         {
           'id' => 903_766_146,
@@ -27,6 +28,7 @@ RSpec.describe BrickFTP::API::History::User, type: :lib do
           'action' => 'login',
           'ip' => '86.75.30.9',
           'interface' => 'ftp',
+          'display' => 'Login',
         },
       ]
     end
@@ -52,6 +54,7 @@ RSpec.describe BrickFTP::API::History::User, type: :lib do
       expect(history.first.destination).to eq 'accounts.xls'
       expect(history.first.ip).to eq '86.75.30.9'
       expect(history.first.interface).to eq 'ftp'
+      expect(history.first.display).to eq 'Created as account.xls'
     end
   end
 end

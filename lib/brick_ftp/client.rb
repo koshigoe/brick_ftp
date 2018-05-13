@@ -136,63 +136,69 @@ module BrickFTP
     # Show the entire history for the current site.
     # @see https://brickftp.com/ja/docs/rest-api/history/
     # @param page [Integer] Page number of items to return in this request.
+    # @param display [String] Pass in 'full' to receive display summary
     # @param per_page [Integer] Requested number of items returned per request. Default: 1000, maximum: 10000.
     #   Leave blank for default (strongly recommended).
     # @param start_at [String] Date and time in the history to start from.
     # @return [Array] array of `BrickFTP::API::History::Site`
-    def list_site_history(page: nil, per_page: nil, start_at: nil)
-      query = { page: page, per_page: per_page, start_at: start_at }.reject { |_, v| v.nil? }
+    def list_site_history(page: nil, display: nil, per_page: nil, start_at: nil)
+      query = { page: page, display: display, per_page: per_page, start_at: start_at }.reject { |_, v| v.nil? }
       BrickFTP::API::History::Site.all(query)
     end
 
     # Show login history only.
     # @see https://brickftp.com/ja/docs/rest-api/history/
     # @param page [Integer] Page number of items to return in this request.
+    # @param display [String] Pass in 'full' to receive display summary
     # @param per_page [Integer] Requested number of items returned per request. Default: 1000, maximum: 10000.
     #   Leave blank for default (strongly recommended).
     # @param start_at [String] Date and time in the history to start from.
     # @return [Array] array of `BrickFTP::API::History::Login`
-    def list_login_history(page: nil, per_page: nil, start_at: nil)
-      query = { page: page, per_page: per_page, start_at: start_at }.reject { |_, v| v.nil? }
+    def list_login_history(page: nil, display: nil, per_page: nil, start_at: nil)
+      query = { page: page, display: display, per_page: per_page, start_at: start_at }.reject { |_, v| v.nil? }
       BrickFTP::API::History::Login.all(query)
     end
 
     # Show all history for a specific user.
     # @see https://brickftp.com/ja/docs/rest-api/history/
     # @param user_id [Integer] User ID.
+    # @param display [String] Pass in 'full' to receive display summary
     # @param page [Integer] Page number of items to return in this request.
     # @param per_page [Integer] Requested number of items returned per request.
     #   Default: 1000, maximum: 10000. Leave blank for default (strongly recommended).
     # @param start_at [String] Date and time in the history to start from.
     # @return [Array] array of `BrickFTP::API::History::User`
-    def list_user_history(user_id:, page: nil, per_page: nil, start_at: nil)
-      query = { user_id: user_id, page: page, per_page: per_page, start_at: start_at }.reject { |_, v| v.nil? }
+    def list_user_history(user_id:, display: nil, page: nil, per_page: nil, start_at: nil)
+      query = { user_id: user_id, display: display, page: page, per_page: per_page, start_at: start_at }
+              .reject { |_, v| v.nil? }
       BrickFTP::API::History::User.all(query)
     end
 
     # Show all history for a specific folder.
     # @see https://brickftp.com/ja/docs/rest-api/history/
     # @param path [String] path of folder.
+    # @param display [String] Pass in 'full' to receive display summary
     # @param page [Integer] Page number of items to return in this request.
     # @param per_page [Integer] Requested number of items returned per request.
     #   Default: 1000, maximum: 10000. Leave blank for default (strongly recommended).
     # @param start_at [String] Date and time in the history to start from.
     # @return [Array] array of `BrickFTP::API::History::Folder`
-    def list_folder_history(path:, page: nil, per_page: nil, start_at: nil)
-      query = { path: path, page: page, per_page: per_page, start_at: start_at }.reject { |_, v| v.nil? }
+    def list_folder_history(path:, display: nil, page: nil, per_page: nil, start_at: nil)
+      query = { path: path, display: display, page: page, per_page: per_page, start_at: start_at }.reject { |_, v| v.nil? }
       BrickFTP::API::History::Folder.all(query)
     end
 
     # Show all history for a specific file.
     # @see https://brickftp.com/ja/docs/rest-api/history/
     # @param path [String] path of file.
+    # @param display [String] Pass in 'full' to receive display summary
     # @param page [Integer] Page number of items to return in this request.
     # @param per_page [Integer] Requested number of items returned per request.
     #   Default: 1000, maximum: 10000. Leave blank for default (strongly recommended).
     # @param start_at [String] Date and time in the history to start from.
     # @return [Array] array of `BrickFTP::API::History::File`
-    def list_file_history(path:, page: nil, per_page: nil, start_at: nil)
-      query = { path: path, page: page, per_page: per_page, start_at: start_at }.reject { |_, v| v.nil? }
+    def list_file_history(path:, display: nil, page: nil, per_page: nil, start_at: nil)
+      query = { path: path, display: display, page: page, per_page: per_page, start_at: start_at }.reject { |_, v| v.nil? }
       BrickFTP::API::History::File.all(query)
     end
 

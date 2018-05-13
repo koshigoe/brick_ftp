@@ -16,6 +16,7 @@ RSpec.describe BrickFTP::API::History::Login, type: :lib do
           'action' => 'login',
           'ip' => '86.75.30.9',
           'interface' => 'web',
+          'display' => 'Login',
         },
         {
           'id' => 903_766_417,
@@ -25,6 +26,7 @@ RSpec.describe BrickFTP::API::History::Login, type: :lib do
           'action' => 'login',
           'ip' => '172.19.113.171',
           'interface' => 'web',
+          'display' => 'Login',
         },
       ]
     end
@@ -48,6 +50,7 @@ RSpec.describe BrickFTP::API::History::Login, type: :lib do
       expect(history.first.action).to eq 'login'
       expect(history.first.ip).to eq '86.75.30.9'
       expect(history.first.interface).to eq 'web'
+      expect(history.first.display).to eq 'Login'
     end
   end
 end
