@@ -1,7 +1,7 @@
 module BrickFTP
   class Client
     # Login and store authentication session.
-    # @see https://brickftp.com/ja/docs/rest-api/authentication/
+    # @see https://developers.brickftp.com/#authentication-with-a-session
     # @param username [String] username of BrickFTP's user.
     # @param password [String] password of BrickFTP's user.
     def login(username, password)
@@ -9,20 +9,20 @@ module BrickFTP
     end
 
     # Logout and discard authentication session.
-    # @see https://brickftp.com/ja/docs/rest-api/authentication/
+    # @see https://developers.brickftp.com/#authentication-with-a-session
     def logout
       BrickFTP::API::Authentication.logout
     end
 
     # List all users on the current site.
-    # @see https://brickftp.com/ja/docs/rest-api/users/
+    # @see https://developers.brickftp.com/#users
     # @return [Array] array of BrickFTP::API::User
     def list_users
       BrickFTP::API::User.all
     end
 
     # Show a single user.
-    # @see https://brickftp.com/ja/docs/rest-api/users/
+    # @see https://developers.brickftp.com/#users
     # @param id user id.
     # @return [BrickFTP::API::User] user object.
     def show_user(id)
@@ -30,14 +30,14 @@ module BrickFTP
     end
 
     # Create a new user on the current site.
-    # @see https://brickftp.com/ja/docs/rest-api/users/
+    # @see https://developers.brickftp.com/#users
     # @param attributes [Hash] User's attributes.
     def create_user(attributes)
       BrickFTP::API::User.create(attributes)
     end
 
     # Update an existing user.
-    # @see https://brickftp.com/ja/docs/rest-api/users/
+    # @see https://developers.brickftp.com/#users
     # @param user_or_id [BrickFTP::API::User, Integer] user object or user id.
     # @param attributes [Hash] User's attributes.
     # @return [BrickFTP::API::User] user object.
@@ -46,7 +46,7 @@ module BrickFTP
     end
 
     # Delete a user.
-    # @see https://brickftp.com/ja/docs/rest-api/users/
+    # @see https://developers.brickftp.com/#users
     # @param user_or_id [BrickFTP::API::User, Integer] user object or user id.
     # @return [Boolean] return true.
     def delete_user(user_or_id)
@@ -54,13 +54,13 @@ module BrickFTP
     end
 
     # List all groups on the current site.
-    # @see https://brickftp.com/ja/docs/rest-api/groups/
+    # @see https://developers.brickftp.com/#groups
     def list_groups
       BrickFTP::API::Group.all
     end
 
     # Show a single group.
-    # @see https://brickftp.com/ja/docs/rest-api/groups/
+    # @see https://developers.brickftp.com/#groups
     # @param id group id.
     # @return [BrickFTP::API::Group] group object.
     def show_group(id)
@@ -68,14 +68,14 @@ module BrickFTP
     end
 
     # Create a new group on the current site.
-    # @see https://brickftp.com/ja/docs/rest-api/groups/
+    # @see https://developers.brickftp.com/#groups
     # @param attributes [Hash] Group's attributes.
     def create_group(attributes)
       BrickFTP::API::Group.create(attributes)
     end
 
     # Update an existing group.
-    # @see https://brickftp.com/ja/docs/rest-api/groups/
+    # @see https://developers.brickftp.com/#groups
     # @param group_or_id [BrickFTP::API::Group, Integer] group object or group id.
     # @param attributes [Hash] Group's attributes.
     # @return [BrickFTP::API::Group] group object.
@@ -84,7 +84,7 @@ module BrickFTP
     end
 
     # Delete a group.
-    # @see https://brickftp.com/ja/docs/rest-api/groups/
+    # @see https://developers.brickftp.com/#groups
     # @param group_or_id [BrickFTP::API::Group, Integer] group object or group id.
     # @return [Boolean] return true.
     def delete_group(group_or_id)
@@ -92,20 +92,20 @@ module BrickFTP
     end
 
     # List all permissions on the current site.
-    # @see https://brickftp.com/ja/docs/rest-api/permissions/
+    # @see https://developers.brickftp.com/#permissions
     def list_permissions
       BrickFTP::API::Permission.all
     end
 
     # Create a new permission on the current site.
-    # @see https://brickftp.com/ja/docs/rest-api/permissions/
+    # @see https://developers.brickftp.com/#permissions
     # @param attributes [Hash] Permission's attributes.
     def create_permission(attributes)
       BrickFTP::API::Permission.create(attributes)
     end
 
     # Delete a permission.
-    # @see https://brickftp.com/ja/docs/rest-api/permissions/
+    # @see https://developers.brickftp.com/#permissions
     # @param permission_or_id [BrickFTP::API::Permission, Integer] permission object or permission id.
     # @return [Boolean] return true.
     def delete_permission(permission_or_id)
@@ -113,20 +113,20 @@ module BrickFTP
     end
 
     # List all notifications on the current site.
-    # @see https://brickftp.com/ja/docs/rest-api/notifications/
+    # @see https://developers.brickftp.com/#notifications
     def list_notifications
       BrickFTP::API::Notification.all
     end
 
     # Create a new notification on the current site.
-    # @see https://brickftp.com/ja/docs/rest-api/notifications/
+    # @see https://developers.brickftp.com/#notifications
     # @param attributes [Hash] Notification's attributes.
     def create_notification(attributes)
       BrickFTP::API::Notification.create(attributes)
     end
 
     # Delete a notification.
-    # @see https://brickftp.com/ja/docs/rest-api/notifications/
+    # @see https://developers.brickftp.com/#notifications
     # @param notification_or_id [BrickFTP::API::Notification, Integer] notification object or notification id.
     # @return [Boolean] return true.
     def delete_notification(notification_or_id)
@@ -134,7 +134,7 @@ module BrickFTP
     end
 
     # Show the entire history for the current site.
-    # @see https://brickftp.com/ja/docs/rest-api/history/
+    # @see https://developers.brickftp.com/#history
     # @param page [Integer] Page number of items to return in this request.
     # @param per_page [Integer] Requested number of items returned per request. Default: 1000, maximum: 10000.
     #   Leave blank for default (strongly recommended).
@@ -146,7 +146,7 @@ module BrickFTP
     end
 
     # Show login history only.
-    # @see https://brickftp.com/ja/docs/rest-api/history/
+    # @see https://developers.brickftp.com/#history
     # @param page [Integer] Page number of items to return in this request.
     # @param per_page [Integer] Requested number of items returned per request. Default: 1000, maximum: 10000.
     #   Leave blank for default (strongly recommended).
@@ -158,7 +158,7 @@ module BrickFTP
     end
 
     # Show all history for a specific user.
-    # @see https://brickftp.com/ja/docs/rest-api/history/
+    # @see https://developers.brickftp.com/#history
     # @param user_id [Integer] User ID.
     # @param page [Integer] Page number of items to return in this request.
     # @param per_page [Integer] Requested number of items returned per request.
@@ -171,7 +171,7 @@ module BrickFTP
     end
 
     # Show all history for a specific folder.
-    # @see https://brickftp.com/ja/docs/rest-api/history/
+    # @see https://developers.brickftp.com/#history
     # @param path [String] path of folder.
     # @param page [Integer] Page number of items to return in this request.
     # @param per_page [Integer] Requested number of items returned per request.
@@ -184,7 +184,7 @@ module BrickFTP
     end
 
     # Show all history for a specific file.
-    # @see https://brickftp.com/ja/docs/rest-api/history/
+    # @see https://developers.brickftp.com/#history
     # @param path [String] path of file.
     # @param page [Integer] Page number of items to return in this request.
     # @param per_page [Integer] Requested number of items returned per request.
@@ -197,14 +197,14 @@ module BrickFTP
     end
 
     # List all bundles on the current site.
-    # @see https://brickftp.com/ja/docs/rest-api/bundles/
+    # @see https://developers.brickftp.com/#bundles
     # @return [Array] array of BrickFTP::API::Bundle
     def list_bundles
       BrickFTP::API::Bundle.all
     end
 
     # Show a single bundle.
-    # @see https://brickftp.com/ja/docs/rest-api/bundles/
+    # @see https://developers.brickftp.com/#bundles
     # @param id bundle id.
     # @return [BrickFTP::API::Bundle] bundle object.
     def show_bundle(id)
@@ -212,14 +212,14 @@ module BrickFTP
     end
 
     # Create a new bundle on the current site.
-    # @see https://brickftp.com/ja/docs/rest-api/bundles/
+    # @see https://developers.brickftp.com/#bundles
     # @param attributes [Hash] Bundle's attributes.
     def create_bundle(attributes)
       BrickFTP::API::Bundle.create(attributes)
     end
 
     # Delete a bundle.
-    # @see https://brickftp.com/ja/docs/rest-api/bundles/
+    # @see https://developers.brickftp.com/#bundles
     # @param bundle_or_id [BrickFTP::API::Bundle, Integer] bundle object or bundle id.
     # @return [Boolean] return true.
     def delete_bundle(bundle_or_id)
@@ -227,7 +227,7 @@ module BrickFTP
     end
 
     # List the contents of a bundle.
-    # @see https://brickftp.com/ja/docs/rest-api/bundles/
+    # @see https://developers.brickftp.com/#bundles
     # @param path [String]
     # @param code [String]
     # @param host [String]
@@ -237,7 +237,7 @@ module BrickFTP
     end
 
     # Provides download URLs that will enable you to download the files in a bundle.
-    # @see https://brickftp.com/ja/docs/rest-api/bundles/
+    # @see https://developers.brickftp.com/#bundles
     # @param code [String]
     # @param host [String]
     # @param paths [Array] array of path string.
@@ -247,14 +247,14 @@ module BrickFTP
     end
 
     # List all behaviors on the current site.
-    # @see https://brickftp.com/ja/docs/rest-api/behaviors/
+    # @see https://developers.brickftp.com/#behaviors
     # @return [Array] array of BrickFTP::API::Behavior
     def list_behaviors
       BrickFTP::API::Behavior.all
     end
 
     # Show a single behavior.
-    # @see https://brickftp.com/ja/docs/rest-api/behaviors/
+    # @see https://developers.brickftp.com/#behaviors
     # @param id behavior id.
     # @return [BrickFTP::API::Behavior] behavior object.
     def show_behavior(id)
@@ -262,14 +262,14 @@ module BrickFTP
     end
 
     # Create a new behavior on the current site.
-    # @see https://brickftp.com/ja/docs/rest-api/behaviors/
+    # @see https://developers.brickftp.com/#behaviors
     # @param attributes [Hash] Behavior's attributes.
     def create_behavior(attributes)
       BrickFTP::API::Behavior.create(attributes)
     end
 
     # Update an existing behavior.
-    # @see https://brickftp.com/ja/docs/rest-api/behaviors/
+    # @see https://developers.brickftp.com/#behaviors
     # @param behavior_or_id [BrickFTP::API::Behavior, Integer] behavior object or behavior id.
     # @param attributes [Hash] Behavior's attributes.
     # @return [BrickFTP::API::Behavior] behavior object.
@@ -278,7 +278,7 @@ module BrickFTP
     end
 
     # Delete a behavior.
-    # @see https://brickftp.com/ja/docs/rest-api/behaviors/
+    # @see https://developers.brickftp.com/#behaviors
     # @param behavior_or_id [BrickFTP::API::Behavior, Integer] behavior object or behavior id.
     # @return [Boolean] return true.
     def delete_behavior(behavior_or_id)
@@ -286,14 +286,14 @@ module BrickFTP
     end
 
     # shows the behaviors that apply to the given path.
-    # @see https://brickftp.com/ja/docs/rest-api/behaviors/
+    # @see https://developers.brickftp.com/#behaviors
     # @return [Array] array of BrickFTP::API::FolderBehavior
     def list_folder_behaviors(path:)
       BrickFTP::API::FolderBehavior.all(path: path)
     end
 
     # Lists the contents of the folder provided in the URL.
-    # @see https://brickftp.com/ja/docs/rest-api/file-operations/
+    # @see https://developers.brickftp.com/#file-and-folder-operations
     # @param path [String]
     # @param page [Integer] Page number of items to return in this request.
     # @param per_page [Integer] Requested number of items returned per request.
@@ -315,7 +315,7 @@ module BrickFTP
     end
 
     # Create a folder.
-    # @see https://brickftp.com/ja/docs/rest-api/file-operations/
+    # @see https://developers.brickftp.com/#file-and-folder-operations
     # @param path [String]
     # @return [BrickFTP::API::Folder]
     def create_folder(path:)
@@ -323,7 +323,7 @@ module BrickFTP
     end
 
     # provides a download URL that will enable you to download a file.
-    # @see https://brickftp.com/ja/docs/rest-api/file-operations/
+    # @see https://developers.brickftp.com/#file-and-folder-operations
     # @param path [String] path for file.
     # @param omit_download_uri [Boolean] If true, omit download_uri. (Add query `action=stat`)
     # @return [BrickFTP::API::File] file object.
@@ -334,7 +334,7 @@ module BrickFTP
     end
 
     # Move or renames a file or folder to the destination provided in the move_destination parameter.
-    # @see https://brickftp.com/ja/docs/rest-api/file-operations/
+    # @see https://developers.brickftp.com/#file-and-folder-operations
     # @param path [String]
     # @param move_destination [String]
     # @return [BrickFTP::API::FileMove]
@@ -343,7 +343,7 @@ module BrickFTP
     end
 
     # Copy a file or folder to the destination provided in the copy_destination parameter.
-    # @see https://brickftp.com/ja/docs/rest-api/file-operations/
+    # @see https://developers.brickftp.com/#file-and-folder-operations
     # @param path [String]
     # @param copy_destination [String]
     # @return [BrickFTP::API::FileCopy]
@@ -352,7 +352,7 @@ module BrickFTP
     end
 
     # Delete a file.
-    # @see https://brickftp.com/ja/docs/rest-api/file-operations/
+    # @see https://developers.brickftp.com/#file-and-folder-operations
     # @param file_or_path [BrickFTP::API::File, String] file object or file(folder) path.
     # @param recursive [Boolean]
     # @return [Boolean] return true.
@@ -361,7 +361,7 @@ module BrickFTP
     end
 
     # Upload file.
-    # @see https://brickftp.com/ja/docs/rest-api/file-uploading/
+    # @see https://developers.brickftp.com/#file-uploading
     # @param path [String]
     # @param source [IO] source `data` (not `path`) to upload
     # @param chunk_size [Integer] Size of chunk to multi-part upload.
