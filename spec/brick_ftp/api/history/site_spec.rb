@@ -24,6 +24,7 @@ RSpec.describe BrickFTP::API::History::Site, type: :lib do
           'action' => 'login',
           'ip' => '172.19.113.171',
           'interface' => 'ftp',
+          'display' => 'Login'
         },
         {
           'id' => 814_350_298,
@@ -33,6 +34,7 @@ RSpec.describe BrickFTP::API::History::Site, type: :lib do
           'action' => 'permission_create',
           'path' => 'Files for bob.user',
           'source' => 'Files for bob.user',
+          'display' => 'Added full permissions',
           'targets' => {
             'user' => {
               'id' => 23_451,
@@ -83,6 +85,7 @@ RSpec.describe BrickFTP::API::History::Site, type: :lib do
         )
       expect(history.last.ip).to eq '172.19.113.171'
       expect(history.last.interface).to eq 'web'
+      expect(history.last.display).to eq 'Added full permissions'
     end
   end
 end

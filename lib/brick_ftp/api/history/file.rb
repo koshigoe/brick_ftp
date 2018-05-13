@@ -16,6 +16,7 @@ module BrickFTP
         attribute :targets
         attribute :ip
         attribute :interface
+        attribute :display
       end
     end
   end

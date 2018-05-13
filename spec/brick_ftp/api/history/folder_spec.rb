@@ -16,6 +16,7 @@ RSpec.describe BrickFTP::API::History::Folder, type: :lib do
           'source' => 'phun/physics1.png',
           'ip' => '86.79.30.9',
           'interface' => 'web',
+          'display' => 'Downloaded phun/physics1.png'
         },
         {
           'id' => 904_649_269,
@@ -27,6 +28,7 @@ RSpec.describe BrickFTP::API::History::Folder, type: :lib do
           'source' => 'phun/physics1.png',
           'ip' => '86.75.30.9',
           'interface' => 'web',
+          'display' => 'Downloaded phun/physics1.png'
         },
       ]
     end
@@ -52,6 +54,7 @@ RSpec.describe BrickFTP::API::History::Folder, type: :lib do
       expect(history.last.source).to eq 'phun/physics1.png'
       expect(history.last.ip).to eq '86.75.30.9'
       expect(history.last.interface).to eq 'web'
+      expect(history.last.interface).to eq 'Downloaded phun/physics1.png'
     end
   end
 end
