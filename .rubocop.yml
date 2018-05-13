@@ -9,8 +9,14 @@ Style/EmptyCaseCondition:
 Style/FormatStringToken:
   EnforcedStyle: template
 
-Style/TrailingCommaInLiteral:
+Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Metrics/ClassLength:
+  Enabled: false
 
 Metrics/LineLength:
   Max: 124

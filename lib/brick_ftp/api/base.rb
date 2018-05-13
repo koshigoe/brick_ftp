@@ -108,6 +108,12 @@ module BrickFTP
 
         read_property(method_name)
       end
+
+      def display
+        # attribute on history objects
+        # explicitly defined because display is a method on Object
+        read_property(:display)
+      end
     end
   end
 end

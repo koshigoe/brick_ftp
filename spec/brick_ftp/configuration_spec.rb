@@ -69,7 +69,7 @@ RSpec.describe BrickFTP::Configuration, type: :lib do
     end
 
     context 'config file path is wrong' do
-      before { options[:config_file_path] = File.expand_path('../../data/config-not-exist', __FILE__) }
+      before { options[:config_file_path] = File.expand_path('../data/config-not-exist', __dir__) }
       it_behaves_like 'inifile does not exist'
     end
 
@@ -79,7 +79,7 @@ RSpec.describe BrickFTP::Configuration, type: :lib do
     end
 
     context 'inifile exists' do
-      before { options[:config_file_path] = File.expand_path('../../data/config', __FILE__) }
+      before { options[:config_file_path] = File.expand_path('../data/config', __dir__) }
 
       context 'without profile:' do
         it 'set profile default value' do
@@ -251,7 +251,7 @@ RSpec.describe BrickFTP::Configuration, type: :lib do
 
     context 'new file' do
       context 'parent directory exists' do
-        let(:config_file_path) { File.expand_path('../../data/new-config-file', __FILE__) }
+        let(:config_file_path) { File.expand_path('../data/new-config-file', __dir__) }
 
         it 'create new config file' do
           expect { subject }.to change { File.exist?(config_file_path) }.to(true)
@@ -288,7 +288,7 @@ RSpec.describe BrickFTP::Configuration, type: :lib do
       end
 
       context 'parent directory does not exist' do
-        let(:config_file_path) { File.expand_path('../../data/parent/new-config-file', __FILE__) }
+        let(:config_file_path) { File.expand_path('../data/parent/new-config-file', __dir__) }
 
         after do
           path = File.dirname(config_file_path)
@@ -331,10 +331,10 @@ RSpec.describe BrickFTP::Configuration, type: :lib do
     end
 
     context 'exist file' do
-      let(:config_file_path) { File.expand_path('../../data/exist-config-file', __FILE__) }
+      let(:config_file_path) { File.expand_path('../data/exist-config-file', __dir__) }
 
       before do
-        FileUtils.copy File.expand_path('../../data/config', __FILE__), config_file_path
+        FileUtils.copy File.expand_path('../data/config', __dir__), config_file_path
       end
 
       context 'unchange attributes' do

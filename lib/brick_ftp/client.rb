@@ -169,7 +169,8 @@ module BrickFTP
     # @param start_at [String] Date and time in the history to start from.
     # @return [Array] array of `BrickFTP::API::History::User`
     def list_user_history(user_id:, display: nil, page: nil, per_page: nil, start_at: nil)
-      query = { user_id: user_id, display: display, page: page, per_page: per_page, start_at: start_at }.reject { |_, v| v.nil? }
+      query = { user_id: user_id, display: display, page: page, per_page: per_page, start_at: start_at }
+              .reject { |_, v| v.nil? }
       BrickFTP::API::History::User.all(query)
     end
 
