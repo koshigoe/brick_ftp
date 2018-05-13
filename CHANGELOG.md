@@ -2,16 +2,34 @@ Changelog
 ====
 
 
-[unreleased](https://github.com/koshigoe/brick_ftp/compare/v0.8.1...master)
+[unreleased](https://github.com/koshigoe/brick_ftp/compare/v0.8.2...master)
 ----
 
-[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v0.8.1...master)
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v0.8.2...master)
 
 ### Enhancements:
 
 ### Fixed Bugs:
 
 ### Breaking Changes:
+
+
+[0.8.2](https://github.com/koshigoe/brick_ftp/compare/v0.8.1...v0.8.2)
+----
+
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v0.8.1...v0.8.2)
+
+### Enhancements:
+
+- [#96](https://github.com/koshigoe/brick_ftp/pull/96) Add display key to history (by [terencedignon](https://github.com/terencedignon))
+
+### Fixed Bugs:
+
+### Breaking Changes:
+
+### Others
+
+- [#98](https://github.com/koshigoe/brick_ftp/pull/98) Documentation is out of date (by [terencedignon](https://github.com/terencedignon))
 
 
 [v0.8.1](https://github.com/koshigoe/brick_ftp/compare/v0.8.0...v0.8.1)
