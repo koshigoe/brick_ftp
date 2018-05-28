@@ -1,5 +1,5 @@
 module BrickFTP
-  class Client
+  class Client # rubocop:disable Metrics/ClassLength
     # Login and store authentication session.
     # @see https://developers.brickftp.com/#authentication-with-a-session
     # @param username [String] username of BrickFTP's user.
@@ -374,6 +374,18 @@ module BrickFTP
     # @return [BrickFTP::API::FileUpload]
     def upload_file(path:, source:, chunk_size: nil)
       BrickFTP::API::FileOperation::Upload.create(path: path, source: source, chunk_size: chunk_size)
+    end
+
+    def request_upload(path:, ref: nil, part_number: nil)
+      BrickFTP::API::FileOperation::Upload.step1(path: path, ref: ref, part_number: part_number)
+    end
+
+    def process_upload(source:, upload_uri:)
+      BrickFTP::API::FileOperation::Upload.step2(source: source, upload_uri: upload_uri)
+    end
+
+    def complete_upload(path:, ref:)
+      BrickFTP::API::FileOperation::Upload.step3(path: path, ref: ref)
     end
 
     # Get usage of site.
