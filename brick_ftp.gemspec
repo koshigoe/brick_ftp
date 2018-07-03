@@ -32,5 +32,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'deep_hash_transform', '~> 1.0'
   spec.add_dependency 'inifile', '~> 3.0.0'
-  spec.add_dependency 'thor', '~> 0.19.1'
+  spec.add_dependency 'thor', '~> 0.20.0'
 end
