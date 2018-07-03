@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module BrickFTP
   class LogFormatter < Logger::Formatter
-    FORMAT = "severity:%{severity}\tpid:%{pid}\ttime:%{time}\tmessage:%{message}\n".freeze
+    FORMAT = "severity:%{severity}\tpid:%{pid}\ttime:%{time}\tmessage:%{message}\n"
 
     def call(severity, time, _program_name, message)
       params = {

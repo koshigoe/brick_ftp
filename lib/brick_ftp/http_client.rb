@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'net/https'
 require 'json'
 require 'cgi'
@@ -25,7 +27,7 @@ module BrickFTP
       end
     end
 
-    USER_AGENT = 'BrickFTP Client/0.1 (https://github.com/koshigoe/brick_ftp)'.freeze
+    USER_AGENT = 'BrickFTP Client/0.1 (https://github.com/koshigoe/brick_ftp)'
 
     def initialize(host = nil)
       @host = host || BrickFTP.config.api_host

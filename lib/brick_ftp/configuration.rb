@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'logger'
 require 'inifile'
 
@@ -37,7 +39,7 @@ module BrickFTP
     DEFAULT_OPEN_TIMEOUT = 10
     DEFAULT_READ_TIMEOUT = 30
 
-    DEFAULT_PROFILE = 'global'.freeze
+    DEFAULT_PROFILE = 'global'
     # Name of storable configurations. (TODO: log_path, log_level, log_formatter)
     STORABLE_CONFIGURATION_KEYS = %w[subdomain api_key open_timeout read_timeout].freeze
 
