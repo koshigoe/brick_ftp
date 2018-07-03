@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'cgi'
 
 module BrickFTP
   module API
     module Authentication
-      COOKIE_NAME = 'BrickAPI'.freeze
+      COOKIE_NAME = 'BrickAPI'
 
       # Generate authentication cookie.
       # @param session [BrickFTP::API::Authentication::Session] authentication session object.

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'deep_hash_transform'
 require 'thor'
 require 'brick_ftp/version'

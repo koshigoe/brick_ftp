@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module BrickFTP
   class Client
     # Login and store authentication session.

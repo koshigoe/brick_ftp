@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe BrickFTP::API::FileOperation::Upload, type: :lib do
