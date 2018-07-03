@@ -11,7 +11,7 @@ RSpec.describe BrickFTP::Utils::ChunkIO do
           io.write('DATA')
           io.rewind
 
-          res = ''
+          res = +''
           called = 0
           described_class.new(io).each do |chunk|
             res << chunk.read
@@ -29,7 +29,7 @@ RSpec.describe BrickFTP::Utils::ChunkIO do
           io.write('DATA')
           io.rewind
 
-          res = ''
+          res = +''
           called = 0
           described_class.new(io, chunk_size: 1).each do |chunk|
             res << chunk.read
@@ -50,7 +50,7 @@ RSpec.describe BrickFTP::Utils::ChunkIO do
           enum = described_class.new(io, chunk_size: 1).each
           expect(enum).to be_an_instance_of(Enumerator)
 
-          res = ''
+          res = +''
           called = 0
           enum.each do |chunk|
             res << chunk.read
