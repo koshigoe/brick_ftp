@@ -20,17 +20,17 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '>= 2.2.0'
 
-  spec.add_development_dependency 'bundler', '~> 1.12'
+  spec.add_development_dependency 'bundler', '~> 1.16'
   spec.add_development_dependency 'codecov', '~> 0.1.10'
-  spec.add_development_dependency 'pry', '~> 0.10'
-  spec.add_development_dependency 'rake', '~> 10.0'
-  spec.add_development_dependency 'rspec', '~> 3.0'
-  spec.add_development_dependency 'rubocop', '~> 0.55.0'
+  spec.add_development_dependency 'pry', '~> 0.11'
+  spec.add_development_dependency 'rake', '~> 12.0'
+  spec.add_development_dependency 'rspec', '~> 3.7'
+  spec.add_development_dependency 'rubocop', '~> 0.57.0'
   spec.add_development_dependency 'simplecov', '~> 0.15'
-  spec.add_development_dependency 'webmock', '~> 2.1'
+  spec.add_development_dependency 'webmock', '~> 3.4'
   spec.add_development_dependency 'yard', '~> 0.9'
 
   spec.add_dependency 'deep_hash_transform', '~> 1.0'
   spec.add_dependency 'inifile', '~> 3.0.0'
-  spec.add_dependency 'thor', '~> 0.19.1'
+  spec.add_dependency 'thor', '~> 0.20.0'
 end
