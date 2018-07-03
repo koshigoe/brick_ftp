@@ -13,6 +13,9 @@ Changelog
 
 ### Breaking Changes:
 
+- [Dropping support for Ruby 2.2](https://github.com/koshigoe/brick_ftp/pull/104)
+    - Set `frozen_string_literal: true`
+
 
 [0.8.2](https://github.com/koshigoe/brick_ftp/compare/v0.8.1...v0.8.2)
 ----
