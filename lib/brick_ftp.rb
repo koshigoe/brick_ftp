@@ -46,6 +46,7 @@ require 'brick_ftp/cli/site'
 require 'brick_ftp/cli/main'
 require 'brick_ftp/utils'
 require 'brick_ftp/utils/chunk_io'
+require 'brick_ftp/rest'
 
 module BrickFTP
   # https://brickftp.com/redundancy/
