@@ -28,19 +28,19 @@ module BrickFTP
       handle_response(res)
     end
 
-    def post(path, data)
+    def post(path, data = nil)
       req = Net::HTTP::Post.new(path, @request_headers)
       req.basic_auth(@api_key, 'x')
-      req.body = data.to_json
+      req.body = data.to_json unless data.nil?
       res = @http.start { |session| session.request(req) }
 
       handle_response(res)
     end
 
-    def put(path, data)
+    def put(path, data = nil)
       req = Net::HTTP::Put.new(path, @request_headers)
       req.basic_auth(@api_key, 'x')
-      req.body = data.to_json
+      req.body = data.to_json unless data.nil?
       res = @http.start { |session| session.request(req) }
 
       handle_response(res)
