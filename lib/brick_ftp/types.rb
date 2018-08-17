@@ -4,5 +4,6 @@ module BrickFTP
   module Types
     autoload :User, 'brick_ftp/types/user'
     autoload :UserAPIKey, 'brick_ftp/types/user_api_key'
+    autoload :UserPublicKey, 'brick_ftp/types/user_public_key'
   end
 end
