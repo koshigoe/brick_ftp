@@ -6,6 +6,8 @@ module BrickFTP
     READ_TIMEOUT = 60
     USER_AGENT = 'BrickFTP Client/1.0 (https://github.com/koshigoe/brick_ftp)'
 
+    class Error < StandardError; end
+
     def initialize(subdomain, api_key)
       @http = Net::HTTP.new("#{subdomain}.brickftp.com", 443)
       @http.use_ssl = true
@@ -22,7 +24,20 @@ module BrickFTP
       req.basic_auth(@api_key, 'x')
       res = @http.start { |session| session.request(req) }
 
-      JSON.parse(res.body)
+      handle_response(res)
+    end
+
+    private
+
+    def handle_response(response)
+      case response
+      when Net::HTTPSuccess
+        JSON.parse(response.body)
+      else
+        response.value
+      end
+    rescue StandardError => e
+      raise Error, e.message
     end
   end
 end
