@@ -56,7 +56,7 @@ RSpec.describe BrickFTP::Commands::UnlockUser, type: :lib do
     end
 
     context 'User not found' do
-      it 'return nil' do
+      it 'raise exception' do
         stub_request(:post, 'https://subdomain.brickftp.com/api/rest/v1/users/1234/unlock.json')
           .with(
             basic_auth: %w[api-key x],
