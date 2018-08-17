@@ -15,5 +15,6 @@ module BrickFTP
     autoload :ListAPIKeys, 'brick_ftp/commands/list_api_keys'
     autoload :GetAPIKey, 'brick_ftp/commands/get_api_key'
     autoload :CreateAPIKey, 'brick_ftp/commands/create_api_key'
+    autoload :DeleteAPIKey, 'brick_ftp/commands/delete_api_key'
   end
 end
