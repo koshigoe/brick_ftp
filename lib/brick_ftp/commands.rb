@@ -19,5 +19,6 @@ module BrickFTP
     # ref. https://developers.brickftp.com/#user-public-keys
     autoload :ListPublicKeys, 'brick_ftp/commands/list_public_keys'
     autoload :GetPublicKey, 'brick_ftp/commands/get_public_key'
+    autoload :CreatePublicKey, 'brick_ftp/commands/create_public_key'
   end
 end
