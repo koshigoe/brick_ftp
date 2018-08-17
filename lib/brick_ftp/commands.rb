@@ -9,5 +9,6 @@ module BrickFTP
     autoload :CreateUser, 'brick_ftp/commands/create_user'
     autoload :UpdateUser, 'brick_ftp/commands/update_user'
     autoload :DeleteUser, 'brick_ftp/commands/delete_user'
+    autoload :UnlockUser, 'brick_ftp/commands/unlock_user'
   end
 end
