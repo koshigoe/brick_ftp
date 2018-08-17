@@ -120,7 +120,7 @@ RSpec.describe BrickFTP::REST, type: :lib do
             headers: {
               'User-Agent' => 'BrickFTP Client/1.0 (https://github.com/koshigoe/brick_ftp)',
               'Content-Type' => 'application/json',
-            },
+            }
           )
           .to_return(body: '{}')
 
