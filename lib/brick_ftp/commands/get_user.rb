@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
+require 'brick_ftp/commands/restful'
+
 module BrickFTP
   module Commands
     class GetUser
-      # @param [BrickFTP::REST] rest RESTful API client.
-      def initialize(rest)
-        @rest = rest
-      end
+      include RESTful
 
       # Returns a single user.
       #
@@ -15,7 +14,7 @@ module BrickFTP
       # @return [BrickFTP::Types::User, nil] found User or nil
       #
       def call(id:)
-        res = @rest.get("/api/rest/v1/users/#{id}.json")
+        res = client.get("/api/rest/v1/users/#{id}.json")
         return nil if !res || res.empty?
 
         BrickFTP::Types::User.new(res.symbolize_keys)
