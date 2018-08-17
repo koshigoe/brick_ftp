@@ -15,6 +15,7 @@ module BrickFTP
       @http.read_timeout = READ_TIMEOUT
       @request_headers = {
         'User-Agent' => USER_AGENT,
+        'Content-Type' => 'application/json',
       }
       @api_key = api_key
     end
@@ -22,6 +23,15 @@ module BrickFTP
     def get(path)
       req = Net::HTTP::Get.new(path, @request_headers)
       req.basic_auth(@api_key, 'x')
+      res = @http.start { |session| session.request(req) }
+
+      handle_response(res)
+    end
+
+    def post(path, data)
+      req = Net::HTTP::Post.new(path, @request_headers)
+      req.basic_auth(@api_key, 'x')
+      req.body = data.to_json
       res = @http.start { |session| session.request(req) }
 
       handle_response(res)
