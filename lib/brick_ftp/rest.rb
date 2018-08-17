@@ -37,6 +37,15 @@ module BrickFTP
       handle_response(res)
     end
 
+    def put(path, data)
+      req = Net::HTTP::Put.new(path, @request_headers)
+      req.basic_auth(@api_key, 'x')
+      req.body = data.to_json
+      res = @http.start { |session| session.request(req) }
+
+      handle_response(res)
+    end
+
     private
 
     def handle_response(response)
