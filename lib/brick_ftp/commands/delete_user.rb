@@ -14,7 +14,7 @@ module BrickFTP
       # @param [Integer] id Globally unique identifier of each user.
       #   Each user is given an ID automatically upon creation.
       #
-      def call(id:)
+      def call(id)
         client.delete("/api/rest/v1/users/#{id}.json")
         true
       end

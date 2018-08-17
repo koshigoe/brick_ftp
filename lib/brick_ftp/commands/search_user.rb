@@ -14,7 +14,7 @@ module BrickFTP
       #   Maximum of 50 characters.
       # @return [BrickFTP::Types::User, nil] found User or nil
       #
-      def call(username:)
+      def call(username)
         res = client.get("/api/rest/v1/users.json?q[username]=#{CGI.escape(username)}")
         return nil if !res || res.empty?
 

@@ -18,7 +18,7 @@ RSpec.describe BrickFTP::Commands::DeleteUser, type: :lib do
         rest = BrickFTP::REST.new('subdomain', 'api-key')
         command = BrickFTP::Commands::DeleteUser.new(rest)
 
-        expect(command.call(id: 1234)).to be_truthy
+        expect(command.call(1234)).to be_truthy
       end
     end
   end

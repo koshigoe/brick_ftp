@@ -49,7 +49,7 @@ RSpec.describe BrickFTP::Commands::SearchUser, type: :lib do
 
         rest = BrickFTP::REST.new('subdomain', 'api-key')
         command = BrickFTP::Commands::SearchUser.new(rest)
-        user = command.call(username: 'user')
+        user = command.call('user')
 
         expect(user).to eq expected_user
       end
@@ -68,7 +68,7 @@ RSpec.describe BrickFTP::Commands::SearchUser, type: :lib do
 
         rest = BrickFTP::REST.new('subdomain', 'api-key')
         command = BrickFTP::Commands::SearchUser.new(rest)
-        user = command.call(username: 'a&b')
+        user = command.call('a&b')
 
         expect(user).to be_nil
       end

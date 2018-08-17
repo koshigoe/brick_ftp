@@ -13,5 +13,6 @@ module BrickFTP
     autoload :UnlockUser, 'brick_ftp/commands/unlock_user'
     # ref. https://developers.brickftp.com/#user-api-keys
     autoload :ListAPIKeys, 'brick_ftp/commands/list_api_keys'
+    autoload :GetAPIKey, 'brick_ftp/commands/get_api_key'
   end
 end

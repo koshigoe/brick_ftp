@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe BrickFTP::Commands::CountUser, type: :lib do
+RSpec.describe BrickFTP::Commands::CountUsers, type: :lib do
   describe '#call' do
     it 'return count' do
       stub_request(:get, 'https://subdomain.brickftp.com/api/rest/v1/users.json?action=count')

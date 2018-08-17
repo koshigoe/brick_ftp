@@ -13,7 +13,7 @@ module BrickFTP
       #   Each user is given an ID automatically upon creation.
       # @return [BrickFTP::Types::User, nil] found User or nil
       #
-      def call(id:)
+      def call(id)
         res = client.get("/api/rest/v1/users/#{id}.json")
         return nil if !res || res.empty?
 

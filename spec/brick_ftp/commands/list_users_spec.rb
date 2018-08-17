@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe BrickFTP::Commands::ListUser, type: :lib do
+RSpec.describe BrickFTP::Commands::ListUsers, type: :lib do
   describe '#call' do
     context 'correct request' do
       it 'return Array of User object' do
