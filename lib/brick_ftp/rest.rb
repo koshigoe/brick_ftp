@@ -46,6 +46,14 @@ module BrickFTP
       handle_response(res)
     end
 
+    def delete(path)
+      req = Net::HTTP::Delete.new(path, @request_headers)
+      req.basic_auth(@api_key, 'x')
+      res = @http.start { |session| session.request(req) }
+
+      handle_response(res)
+    end
+
     private
 
     def handle_response(response)
