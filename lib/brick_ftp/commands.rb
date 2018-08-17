@@ -18,5 +18,6 @@ module BrickFTP
     autoload :DeleteAPIKey, 'brick_ftp/commands/delete_api_key'
     # ref. https://developers.brickftp.com/#user-public-keys
     autoload :ListPublicKeys, 'brick_ftp/commands/list_public_keys'
+    autoload :GetPublicKey, 'brick_ftp/commands/get_public_key'
   end
 end
