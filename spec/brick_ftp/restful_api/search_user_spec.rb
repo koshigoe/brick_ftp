@@ -49,9 +49,8 @@ RSpec.describe BrickFTP::RESTfulAPI::SearchUser, type: :lib do
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::SearchUser.new(rest)
-        user = command.call('user')
 
-        expect(user).to eq expected_user
+        expect(command.call('user')).to eq expected_user
       end
     end
 
@@ -68,9 +67,8 @@ RSpec.describe BrickFTP::RESTfulAPI::SearchUser, type: :lib do
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::SearchUser.new(rest)
-        user = command.call('a&b')
 
-        expect(user).to be_nil
+        expect(command.call('a&b')).to be_nil
       end
     end
   end

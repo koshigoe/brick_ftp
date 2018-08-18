@@ -26,9 +26,8 @@ RSpec.describe BrickFTP::RESTfulAPI::ListAPIKeys, type: :lib do
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::ListAPIKeys.new(rest)
-        users = command.call(1234)
 
-        expect(users).to eq([expected_user_api_key])
+        expect(command.call(1234)).to eq([expected_user_api_key])
       end
     end
   end

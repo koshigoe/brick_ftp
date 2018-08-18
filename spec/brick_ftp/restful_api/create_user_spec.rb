@@ -51,9 +51,8 @@ RSpec.describe BrickFTP::RESTfulAPI::CreateUser, type: :lib do
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         params = BrickFTP::RESTfulAPI::CreateUser::Params.new(username: 'user')
         command = BrickFTP::RESTfulAPI::CreateUser.new(rest)
-        user = command.call(params)
 
-        expect(user).to eq created_user
+        expect(command.call(params)).to eq created_user
       end
     end
   end
