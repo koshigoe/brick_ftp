@@ -66,5 +66,6 @@ module BrickFTP
     # ref. https://developers.brickftp.com/#file-and-folder-operations
     autoload :ListFolders, 'brick_ftp/restful_api/list_folders'
     autoload :CreateFolder, 'brick_ftp/restful_api/create_folder'
+    autoload :CountFolderContents, 'brick_ftp/restful_api/count_folder_contents'
   end
 end
