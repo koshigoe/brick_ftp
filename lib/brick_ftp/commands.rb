@@ -20,5 +20,6 @@ module BrickFTP
     autoload :ListPublicKeys, 'brick_ftp/commands/list_public_keys'
     autoload :GetPublicKey, 'brick_ftp/commands/get_public_key'
     autoload :CreatePublicKey, 'brick_ftp/commands/create_public_key'
+    autoload :DeletePublicKey, 'brick_ftp/commands/delete_public_key'
   end
 end
