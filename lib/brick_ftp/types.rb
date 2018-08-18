@@ -16,5 +16,6 @@ module BrickFTP
     autoload :BundleZip, 'brick_ftp/types/bundle_zip'
     autoload :Behavior, 'brick_ftp/types/behavior'
     autoload :File, 'brick_ftp/types/file'
+    autoload :FolderContentsCount, 'brick_ftp/types/folder_contents_count'
   end
 end
