@@ -40,6 +40,7 @@ module BrickFTP
         @request_headers = {
           'User-Agent' => USER_AGENT,
           'Content-Type' => 'application/json',
+          'Accept' => 'application/json',
         }
         @api_key = api_key
       end
