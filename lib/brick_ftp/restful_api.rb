@@ -24,5 +24,6 @@ module BrickFTP
     autoload :CreatePublicKey, 'brick_ftp/restful_api/create_public_key'
     autoload :DeletePublicKey, 'brick_ftp/restful_api/delete_public_key'
     # ref. https://developers.brickftp.com/#groups
+    autoload :ListGroups, 'brick_ftp/restful_api/list_groups'
   end
 end
