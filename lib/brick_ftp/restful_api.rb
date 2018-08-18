@@ -63,5 +63,7 @@ module BrickFTP
     autoload :CreateBehavior, 'brick_ftp/restful_api/create_behavior'
     autoload :UpdateBehavior, 'brick_ftp/restful_api/update_behavior'
     autoload :DeleteBehavior, 'brick_ftp/restful_api/delete_behavior'
+    # ref. https://developers.brickftp.com/#file-and-folder-operations
+    autoload :ListFolders, 'brick_ftp/restful_api/list_folders'
   end
 end
