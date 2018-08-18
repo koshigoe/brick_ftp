@@ -87,6 +87,21 @@ module BrickFTP
         handle_response(res)
       end
 
+      # Send HTTP request via PATCH method.
+      #
+      # @param [String] path the request path including query string.
+      # @param [Hash, nil] data the request body
+      # @return [Hash] JSON parsed object.
+      #
+      def patch(path, data = nil)
+        req = Net::HTTP::Patch.new(path, @request_headers)
+        req.basic_auth(@api_key, 'x')
+        req.body = data.to_json unless data.nil?
+        res = @http.start { |session| session.request(req) }
+
+        handle_response(res)
+      end
+
       # Send HTTP request via DELETE method.
       #
       # @param [String] path the request path including query string.
