@@ -50,5 +50,6 @@ module BrickFTP
     autoload :RetrieveFileHistory, 'brick_ftp/restful_api/retrieve_file_history'
     # ref. https://developers.brickftp.com/#bundles
     autoload :ListBundles, 'brick_ftp/restful_api/list_bundles'
+    autoload :GetBundle, 'brick_ftp/restful_api/get_bundle'
   end
 end
