@@ -32,5 +32,6 @@ module BrickFTP
     autoload :CreateUserInGroup, 'brick_ftp/restful_api/create_user_in_group'
     autoload :AddGroupMember, 'brick_ftp/restful_api/add_group_member'
     autoload :UpdateGroupMember, 'brick_ftp/restful_api/update_group_member'
+    autoload :RemoveGroupMember, 'brick_ftp/restful_api/remove_group_member'
   end
 end
