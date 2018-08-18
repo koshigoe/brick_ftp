@@ -52,5 +52,6 @@ module BrickFTP
     autoload :ListBundles, 'brick_ftp/restful_api/list_bundles'
     autoload :GetBundle, 'brick_ftp/restful_api/get_bundle'
     autoload :CreateBundle, 'brick_ftp/restful_api/create_bundle'
+    autoload :DeleteBundle, 'brick_ftp/restful_api/delete_bundle'
   end
 end
