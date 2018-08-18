@@ -56,5 +56,6 @@ module BrickFTP
     autoload :ListBundleContents, 'brick_ftp/restful_api/list_bundle_contents'
     # ref. https://developers.brickftp.com/#behaviors
     autoload :ListBehaviors, 'brick_ftp/restful_api/list_behaviors'
+    autoload :ListFolderBehaviors, 'brick_ftp/restful_api/list_folder_behaviors'
   end
 end
