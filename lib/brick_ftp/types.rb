@@ -12,6 +12,7 @@ module BrickFTP
     autoload :History, 'brick_ftp/types/history'
     autoload :Bundle, 'brick_ftp/types/bundle'
     autoload :BundleContent, 'brick_ftp/types/bundle_content'
+    autoload :FileInBundle, 'brick_ftp/types/file_in_bundle'
     autoload :Behavior, 'brick_ftp/types/behavior'
   end
 end
