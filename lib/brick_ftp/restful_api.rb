@@ -42,6 +42,7 @@ module BrickFTP
     autoload :CreateNotification, 'brick_ftp/restful_api/create_notification'
     autoload :DeleteNotification, 'brick_ftp/restful_api/delete_notification'
     # ref. https://developers.brickftp.com/#history
+    autoload :RetrieveHistory, 'brick_ftp/restful_api/retrieve_history'
     autoload :RetrieveSiteHistory, 'brick_ftp/restful_api/retrieve_site_history'
   end
 end
