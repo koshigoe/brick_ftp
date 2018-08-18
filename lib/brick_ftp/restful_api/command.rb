@@ -9,7 +9,7 @@ module BrickFTP
 
       # Initialize command.
       #
-      # @param [BrickFTP::RESTfulAPI::Client] rest RESTful API client.
+      # @param [BrickFTP::RESTfulAPI::Client] client RESTful API client.
       #
       def initialize(client)
         @client = client

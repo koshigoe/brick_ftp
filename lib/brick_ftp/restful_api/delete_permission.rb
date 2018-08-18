@@ -7,7 +7,7 @@ module BrickFTP
 
       # Deletes the specified group.
       #
-      # @param [Integer] Globally unique identifier of each permission.
+      # @param [Integer] id Globally unique identifier of each permission.
       #   Each permission is given an ID automatically upon creation.
       #
       def call(id)

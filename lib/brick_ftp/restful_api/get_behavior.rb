@@ -7,7 +7,7 @@ module BrickFTP
 
       # Returns a single behavior.
       #
-      # @param [Integer] Globally unique identifier of each behavior.
+      # @param [Integer] id Globally unique identifier of each behavior.
       # @return [BrickFTP::Types::Behavior, nil] found Behavior or nil
       #
       def call(id)
