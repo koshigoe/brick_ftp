@@ -60,5 +60,6 @@ module BrickFTP
     autoload :GetBehavior, 'brick_ftp/restful_api/get_behavior'
     autoload :CreateBehavior, 'brick_ftp/restful_api/create_behavior'
     autoload :UpdateBehavior, 'brick_ftp/restful_api/update_behavior'
+    autoload :DeleteBehavior, 'brick_ftp/restful_api/delete_behavior'
   end
 end
