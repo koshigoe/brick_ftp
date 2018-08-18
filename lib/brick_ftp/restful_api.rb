@@ -59,5 +59,6 @@ module BrickFTP
     autoload :ListFolderBehaviors, 'brick_ftp/restful_api/list_folder_behaviors'
     autoload :GetBehavior, 'brick_ftp/restful_api/get_behavior'
     autoload :CreateBehavior, 'brick_ftp/restful_api/create_behavior'
+    autoload :UpdateBehavior, 'brick_ftp/restful_api/update_behavior'
   end
 end
