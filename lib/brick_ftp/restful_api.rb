@@ -44,5 +44,6 @@ module BrickFTP
     # ref. https://developers.brickftp.com/#history
     autoload :RetrieveHistory, 'brick_ftp/restful_api/retrieve_history'
     autoload :RetrieveSiteHistory, 'brick_ftp/restful_api/retrieve_site_history'
+    autoload :RetrieveLoginHistory, 'brick_ftp/restful_api/retrieve_login_history'
   end
 end
