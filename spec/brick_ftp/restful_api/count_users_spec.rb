@@ -14,7 +14,7 @@ RSpec.describe BrickFTP::RESTfulAPI::CountUsers, type: :lib do
         )
         .to_return(body: '{"data":{"count":1234}}')
 
-      rest = BrickFTP::REST.new('subdomain', 'api-key')
+      rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
       command = BrickFTP::RESTfulAPI::CountUsers.new(rest)
 
       expect(command.call).to eq 1234

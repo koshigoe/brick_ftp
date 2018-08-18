@@ -23,7 +23,7 @@ RSpec.describe BrickFTP::RESTfulAPI::CreatePublicKey, type: :lib do
           )
           .to_return(body: created_public_key.to_h.to_json)
 
-        rest = BrickFTP::REST.new('subdomain', 'api-key')
+        rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         params = BrickFTP::RESTfulAPI::CreatePublicKey::Params.new(title: 'mykey')
         command = BrickFTP::RESTfulAPI::CreatePublicKey.new(rest)
         public_key = command.call(1234, params)

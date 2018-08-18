@@ -47,7 +47,7 @@ RSpec.describe BrickFTP::RESTfulAPI::ListUsers, type: :lib do
           )
           .to_return(body: [expected_user.to_h].to_json)
 
-        rest = BrickFTP::REST.new('subdomain', 'api-key')
+        rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::ListUsers.new(rest)
         users = command.call
 
@@ -57,7 +57,7 @@ RSpec.describe BrickFTP::RESTfulAPI::ListUsers, type: :lib do
 
     context 'incorrect page' do
       it 'raise exception' do
-        rest = BrickFTP::REST.new('subdomain', 'api-key')
+        rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::ListUsers.new(rest)
 
         expect { command.call(page: 'a') }.to raise_error(ArgumentError, 'page must be greater than 0.')
@@ -66,7 +66,7 @@ RSpec.describe BrickFTP::RESTfulAPI::ListUsers, type: :lib do
 
     context 'incorrect per_page' do
       it 'raise exception' do
-        rest = BrickFTP::REST.new('subdomain', 'api-key')
+        rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::ListUsers.new(rest)
 
         expect { command.call(per_page: 'a') }.to raise_error(ArgumentError, 'per_page must be greater than 0.')

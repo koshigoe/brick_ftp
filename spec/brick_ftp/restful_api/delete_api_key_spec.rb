@@ -15,7 +15,7 @@ RSpec.describe BrickFTP::RESTfulAPI::DeleteAPIKey, type: :lib do
           )
           .to_return(body: '[]')
 
-        rest = BrickFTP::REST.new('subdomain', 'api-key')
+        rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::DeleteAPIKey.new(rest)
 
         expect(command.call(1234)).to be_truthy

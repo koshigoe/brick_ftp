@@ -24,7 +24,7 @@ RSpec.describe BrickFTP::RESTfulAPI::ListAPIKeys, type: :lib do
           )
           .to_return(body: [expected_user_api_key.to_h].to_json)
 
-        rest = BrickFTP::REST.new('subdomain', 'api-key')
+        rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::ListAPIKeys.new(rest)
         users = command.call(1234)
 
