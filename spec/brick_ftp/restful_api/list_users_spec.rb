@@ -50,7 +50,7 @@ RSpec.describe BrickFTP::RESTfulAPI::ListUsers, type: :lib do
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::ListUsers.new(rest)
 
-        expect(command.call).to eq([expected_user])
+        expect(command.call(page: 1, per_page: 1_000)).to eq([expected_user])
       end
     end
 

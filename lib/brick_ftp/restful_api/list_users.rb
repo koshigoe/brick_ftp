@@ -5,9 +5,6 @@ module BrickFTP
     class ListUsers
       include Command
 
-      DEFAULT_PAGE = 1
-      DEFAULT_PER_PAGE = 1_000
-
       # Returns a list of users on the current site.
       #
       # @param [Integer] page Optional page number of items to return in this request.
@@ -16,11 +13,18 @@ module BrickFTP
       #   Default: 1000. Leave blank for default (strongly recommended).
       # @return [Array<BrickFTP::Types::User>] Users
       #
-      def call(page: DEFAULT_PAGE, per_page: DEFAULT_PER_PAGE)
+      def call(page: nil, per_page: nil)
         validate_page!(page)
         validate_per_page!(per_page)
 
-        res = client.get("/api/rest/v1/users.json?page=#{page}&per_page=#{per_page}")
+        params = {}
+        params[:page] = page if page
+        params[:per_page] = per_page if per_page
+        query = params.map { |k, v| "#{k}=#{v}" }.join('&')
+
+        endpoint = '/api/rest/v1/users.json'
+        endpoint = "#{endpoint}?#{query}" unless query.empty?
+        res = client.get(endpoint)
 
         res.map { |i| BrickFTP::Types::User.new(i.symbolize_keys) }
       end
@@ -28,12 +32,14 @@ module BrickFTP
       private
 
       def validate_page!(page)
+        return if page.nil?
         return if page.is_a?(Integer) && page.positive?
 
         raise ArgumentError, 'page must be greater than 0.'
       end
 
       def validate_per_page!(per_page)
+        return if per_page.nil?
         return if per_page.is_a?(Integer) && per_page.positive?
 
         raise ArgumentError, 'per_page must be greater than 0.'
