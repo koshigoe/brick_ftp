@@ -2,6 +2,7 @@
 
 module BrickFTP
   module Commands
+    autoload :Client, 'brick_ftp/commands/client'
     # ref. https://developers.brickftp.com/#users
     autoload :ListUsers, 'brick_ftp/commands/list_users'
     autoload :CountUsers, 'brick_ftp/commands/count_users'
