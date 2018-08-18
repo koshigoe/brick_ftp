@@ -11,5 +11,6 @@ module BrickFTP
     autoload :Notification, 'brick_ftp/types/notification'
     autoload :History, 'brick_ftp/types/history'
     autoload :Bundle, 'brick_ftp/types/bundle'
+    autoload :BundleContent, 'brick_ftp/types/bundle_content'
   end
 end
