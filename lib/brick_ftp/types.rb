@@ -9,5 +9,6 @@ module BrickFTP
     autoload :GroupMembership, 'brick_ftp/types/group_membership'
     autoload :Permission, 'brick_ftp/types/permission'
     autoload :Notification, 'brick_ftp/types/notification'
+    autoload :History, 'brick_ftp/types/history'
   end
 end
