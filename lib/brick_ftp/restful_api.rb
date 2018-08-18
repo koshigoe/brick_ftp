@@ -37,5 +37,7 @@ module BrickFTP
     autoload :ListPermissions, 'brick_ftp/restful_api/list_permissions'
     autoload :CreatePermission, 'brick_ftp/restful_api/create_permission'
     autoload :DeletePermission, 'brick_ftp/restful_api/delete_permission'
+    # ref. https://developers.brickftp.com/#notifications
+    autoload :ListNotifications, 'brick_ftp/restful_api/list_notifications'
   end
 end
