@@ -26,5 +26,6 @@ module BrickFTP
     # ref. https://developers.brickftp.com/#groups
     autoload :ListGroups, 'brick_ftp/restful_api/list_groups'
     autoload :GetGroup, 'brick_ftp/restful_api/get_group'
+    autoload :CreateGroup, 'brick_ftp/restful_api/create_group'
   end
 end
