@@ -47,7 +47,7 @@ require 'brick_ftp/cli/main'
 require 'brick_ftp/utils'
 require 'brick_ftp/utils/chunk_io'
 require 'brick_ftp/types'
-require 'brick_ftp/commands'
+require 'brick_ftp/restful_api'
 require 'brick_ftp/rest'
 
 module BrickFTP
