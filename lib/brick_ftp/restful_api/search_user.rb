@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'cgi'
+require 'erb'
 
 module BrickFTP
   module RESTfulAPI
@@ -14,7 +14,7 @@ module BrickFTP
       # @return [BrickFTP::Types::User, nil] found User or nil
       #
       def call(username)
-        res = client.get("/api/rest/v1/users.json?q[username]=#{CGI.escape(username)}")
+        res = client.get("/api/rest/v1/users.json?q[username]=#{ERB::Util.url_encode(username)}")
         return nil if !res || res.empty?
 
         BrickFTP::Types::User.new(res.first.symbolize_keys)

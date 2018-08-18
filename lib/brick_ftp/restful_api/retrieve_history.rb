@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'cgi'
+require 'erb'
 
 module BrickFTP
   module RESTfulAPI
@@ -47,7 +47,7 @@ module BrickFTP
         params[:per_page] = per_page if per_page
         params[:start_at] = start_at.utc.iso8601 if start_at
 
-        params.map { |k, v| "#{k}=#{CGI.escape(v.to_s)}" }.join('&')
+        params.map { |k, v| "#{k}=#{ERB::Util.url_encode(v.to_s)}" }.join('&')
       end
     end
   end

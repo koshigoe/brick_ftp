@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'cgi'
+require 'erb'
 
 module BrickFTP
   module RESTfulAPI
@@ -19,7 +19,7 @@ module BrickFTP
       #
       def call(path: nil)
         endpoint = '/api/rest/v1/permissions.json'
-        endpoint = "#{endpoint}?path=#{CGI.escape(path)}" unless path.nil?
+        endpoint = "#{endpoint}?path=#{ERB::Util.url_encode(path)}" unless path.nil?
         res = client.get(endpoint)
 
         res.map { |i| BrickFTP::Types::Permission.new(i.symbolize_keys) }
