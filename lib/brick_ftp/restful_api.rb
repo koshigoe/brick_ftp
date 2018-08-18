@@ -40,5 +40,6 @@ module BrickFTP
     # ref. https://developers.brickftp.com/#notifications
     autoload :ListNotifications, 'brick_ftp/restful_api/list_notifications'
     autoload :CreateNotification, 'brick_ftp/restful_api/create_notification'
+    autoload :DeleteNotification, 'brick_ftp/restful_api/delete_notification'
   end
 end
