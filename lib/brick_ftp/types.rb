@@ -15,5 +15,6 @@ module BrickFTP
     autoload :FileInBundle, 'brick_ftp/types/file_in_bundle'
     autoload :BundleZip, 'brick_ftp/types/bundle_zip'
     autoload :Behavior, 'brick_ftp/types/behavior'
+    autoload :File, 'brick_ftp/types/file'
   end
 end
