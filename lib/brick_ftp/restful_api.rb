@@ -33,5 +33,7 @@ module BrickFTP
     autoload :AddGroupMember, 'brick_ftp/restful_api/add_group_member'
     autoload :UpdateGroupMember, 'brick_ftp/restful_api/update_group_member'
     autoload :RemoveGroupMember, 'brick_ftp/restful_api/remove_group_member'
+    # ref. https://developers.brickftp.com/#permissions
+    autoload :ListPermissions, 'brick_ftp/restful_api/list_permissions'
   end
 end
