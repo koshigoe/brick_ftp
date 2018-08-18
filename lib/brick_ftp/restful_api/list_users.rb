@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
-require 'brick_ftp/restful_api/restful'
-
 module BrickFTP
   module RESTfulAPI
     class ListUsers
-      include RESTful
+      include Command
 
       DEFAULT_PAGE = 1
       DEFAULT_PER_PAGE = 1_000

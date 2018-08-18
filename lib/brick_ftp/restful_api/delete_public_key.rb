@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
-require 'brick_ftp/restful_api/restful'
-
 module BrickFTP
   module RESTfulAPI
     class DeletePublicKey
-      include RESTful
+      include Command
 
       # Deletes the specified public key.
       #

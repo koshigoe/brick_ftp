@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
-require 'brick_ftp/restful_api/restful'
 require 'cgi'
 
 module BrickFTP
   module RESTfulAPI
     class SearchUser
-      include RESTful
+      include Command
 
       # Returns a single user.
       #

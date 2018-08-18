@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
-require 'brick_ftp/restful_api/restful'
-
 module BrickFTP
   module RESTfulAPI
     class DeleteUser
-      include RESTful
+      include Command
 
       # Deletes the specified user.
       #

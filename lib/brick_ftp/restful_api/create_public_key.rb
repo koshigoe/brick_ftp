@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
-require 'brick_ftp/restful_api/restful'
-
 module BrickFTP
   module RESTfulAPI
     class CreatePublicKey
-      include RESTful
+      include Command
 
       Params = Struct.new(
         'CreatePublicKeyParams',

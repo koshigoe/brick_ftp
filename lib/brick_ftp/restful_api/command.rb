@@ -2,14 +2,17 @@
 
 module BrickFTP
   module RESTfulAPI
-    module RESTful
+    module Command
       def self.included(klass)
         klass.attr_reader :client
       end
 
+      # Initialize command.
+      #
       # @param [BrickFTP::REST] rest RESTful API client.
-      def initialize(rest)
-        @client = rest
+      #
+      def initialize(client)
+        @client = client
       end
     end
   end

@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
-require 'brick_ftp/restful_api/restful'
-
 module BrickFTP
   module RESTfulAPI
     class ListAPIKeys
-      include RESTful
+      include Command
 
       # Returns a list of all API keys for a user on the current site.
       #

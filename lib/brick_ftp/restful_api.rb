@@ -3,6 +3,7 @@
 module BrickFTP
   module RESTfulAPI
     autoload :Client, 'brick_ftp/restful_api/client'
+    autoload :Command, 'brick_ftp/restful_api/command'
     # ref. https://developers.brickftp.com/#users
     autoload :ListUsers, 'brick_ftp/restful_api/list_users'
     autoload :CountUsers, 'brick_ftp/restful_api/count_users'

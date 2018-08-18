@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
-require 'brick_ftp/restful_api/restful'
-
 module BrickFTP
   module RESTfulAPI
     class UnlockUser
-      include RESTful
+      include Command
 
       # Unlocks a user that has been locked out by Brute Force Login Protection.
       #

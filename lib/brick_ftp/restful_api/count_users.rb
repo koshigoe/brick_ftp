@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
-require 'brick_ftp/restful_api/restful'
-
 module BrickFTP
   module RESTfulAPI
     class CountUsers
-      include RESTful
+      include Command
 
       # Returns a count of the number of users for the current site.
       #
