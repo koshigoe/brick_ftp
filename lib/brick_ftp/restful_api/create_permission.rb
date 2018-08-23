@@ -5,6 +5,7 @@ module BrickFTP
     class CreatePermission
       include Command
 
+      # rubocop:disable Metrics/LineLength
       Params = Struct.new(
         'CreatePermissionParams',
         :user_id,    # integer | Unique identifier for the user being granted a permission. Each user is given an ID automatically upon creation. The user_id and group_id fields cannot both be set.
@@ -15,6 +16,7 @@ module BrickFTP
         :recursive,  # boolean | If set to false, the permission will be non-recursive, and will not apply to subfolders of the folder specified by the path property. Default is true.
         keyword_init: true
       )
+      # rubocop:enable Metrics/LineLength
 
       # Creates a new permission record.
       #

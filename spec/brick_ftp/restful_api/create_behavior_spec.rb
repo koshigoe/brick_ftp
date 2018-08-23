@@ -24,7 +24,11 @@ RSpec.describe BrickFTP::RESTfulAPI::CreateBehavior, type: :lib do
           .to_return(body: created_behavior.to_h.to_json)
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-        params = BrickFTP::RESTfulAPI::CreateBehavior::Params.new(path: 'a', behavior: 'webhook', value: %w[https://a.mywebhookhandler.com])
+        params = BrickFTP::RESTfulAPI::CreateBehavior::Params.new(
+          path: 'a',
+          behavior: 'webhook',
+          value: %w[https://a.mywebhookhandler.com]
+        )
         command = BrickFTP::RESTfulAPI::CreateBehavior.new(rest)
 
         expect(command.call(params)).to eq created_behavior

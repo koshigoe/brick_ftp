@@ -5,22 +5,25 @@ module BrickFTP
     class GetBundleZip
       include Command
 
-      # rubocop:disable Metrics/LineLength
+      # rubocop:disable Layout/CommentIndentation
       Params = Struct.new(
         'GetFileInBundleParams',
         :code,     # string | Unique code string identifier for the bundle.
-        :password, # string | Optional password to password-protect the bundle. This property is write-only. It cannot be retrieved via the API.
+        :password, # string | Optional password to password-protect the bundle.
+                   #        | This property is write-only. It cannot be retrieved via the API.
         keyword_init: true
       )
-      # rubocop:enable Metrics/LineLength
+      # rubocop:enable Layout/CommentIndentation
 
       # Provides a download URL that will enable you to download all the files in a bundle as a single ZIP.
       #
-      # The download URLs can be downloaded using an HTTP GET to the same hostname providing the download_uri as the URL path.
-      # This will be routed by our frontend proxies to our ZIP server that will stream the ZIP. The ZIP download link is valid for 3 minutes.
+      # The download URLs can be downloaded using an HTTP GET to the same hostname providing the download_uri
+      # as the URL path. This will be routed by our frontend proxies to our ZIP server that will stream the ZIP.
+      # The ZIP download link is valid for 3 minutes.
       #
       # The password parameter is required only for bundles that are password-protected.
-      # If a bundle is password-protected and the password is missing or incorrect, an error message will specify that the correct password is required.
+      # If a bundle is password-protected and the password is missing or incorrect, an error message will
+      # specify that the correct password is required.
       #
       # @param [BrickFTP::RESTfulAPI::GetFileInBundle::Params] params parameters
       # @return [BrickFTP::Types::BundleZip] BundleZip

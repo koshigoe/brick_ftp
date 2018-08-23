@@ -7,6 +7,7 @@ module BrickFTP
     class ListFolders
       include Command
 
+      # rubocop:disable Metrics/LineLength
       Params = Struct.new(
         'ListFoldersParams',
         :page,                            # integer | Page number of items to return in this request.
@@ -17,7 +18,19 @@ module BrickFTP
         :'sort_by[modified_at_datetime]', # enum    | Sort by modification time, and value is either asc or desc to indicate older files first or newer files first, respectively.
         keyword_init: true
       )
+      # rubocop:enable Metrics/LineLength
 
+      # Lists the contents of the folder provided in the URL.
+      #
+      # Remember that a blank URL refers to the root folder. So for example, you can list the contents of the root folder
+      # using the REST API by sending a GET request to /folders. Another folder can be listed by inserting its complete
+      # path in that URL after /folders, for example: /folders/employee/engineering.
+      #
+      # There is a maximum number of entries in the folder that will be listed with a single request
+      # (default 1000 or whatever value you provide as the per_page parameter).
+      # So if exactly that many entries are returned you will need to increment the value of the page parameter in
+      # subsequent queries to continue listing the folder.
+      #
       # @param [String] path Full path of the file or folder. Maximum of 550 characters.
       # @param [BrickFTP::RESTfulAPI::ListFolders::Params, nil] params parameters
       # @return [Array<BrickFTP::Types::File>] Files
@@ -68,7 +81,7 @@ module BrickFTP
         raise ArgumentError, "per_page must be greater than 0 and less than equal #{MAX_PER_PAGE}."
       end
 
-      VALID_SORT = %[asc desc].freeze
+      VALID_SORT = %w[asc desc].freeze
 
       def validate_sort_by!(value)
         return if value.nil? || VALID_SORT.include?(value)

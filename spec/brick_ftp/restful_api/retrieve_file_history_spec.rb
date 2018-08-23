@@ -39,7 +39,8 @@ RSpec.describe BrickFTP::RESTfulAPI::RetrieveFileHistory, type: :lib do
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::RetrieveFileHistory.new(rest)
 
-        expect { command.call('phun/physics1.png', page: 'a') }.to raise_error(ArgumentError, 'page must be greater than 0.')
+        expect { command.call('phun/physics1.png', page: 'a') }
+          .to raise_error(ArgumentError, 'page must be greater than 0.')
       end
     end
 
@@ -58,7 +59,8 @@ RSpec.describe BrickFTP::RESTfulAPI::RetrieveFileHistory, type: :lib do
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::RetrieveFileHistory.new(rest)
 
-        expect { command.call('phun/physics1.png', start_at: 'a') }.to raise_error(ArgumentError, 'start_at must be a Time.')
+        expect { command.call('phun/physics1.png', start_at: 'a') }
+          .to raise_error(ArgumentError, 'start_at must be a Time.')
       end
     end
   end

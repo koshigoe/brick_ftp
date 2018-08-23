@@ -5,13 +5,11 @@ module BrickFTP
     class UpdateBehavior
       include Command
 
-      # rubocop:disable Metrics/LineLength
       Params = Struct.new(
         'UpdateBehaviorParams',
-        :value,    # array   | Array of values associated with the behavior.
+        :value, # array | Array of values associated with the behavior.
         keyword_init: true
       )
-      # rubocop:enable Metrics/LineLength
 
       # Updates an existing behavior.
       #

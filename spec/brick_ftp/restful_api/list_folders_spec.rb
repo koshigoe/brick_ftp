@@ -20,8 +20,7 @@ RSpec.describe BrickFTP::RESTfulAPI::ListFolders, type: :lib do
           subfolders_locked?:  nil
         )
 
-        query = 'page=1&per_page=2&search=a%20b%2Fc&sort_by[path]=desc&sort_by[size]=desc&sort_by[modified_at_datetime]=desc'
-        url = "https://subdomain.brickftp.com/api/rest/v1/folders/a%20b%2Fc?#{query}"
+        url = 'https://subdomain.brickftp.com/api/rest/v1/folders/a%20b%2Fc?page=1&per_page=2&search=a%20b%2Fc&sort_by[path]=desc&sort_by[size]=desc&sort_by[modified_at_datetime]=desc'
         stub_request(:get, url)
           .with(
             basic_auth: %w[api-key x],

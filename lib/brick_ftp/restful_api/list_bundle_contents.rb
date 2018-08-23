@@ -18,15 +18,15 @@ module BrickFTP
 
       # This unauthenticated (public) endpoint lists the contents of a bundle.
       #
-      # When no path is specified, the contents of the root of the bundle will be listed.
-      # The contents of a subfolder can be listed by providing its path in the URL after /contents,
-      # for example: /bundles/contents/cloud/images. Alternatively, you can provide path as a parameter in the request body instead of in the URL.
+      # When no path is specified, the contents of the root of the bundle will be listed. The contents of a subfolder
+      # can be listed by providing its path in the URL after /contents, for example: /bundles/contents/cloud/images.
+      # Alternatively, you can provide path as a parameter in the request body instead of in the URL.
       #
       # This endpoint only reveals the public part of the file paths (i.e. relative to the root of the bundle).
       # To view the full path of included files, use the authenticated Show Bundle endpoint above.
       #
-      # The password parameter is required only for bundles that are password-protected.
-      # If a bundle is password-protected and the password is missing or incorrect, an error message will specify that the correct password is required.
+      # The password parameter is required only for bundles that are password-protected. If a bundle is password-protected
+      # and the password is missing or incorrect, an error message will specify that the correct password is required.
       #
       # @param [String, nil] path
       # @param [BrickFTP::RESTfulAPI::ListBundleContents::Params] params parameters
