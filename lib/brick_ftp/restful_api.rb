@@ -68,5 +68,6 @@ module BrickFTP
     autoload :CreateFolder, 'brick_ftp/restful_api/create_folder'
     autoload :CountFolderContents, 'brick_ftp/restful_api/count_folder_contents'
     autoload :GetFolderSize, 'brick_ftp/restful_api/get_folder_size'
+    autoload :DownloadFile, 'brick_ftp/restful_api/download_file'
   end
 end
