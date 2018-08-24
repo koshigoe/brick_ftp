@@ -44,5 +44,36 @@ RSpec.describe BrickFTP::RESTfulAPI::ListFolders, type: :lib do
         expect(command.call('a b/c', params)).to eq([expected_folder])
       end
     end
+
+    context 'invalid parameters' do
+      context 'page' do
+        it 'raise ArgumentError' do
+          rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
+          command = BrickFTP::RESTfulAPI::ListFolders.new(rest)
+
+          expect { command.call('a b/c', page: -1) }.to raise_error(ArgumentError, 'page must be greater than 0.')
+        end
+      end
+
+      context 'per_page' do
+        it 'raise ArgumentError' do
+          rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
+          command = BrickFTP::RESTfulAPI::ListFolders.new(rest)
+
+          expect { command.call('a b/c', per_page: -1) }
+            .to raise_error(ArgumentError, 'per_page must be greater than 0 and less than equal 5000.')
+        end
+      end
+
+      context 'sort_by' do
+        it 'raise ArgumentError' do
+          rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
+          command = BrickFTP::RESTfulAPI::ListFolders.new(rest)
+
+          expect { command.call('a b/c', 'sort_by[path]': 'value') }
+            .to raise_error(ArgumentError, 'sort_by[*] must be `asc` or `desc`.')
+        end
+      end
+    end
   end
 end

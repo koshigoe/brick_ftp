@@ -15,8 +15,8 @@ module BrickFTP
     # @param [String] subdomain
     # @param [String] api_key
     def initialize(subdomain: nil, api_key: nil)
-      @subdomain = ENV.fetch('BRICK_FTP_SUBDOMAIN', subdomain)
-      @api_key = ENV.fetch('BRICK_FTP_API_KEY', api_key)
+      @subdomain = subdomain || ENV['BRICK_FTP_SUBDOMAIN']
+      @api_key = api_key || ENV['BRICK_FTP_API_KEY']
       @api_client = BrickFTP::RESTfulAPI::Client.new(@subdomain, @api_key)
     end
 
