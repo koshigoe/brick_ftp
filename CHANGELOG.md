@@ -29,13 +29,14 @@ Changelog
 
 - [Dropping support for Ruby 2.2](https://github.com/koshigoe/brick_ftp/pull/104)
     - Set `frozen_string_literal: true`
-- Re-design RESTful API client
-    - RPC like interface
+- [#105](https://github.com/koshigoe/brick_ftp/pull/105) Re-design (huge change!)
+    - Change to RPC like interface
     - Only support token authentication
-- Remove unuseful implementations
-    - Remove CLI
-    - Remove Webhook
-    - Remove Configuration
+    - Remove unuseful implementations
+        - Remove CLI
+        - Remove Webhook
+        - Remove Configuration
+        - etc.
 
 [0.8.2](https://github.com/koshigoe/brick_ftp/compare/v0.8.1...v0.8.2)
 ----
