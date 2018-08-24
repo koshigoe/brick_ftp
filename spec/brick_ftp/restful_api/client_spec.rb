@@ -11,12 +11,13 @@ RSpec.describe BrickFTP::RESTfulAPI::Client, type: :lib do
             basic_auth: %w[api-key x],
             headers: {
               'User-Agent' => 'BrickFTP Client/1.0 (https://github.com/koshigoe/brick_ftp)',
+              'Depth' => 'infinity',
             }
           )
           .to_return(body: '{}')
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-        expect(rest.get('/path/to/resource.json')).to eq({})
+        expect(rest.get('/path/to/resource.json', 'Depth' => 'infinity')).to eq({})
       end
     end
 
@@ -27,12 +28,14 @@ RSpec.describe BrickFTP::RESTfulAPI::Client, type: :lib do
             basic_auth: %w[api-key x],
             headers: {
               'User-Agent' => 'BrickFTP Client/1.0 (https://github.com/koshigoe/brick_ftp)',
+              'Depth' => 'infinity',
             }
           )
           .to_return(body: 'Not Found', status: 404)
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-        expect { rest.get('/path/to/resource.json') }.to raise_error(BrickFTP::RESTfulAPI::Client::Error) do |e|
+        expect { rest.get('/path/to/resource.json', 'Depth' => 'infinity') }
+          .to raise_error(BrickFTP::RESTfulAPI::Client::Error) do |e|
           expect(e.error['http-code']).to eq '404'
           expect(e.error['error']).to eq 'Not Found'
         end
@@ -49,13 +52,14 @@ RSpec.describe BrickFTP::RESTfulAPI::Client, type: :lib do
             headers: {
               'User-Agent' => 'BrickFTP Client/1.0 (https://github.com/koshigoe/brick_ftp)',
               'Content-Type' => 'application/json',
+              'Depth' => 'infinity',
             },
             body: '{}'
           )
           .to_return(body: '{}')
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-        expect(rest.post('/path/to/resource.json', {})).to eq({})
+        expect(rest.post('/path/to/resource.json', {}, 'Depth' => 'infinity')).to eq({})
       end
     end
 
@@ -66,13 +70,15 @@ RSpec.describe BrickFTP::RESTfulAPI::Client, type: :lib do
             basic_auth: %w[api-key x],
             headers: {
               'User-Agent' => 'BrickFTP Client/1.0 (https://github.com/koshigoe/brick_ftp)',
+              'Depth' => 'infinity',
             },
             body: '{}'
           )
           .to_return(body: '{"error":"invalid","http-code":"400"}', status: 400)
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-        expect { rest.post('/path/to/resource.json', {}) }.to raise_error(BrickFTP::RESTfulAPI::Client::Error) do |e|
+        expect { rest.post('/path/to/resource.json', {}, 'Depth' => 'infinity') }
+          .to raise_error(BrickFTP::RESTfulAPI::Client::Error) do |e|
           expect(e.error['http-code']).to eq '400'
           expect(e.error['error']).to eq 'invalid'
         end
@@ -89,13 +95,14 @@ RSpec.describe BrickFTP::RESTfulAPI::Client, type: :lib do
             headers: {
               'User-Agent' => 'BrickFTP Client/1.0 (https://github.com/koshigoe/brick_ftp)',
               'Content-Type' => 'application/json',
+              'Depth' => 'infinity',
             },
             body: '{}'
           )
           .to_return(body: '{}')
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-        expect(rest.put('/path/to/resource.json', {})).to eq({})
+        expect(rest.put('/path/to/resource.json', {}, 'Depth' => 'infinity')).to eq({})
       end
     end
 
@@ -106,13 +113,15 @@ RSpec.describe BrickFTP::RESTfulAPI::Client, type: :lib do
             basic_auth: %w[api-key x],
             headers: {
               'User-Agent' => 'BrickFTP Client/1.0 (https://github.com/koshigoe/brick_ftp)',
+              'Depth' => 'infinity',
             },
             body: '{}'
           )
           .to_return(body: '{"error":"invalid","http-code":"400"}', status: 400)
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-        expect { rest.put('/path/to/resource.json', {}) }.to raise_error(BrickFTP::RESTfulAPI::Client::Error) do |e|
+        expect { rest.put('/path/to/resource.json', {}, 'Depth' => 'infinity') }
+          .to raise_error(BrickFTP::RESTfulAPI::Client::Error) do |e|
           expect(e.error['http-code']).to eq '400'
           expect(e.error['error']).to eq 'invalid'
         end
@@ -129,13 +138,14 @@ RSpec.describe BrickFTP::RESTfulAPI::Client, type: :lib do
             headers: {
               'User-Agent' => 'BrickFTP Client/1.0 (https://github.com/koshigoe/brick_ftp)',
               'Content-Type' => 'application/json',
+              'Depth' => 'infinity',
             },
             body: '{}'
           )
           .to_return(body: '{}')
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-        expect(rest.patch('/path/to/resource.json', {})).to eq({})
+        expect(rest.patch('/path/to/resource.json', {}, 'Depth' => 'infinity')).to eq({})
       end
     end
 
@@ -146,13 +156,15 @@ RSpec.describe BrickFTP::RESTfulAPI::Client, type: :lib do
             basic_auth: %w[api-key x],
             headers: {
               'User-Agent' => 'BrickFTP Client/1.0 (https://github.com/koshigoe/brick_ftp)',
+              'Depth' => 'infinity',
             },
             body: '{}'
           )
           .to_return(body: '{"error":"invalid","http-code":"400"}', status: 400)
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-        expect { rest.patch('/path/to/resource.json', {}) }.to raise_error(BrickFTP::RESTfulAPI::Client::Error) do |e|
+        expect { rest.patch('/path/to/resource.json', {}, 'Depth' => 'infinity') }
+          .to raise_error(BrickFTP::RESTfulAPI::Client::Error) do |e|
           expect(e.error['http-code']).to eq '400'
           expect(e.error['error']).to eq 'invalid'
         end
@@ -169,12 +181,13 @@ RSpec.describe BrickFTP::RESTfulAPI::Client, type: :lib do
             headers: {
               'User-Agent' => 'BrickFTP Client/1.0 (https://github.com/koshigoe/brick_ftp)',
               'Content-Type' => 'application/json',
+              'Depth' => 'infinity',
             }
           )
           .to_return(body: '{}')
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-        expect(rest.delete('/path/to/resource.json')).to eq({})
+        expect(rest.delete('/path/to/resource.json', 'Depth' => 'infinity')).to eq({})
       end
     end
 
@@ -185,12 +198,14 @@ RSpec.describe BrickFTP::RESTfulAPI::Client, type: :lib do
             basic_auth: %w[api-key x],
             headers: {
               'User-Agent' => 'BrickFTP Client/1.0 (https://github.com/koshigoe/brick_ftp)',
+              'Depth' => 'infinity',
             }
           )
           .to_return(body: '{"error":"invalid","http-code":"400"}', status: 400)
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-        expect { rest.delete('/path/to/resource.json') }.to raise_error(BrickFTP::RESTfulAPI::Client::Error) do |e|
+        expect { rest.delete('/path/to/resource.json', 'Depth' => 'infinity') }
+          .to raise_error(BrickFTP::RESTfulAPI::Client::Error) do |e|
           expect(e.error['http-code']).to eq '400'
           expect(e.error['error']).to eq 'invalid'
         end

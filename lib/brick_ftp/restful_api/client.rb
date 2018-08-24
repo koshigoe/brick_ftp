@@ -48,10 +48,11 @@ module BrickFTP
       # Send HTTP request via GET method.
       #
       # @param [String] path the request path including query string.
+      # @param [Hash, nil] headers additional request headers
       # @return [Hash] JSON parsed object.
       #
-      def get(path)
-        req = Net::HTTP::Get.new(path, @request_headers)
+      def get(path, headers = nil)
+        req = Net::HTTP::Get.new(path, (headers || {}).merge(@request_headers))
         req.basic_auth(@api_key, 'x')
         res = @http.start { |session| session.request(req) }
 
@@ -62,10 +63,11 @@ module BrickFTP
       #
       # @param [String] path the request path including query string.
       # @param [Hash, nil] data the request body
+      # @param [Hash, nil] headers additional request headers
       # @return [Hash] JSON parsed object.
       #
-      def post(path, data = nil)
-        req = Net::HTTP::Post.new(path, @request_headers)
+      def post(path, data = nil, headers = nil)
+        req = Net::HTTP::Post.new(path, (headers || {}).merge(@request_headers))
         req.basic_auth(@api_key, 'x')
         req.body = data.to_json unless data.nil?
         res = @http.start { |session| session.request(req) }
@@ -77,10 +79,11 @@ module BrickFTP
       #
       # @param [String] path the request path including query string.
       # @param [Hash, nil] data the request body
+      # @param [Hash, nil] headers additional request headers
       # @return [Hash] JSON parsed object.
       #
-      def put(path, data = nil)
-        req = Net::HTTP::Put.new(path, @request_headers)
+      def put(path, data = nil, headers = nil)
+        req = Net::HTTP::Put.new(path, (headers || {}).merge(@request_headers))
         req.basic_auth(@api_key, 'x')
         req.body = data.to_json unless data.nil?
         res = @http.start { |session| session.request(req) }
@@ -92,10 +95,11 @@ module BrickFTP
       #
       # @param [String] path the request path including query string.
       # @param [Hash, nil] data the request body
+      # @param [Hash, nil] headers additional request headers
       # @return [Hash] JSON parsed object.
       #
-      def patch(path, data = nil)
-        req = Net::HTTP::Patch.new(path, @request_headers)
+      def patch(path, data = nil, headers = nil)
+        req = Net::HTTP::Patch.new(path, (headers || {}).merge(@request_headers))
         req.basic_auth(@api_key, 'x')
         req.body = data.to_json unless data.nil?
         res = @http.start { |session| session.request(req) }
@@ -106,10 +110,11 @@ module BrickFTP
       # Send HTTP request via DELETE method.
       #
       # @param [String] path the request path including query string.
+      # @param [Hash, nil] headers additional request headers
       # @return [Hash] JSON parsed object.
       #
-      def delete(path)
-        req = Net::HTTP::Delete.new(path, @request_headers)
+      def delete(path, headers = nil)
+        req = Net::HTTP::Delete.new(path, (headers || {}).merge(@request_headers))
         req.basic_auth(@api_key, 'x')
         res = @http.start { |session| session.request(req) }
 
