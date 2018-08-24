@@ -4,6 +4,10 @@ require 'erb'
 
 module BrickFTP
   module RESTfulAPI
+    # Get folder size
+    #
+    # @see https://developers.brickftp.com/#get-folder-size Get folder size
+    #
     class GetFolderSize
       include Command
 

@@ -2,17 +2,26 @@
 
 module BrickFTP
   module RESTfulAPI
+    # Create a bundle
+    #
+    # @see https://developers.brickftp.com/#create-a-bundle Create a bundle
+    #
+    # ### Params
+    #
+    # PARAMETER | TYPE   | DESCRIPTION
+    # --------- | ------ | -----------
+    # paths     | array  | List of the paths associated with the bundle.
+    # password  | string | Optional password to password-protect the bundle. This property is write-only. It cannot be retrieved via the API.
+    #
     class CreateBundle
       include Command
 
-      # rubocop:disable Metrics/LineLength
       Params = Struct.new(
         'CreateBundleParams',
-        :paths,    # array  | List of the paths associated with the bundle.
-        :password, # string | Optional password to password-protect the bundle. This property is write-only. It cannot be retrieved via the API.
+        :paths,
+        :password,
         keyword_init: true
       )
-      # rubocop:enable Metrics/LineLength
 
       # Creates a new group on the current site.
       #

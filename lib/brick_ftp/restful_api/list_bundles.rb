@@ -2,6 +2,10 @@
 
 module BrickFTP
   module RESTfulAPI
+    # List all bundles
+    #
+    # @see https://developers.brickftp.com/#list-all-bundles List all bundles
+    #
     class ListBundles
       include Command
 

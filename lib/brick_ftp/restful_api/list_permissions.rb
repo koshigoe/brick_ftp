@@ -4,6 +4,16 @@ require 'erb'
 
 module BrickFTP
   module RESTfulAPI
+    # List permissions
+    #
+    # @see https://developers.brickftp.com/#list-permissions List permissions
+    #
+    # ### Params
+    #
+    # PARAMETER | TYPE   | DESCRIPTION
+    # --------- | ------ | -----------
+    # path      | string | Optional path to focus the result set on.
+    #
     class ListPermissions
       include Command
 

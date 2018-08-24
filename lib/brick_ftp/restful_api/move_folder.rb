@@ -4,12 +4,22 @@ require 'erb'
 
 module BrickFTP
   module RESTfulAPI
+    # Move or rename a file or folder
+    #
+    # @see https://developers.brickftp.com/#move-or-rename-a-file-or-folder Move or rename a file or folder
+    #
+    # ### Params
+    #
+    # PARAMETER        | TYPE   | DESCRIPTION
+    # ---------------- | ------ | -----------
+    # move-destination | string | Full path of the file or folder. Maximum of 550 characters.
+    #
     class MoveFolder
       include Command
 
       Params = Struct.new(
         'MoveFolderParams',
-        :'move-destination', # string | Full path of the file or folder. Maximum of 550 characters.
+        :'move-destination',
         keyword_init: true
       )
 

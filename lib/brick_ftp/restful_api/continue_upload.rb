@@ -4,18 +4,26 @@ require 'erb'
 
 module BrickFTP
   module RESTfulAPI
+    # Requesting additional upload URLs
+    #
+    # @see https://developers.brickftp.com/#requesting-additional-upload-urls Requesting additional upload URLs
+    #
+    # ### Params
+    #
+    # PARAMETER | TYPE    | DESCRIPTION
+    # --------- | ------- | -----------
+    # ref       | string  | Unique identifier to reference this file upload. This identifier is needed for subsequent requests to the REST API to complete the upload or request more upload URLs.
+    # part      | integer | part number of multi part uploads.
+    #
     class ContinueUpload
       include Command
 
-      # rubocop:disable Metrics/LineLength, Layout/CommentIndentation
       Params = Struct.new(
         'ContinueUploadParams',
-        :ref,  # string  | Unique identifier to reference this file upload. This identifier is needed for
-               #         | subsequent requests to the REST API to complete the upload or request more upload URLs.
-        :part, # integer |
+        :ref,
+        :part,
         keyword_init: true
       )
-      # rubocop:enable Metrics/LineLength, Layout/CommentIndentation
 
       # Once an upload has been opened and before it is completed,
       # additional upload URLs can be requested from the REST API.

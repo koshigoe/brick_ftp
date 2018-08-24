@@ -2,9 +2,15 @@
 
 module BrickFTP
   module Types
+    # @see https://developers.brickftp.com/#download-entire-bundle-as-zip Download entire bundle as ZIP
+    #
+    # ATTRIBUTE    | TYPE     | DESCRIPTION
+    # ------------ | -------- | -----------
+    # download_uri | string   | undocumented
+    #
     BundleZip = Struct.new(
       'BundleZip',
-      :download_uri, # string
+      :download_uri,
       keyword_init: true
     )
   end

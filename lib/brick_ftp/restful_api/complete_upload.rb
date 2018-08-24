@@ -4,17 +4,24 @@ require 'erb'
 
 module BrickFTP
   module RESTfulAPI
+    # Completing an upload
+    #
+    # @see https://developers.brickftp.com/#completing-an-upload Completing an upload
+    #
+    # ### Params
+    #
+    # PARAMETER | TYPE    | DESCRIPTION
+    # --------- | ------- | -----------
+    # ref       | string  | Unique identifier to reference this file upload. This identifier is needed for subsequent requests to the REST API to complete the upload or request more upload URLs.
+    #
     class CompleteUpload
       include Command
 
-      # rubocop:disable Metrics/LineLength, Layout/CommentIndentation
       Params = Struct.new(
         'CompleteUploadParams',
-        :ref,  # string  | Unique identifier to reference this file upload. This identifier is needed for
-               #         | subsequent requests to the REST API to complete the upload or request more upload URLs.
+        :ref,
         keyword_init: true
       )
-      # rubocop:enable Metrics/LineLength, Layout/CommentIndentation
 
       # After uploading the file to the file storage environment,
       # the REST API needs to be notified that the upload was completed.
@@ -25,6 +32,7 @@ module BrickFTP
       # @param [String] path Full path of the file or folder. Maximum of 550 characters.
       # @param [BrickFTP::RESTfulAPI::CompleteUpload::Params] params parameters
       # @return [BrickFTP::Types::File] File object
+      # @raise [BrickFTP::RESTfulAPI::Error] exception
       #
       def call(path, params)
         res = client.post("/api/rest/v1/files/#{ERB::Util.url_encode(path)}", params.to_h.compact.merge(action: 'end'))

@@ -2,6 +2,10 @@
 
 module BrickFTP
   module RESTfulAPI
+    # Unlock a user
+    #
+    # @see https://developers.brickftp.com/#unlock-a-user Unlock a user
+    #
     class UnlockUser
       include Command
 

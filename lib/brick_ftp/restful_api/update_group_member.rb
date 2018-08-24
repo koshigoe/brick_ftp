@@ -2,12 +2,22 @@
 
 module BrickFTP
   module RESTfulAPI
+    # Update a member
+    #
+    # @see https://developers.brickftp.com/#update-a-member Update a member
+    #
+    # ### Params
+    #
+    # PARAMETER | TYPE    | DESCRIPTION
+    # --------- | ------- | -----------
+    # admin     | boolean | Indicates whether the user is an administrator of the group.
+    #
     class UpdateGroupMember
       include Command
 
       Params = Struct.new(
-        'AddGroupMemberParams',
-        :admin, # boolean | Indicates whether the user is an administrator of the group.
+        'UpdateGroupMemberParams',
+        :admin,
         keyword_init: true
       )
 

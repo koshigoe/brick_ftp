@@ -2,6 +2,10 @@
 
 module BrickFTP
   module RESTfulAPI
+    # List all behaviors
+    #
+    # @see https://developers.brickftp.com/#list-all-behaviors List all behaviors
+    #
     class ListBehaviors
       include Command
 

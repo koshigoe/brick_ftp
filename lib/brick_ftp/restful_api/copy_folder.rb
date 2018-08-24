@@ -4,18 +4,26 @@ require 'erb'
 
 module BrickFTP
   module RESTfulAPI
+    # Copy a file or folder
+    #
+    # @see https://developers.brickftp.com/#copy-a-file-or-folder Copy a file or folder
+    #
+    # ### Params
+    #
+    # PARAMETER        | TYPE   | DESCRIPTION
+    # ---------------- | ------ | -----------
+    # copy-destination | string | Full path of the file or folder. Maximum of 550 characters.
+    # structure        | any    | Optionally, provide the parameter `structure` and set it to any value to only copy the folder structure without copying any files.
+    #
     class CopyFolder
       include Command
 
-      # rubocop:disable Layout/CommentIndentation
       Params = Struct.new(
-        'MoveFolderParams',
-        :'copy-destination', # string | Full path of the file or folder. Maximum of 550 characters.
-        :structure,          # any    | Optionally, provide the parameter `structure` and set it to any value
-                             #        | to only copy the folder structure without copying any files.
+        'CopyFolderParams',
+        :'copy-destination',
+        :structure,
         keyword_init: true
       )
-      # rubocop:enable Layout/CommentIndentation
 
       # Copies a file or folder to the destination provided in the
       # `copy-destination` parameter in the request body.

@@ -2,18 +2,28 @@
 
 module BrickFTP
   module RESTfulAPI
+    # Create a behavior
+    #
+    # @see https://developers.brickftp.com/#create-a-behavior Create a behavior
+    #
+    # ### Params
+    #
+    # PARAMETER | TYPE   | DESCRIPTION
+    # --------- | ------ | -----------
+    # path      | string | Folder path for behaviors. This must be slash-delimited, but it must neither start nor end with a slash. Maximum of 5000 characters.
+    # behavior  | string | The behavior type. Can be one of the following: webhook, file_expiration, auto_encrypt, lock_subfolders.
+    # value     | array  | Array of values associated with the behavior.
+    #
     class CreateBehavior
       include Command
 
-      # rubocop:disable Metrics/LineLength
       Params = Struct.new(
         'CreateBehaviorParams',
-        :path,     # string  | Folder path for behaviors. This must be slash-delimited, but it must neither start nor end with a slash. Maximum of 5000 characters.
-        :behavior, # string  | The behavior type. Can be one of the following: webhook, file_expiration, auto_encrypt, lock_subfolders.
-        :value,    # array   | Array of values associated with the behavior.
+        :path,
+        :behavior,
+        :value,
         keyword_init: true
       )
-      # rubocop:enable Metrics/LineLength
 
       # Creates a new behavior.
       #

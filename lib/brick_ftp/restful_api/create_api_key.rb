@@ -2,19 +2,30 @@
 
 module BrickFTP
   module RESTfulAPI
+    # Create an API key
+    #
+    # @see https://developers.brickftp.com/#create-an-api-key Create an API key
+    #
+    # ### Params
+    #
+    # PARAMETER      | TYPE     | DESCRIPTION
+    # -------------- | -------- | -----------
+    # name           | string   | Name to identify the user API key. For your reference. Maximum of 100 characters.
+    # permission_set | string   | The permission set for the user API key. Can be desktop_app or full.
+    # platform       | string   | The platform for the user API key. Can be win32, macos, linux, or none. Applies only to API keys with a permission_set of desktop_app.
+    # expires_at     | datetime | The date that this API key is valid through.
+    #
     class CreateAPIKey
       include Command
 
-      # rubocop:disable Metrics/LineLength
       Params = Struct.new(
         'CreateAPIKeyParams',
-        :name,           # string   | Name to identify the user API key. For your reference. Maximum of 100 characters.
-        :permission_set, # string   | The permission set for the user API key. Can be desktop_app or full.
-        :platform,       # string   | The platform for the user API key. Can be win32, macos, linux, or none. Applies only to API keys with a permission_set of desktop_app.
-        :expires_at,     # datetime | The date that this API key is valid through.
+        :name,
+        :permission_set,
+        :platform,
+        :expires_at,
         keyword_init: true
       )
-      # rubocop:enable Metrics/LineLength
 
       # Creates a new API key for a user on the current site.
       #

@@ -2,12 +2,22 @@
 
 module BrickFTP
   module RESTfulAPI
+    # Update a behavior
+    #
+    # @see https://developers.brickftp.com/#update-a-behavior Update a behavior
+    #
+    # ### Params
+    #
+    # PARAMETER | TYPE   | DESCRIPTION
+    # --------- | ------ | -----------
+    # value     | array | Array of values associated with the behavior.
+    #
     class UpdateBehavior
       include Command
 
       Params = Struct.new(
         'UpdateBehaviorParams',
-        :value, # array | Array of values associated with the behavior.
+        :value,
         keyword_init: true
       )
 

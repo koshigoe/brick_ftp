@@ -4,6 +4,10 @@ require 'erb'
 
 module BrickFTP
   module RESTfulAPI
+    # Delete a file or folder
+    #
+    # @see https://developers.brickftp.com/#delete-a-file-or-folder Delete a file or folder
+    #
     class DeleteFolder
       include Command
 

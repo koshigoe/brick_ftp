@@ -4,21 +4,34 @@ require 'erb'
 
 module BrickFTP
   module RESTfulAPI
+    # List folder contents
+    #
+    # @see https://developers.brickftp.com/#list-folder-contents List folder contents
+    #
+    # ### Params
+    #
+    # PARAMETER                     | TYPE     | DESCRIPTION
+    # ----------------------------- | -------- | -----------
+    # page                          | integer  | Page number of items to return in this request.
+    # per_page                      | integer  | Requested number of items returned per request. Maximum: `5000`, leave blank for default (strongly recommended).
+    # search                        | string   | Only return items matching the given search text.
+    # sort_by[path]                 | enum     | Sort by file name, and value is either `asc` or `desc` to indicate normal or reverse sort. (Note that `sort_by[path] = asc` is the default.)
+    # sort_by[size]                 | enum     | Sort by file size, and value is either `asc` or `desc` to indicate smaller files first or larger files first, respectively.
+    # sort_by[modified_at_datetime] | enum     | Sort by modification time, and value is either `asc` or `desc` to indicate older files first or newer files first, respectively.
+    #
     class ListFolders
       include Command
 
-      # rubocop:disable Metrics/LineLength
       Params = Struct.new(
         'ListFoldersParams',
-        :page,                            # integer | Page number of items to return in this request.
-        :per_page,                        # integer | Requested number of items returned per request. Maximum: 5000, leave blank for default (strongly recommended).
-        :search,                          # string  | Only return items matching the given search text.
-        :'sort_by[path]',                 # enum    | Sort by file name, and value is either asc or desc to indicate normal or reverse sort. (Note that sort_by[path] = asc is the default.)
-        :'sort_by[size]',                 # enum    | Sort by file size, and value is either asc or desc to indicate smaller files first or larger files first, respectively.
-        :'sort_by[modified_at_datetime]', # enum    | Sort by modification time, and value is either asc or desc to indicate older files first or newer files first, respectively.
+        :page,
+        :per_page,
+        :search,
+        :'sort_by[path]',
+        :'sort_by[size]',
+        :'sort_by[modified_at_datetime]',
         keyword_init: true
       )
-      # rubocop:enable Metrics/LineLength
 
       # Lists the contents of the folder provided in the URL.
       #

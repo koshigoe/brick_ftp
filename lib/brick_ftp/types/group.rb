@@ -2,17 +2,28 @@
 
 module BrickFTP
   module Types
-    # rubocop:disable Metrics/LineLength
+    # The group object
+    #
+    # @see https://developers.brickftp.com/#the-group-object The group object
+    #
+    # ATTRIBUTE | TYPE                     | DESCRIPTION
+    # --------- | ------------------------ | -----------
+    # id        | integer                  | Globally unique identifier of each group. Each group is given an ID automatically upon creation.
+    # name      | string                   | Name of the group. This is how the group will be displayed on the site. Maximum of 50 characters.
+    # notes     | text                     | You may use this property to store any additional information you require. There are no restrictions on its formatting.
+    # user_ids  | comma-separated integers | IDs of the users that are in this group.
+    # usernames | string                   | Usernames of the users that are in this group.
+    # admin_ids | comma-separated integers | IDs of the users that are in this group and are administrators of this group.
+    #
     Group = Struct.new(
       'Group',
-      :id,        # integer                  | Globally unique identifier of each group. Each group is given an ID automatically upon creation.
-      :name,      # string                   | Name of the group. This is how the group will be displayed on the site. Maximum of 50 characters.
-      :notes,     # text                     | You may use this property to store any additional information you require. There are no restrictions on its formatting.
-      :user_ids,  # comma-separated integers | IDs of the users that are in this group.
-      :usernames, # string                   | Usernames of the users that are in this group.
-      :admin_ids, # array<integer>           | IDs of the users that are in this group and are administrators of this group.
+      :id,
+      :name,
+      :notes,
+      :user_ids,
+      :usernames,
+      :admin_ids,
       keyword_init: true
     )
-    # rubocop:enable Metrics/LineLength
   end
 end

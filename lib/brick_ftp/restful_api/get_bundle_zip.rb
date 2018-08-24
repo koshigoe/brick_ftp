@@ -2,18 +2,26 @@
 
 module BrickFTP
   module RESTfulAPI
+    # Download entire bundle as ZIP
+    #
+    # @see https://developers.brickftp.com/#download-entire-bundle-as-zip Download entire bundle as ZIP
+    #
+    # ### Params
+    #
+    # PARAMETER | TYPE   | DESCRIPTION
+    # --------- | ------ | -----------
+    # code,     | string | Unique code string identifier for the bundle.
+    # password  | string | Optional password to password-protect the bundle. This property is write-only. It cannot be retrieved via the API.
+    #
     class GetBundleZip
       include Command
 
-      # rubocop:disable Layout/CommentIndentation
       Params = Struct.new(
-        'GetFileInBundleParams',
-        :code,     # string | Unique code string identifier for the bundle.
-        :password, # string | Optional password to password-protect the bundle.
-                   #        | This property is write-only. It cannot be retrieved via the API.
+        'GetBundleZipParams',
+        :code,
+        :password,
         keyword_init: true
       )
-      # rubocop:enable Layout/CommentIndentation
 
       # Provides a download URL that will enable you to download all the files in a bundle as a single ZIP.
       #

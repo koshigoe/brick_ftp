@@ -2,18 +2,28 @@
 
 module BrickFTP
   module RESTfulAPI
+    # Create a group
+    #
+    # @see https://developers.brickftp.com/#create-a-group Create a group
+    #
+    # ### Params
+    #
+    # PARAMETER | TYPE                     | DESCRIPTION
+    # --------- | ------------------------ | -----------
+    # name      | string                   | Name of the group. This is how the group will be displayed on the site. Maximum of 50 characters.
+    # notes     | text                     | You may use this property to store any additional information you require. There are no restrictions on its formatting.
+    # user_ids  | comma-separated integers | IDs of the users that are in this group.
+    #
     class CreateGroup
       include Command
 
-      # rubocop:disable Metrics/LineLength
       Params = Struct.new(
         'CreateGroupParams',
-        :name,     # string                   | Name of the group. This is how the group will be displayed on the site. Maximum of 50 characters.
-        :notes,    # text                     | You may use this property to store any additional information you require. There are no restrictions on its formatting.
-        :user_ids, # comma-separated integers | IDs of the users that are in this group.
+        :name,
+        :notes,
+        :user_ids,
         keyword_init: true
       )
-      # rubocop:enable Metrics/LineLength
 
       # Creates a new group on the current site.
       #

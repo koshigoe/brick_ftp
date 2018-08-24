@@ -4,6 +4,11 @@ require 'erb'
 
 module BrickFTP
   module RESTfulAPI
+    # Count folder contents
+    #
+    # @see https://developers.brickftp.com/#count-folder-contents-recursively Count folder contents recursively
+    # @see https://developers.brickftp.com/#count-folder-contents-non-recursively Count folder contents non-recursively
+    #
     class CountFolderContents
       include Command
 

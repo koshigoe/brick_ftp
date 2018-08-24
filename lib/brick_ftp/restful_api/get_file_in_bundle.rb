@@ -2,18 +2,28 @@
 
 module BrickFTP
   module RESTfulAPI
+    # Download one file in a bundle
+    #
+    # @see https://developers.brickftp.com/#download-one-file-in-a-bundle Download one file in a bundle
+    #
+    # ### Params
+    #
+    # PARAMETER | TYPE   | DESCRIPTION
+    # --------- | ------ | -----------
+    # code      | string | Unique code string identifier for the bundle.
+    # path      | string |
+    # password  | string | Optional password to password-protect the bundle. This property is write-only. It cannot be retrieved via the API.
+    #
     class GetFileInBundle
       include Command
 
-      # rubocop:disable Metrics/LineLength
       Params = Struct.new(
         'GetFileInBundleParams',
-        :code,     # string | Unique code string identifier for the bundle.
-        :path,     # string |
-        :password, # string | Optional password to password-protect the bundle. This property is write-only. It cannot be retrieved via the API.
+        :code,
+        :path,
+        :password,
         keyword_init: true
       )
-      # rubocop:enable Metrics/LineLength
 
       # Provides a download URL to download a single file in the bundle.
       #

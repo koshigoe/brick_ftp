@@ -2,6 +2,16 @@
 
 module BrickFTP
   module RESTfulAPI
+    # Download a file
+    #
+    # @see https://developers.brickftp.com/#download-a-file Download a file
+    #
+    # ### Params
+    #
+    # PARAMETER | TYPE     | DESCRIPTION
+    # --------- | -------- | -----------
+    # action    | string   | Optionally set to `stat` to have the `download_uri` field omitted in the response and no download action logged.
+    #
     class DownloadFile
       include Command
 

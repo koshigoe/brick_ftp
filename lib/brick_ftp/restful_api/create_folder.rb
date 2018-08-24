@@ -4,6 +4,10 @@ require 'erb'
 
 module BrickFTP
   module RESTfulAPI
+    # Create a folder
+    #
+    # @see https://developers.brickftp.com/#create-a-folder Create a folder
+    #
     class CreateFolder
       include Command
 

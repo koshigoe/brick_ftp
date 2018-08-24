@@ -2,6 +2,17 @@
 
 module BrickFTP
   module RESTfulAPI
+    # List users
+    #
+    # @see https://developers.brickftp.com/#list-users List users
+    #
+    # ### Params
+    #
+    # PARAMETER | TYPE    | DESCRIPTION
+    # --------- | ------- | -----------
+    # page      | integer | Optional page number of items to return in this request. Default: 1.
+    # per_page  | integer | Optional requested number of items returned per request. Default: 1000. Leave blank for default (strongly recommended).
+    #
     class ListUsers
       include Command
 

@@ -2,6 +2,10 @@
 
 module BrickFTP
   module RESTfulAPI
+    # Delete a public key
+    #
+    # @see https://developers.brickftp.com/#delete-a-public-key Delete a public key
+    #
     class DeletePublicKey
       include Command
 

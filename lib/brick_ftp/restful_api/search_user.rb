@@ -4,6 +4,10 @@ require 'erb'
 
 module BrickFTP
   module RESTfulAPI
+    # Search users
+    #
+    # @see https://developers.brickftp.com/#search-users Search users
+    #
     class SearchUser
       include Command
 

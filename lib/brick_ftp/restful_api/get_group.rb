@@ -2,6 +2,10 @@
 
 module BrickFTP
   module RESTfulAPI
+    # Show a group
+    #
+    # @see https://developers.brickftp.com/#show-a-group Show a group
+    #
     class GetGroup
       include Command
 

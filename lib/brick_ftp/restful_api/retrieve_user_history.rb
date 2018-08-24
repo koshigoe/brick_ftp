@@ -2,6 +2,18 @@
 
 module BrickFTP
   module RESTfulAPI
+    # Retrieve user history
+    #
+    # @see https://developers.brickftp.com/#retrieve-user-history Retrieve user history
+    #
+    # ### Params
+    #
+    # PARAMETER | TYPE     | DESCRIPTION
+    # --------- | -------- | -----------
+    # page      | integer  | Optional page number of items to return in this request.
+    # per_page  | integer  | Optional requested number of items returned per request. Default: 1000, maximum: 10000. Leave blank for default (strongly recommended).
+    # start_at  | datetime | Optional date and time in the history to start from.
+    #
     class RetrieveUserHistory
       include Command
       include RetrieveHistory

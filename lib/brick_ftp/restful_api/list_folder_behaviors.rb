@@ -4,6 +4,16 @@ require 'erb'
 
 module BrickFTP
   module RESTfulAPI
+    # List behaviors for a folder
+    #
+    # @see https://developers.brickftp.com/#list-behaviors-for-a-folder List behaviors for a folder
+    #
+    # ### Params
+    #
+    # PARAMETER | TYPE     | DESCRIPTION
+    # --------- | -------- | -----------
+    # recursive | integer  | Optionally set to 1 to have response include behaviors inherited from parent folders.
+    #
     class ListFolderBehaviors
       include Command
 

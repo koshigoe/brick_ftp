@@ -2,6 +2,10 @@
 
 module BrickFTP
   module RESTfulAPI
+    # Show a public key
+    #
+    # @see https://developers.brickftp.com/#show-a-public-key Show a public key
+    #
     class GetPublicKey
       include Command
 

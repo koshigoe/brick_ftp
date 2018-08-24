@@ -2,6 +2,10 @@
 
 module BrickFTP
   module RESTfulAPI
+    # List public keys
+    #
+    # @see https://developers.brickftp.com/#list-public-keys List public keys
+    #
     class ListPublicKeys
       include Command
 

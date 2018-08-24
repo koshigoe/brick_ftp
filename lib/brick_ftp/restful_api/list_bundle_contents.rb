@@ -4,17 +4,26 @@ require 'erb'
 
 module BrickFTP
   module RESTfulAPI
+    # List bundle contents
+    #
+    # @see https://developers.brickftp.com/#list-bundle-contents List bundle contents
+    #
+    # ### Params
+    #
+    # PARAMETER | TYPE   | DESCRIPTION
+    # --------- | ------ | -----------
+    # code      | string | Unique code string identifier for the bundle.
+    # password  | string | Optional password to password-protect the bundle. This property is write-only. It cannot be retrieved via the API.
+    #
     class ListBundleContents
       include Command
 
-      # rubocop:disable Metrics/LineLength
       Params = Struct.new(
         'ListBundleContentsParams',
-        :code,     # string | Unique code string identifier for the bundle.
-        :password, # string | Optional password to password-protect the bundle. This property is write-only. It cannot be retrieved via the API.
+        :code,
+        :password,
         keyword_init: true
       )
-      # rubocop:enable Metrics/LineLength
 
       # This unauthenticated (public) endpoint lists the contents of a bundle.
       #
