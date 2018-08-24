@@ -72,5 +72,7 @@ module BrickFTP
     autoload :MoveFolder, 'brick_ftp/restful_api/move_folder'
     autoload :CopyFolder, 'brick_ftp/restful_api/copy_folder'
     autoload :DeleteFolder, 'brick_ftp/restful_api/delete_folder'
+    # ref. https://developers.brickftp.com/#file-uploading
+    autoload :StartUpload, 'brick_ftp/restful_api/start_upload'
   end
 end
