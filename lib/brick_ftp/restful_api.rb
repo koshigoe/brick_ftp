@@ -76,5 +76,6 @@ module BrickFTP
     autoload :StartUpload, 'brick_ftp/restful_api/start_upload'
     autoload :ContinueUpload, 'brick_ftp/restful_api/continue_upload'
     autoload :CompleteUpload, 'brick_ftp/restful_api/complete_upload'
+    autoload :UploadFile, 'brick_ftp/restful_api/upload_file'
   end
 end
