@@ -18,5 +18,6 @@ module BrickFTP
     autoload :File, 'brick_ftp/types/file'
     autoload :FolderContentsCount, 'brick_ftp/types/folder_contents_count'
     autoload :Upload, 'brick_ftp/types/upload'
+    autoload :SiteUsage, 'brick_ftp/types/site_usage'
   end
 end
