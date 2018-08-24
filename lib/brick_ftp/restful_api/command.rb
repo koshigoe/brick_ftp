@@ -4,7 +4,9 @@ module BrickFTP
   module RESTfulAPI
     module Command
       def self.included(klass)
-        klass.attr_reader :client
+        klass.class_eval do
+          attr_reader :client
+        end
       end
 
       # Initialize command.
