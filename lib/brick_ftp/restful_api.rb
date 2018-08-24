@@ -74,5 +74,6 @@ module BrickFTP
     autoload :DeleteFolder, 'brick_ftp/restful_api/delete_folder'
     # ref. https://developers.brickftp.com/#file-uploading
     autoload :StartUpload, 'brick_ftp/restful_api/start_upload'
+    autoload :ContinueUpload, 'brick_ftp/restful_api/continue_upload'
   end
 end
