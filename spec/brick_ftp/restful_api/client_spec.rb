@@ -212,4 +212,48 @@ RSpec.describe BrickFTP::RESTfulAPI::Client, type: :lib do
       end
     end
   end
+
+  describe '#upload_file' do
+    context '200 OK' do
+      it 'upload file' do
+        stub_request(:post, 'https://www.example.com/')
+          .with(body: 'TEST')
+          .to_return(body: '', status: 200)
+
+        rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
+        url = 'https://www.example.com/'
+        io = StringIO.new('TEST')
+
+        expect(rest.upload_file('POST', url, io)).to eq 4
+      end
+    end
+
+    context 'Invalida HTTP method' do
+      it 'raise ArgumentError' do
+        rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
+        url = 'http://www.example.com/'
+        io = StringIO.new
+
+        expect { rest.upload_file('GET', url, io) }.to raise_error(ArgumentError, 'Unsupported HTTP method `GET`')
+      end
+    end
+
+    context 'HTTP Error' do
+      it 'raise exception' do
+        stub_request(:post, 'http://www.example.com/')
+          .with(body: 'TEST')
+          .to_return(body: 'Bad Request', status: 400)
+
+        rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
+        url = 'http://www.example.com/'
+        io = StringIO.new('TEST')
+
+        expect { rest.upload_file('POST', url, io) }
+          .to raise_error(BrickFTP::RESTfulAPI::Client::Error) do |e|
+          expect(e.error['http-code']).to eq '400'
+          expect(e.error['error']).to eq 'Bad Request'
+        end
+      end
+    end
+  end
 end

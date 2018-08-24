@@ -121,6 +121,28 @@ module BrickFTP
         handle_response(res)
       end
 
+      # Upload file.
+      #
+      # @param [String] http_method Value is `PUT` or `POST`, and is the HTTP method used when uploading the file.
+      # @param [String] upload_url The URL where the file is uploaded to.
+      # @param [IO] io uploading data
+      # @return [Integer] content length
+      #
+      def upload_file(http_method, upload_url, io)
+        raise ArgumentError, "Unsupported HTTP method `#{http_method}`" unless %w[POST PUT].include?(http_method)
+
+        uri = URI.parse(upload_url)
+        http = Net::HTTP.new(uri.host, uri.port)
+        http.use_ssl = uri.scheme == 'https'
+        req = Net::HTTP.const_get(http_method.capitalize).new(uri.request_uri)
+        req.body_stream = io
+        req['Content-Length'] = io.size
+        res = http.start { |session| session.request(req) }
+
+        return io.size if res.is_a?(Net::HTTPSuccess)
+        raise Error, parse_error_response(res)
+      end
+
       private
 
       def handle_response(response)
