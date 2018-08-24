@@ -1,431 +1,53 @@
 # frozen_string_literal: true
 
+require 'brick_ftp/restful_api'
+
 module BrickFTP
+  # To delegate commands.
+  #
+  # @see BrickFTP::RESTfulAPI
+  # @example Call {BrickFTP::RESTfulAPI::ListUser#call}
+  #   BrickFTP::Client.new.list_users
+  #
   class Client
-    # Login and store authentication session.
-    # @see https://developers.brickftp.com/#authentication-with-a-session
-    # @param username [String] username of BrickFTP's user.
-    # @param password [String] password of BrickFTP's user.
-    def login(username, password)
-      BrickFTP::API::Authentication.login(username, password)
-    end
+    attr_reader :subdomain, :api_key, :api_client
 
-    # Logout and discard authentication session.
-    # @see https://developers.brickftp.com/#authentication-with-a-session
-    def logout
-      BrickFTP::API::Authentication.logout
-    end
-
-    # List all users on the current site.
-    # @see https://developers.brickftp.com/#users
-    # @return [Array] array of BrickFTP::API::User
-    def list_users
-      BrickFTP::API::User.all
-    end
-
-    # Show a single user.
-    # @see https://developers.brickftp.com/#users
-    # @param id user id.
-    # @return [BrickFTP::API::User] user object.
-    def show_user(id)
-      BrickFTP::API::User.find(id)
-    end
-
-    # Create a new user on the current site.
-    # @see https://developers.brickftp.com/#users
-    # @param attributes [Hash] User's attributes.
-    def create_user(attributes)
-      BrickFTP::API::User.create(attributes)
-    end
-
-    # Update an existing user.
-    # @see https://developers.brickftp.com/#users
-    # @param user_or_id [BrickFTP::API::User, Integer] user object or user id.
-    # @param attributes [Hash] User's attributes.
-    # @return [BrickFTP::API::User] user object.
-    def update_user(user_or_id, attributes)
-      instantize_user(user_or_id).update(attributes)
-    end
-
-    # Delete a user.
-    # @see https://developers.brickftp.com/#users
-    # @param user_or_id [BrickFTP::API::User, Integer] user object or user id.
-    # @return [Boolean] return true.
-    def delete_user(user_or_id)
-      instantize_user(user_or_id).destroy
-    end
-
-    # List all groups on the current site.
-    # @see https://developers.brickftp.com/#groups
-    def list_groups
-      BrickFTP::API::Group.all
-    end
-
-    # Show a single group.
-    # @see https://developers.brickftp.com/#groups
-    # @param id group id.
-    # @return [BrickFTP::API::Group] group object.
-    def show_group(id)
-      BrickFTP::API::Group.find(id)
-    end
-
-    # Create a new group on the current site.
-    # @see https://developers.brickftp.com/#groups
-    # @param attributes [Hash] Group's attributes.
-    def create_group(attributes)
-      BrickFTP::API::Group.create(attributes)
-    end
-
-    # Update an existing group.
-    # @see https://developers.brickftp.com/#groups
-    # @param group_or_id [BrickFTP::API::Group, Integer] group object or group id.
-    # @param attributes [Hash] Group's attributes.
-    # @return [BrickFTP::API::Group] group object.
-    def update_group(group_or_id, attributes)
-      instantize_group(group_or_id).update(attributes)
-    end
-
-    # Delete a group.
-    # @see https://developers.brickftp.com/#groups
-    # @param group_or_id [BrickFTP::API::Group, Integer] group object or group id.
-    # @return [Boolean] return true.
-    def delete_group(group_or_id)
-      instantize_group(group_or_id).destroy
-    end
-
-    # List all permissions on the current site.
-    # @see https://developers.brickftp.com/#permissions
-    def list_permissions
-      BrickFTP::API::Permission.all
-    end
-
-    # Create a new permission on the current site.
-    # @see https://developers.brickftp.com/#permissions
-    # @param attributes [Hash] Permission's attributes.
-    def create_permission(attributes)
-      BrickFTP::API::Permission.create(attributes)
-    end
-
-    # Delete a permission.
-    # @see https://developers.brickftp.com/#permissions
-    # @param permission_or_id [BrickFTP::API::Permission, Integer] permission object or permission id.
-    # @return [Boolean] return true.
-    def delete_permission(permission_or_id)
-      instantize_permission(permission_or_id).destroy
-    end
-
-    # List all notifications on the current site.
-    # @see https://developers.brickftp.com/#notifications
-    def list_notifications
-      BrickFTP::API::Notification.all
-    end
-
-    # Create a new notification on the current site.
-    # @see https://developers.brickftp.com/#notifications
-    # @param attributes [Hash] Notification's attributes.
-    def create_notification(attributes)
-      BrickFTP::API::Notification.create(attributes)
-    end
-
-    # Delete a notification.
-    # @see https://developers.brickftp.com/#notifications
-    # @param notification_or_id [BrickFTP::API::Notification, Integer] notification object or notification id.
-    # @return [Boolean] return true.
-    def delete_notification(notification_or_id)
-      instantize_notification(notification_or_id).destroy
-    end
-
-    # Show the entire history for the current site.
-    # @see https://developers.brickftp.com/#history
-    # @param page [Integer] Page number of items to return in this request.
-    # @param display [String] Pass in 'full' to receive display summary
-    # @param per_page [Integer] Requested number of items returned per request. Default: 1000, maximum: 10000.
-    #   Leave blank for default (strongly recommended).
-    # @param start_at [String] Date and time in the history to start from.
-    # @return [Array] array of `BrickFTP::API::History::Site`
-    def list_site_history(page: nil, display: nil, per_page: nil, start_at: nil)
-      query = { page: page, display: display, per_page: per_page, start_at: start_at }.reject { |_, v| v.nil? }
-      BrickFTP::API::History::Site.all(query)
-    end
-
-    # Show login history only.
-    # @see https://developers.brickftp.com/#history
-    # @param page [Integer] Page number of items to return in this request.
-    # @param display [String] Pass in 'full' to receive display summary
-    # @param per_page [Integer] Requested number of items returned per request. Default: 1000, maximum: 10000.
-    #   Leave blank for default (strongly recommended).
-    # @param start_at [String] Date and time in the history to start from.
-    # @return [Array] array of `BrickFTP::API::History::Login`
-    def list_login_history(page: nil, display: nil, per_page: nil, start_at: nil)
-      query = { page: page, display: display, per_page: per_page, start_at: start_at }.reject { |_, v| v.nil? }
-      BrickFTP::API::History::Login.all(query)
-    end
-
-    # Show all history for a specific user.
-    # @see https://developers.brickftp.com/#history
-    # @param user_id [Integer] User ID.
-    # @param display [String] Pass in 'full' to receive display summary
-    # @param page [Integer] Page number of items to return in this request.
-    # @param per_page [Integer] Requested number of items returned per request.
-    #   Default: 1000, maximum: 10000. Leave blank for default (strongly recommended).
-    # @param start_at [String] Date and time in the history to start from.
-    # @return [Array] array of `BrickFTP::API::History::User`
-    def list_user_history(user_id:, display: nil, page: nil, per_page: nil, start_at: nil)
-      query = { user_id: user_id, display: display, page: page, per_page: per_page, start_at: start_at }
-              .reject { |_, v| v.nil? }
-      BrickFTP::API::History::User.all(query)
-    end
-
-    # Show all history for a specific folder.
-    # @see https://developers.brickftp.com/#history
-    # @param path [String] path of folder.
-    # @param display [String] Pass in 'full' to receive display summary
-    # @param page [Integer] Page number of items to return in this request.
-    # @param per_page [Integer] Requested number of items returned per request.
-    #   Default: 1000, maximum: 10000. Leave blank for default (strongly recommended).
-    # @param start_at [String] Date and time in the history to start from.
-    # @return [Array] array of `BrickFTP::API::History::Folder`
-    def list_folder_history(path:, display: nil, page: nil, per_page: nil, start_at: nil)
-      query = { path: path, display: display, page: page, per_page: per_page, start_at: start_at }.reject { |_, v| v.nil? }
-      BrickFTP::API::History::Folder.all(query)
-    end
-
-    # Show all history for a specific file.
-    # @see https://developers.brickftp.com/#history
-    # @param path [String] path of file.
-    # @param display [String] Pass in 'full' to receive display summary
-    # @param page [Integer] Page number of items to return in this request.
-    # @param per_page [Integer] Requested number of items returned per request.
-    #   Default: 1000, maximum: 10000. Leave blank for default (strongly recommended).
-    # @param start_at [String] Date and time in the history to start from.
-    # @return [Array] array of `BrickFTP::API::History::File`
-    def list_file_history(path:, display: nil, page: nil, per_page: nil, start_at: nil)
-      query = { path: path, display: display, page: page, per_page: per_page, start_at: start_at }.reject { |_, v| v.nil? }
-      BrickFTP::API::History::File.all(query)
-    end
-
-    # List all bundles on the current site.
-    # @see https://developers.brickftp.com/#bundles
-    # @return [Array] array of BrickFTP::API::Bundle
-    def list_bundles
-      BrickFTP::API::Bundle.all
-    end
-
-    # Show a single bundle.
-    # @see https://developers.brickftp.com/#bundles
-    # @param id bundle id.
-    # @return [BrickFTP::API::Bundle] bundle object.
-    def show_bundle(id)
-      BrickFTP::API::Bundle.find(id)
-    end
-
-    # Create a new bundle on the current site.
-    # @see https://developers.brickftp.com/#bundles
-    # @param attributes [Hash] Bundle's attributes.
-    def create_bundle(attributes)
-      BrickFTP::API::Bundle.create(attributes)
-    end
-
-    # Delete a bundle.
-    # @see https://developers.brickftp.com/#bundles
-    # @param bundle_or_id [BrickFTP::API::Bundle, Integer] bundle object or bundle id.
-    # @return [Boolean] return true.
-    def delete_bundle(bundle_or_id)
-      instantize_bundle(bundle_or_id).destroy
-    end
-
-    # List the contents of a bundle.
-    # @see https://developers.brickftp.com/#bundles
-    # @param path [String]
-    # @param code [String]
-    # @param host [String]
-    # @return [Array] array of `BrickFTP::API::BundleContent`.
-    def list_bundle_contents(path: nil, code:, host:)
-      BrickFTP::API::BundleContent.all(path: path, code: code, host: host)
-    end
-
-    # Provides download URLs that will enable you to download the files in a bundle.
-    # @see https://developers.brickftp.com/#bundles
-    # @param code [String]
-    # @param host [String]
-    # @param paths [Array] array of path string.
-    # @return [Array] array of `BrickFTP::API::BundleDownload`.
-    def list_bundle_downloads(code:, host:, paths: [])
-      BrickFTP::API::BundleDownload.all(code: code, host: host, paths: paths)
-    end
-
-    # List all behaviors on the current site.
-    # @see https://developers.brickftp.com/#behaviors
-    # @return [Array] array of BrickFTP::API::Behavior
-    def list_behaviors
-      BrickFTP::API::Behavior.all
-    end
-
-    # Show a single behavior.
-    # @see https://developers.brickftp.com/#behaviors
-    # @param id behavior id.
-    # @return [BrickFTP::API::Behavior] behavior object.
-    def show_behavior(id)
-      BrickFTP::API::Behavior.find(id)
-    end
-
-    # Create a new behavior on the current site.
-    # @see https://developers.brickftp.com/#behaviors
-    # @param attributes [Hash] Behavior's attributes.
-    def create_behavior(attributes)
-      BrickFTP::API::Behavior.create(attributes)
-    end
-
-    # Update an existing behavior.
-    # @see https://developers.brickftp.com/#behaviors
-    # @param behavior_or_id [BrickFTP::API::Behavior, Integer] behavior object or behavior id.
-    # @param attributes [Hash] Behavior's attributes.
-    # @return [BrickFTP::API::Behavior] behavior object.
-    def update_behavior(behavior_or_id, attributes)
-      instantize_behavior(behavior_or_id).update(attributes)
-    end
-
-    # Delete a behavior.
-    # @see https://developers.brickftp.com/#behaviors
-    # @param behavior_or_id [BrickFTP::API::Behavior, Integer] behavior object or behavior id.
-    # @return [Boolean] return true.
-    def delete_behavior(behavior_or_id)
-      instantize_behavior(behavior_or_id).destroy
-    end
-
-    # shows the behaviors that apply to the given path.
-    # @see https://developers.brickftp.com/#behaviors
-    # @return [Array] array of BrickFTP::API::FolderBehavior
-    def list_folder_behaviors(path:)
-      BrickFTP::API::FolderBehavior.all(path: path)
-    end
-
-    # Lists the contents of the folder provided in the URL.
-    # @see https://developers.brickftp.com/#file-and-folder-operations
-    # @param path [String]
-    # @param page [Integer] Page number of items to return in this request.
-    # @param per_page [Integer] Requested number of items returned per request.
-    #   Maximum: 5000, leave blank for default (strongly recommended).
-    # @param search [String] Only return items matching the given search text.
-    # @param sort_by_path [String] Sort by file name, and value is either asc or desc to indicate normal or reverse sort.
-    #   (Note that sort_by[path] = asc is the default.)
-    # @param sort_by_size [String] Sort by file size, and value is either asc or desc to indicate smaller files
-    #   first or larger files first, respectively.
-    # @param sort_by_modified_at_datetime [String] Sort by modification time, and value is either asc or desc to
-    #   indicate older files first or newer files first, respectively.
-    # @return [Array] array of BrickFTP::API::Folder.
-    def list_folders(path:, page: nil, per_page: nil, search: nil, sort_by_path: nil, sort_by_size: nil, sort_by_modified_at_datetime: nil) # rubocop:disable Metrics/LineLength
-      query = { path: path, page: page, per_page: per_page, search: search }.reject { |_, v| v.nil? }
-      query[:'sort_by[path]'] = sort_by_path if sort_by_path
-      query[:'sort_by[size]'] = sort_by_size if sort_by_size
-      query[:'sort_by[modified_at_datetime]'] = sort_by_modified_at_datetime if sort_by_modified_at_datetime
-      BrickFTP::API::Folder.all(query)
-    end
-
-    # Create a folder.
-    # @see https://developers.brickftp.com/#file-and-folder-operations
-    # @param path [String]
-    # @return [BrickFTP::API::Folder]
-    def create_folder(path:)
-      BrickFTP::API::Folder.create(path: path)
-    end
-
-    # provides a download URL that will enable you to download a file.
-    # @see https://developers.brickftp.com/#file-and-folder-operations
-    # @param path [String] path for file.
-    # @param omit_download_uri [Boolean] If true, omit download_uri. (Add query `action=stat`)
-    # @return [BrickFTP::API::File] file object.
-    def show_file(path, omit_download_uri: false)
-      params = {}
-      params[:action] = 'stat' if omit_download_uri
-      BrickFTP::API::File.find(path, params: params)
-    end
-
-    # Move or renames a file or folder to the destination provided in the move_destination parameter.
-    # @see https://developers.brickftp.com/#file-and-folder-operations
-    # @param path [String]
-    # @param move_destination [String]
-    # @return [BrickFTP::API::FileMove]
-    def move_file(path:, move_destination:)
-      BrickFTP::API::FileOperation::Move.create(path: path, 'move-destination': move_destination)
-    end
-
-    # Copy a file or folder to the destination provided in the copy_destination parameter.
-    # @see https://developers.brickftp.com/#file-and-folder-operations
-    # @param path [String]
-    # @param copy_destination [String]
-    # @return [BrickFTP::API::FileCopy]
-    def copy_file(path:, copy_destination:)
-      BrickFTP::API::FileOperation::Copy.create(path: path, 'copy-destination': copy_destination)
-    end
-
-    # Delete a file.
-    # @see https://developers.brickftp.com/#file-and-folder-operations
-    # @param file_or_path [BrickFTP::API::File, String] file object or file(folder) path.
-    # @param recursive [Boolean]
-    # @return [Boolean] return true.
-    def delete_file(file_or_path, recursive: false)
-      instantize_file(file_or_path).destroy(recursive: recursive)
-    end
-
-    # Upload file.
-    # @see https://developers.brickftp.com/#file-uploading
-    # @param path [String]
-    # @param source [IO] source `data` (not `path`) to upload
-    # @param chunk_size [Integer] Size of chunk to multi-part upload.
-    # @return [BrickFTP::API::FileUpload]
-    def upload_file(path:, source:, chunk_size: nil)
-      BrickFTP::API::FileOperation::Upload.create(path: path, source: source, chunk_size: chunk_size)
-    end
-
-    # Get usage of site.
-    # @return [BrickFTP::API::SiteUsage]
-    def site_usage
-      BrickFTP::API::SiteUsage.find
+    # @param [String] subdomain
+    # @param [String] api_key
+    def initialize(subdomain: nil, api_key: nil)
+      @subdomain = ENV.fetch('BRICK_FTP_SUBDOMAIN', subdomain)
+      @api_key = ENV.fetch('BRICK_FTP_API_KEY', api_key)
+      @api_client = BrickFTP::RESTfulAPI::Client.new(@subdomain, @api_key)
     end
 
     private
 
-    def instantize_user(user_or_id)
-      return user_or_id if user_or_id.is_a?(BrickFTP::API::User)
+    def command_class(symbol)
+      name = symbol.to_s.split('_').map(&:capitalize).join
+      return unless BrickFTP::RESTfulAPI.const_defined?(name)
 
-      BrickFTP::API::User.new(id: user_or_id)
+      klass = BrickFTP::RESTfulAPI.const_get(name)
+      return unless klass < BrickFTP::RESTfulAPI::Command
+
+      klass
     end
 
-    def instantize_group(group_or_id)
-      return group_or_id if group_or_id.is_a?(BrickFTP::API::Group)
-
-      BrickFTP::API::Group.new(id: group_or_id)
+    def respond_to_missing?(symbol, include_private)
+      return true if command_class(symbol)
+      super
     end
 
-    def instantize_permission(permission_or_id)
-      return permission_or_id if permission_or_id.is_a?(BrickFTP::API::Permission)
-
-      BrickFTP::API::Permission.new(id: permission_or_id)
+    def method_missing(name, *args)
+      klass = command_class(name)
+      if klass
+        dispatch_command(klass, *args)
+      else
+        super
+      end
     end
 
-    def instantize_notification(notification_or_id)
-      return notification_or_id if notification_or_id.is_a?(BrickFTP::API::Notification)
-
-      BrickFTP::API::Notification.new(id: notification_or_id)
-    end
-
-    def instantize_bundle(bundle_or_id)
-      return bundle_or_id if bundle_or_id.is_a?(BrickFTP::API::Bundle)
-
-      BrickFTP::API::Bundle.new(id: bundle_or_id)
-    end
-
-    def instantize_behavior(behavior_or_id)
-      return behavior_or_id if behavior_or_id.is_a?(BrickFTP::API::Behavior)
-
-      BrickFTP::API::Behavior.new(id: behavior_or_id)
-    end
-
-    def instantize_file(file_or_path)
-      return file_or_path if file_or_path.is_a?(BrickFTP::API::File)
-
-      BrickFTP::API::File.new(path: file_or_path)
+    def dispatch_command(klass, *args)
+      klass.new(api_client).call(*args)
     end
   end
 end
