@@ -40,6 +40,7 @@ module BrickFTP
     #
     class UpdateUser
       include Command
+      using BrickFTP::CoreExt::Struct
 
       Params = Struct.new(
         'UpdateUserParams',

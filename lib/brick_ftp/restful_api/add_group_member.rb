@@ -14,6 +14,7 @@ module BrickFTP
     #
     class AddGroupMember
       include Command
+      using BrickFTP::CoreExt::Struct
 
       Params = Struct.new(
         'AddGroupMemberParams',

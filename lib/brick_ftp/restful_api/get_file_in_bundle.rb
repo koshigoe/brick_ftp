@@ -16,6 +16,7 @@ module BrickFTP
     #
     class GetFileInBundle
       include Command
+      using BrickFTP::CoreExt::Struct
 
       Params = Struct.new(
         'GetFileInBundleParams',

@@ -2,6 +2,8 @@
 
 module BrickFTP
   module Types
+    using BrickFTP::CoreExt::Struct
+
     # The public key object
     #
     # @see https://developers.brickftp.com/#the-public-key-object The public key object

@@ -16,6 +16,7 @@ module BrickFTP
     #
     class CompleteUpload
       include Command
+      using BrickFTP::CoreExt::Struct
 
       Params = Struct.new(
         'CompleteUploadParams',

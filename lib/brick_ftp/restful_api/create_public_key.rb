@@ -15,6 +15,7 @@ module BrickFTP
     #
     class CreatePublicKey
       include Command
+      using BrickFTP::CoreExt::Struct
 
       Params = Struct.new(
         'CreatePublicKeyParams',

@@ -2,6 +2,8 @@
 
 module BrickFTP
   module Types
+    using BrickFTP::CoreExt::Struct
+
     # The notification object
     #
     # @see https://developers.brickftp.com/#the-notification-object The notification object

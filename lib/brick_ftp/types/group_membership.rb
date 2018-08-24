@@ -2,6 +2,8 @@
 
 module BrickFTP
   module Types
+    using BrickFTP::CoreExt::Struct
+
     # membership object
     #
     # @see https://developers.brickftp.com/#add-a-member membership object

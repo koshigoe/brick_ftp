@@ -2,6 +2,8 @@
 
 module BrickFTP
   module Types
+    using BrickFTP::CoreExt::Struct
+
     # The permission object
     #
     # @see https://developers.brickftp.com/#the-permission-object The permission object

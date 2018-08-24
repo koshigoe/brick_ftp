@@ -15,6 +15,7 @@ module BrickFTP
     #
     class GetBundleZip
       include Command
+      using BrickFTP::CoreExt::Struct
 
       Params = Struct.new(
         'GetBundleZipParams',

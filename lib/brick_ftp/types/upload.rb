@@ -2,6 +2,8 @@
 
 module BrickFTP
   module Types
+    using BrickFTP::CoreExt::Struct
+
     # The upload object
     #
     # @see https://developers.brickftp.com/#the-upload-object The upload object

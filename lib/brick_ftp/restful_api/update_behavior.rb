@@ -14,6 +14,7 @@ module BrickFTP
     #
     class UpdateBehavior
       include Command
+      using BrickFTP::CoreExt::Struct
 
       Params = Struct.new(
         'UpdateBehaviorParams',

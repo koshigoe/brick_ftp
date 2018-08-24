@@ -2,6 +2,8 @@
 
 module BrickFTP
   module Types
+    using BrickFTP::CoreExt::Struct
+
     # The API key object
     #
     # @see https://developers.brickftp.com/#the-api-key-object The API key object

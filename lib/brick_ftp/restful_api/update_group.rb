@@ -16,6 +16,7 @@ module BrickFTP
     #
     class UpdateGroup
       include Command
+      using BrickFTP::CoreExt::Struct
 
       Params = Struct.new(
         'UpdateGroupParams',

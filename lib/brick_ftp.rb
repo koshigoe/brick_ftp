@@ -3,6 +3,7 @@
 require 'deep_hash_transform'
 require 'brick_ftp/version'
 require 'brick_ftp/client'
+require 'brick_ftp/core_ext'
 require 'brick_ftp/utils'
 require 'brick_ftp/utils/chunk_io'
 require 'brick_ftp/types'

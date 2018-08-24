@@ -40,6 +40,7 @@ module BrickFTP
     #
     class CreateUser
       include Command
+      using BrickFTP::CoreExt::Struct
 
       Params = Struct.new(
         'CreateUserParams',

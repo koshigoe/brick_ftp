@@ -2,6 +2,8 @@
 
 module BrickFTP
   module Types
+    using BrickFTP::CoreExt::Struct
+
     # ## The behavior object
     #
     # @see https://developers.brickftp.com/#the-behavior-object The behavior object

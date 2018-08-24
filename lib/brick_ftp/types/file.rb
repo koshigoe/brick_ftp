@@ -2,6 +2,8 @@
 
 module BrickFTP
   module Types
+    using BrickFTP::CoreExt::Struct
+
     # The file/folder object
     #
     # @see https://developers.brickftp.com/#the-file-folder-object The file/folder object

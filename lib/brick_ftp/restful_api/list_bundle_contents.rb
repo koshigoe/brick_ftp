@@ -17,6 +17,7 @@ module BrickFTP
     #
     class ListBundleContents
       include Command
+      using BrickFTP::CoreExt::Struct
 
       Params = Struct.new(
         'ListBundleContentsParams',

@@ -2,6 +2,8 @@
 
 module BrickFTP
   module Types
+    using BrickFTP::CoreExt::Struct
+
     # An element of bundle contents
     #
     # @see https://developers.brickftp.com/#list-bundle-contents List bundle contents

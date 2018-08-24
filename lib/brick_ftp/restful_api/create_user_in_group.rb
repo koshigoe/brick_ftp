@@ -24,6 +24,7 @@ module BrickFTP
     #
     class CreateUserInGroup
       include Command
+      using BrickFTP::CoreExt::Struct
 
       Params = Struct.new(
         'CreateUserInGroupParams',

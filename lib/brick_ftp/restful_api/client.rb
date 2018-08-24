@@ -3,6 +3,8 @@
 module BrickFTP
   module RESTfulAPI
     class Client
+      using BrickFTP::CoreExt::Struct
+
       OPEN_TIMEOUT = 60
       READ_TIMEOUT = 60
       USER_AGENT = 'BrickFTP Client/1.0 (https://github.com/koshigoe/brick_ftp)'

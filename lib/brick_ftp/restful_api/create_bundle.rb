@@ -15,6 +15,7 @@ module BrickFTP
     #
     class CreateBundle
       include Command
+      using BrickFTP::CoreExt::Struct
 
       Params = Struct.new(
         'CreateBundleParams',

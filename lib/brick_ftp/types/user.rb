@@ -2,6 +2,8 @@
 
 module BrickFTP
   module Types
+    using BrickFTP::CoreExt::Struct
+
     # The user object
     #
     # @see https://developers.brickftp.com/#the-user-object The user object

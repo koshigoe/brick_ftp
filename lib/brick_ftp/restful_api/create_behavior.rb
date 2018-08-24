@@ -16,6 +16,7 @@ module BrickFTP
     #
     class CreateBehavior
       include Command
+      using BrickFTP::CoreExt::Struct
 
       Params = Struct.new(
         'CreateBehaviorParams',

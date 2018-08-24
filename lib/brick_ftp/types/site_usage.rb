@@ -2,6 +2,8 @@
 
 module BrickFTP
   module Types
+    using BrickFTP::CoreExt::Struct
+
     SiteUsage = Struct.new(
       'SiteUsage',
       :id,

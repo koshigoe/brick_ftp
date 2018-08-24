@@ -2,6 +2,8 @@
 
 module BrickFTP
   module Types
+    using BrickFTP::CoreExt::Struct
+
     # The bundle object
     #
     # @see https://developers.brickftp.com/#the-bundle-object The bundle object

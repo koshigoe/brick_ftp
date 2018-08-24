@@ -17,6 +17,7 @@ module BrickFTP
     #
     class CreateNotification
       include Command
+      using BrickFTP::CoreExt::Struct
 
       Params = Struct.new(
         'CreateNotificationParams',

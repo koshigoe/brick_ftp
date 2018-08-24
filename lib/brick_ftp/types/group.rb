@@ -2,6 +2,8 @@
 
 module BrickFTP
   module Types
+    using BrickFTP::CoreExt::Struct
+
     # The group object
     #
     # @see https://developers.brickftp.com/#the-group-object The group object
