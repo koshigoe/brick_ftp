@@ -24,6 +24,7 @@ Metrics/LineLength:
   URISchemes:
     - http
     - https
+  IgnoredPatterns: ['\A(?:\s)*?#']
 
 Metrics/BlockLength:
   Exclude:

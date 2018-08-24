@@ -26,6 +26,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'codecov', '~> 0.1.10'
   spec.add_development_dependency 'pry', '~> 0.11'
   spec.add_development_dependency 'rake', '~> 12.0'
+  spec.add_development_dependency 'redcarpet', '~> 3.4'
   spec.add_development_dependency 'rspec', '~> 3.7'
   spec.add_development_dependency 'rubocop', '~> 0.57.0'
   spec.add_development_dependency 'simplecov', '~> 0.15'
@@ -33,6 +34,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'yard', '~> 0.9'
 
   spec.add_dependency 'deep_hash_transform', '~> 1.0'
-  spec.add_dependency 'inifile', '~> 3.0.0'
-  spec.add_dependency 'thor', '~> 0.20.0'
 end
