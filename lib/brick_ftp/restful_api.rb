@@ -70,5 +70,6 @@ module BrickFTP
     autoload :GetFolderSize, 'brick_ftp/restful_api/get_folder_size'
     autoload :DownloadFile, 'brick_ftp/restful_api/download_file'
     autoload :MoveFolder, 'brick_ftp/restful_api/move_folder'
+    autoload :CopyFolder, 'brick_ftp/restful_api/copy_folder'
   end
 end
