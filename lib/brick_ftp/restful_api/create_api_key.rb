@@ -18,6 +18,7 @@ module BrickFTP
     class CreateAPIKey
       include Command
       using BrickFTP::CoreExt::Struct
+      using BrickFTP::CoreExt::Hash
 
       Params = Struct.new(
         'CreateAPIKeyParams',

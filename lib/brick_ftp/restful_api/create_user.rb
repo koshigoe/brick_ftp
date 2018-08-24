@@ -41,6 +41,7 @@ module BrickFTP
     class CreateUser
       include Command
       using BrickFTP::CoreExt::Struct
+      using BrickFTP::CoreExt::Hash
 
       Params = Struct.new(
         'CreateUserParams',

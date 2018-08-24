@@ -22,6 +22,7 @@ module BrickFTP
     class ListFolders
       include Command
       using BrickFTP::CoreExt::Struct
+      using BrickFTP::CoreExt::Hash
 
       Params = Struct.new(
         'ListFoldersParams',

@@ -20,6 +20,7 @@ module BrickFTP
     class CreatePermission
       include Command
       using BrickFTP::CoreExt::Struct
+      using BrickFTP::CoreExt::Hash
 
       Params = Struct.new(
         'CreatePermissionParams',

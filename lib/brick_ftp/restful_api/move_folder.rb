@@ -17,6 +17,7 @@ module BrickFTP
     class MoveFolder
       include Command
       using BrickFTP::CoreExt::Struct
+      using BrickFTP::CoreExt::Hash
 
       Params = Struct.new(
         'MoveFolderParams',
