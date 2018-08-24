@@ -129,7 +129,7 @@ RSpec.describe BrickFTP::RESTfulAPI::UploadFile, type: :lib do
         client = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::UploadFile.new(client)
 
-        Tempfile.create do |io|
+        Tempfile.create('base') do |io|
           io.write('a' * 5_242_880 + 'b')
           io.flush
           io.rewind
