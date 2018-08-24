@@ -71,5 +71,6 @@ module BrickFTP
     autoload :DownloadFile, 'brick_ftp/restful_api/download_file'
     autoload :MoveFolder, 'brick_ftp/restful_api/move_folder'
     autoload :CopyFolder, 'brick_ftp/restful_api/copy_folder'
+    autoload :DeleteFolder, 'brick_ftp/restful_api/delete_folder'
   end
 end
