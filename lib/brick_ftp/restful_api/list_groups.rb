@@ -8,6 +8,7 @@ module BrickFTP
     #
     class ListGroups
       include Command
+      using BrickFTP::CoreExt::Hash
 
       # Returns a list of all groups on the current site.
       #

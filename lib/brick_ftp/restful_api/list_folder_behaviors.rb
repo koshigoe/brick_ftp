@@ -16,6 +16,7 @@ module BrickFTP
     #
     class ListFolderBehaviors
       include Command
+      using BrickFTP::CoreExt::Hash
 
       # Returns the behaviors that apply to the given path.
       #

@@ -8,6 +8,7 @@ module BrickFTP
     #
     class GetBundle
       include Command
+      using BrickFTP::CoreExt::Hash
 
       # Returns a single bundle.
       #

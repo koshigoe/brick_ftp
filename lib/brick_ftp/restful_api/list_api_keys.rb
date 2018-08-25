@@ -8,6 +8,7 @@ module BrickFTP
     #
     class ListAPIKeys
       include Command
+      using BrickFTP::CoreExt::Hash
 
       # Returns a list of all API keys for a user on the current site.
       #

@@ -10,6 +10,7 @@ module BrickFTP
     #
     class StartUpload
       include Command
+      using BrickFTP::CoreExt::Hash
 
       # The first request to upload a new file is a POST request to /files/PATH_AND_FILENAME.EXT
       # with an action parameter with the value of put.

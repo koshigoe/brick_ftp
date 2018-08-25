@@ -11,6 +11,7 @@ module BrickFTP
     #
     class CountFolderContents
       include Command
+      using BrickFTP::CoreExt::Hash
 
       # Returns number of files and folders.
       #

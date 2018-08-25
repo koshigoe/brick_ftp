@@ -8,6 +8,7 @@ module BrickFTP
     #
     class ListBundles
       include Command
+      using BrickFTP::CoreExt::Hash
 
       # Returns a list of all bundles on the current site.
       #

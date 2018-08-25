@@ -5,6 +5,8 @@ require 'erb'
 module BrickFTP
   module RESTfulAPI
     module RetrieveHistory
+      using BrickFTP::CoreExt::Hash
+
       def retrieve(path, page, per_page, start_at)
         validate_page!(page)
         validate_per_page!(per_page)

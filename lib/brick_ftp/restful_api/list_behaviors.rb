@@ -8,6 +8,7 @@ module BrickFTP
     #
     class ListBehaviors
       include Command
+      using BrickFTP::CoreExt::Hash
 
       # Returns a list of all behaviors on the current site.
       #
