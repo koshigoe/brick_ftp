@@ -8,6 +8,7 @@ module BrickFTP
     #
     class ListNotifications
       include Command
+      using BrickFTP::CoreExt::Hash
 
       # Returns a list of all notifications on the current site.
       #

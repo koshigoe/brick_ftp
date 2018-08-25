@@ -15,6 +15,7 @@ module BrickFTP
     #
     class ListUsers
       include Command
+      using BrickFTP::CoreExt::Hash
 
       # Returns a list of users on the current site.
       #

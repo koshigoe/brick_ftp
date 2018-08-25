@@ -8,6 +8,7 @@ module BrickFTP
     #
     class GetGroup
       include Command
+      using BrickFTP::CoreExt::Hash
 
       # Returns a single group.
       #

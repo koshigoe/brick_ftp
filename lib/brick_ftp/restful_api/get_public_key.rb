@@ -8,6 +8,7 @@ module BrickFTP
     #
     class GetPublicKey
       include Command
+      using BrickFTP::CoreExt::Hash
 
       # Returns a single public key.
       #

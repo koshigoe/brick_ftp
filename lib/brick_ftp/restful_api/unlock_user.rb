@@ -8,6 +8,7 @@ module BrickFTP
     #
     class UnlockUser
       include Command
+      using BrickFTP::CoreExt::Hash
 
       # Unlocks a user that has been locked out by Brute Force Login Protection.
       #

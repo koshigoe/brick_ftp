@@ -4,6 +4,7 @@ module BrickFTP
   module RESTfulAPI
     class GetSiteUsage
       include Command
+      using BrickFTP::CoreExt::Hash
 
       # Returns site usage
       #

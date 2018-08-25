@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'deep_hash_transform'
 require 'brick_ftp/version'
 require 'brick_ftp/client'
 require 'brick_ftp/core_ext'

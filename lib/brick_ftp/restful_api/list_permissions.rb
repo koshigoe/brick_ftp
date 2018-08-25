@@ -16,6 +16,7 @@ module BrickFTP
     #
     class ListPermissions
       include Command
+      using BrickFTP::CoreExt::Hash
 
       # Returns a list of permissions on the current site.
       #

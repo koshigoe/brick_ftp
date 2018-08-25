@@ -19,6 +19,7 @@ module BrickFTP
     class RetrieveFolderHistory
       include Command
       include RetrieveHistory
+      using BrickFTP::CoreExt::Hash
 
       # Returns all history for a specific folder.
       #

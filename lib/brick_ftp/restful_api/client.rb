@@ -7,6 +7,7 @@ module BrickFTP
   module RESTfulAPI
     class Client
       using BrickFTP::CoreExt::Struct
+      using BrickFTP::CoreExt::Hash
 
       OPEN_TIMEOUT = 60
       READ_TIMEOUT = 60

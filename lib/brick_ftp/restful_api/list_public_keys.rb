@@ -8,6 +8,7 @@ module BrickFTP
     #
     class ListPublicKeys
       include Command
+      using BrickFTP::CoreExt::Hash
 
       # Returns a list of all public keys for a user on the current site.
       #

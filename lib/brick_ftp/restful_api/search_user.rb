@@ -10,6 +10,7 @@ module BrickFTP
     #
     class SearchUser
       include Command
+      using BrickFTP::CoreExt::Hash
 
       # Returns a single user.
       #

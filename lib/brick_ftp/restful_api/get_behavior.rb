@@ -8,6 +8,7 @@ module BrickFTP
     #
     class GetBehavior
       include Command
+      using BrickFTP::CoreExt::Hash
 
       # Returns a single behavior.
       #

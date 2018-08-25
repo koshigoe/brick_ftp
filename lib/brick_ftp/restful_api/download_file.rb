@@ -14,6 +14,7 @@ module BrickFTP
     #
     class DownloadFile
       include Command
+      using BrickFTP::CoreExt::Hash
 
       # Provides a download URL that will enable you to download a file.
       #

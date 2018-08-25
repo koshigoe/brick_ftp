@@ -8,6 +8,7 @@ module BrickFTP
     #
     class GetUser
       include Command
+      using BrickFTP::CoreExt::Hash
 
       # Returns a single user.
       #

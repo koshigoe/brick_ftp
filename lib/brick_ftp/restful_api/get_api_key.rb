@@ -8,6 +8,7 @@ module BrickFTP
     #
     class GetAPIKey
       include Command
+      using BrickFTP::CoreExt::Hash
 
       # Returns a single API key.
       #
