@@ -2,10 +2,10 @@ Changelog
 ====
 
 
-[unreleased](https://github.com/koshigoe/brick_ftp/compare/v1.0.0.beta...master)
+[unreleased](https://github.com/koshigoe/brick_ftp/compare/v1.0.0.beta3...master)
 ----
 
-[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v1.0.0.beta...master)
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v1.0.0.beta3...master)
 
 ### Enhancements:
 
@@ -14,10 +14,10 @@ Changelog
 ### Breaking Changes:
 
 
-[v1.0.0.beta](https://github.com/koshigoe/brick_ftp/compare/v0.8.2...v1.0.0.beta)
+[v1.0.0.beta](https://github.com/koshigoe/brick_ftp/compare/v0.8.2...v1.0.0.beta3)
 ----
 
-[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v0.8.2...v1.0.0.beta)
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v0.8.2...v1.0.0.beta3)
 
 ### Enhancements:
 
@@ -30,12 +30,13 @@ Changelog
 - [Dropping support for Ruby 2.2](https://github.com/koshigoe/brick_ftp/pull/104)
     - Set `frozen_string_literal: true`
 - [#105](https://github.com/koshigoe/brick_ftp/pull/105) Re-design (huge change!)
-    - Change to RPC like interface
-    - Only support token authentication
+    - Simplyfy
+    - Support only token authentication
     - Remove unuseful implementations
         - Remove CLI
         - Remove Webhook
         - Remove Configuration
+        - Remove unnecessary dependencies
         - etc.
 
 [0.8.2](https://github.com/koshigoe/brick_ftp/compare/v0.8.1...v0.8.2)
