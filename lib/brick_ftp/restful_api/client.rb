@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'net/http'
+require 'json'
+
 module BrickFTP
   module RESTfulAPI
     class Client
