@@ -45,8 +45,8 @@ $ bin/console
 
 Name                  | Description
 --------------------- | -----------
-`BRICK_FTP_SUBDOMAIN` | Overwrite default subdomain
-`BRICK_FTP_API_KEY`   | Overwrite default API key
+`BRICK_FTP_SUBDOMAIN` | Default subdomain
+`BRICK_FTP_API_KEY`   | Default API key
 
 
 Development
