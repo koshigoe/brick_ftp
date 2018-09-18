@@ -11,8 +11,9 @@ module BrickFTP
 
       # Wrap IO object.
       #
-      # @param [IO] io an IO object.
+      # @param [IO, StringIO] io an IO object.
       # @param [Integer] chunk_size Size of chunk.
+      #   This option is ignored if `io` is `StringIO`.
       #
       def initialize(io, chunk_size: nil)
         @io = io
@@ -27,7 +28,7 @@ module BrickFTP
       def each(&block)
         return enum_for(__method__) unless block
 
-        if chunk_size
+        if chunk_size && io.is_a?(IO)
           each_chunk(&block)
         else
           whole(&block)

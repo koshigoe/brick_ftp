@@ -2,10 +2,10 @@ Changelog
 ====
 
 
-[unreleased](https://github.com/koshigoe/brick_ftp/compare/v1.0.0.beta3...master)
+[unreleased](https://github.com/koshigoe/brick_ftp/compare/v1.0.0.beta4...master)
 ----
 
-[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v1.0.0.beta3...master)
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v1.0.0.beta4...master)
 
 ### Enhancements:
 
@@ -14,10 +14,10 @@ Changelog
 ### Breaking Changes:
 
 
-[v1.0.0.beta](https://github.com/koshigoe/brick_ftp/compare/v0.8.2...v1.0.0.beta3)
+[v1.0.0.beta](https://github.com/koshigoe/brick_ftp/compare/v0.8.2...v1.0.0.beta4)
 ----
 
-[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v0.8.2...v1.0.0.beta3)
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v0.8.2...v1.0.0.beta4)
 
 ### Enhancements:
 
@@ -38,6 +38,8 @@ Changelog
         - Remove Configuration
         - Remove unnecessary dependencies
         - etc.
+- [#111](https://github.com/koshigoe/brick_ftp/pull/111) Allow to upload file using `StringIO`
+    - ignore `chunk_size:` option if `io` is a `StringIO`
 
 [0.8.2](https://github.com/koshigoe/brick_ftp/compare/v0.8.1...v0.8.2)
 ----
