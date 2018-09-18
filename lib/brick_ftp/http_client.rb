@@ -99,7 +99,7 @@ module BrickFTP
       case
       when params.is_a?(Hash)
         req.body = params.to_json unless params.empty?
-      when params.is_a?(IO)
+      when params.is_a?(IO) || params.is_a?(StringIO)
         req.body_stream = params
         req['Content-Length'] = params.size
       end
