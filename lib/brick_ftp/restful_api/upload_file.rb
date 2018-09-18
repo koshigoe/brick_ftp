@@ -30,7 +30,8 @@ module BrickFTP
       #
       # @param [String] path Full path of the file or folder. Maximum of 550 characters.
       # @param [IO] data
-      # @param [Integer, nil] chunk_size the chunk sizes are required to be between 5 MB and 5 GB
+      # @param [Integer, nil] chunk_size the chunk sizes are required to be between 5 MB and 5 GB.
+      #   This option is ignored if `data` is `StringIO`.
       # @return [BrickFTP::Types::File] File object
       #
       def call(path, data, chunk_size: nil)

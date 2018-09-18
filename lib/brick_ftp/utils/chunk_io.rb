@@ -11,10 +11,9 @@ module BrickFTP
 
       # Wrap IO object.
       #
-      # NOTE: If `io` is a `StringIO`, it does not split data even if `chunk_size:` option is specified.
-      #
       # @param [IO, StringIO] io an IO object.
       # @param [Integer] chunk_size Size of chunk.
+      #   This option is ignored if `io` is `StringIO`.
       #
       def initialize(io, chunk_size: nil)
         @io = io
