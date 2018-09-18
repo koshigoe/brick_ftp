@@ -41,6 +41,23 @@ Changelog
 - [#111](https://github.com/koshigoe/brick_ftp/pull/111) Allow to upload file using `StringIO`
     - ignore `chunk_size:` option if `io` is a `StringIO`
 
+
+[0.8.3](https://github.com/koshigoe/brick_ftp/compare/v0.8.2...v0.8.3)
+----
+
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v0.8.2...v0.8.3)
+
+### Enhancements:
+
+- [#114](https://github.com/koshigoe/brick_ftp/pull/114) Allow to upload file using `StringIO`
+
+### Fixed Bugs:
+
+### Breaking Changes:
+
+### Others
+
+
 [0.8.2](https://github.com/koshigoe/brick_ftp/compare/v0.8.1...v0.8.2)
 ----
 
