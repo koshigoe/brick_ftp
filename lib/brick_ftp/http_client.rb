@@ -80,8 +80,7 @@ module BrickFTP
 
     private
 
-    # FIXME: Metrics/AbcSize, Metrics/MethodLength
-    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
     def request(method, path, params: {}, headers: {})
       req = Net::HTTP.const_get(method.to_s.capitalize).new(path, headers)
       req['User-Agent'] = USER_AGENT
@@ -122,7 +121,7 @@ module BrickFTP
         logger.info message
       end
     end
-    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
+    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
     def logger
       BrickFTP.logger
