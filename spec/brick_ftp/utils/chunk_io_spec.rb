@@ -22,9 +22,9 @@ RSpec.describe BrickFTP::Utils::ChunkIO do
     end
 
     context 'chunk_size is not nil' do
-      it 'split by chunk_size' do
-        Tempfile.create('spec') do |io|
-          io.write('DATA')
+      context 'data is a StringIO' do
+        it 'chunk has whole data' do
+          io = StringIO.new('DATA')
           io.rewind
 
           res = ''
@@ -34,7 +34,25 @@ RSpec.describe BrickFTP::Utils::ChunkIO do
             called += 1
           end
           expect(res).to eq 'DATA'
-          expect(called).to eq 4
+          expect(called).to eq 1
+        end
+      end
+
+      context 'data is not a StringIO' do
+        it 'split by chunk_size' do
+          Tempfile.create('spec') do |io|
+            io.write('DATA')
+            io.rewind
+
+            res = ''
+            called = 0
+            described_class.new(io, chunk_size: 1).each do |chunk|
+              res << chunk.read
+              called += 1
+            end
+            expect(res).to eq 'DATA'
+            expect(called).to eq 4
+          end
         end
       end
     end
