@@ -20,7 +20,7 @@ module BrickFTP
       # Iterate with chunked IO object.
       #
       # @yield [chunk] Give a chunk IO object to block.
-      # @yieldparam [StringIO] chunk a chunked IO object.
+      # @yieldparam [IO] chunk a chunked IO object.
       #
       def each(&block)
         return enum_for(__method__) unless block
