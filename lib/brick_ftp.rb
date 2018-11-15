@@ -6,6 +6,7 @@ require 'brick_ftp/core_ext'
 require 'brick_ftp/utils'
 require 'brick_ftp/utils/chunk_io'
 require 'brick_ftp/types'
+require 'brick_ftp/types/ignore_undefined_attributes'
 require 'brick_ftp/restful_api'
 
 module BrickFTP

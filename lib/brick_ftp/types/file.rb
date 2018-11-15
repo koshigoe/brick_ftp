@@ -40,6 +40,8 @@ module BrickFTP
       :download_uri,
       :subfolders_locked?,
       keyword_init: true
-    )
+    ) do
+      prepend IgnoreUndefinedAttributes
+    end
   end
 end

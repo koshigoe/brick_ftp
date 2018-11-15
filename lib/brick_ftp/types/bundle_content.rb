@@ -20,6 +20,8 @@ module BrickFTP
       :type,
       :size,
       keyword_init: true
-    )
+    ) do
+      prepend IgnoreUndefinedAttributes
+    end
   end
 end

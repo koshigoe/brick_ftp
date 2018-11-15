@@ -14,6 +14,8 @@ module BrickFTP
       'BundleZip',
       :download_uri,
       keyword_init: true
-    )
+    ) do
+      prepend IgnoreUndefinedAttributes
+    end
   end
 end

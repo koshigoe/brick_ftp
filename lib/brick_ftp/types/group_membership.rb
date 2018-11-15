@@ -22,6 +22,8 @@ module BrickFTP
       :user_id,
       :admin,
       keyword_init: true
-    )
+    ) do
+      prepend IgnoreUndefinedAttributes
+    end
   end
 end
