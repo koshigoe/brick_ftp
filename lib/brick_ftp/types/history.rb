@@ -38,6 +38,8 @@ module BrickFTP
       :ip,
       :interface,
       keyword_init: true
-    )
+    ) do
+      prepend IgnoreUndefinedAttributes
+    end
   end
 end

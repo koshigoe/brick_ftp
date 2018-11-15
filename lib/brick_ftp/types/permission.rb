@@ -30,6 +30,8 @@ module BrickFTP
       :permission,
       :recursive,
       keyword_init: true
-    )
+    ) do
+      prepend IgnoreUndefinedAttributes
+    end
   end
 end

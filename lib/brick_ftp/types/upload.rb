@@ -40,6 +40,8 @@ module BrickFTP
       :expires,
       :next_partsize,
       keyword_init: true
-    )
+    ) do
+      prepend IgnoreUndefinedAttributes
+    end
   end
 end

@@ -74,6 +74,8 @@ module BrickFTP
       :lockout_expires,
       :admin_group_ids,
       keyword_init: true
-    )
+    ) do
+      prepend IgnoreUndefinedAttributes
+    end
   end
 end

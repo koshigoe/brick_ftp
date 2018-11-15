@@ -29,6 +29,8 @@ module BrickFTP
       :expires_at,
       :username,
       keyword_init: true
-    )
+    ) do
+      prepend IgnoreUndefinedAttributes
+    end
   end
 end

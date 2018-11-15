@@ -19,6 +19,8 @@ module BrickFTP
       :files,
       :folders,
       keyword_init: true
-    )
+    ) do
+      prepend IgnoreUndefinedAttributes
+    end
   end
 end

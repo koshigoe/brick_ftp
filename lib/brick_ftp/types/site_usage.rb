@@ -18,6 +18,8 @@ module BrickFTP
       :total_uploads,
       :total_downloads,
       keyword_init: true
-    )
+    ) do
+      prepend IgnoreUndefinedAttributes
+    end
   end
 end

@@ -26,6 +26,8 @@ module BrickFTP
       :usernames,
       :admin_ids,
       keyword_init: true
-    )
+    ) do
+      prepend IgnoreUndefinedAttributes
+    end
   end
 end

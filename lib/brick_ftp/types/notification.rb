@@ -26,6 +26,8 @@ module BrickFTP
       :send_interval,
       :unsubscribed,
       keyword_init: true
-    )
+    ) do
+      prepend IgnoreUndefinedAttributes
+    end
   end
 end
