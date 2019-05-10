@@ -1,5 +1,10 @@
 #!/bin/ash -eu
 
+action=$(jq -r '.action' $GITHUB_EVENT_PATH)
+if [ "$action" != "published" ]; then
+    exit 0
+fi
+
 cd $GITHUB_WORKSPACE
 
 mkdir -p ~/.gem

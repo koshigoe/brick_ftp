@@ -1,5 +1,10 @@
 #!/bin/ash -eu
 
+action=$(jq -r '.action' $GITHUB_EVENT_PATH)
+if [ "$action" != "published" ]; then
+    exit 0
+fi
+
 # Get previous GitHub Release.
 curl --fail -s \
      -u $GITHUB_ACTOR:$GITHUB_TOKEN \
