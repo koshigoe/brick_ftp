@@ -6,7 +6,7 @@ module BrickFTP
   module RESTfulAPI
     # Starting a new upload
     #
-    # @see https://developers.brickftp.com/#starting-a-new-upload Starting a new upload
+    # @see https://developers.files.com/#starting-a-new-upload Starting a new upload
     #
     class StartUpload
       include Command

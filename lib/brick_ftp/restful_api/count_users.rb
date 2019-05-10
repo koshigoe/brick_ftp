@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Count users
     #
-    # @see https://developers.brickftp.com/#count-users Count users
+    # @see https://developers.files.com/#count-users Count users
     #
     class CountUsers
       include Command

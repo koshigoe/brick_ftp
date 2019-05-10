@@ -6,7 +6,7 @@ module BrickFTP
   module RESTfulAPI
     # Completing an upload
     #
-    # @see https://developers.brickftp.com/#completing-an-upload Completing an upload
+    # @see https://developers.files.com/#completing-an-upload Completing an upload
     #
     # ### Params
     #

@@ -13,7 +13,7 @@ RSpec.describe BrickFTP::RESTfulAPI::ListBundleContents, type: :lib do
             size: nil
           )
 
-          stub_request(:post, 'https://subdomain.brickftp.com/api/rest/v1/bundles/contents/a%20b')
+          stub_request(:post, 'https://subdomain.files.com/api/rest/v1/bundles/contents/a%20b')
             .with(
               basic_auth: %w[api-key x],
               headers: {
@@ -39,7 +39,7 @@ RSpec.describe BrickFTP::RESTfulAPI::ListBundleContents, type: :lib do
             size: nil
           )
 
-          stub_request(:post, 'https://subdomain.brickftp.com/api/rest/v1/bundles/contents.json')
+          stub_request(:post, 'https://subdomain.files.com/api/rest/v1/bundles/contents.json')
             .with(
               basic_auth: %w[api-key x],
               headers: {

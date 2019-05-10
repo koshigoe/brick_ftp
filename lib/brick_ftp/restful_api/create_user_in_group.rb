@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Create a user in a group
     #
-    # @see https://developers.brickftp.com/#create-a-user-in-a-groupCreate a user in a group
+    # @see https://developers.files.com/#create-a-user-in-a-groupCreate a user in a group
     #
     # ### Params
     #

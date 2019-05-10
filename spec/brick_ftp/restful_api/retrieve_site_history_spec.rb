@@ -16,7 +16,7 @@ RSpec.describe BrickFTP::RESTfulAPI::RetrieveSiteHistory, type: :lib do
           interface: 'ftp'
         )
 
-        url = 'https://subdomain.brickftp.com/api/rest/v1/history.json?page=1&per_page=1&start_at=2018-08-17T00:00:00Z'
+        url = 'https://subdomain.files.com/api/rest/v1/history.json?page=1&per_page=1&start_at=2018-08-17T00:00:00Z'
         stub_request(:get, url)
           .with(
             basic_auth: %w[api-key x],

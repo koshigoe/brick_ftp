@@ -15,7 +15,7 @@ RSpec.describe BrickFTP::RESTfulAPI::CreateGroup, type: :lib do
           admin_ids: [1, 2, 3]
         )
 
-        stub_request(:post, 'https://subdomain.brickftp.com/api/rest/v1/groups.json')
+        stub_request(:post, 'https://subdomain.files.com/api/rest/v1/groups.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {

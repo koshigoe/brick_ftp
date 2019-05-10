@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Create a behavior
     #
-    # @see https://developers.brickftp.com/#create-a-behavior Create a behavior
+    # @see https://developers.files.com/#create-a-behavior Create a behavior
     #
     # ### Params
     #

@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Retrieve login history
     #
-    # @see https://developers.brickftp.com/#retrieve-login-history Retrieve login history
+    # @see https://developers.files.com/#retrieve-login-history Retrieve login history
     #
     # ### Params
     #

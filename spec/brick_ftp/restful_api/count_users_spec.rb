@@ -5,7 +5,7 @@ require 'spec_helper'
 RSpec.describe BrickFTP::RESTfulAPI::CountUsers, type: :lib do
   describe '#call' do
     it 'return count' do
-      stub_request(:get, 'https://subdomain.brickftp.com/api/rest/v1/users.json?action=count')
+      stub_request(:get, 'https://subdomain.files.com/api/rest/v1/users.json?action=count')
         .with(
           basic_auth: %w[api-key x],
           headers: {

@@ -6,7 +6,7 @@ module BrickFTP
   module RESTfulAPI
     # Requesting additional upload URLs
     #
-    # @see https://developers.brickftp.com/#requesting-additional-upload-urls Requesting additional upload URLs
+    # @see https://developers.files.com/#requesting-additional-upload-urls Requesting additional upload URLs
     #
     # ### Params
     #

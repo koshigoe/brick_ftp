@@ -6,7 +6,7 @@ module BrickFTP
 
     # The public key object
     #
-    # @see https://developers.brickftp.com/#the-public-key-object The public key object
+    # @see https://developers.files.com/#the-public-key-object The public key object
     #
     # ATTRIBUTE   | TYPE     | DESCRIPTION
     # ----------- | -------- | -----------

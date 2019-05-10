@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Download a file
     #
-    # @see https://developers.brickftp.com/#download-a-file Download a file
+    # @see https://developers.files.com/#download-a-file Download a file
     #
     # ### Params
     #

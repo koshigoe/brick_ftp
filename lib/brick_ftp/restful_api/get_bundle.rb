@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Show a bundle
     #
-    # @see https://developers.brickftp.com/#show-a-bundle Show a bundle
+    # @see https://developers.files.com/#show-a-bundle Show a bundle
     #
     class GetBundle
       include Command

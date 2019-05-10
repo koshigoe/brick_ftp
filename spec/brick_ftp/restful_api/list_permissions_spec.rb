@@ -17,7 +17,7 @@ RSpec.describe BrickFTP::RESTfulAPI::ListPermissions, type: :lib do
           recursive: true
         )
 
-        stub_request(:get, 'https://subdomain.brickftp.com/api/rest/v1/permissions.json?path=path')
+        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/permissions.json?path=path')
           .with(
             basic_auth: %w[api-key x],
             headers: {

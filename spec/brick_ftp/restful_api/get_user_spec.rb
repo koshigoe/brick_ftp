@@ -38,7 +38,7 @@ RSpec.describe BrickFTP::RESTfulAPI::GetUser, type: :lib do
           admin_group_ids: []
         )
 
-        stub_request(:get, 'https://subdomain.brickftp.com/api/rest/v1/users/1234.json')
+        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/users/1234.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -56,7 +56,7 @@ RSpec.describe BrickFTP::RESTfulAPI::GetUser, type: :lib do
 
     context 'User not found' do
       it 'return nil' do
-        stub_request(:get, 'https://subdomain.brickftp.com/api/rest/v1/users/1234.json')
+        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/users/1234.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {

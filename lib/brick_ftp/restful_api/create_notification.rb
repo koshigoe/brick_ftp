@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Create a notification
     #
-    # @see https://developers.brickftp.com/#create-a-notification Create a notification
+    # @see https://developers.files.com/#create-a-notification Create a notification
     #
     # ### Params
     #

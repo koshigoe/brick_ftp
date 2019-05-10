@@ -6,7 +6,7 @@ module BrickFTP
   module RESTfulAPI
     # Search users
     #
-    # @see https://developers.brickftp.com/#search-users Search users
+    # @see https://developers.files.com/#search-users Search users
     #
     class SearchUser
       include Command

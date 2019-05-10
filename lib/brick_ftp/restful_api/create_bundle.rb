@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Create a bundle
     #
-    # @see https://developers.brickftp.com/#create-a-bundle Create a bundle
+    # @see https://developers.files.com/#create-a-bundle Create a bundle
     #
     # ### Params
     #

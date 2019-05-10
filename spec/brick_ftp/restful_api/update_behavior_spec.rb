@@ -13,7 +13,7 @@ RSpec.describe BrickFTP::RESTfulAPI::UpdateBehavior, type: :lib do
           value: %w[https://a.mywebhookhandler.com]
         )
 
-        stub_request(:patch, 'https://subdomain.brickftp.com/api/rest/v1/behaviors/38.json')
+        stub_request(:patch, 'https://subdomain.files.com/api/rest/v1/behaviors/38.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {

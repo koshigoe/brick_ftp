@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Update a group
     #
-    # @see https://developers.brickftp.com/#update-a-group Update a group
+    # @see https://developers.files.com/#update-a-group Update a group
     #
     # ### Params
     #

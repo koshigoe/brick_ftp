@@ -6,7 +6,7 @@ module BrickFTP
 
     # The API key object
     #
-    # @see https://developers.brickftp.com/#the-api-key-object The API key object
+    # @see https://developers.files.com/#the-api-key-object The API key object
     #
     # ATTRIBUTE      | TYPE     | DESCRIPTION
     # -------------- | -------- | -----------

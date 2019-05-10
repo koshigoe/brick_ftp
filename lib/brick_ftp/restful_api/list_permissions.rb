@@ -6,7 +6,7 @@ module BrickFTP
   module RESTfulAPI
     # List permissions
     #
-    # @see https://developers.brickftp.com/#list-permissions List permissions
+    # @see https://developers.files.com/#list-permissions List permissions
     #
     # ### Params
     #

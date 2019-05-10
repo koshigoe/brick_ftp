@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Update a behavior
     #
-    # @see https://developers.brickftp.com/#update-a-behavior Update a behavior
+    # @see https://developers.files.com/#update-a-behavior Update a behavior
     #
     # ### Params
     #

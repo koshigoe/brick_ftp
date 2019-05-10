@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Create a public key
     #
-    # @see https://developers.brickftp.com/#create-a-public-key Create a public key
+    # @see https://developers.files.com/#create-a-public-key Create a public key
     #
     # ### Params
     #

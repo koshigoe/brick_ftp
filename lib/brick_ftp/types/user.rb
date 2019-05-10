@@ -6,7 +6,7 @@ module BrickFTP
 
     # The user object
     #
-    # @see https://developers.brickftp.com/#the-user-object The user object
+    # @see https://developers.files.com/#the-user-object The user object
     #
     # ATTRIBUTE               | TYPE                     | DESCRIPTION
     # ----------------------- | ------------------------ | -----------

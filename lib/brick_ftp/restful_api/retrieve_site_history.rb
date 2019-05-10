@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Retrieve site history
     #
-    # @see https://developers.brickftp.com/#retrieve-site-history Retrieve site history
+    # @see https://developers.files.com/#retrieve-site-history Retrieve site history
     #
     # ### Params
     #

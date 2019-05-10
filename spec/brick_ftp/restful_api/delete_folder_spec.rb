@@ -6,7 +6,7 @@ RSpec.describe BrickFTP::RESTfulAPI::DeleteFolder, type: :lib do
   describe '#call' do
     context 'given correct parameters' do
       it 'delete folder' do
-        stub_request(:delete, 'https://subdomain.brickftp.com/api/rest/v1/files/a%20b%2Fc')
+        stub_request(:delete, 'https://subdomain.files.com/api/rest/v1/files/a%20b%2Fc')
           .with(
             basic_auth: %w[api-key x],
             headers: {

@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Download entire bundle as ZIP
     #
-    # @see https://developers.brickftp.com/#download-entire-bundle-as-zip Download entire bundle as ZIP
+    # @see https://developers.files.com/#download-entire-bundle-as-zip Download entire bundle as ZIP
     #
     # ### Params
     #

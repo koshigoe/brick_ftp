@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Delete a notification
     #
-    # @see https://developers.brickftp.com/#delete-a-notification Delete a notification
+    # @see https://developers.files.com/#delete-a-notification Delete a notification
     #
     class DeleteNotification
       include Command

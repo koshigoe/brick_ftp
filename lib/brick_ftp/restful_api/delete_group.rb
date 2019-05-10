@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Delete a group
     #
-    # @see https://developers.brickftp.com/#delete-a-group Delete a group
+    # @see https://developers.files.com/#delete-a-group Delete a group
     #
     class DeleteGroup
       include Command

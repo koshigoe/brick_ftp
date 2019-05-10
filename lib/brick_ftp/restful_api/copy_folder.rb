@@ -6,7 +6,7 @@ module BrickFTP
   module RESTfulAPI
     # Copy a file or folder
     #
-    # @see https://developers.brickftp.com/#copy-a-file-or-folder Copy a file or folder
+    # @see https://developers.files.com/#copy-a-file-or-folder Copy a file or folder
     #
     # ### Params
     #

@@ -7,10 +7,10 @@ RSpec.describe BrickFTP::RESTfulAPI::GetBundleZip, type: :lib do
     context 'correct request' do
       it 'return FileInBundle object' do
         expected_bundle_zip = BrickFTP::Types::BundleZip.new(
-          download_uri: 'https://s3.amazonaws.com/objects.brickftp.com/metadata/10099/2e2376c0-7527-0133-21fb-0a2d4abb99a7?..'
+          download_uri: 'https://s3.amazonaws.com/objects.files.com/metadata/10099/2e2376c0-7527-0133-21fb-0a2d4abb99a7?..'
         )
 
-        stub_request(:post, 'https://subdomain.brickftp.com/api/rest/v1/bundles/zip.json')
+        stub_request(:post, 'https://subdomain.files.com/api/rest/v1/bundles/zip.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {

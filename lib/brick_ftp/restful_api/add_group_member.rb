@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Add a member
     #
-    # @see https://developers.brickftp.com/#add-a-member Add a member
+    # @see https://developers.files.com/#add-a-member Add a member
     #
     # ### Params
     #

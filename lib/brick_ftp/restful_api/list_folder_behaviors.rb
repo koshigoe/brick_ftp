@@ -6,7 +6,7 @@ module BrickFTP
   module RESTfulAPI
     # List behaviors for a folder
     #
-    # @see https://developers.brickftp.com/#list-behaviors-for-a-folder List behaviors for a folder
+    # @see https://developers.files.com/#list-behaviors-for-a-folder List behaviors for a folder
     #
     # ### Params
     #

@@ -6,7 +6,7 @@ module BrickFTP
 
     # The upload object
     #
-    # @see https://developers.brickftp.com/#the-upload-object The upload object
+    # @see https://developers.files.com/#the-upload-object The upload object
     #
     # ATTRIBUTE            | TYPE            | DESCRIPTION
     # -------------------- | --------------- | -----------

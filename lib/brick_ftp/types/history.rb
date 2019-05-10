@@ -6,7 +6,7 @@ module BrickFTP
 
     # The notification object
     #
-    # @see https://developers.brickftp.com/#the-notification-object The notification object
+    # @see https://developers.files.com/#the-notification-object The notification object
     #
     # ATTRIBUTE     | TYPE     | DESCRIPTION
     # ------------- | -------- | -----------

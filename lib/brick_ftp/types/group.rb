@@ -6,7 +6,7 @@ module BrickFTP
 
     # The group object
     #
-    # @see https://developers.brickftp.com/#the-group-object The group object
+    # @see https://developers.files.com/#the-group-object The group object
     #
     # ATTRIBUTE | TYPE                     | DESCRIPTION
     # --------- | ------------------------ | -----------

@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Retrieve user history
     #
-    # @see https://developers.brickftp.com/#retrieve-user-history Retrieve user history
+    # @see https://developers.files.com/#retrieve-user-history Retrieve user history
     #
     # ### Params
     #

@@ -13,7 +13,7 @@ module BrickFTP
       READ_TIMEOUT = 60
       USER_AGENT = 'BrickFTP Client/1.0 (https://github.com/koshigoe/brick_ftp)'
 
-      # ref. https://developers.brickftp.com/#errors
+      # ref. https://developers.files.com/#errors
       ErrorResponse = Struct.new(
         'RESTfulAPIErrorResponse',
         :error,
@@ -39,7 +39,7 @@ module BrickFTP
       # @param [String] api_key
       #
       def initialize(subdomain, api_key)
-        @http = Net::HTTP.new("#{subdomain}.brickftp.com", 443)
+        @http = Net::HTTP.new("#{subdomain}.files.com", 443)
         @http.use_ssl = true
         @http.open_timeout = OPEN_TIMEOUT
         @http.read_timeout = READ_TIMEOUT

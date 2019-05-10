@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Show an API key
     #
-    # @see https://developers.brickftp.com/#show-an-api-key Show an API key
+    # @see https://developers.files.com/#show-an-api-key Show an API key
     #
     class GetAPIKey
       include Command

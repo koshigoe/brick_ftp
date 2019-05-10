@@ -13,7 +13,7 @@ RSpec.describe BrickFTP::RESTfulAPI::GetPublicKey, type: :lib do
           created_at: '2018-08-17T08:16:52-04:00'
         )
 
-        stub_request(:get, 'https://subdomain.brickftp.com/api/rest/v1/public_keys/12345.json')
+        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/public_keys/12345.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -31,7 +31,7 @@ RSpec.describe BrickFTP::RESTfulAPI::GetPublicKey, type: :lib do
 
     context 'Public key not found' do
       it 'raise exception' do
-        stub_request(:get, 'https://subdomain.brickftp.com/api/rest/v1/public_keys/1234.json')
+        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/public_keys/1234.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
