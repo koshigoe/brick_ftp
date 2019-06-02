@@ -6,13 +6,13 @@ module BrickFTP
   module RESTfulAPI
     # Overview of uploading
     #
-    # @see https://developers.brickftp.com/#overview-of-uploading Overview of uploading
+    # @see https://developers.files.com/#overview-of-uploading Overview of uploading
     #
     # ### Uploading files using the REST API is done in 3 stages:
     #
-    # 1. {https://developers.brickftp.com/#starting-a-new-upload Start a new upload} by sending a request to REST API to indicate intent to upload a file.
-    # 2. {https://developers.brickftp.com/#uploading-the-file-or-file-parts Upload the file} to the URL(s) provided by the REST API, possibly in parts via multiple uploads.
-    # 3. {https://developers.brickftp.com/#completing-an-upload Complete the upload} by notifying the REST API that the file upload has completed.
+    # 1. {https://developers.files.com/#starting-a-new-upload Start a new upload} by sending a request to REST API to indicate intent to upload a file.
+    # 2. {https://developers.files.com/#uploading-the-file-or-file-parts Upload the file} to the URL(s) provided by the REST API, possibly in parts via multiple uploads.
+    # 3. {https://developers.files.com/#completing-an-upload Complete the upload} by notifying the REST API that the file upload has completed.
     #
     class UploadFile
       include Command

@@ -6,7 +6,7 @@ module BrickFTP
   module RESTfulAPI
     # List bundle contents
     #
-    # @see https://developers.brickftp.com/#list-bundle-contents List bundle contents
+    # @see https://developers.files.com/#list-bundle-contents List bundle contents
     #
     # ### Params
     #

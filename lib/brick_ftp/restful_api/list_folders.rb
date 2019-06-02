@@ -6,7 +6,7 @@ module BrickFTP
   module RESTfulAPI
     # List folder contents
     #
-    # @see https://developers.brickftp.com/#list-folder-contents List folder contents
+    # @see https://developers.files.com/#list-folder-contents List folder contents
     #
     # ### Params
     #

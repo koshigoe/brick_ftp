@@ -2,10 +2,10 @@
 [![codecov](https://codecov.io/gh/koshigoe/brick_ftp/branch/master/graph/badge.svg)](https://codecov.io/gh/koshigoe/brick_ftp)
 
 
-BrickFTP
+Files.com (BrickFTP)
 ====
 
-This is a [BrickFTP](https://brickftp.com/)'s _unofficial_ [RESTful API](https://developers.brickftp.com/) Client.
+This is a [File.com (BrickFTP)](https://files.com/)'s _unofficial_ [RESTful API](https://developers.files.com/) Client.
 
 
 Installation

@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # List all notifications
     #
-    # @see https://developers.brickftp.com/#list-all-notifications List all notifications
+    # @see https://developers.files.com/#list-all-notifications List all notifications
     #
     class ListNotifications
       include Command

@@ -4,7 +4,7 @@ module BrickFTP
   module Types
     using BrickFTP::CoreExt::Struct
 
-    # @see https://developers.brickftp.com/#download-one-file-in-a-bundle Download one file in a bundle
+    # @see https://developers.files.com/#download-one-file-in-a-bundle Download one file in a bundle
     #
     # ATTRIBUTE    | TYPE     | DESCRIPTION
     # ------------ | -------- | -----------

@@ -15,7 +15,7 @@ RSpec.describe BrickFTP::RESTfulAPI::GetGroup, type: :lib do
           admin_ids: [1, 2, 3]
         )
 
-        stub_request(:get, 'https://subdomain.brickftp.com/api/rest/v1/groups/1234.json')
+        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/groups/1234.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -33,7 +33,7 @@ RSpec.describe BrickFTP::RESTfulAPI::GetGroup, type: :lib do
 
     context 'Group not found' do
       it 'return nil' do
-        stub_request(:get, 'https://subdomain.brickftp.com/api/rest/v1/groups/1234.json')
+        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/groups/1234.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {

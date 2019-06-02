@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Remove a member
     #
-    # @see https://developers.brickftp.com/#remove-a-member Remove a member
+    # @see https://developers.files.com/#remove-a-member Remove a member
     #
     class RemoveGroupMember
       include Command

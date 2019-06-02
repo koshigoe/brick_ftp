@@ -15,7 +15,7 @@ RSpec.describe BrickFTP::RESTfulAPI::UpdateGroup, type: :lib do
           admin_ids: [1, 2, 3]
         )
 
-        stub_request(:put, 'https://subdomain.brickftp.com/api/rest/v1/groups/1234.json')
+        stub_request(:put, 'https://subdomain.files.com/api/rest/v1/groups/1234.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {

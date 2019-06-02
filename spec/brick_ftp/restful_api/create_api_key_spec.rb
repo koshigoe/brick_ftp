@@ -16,7 +16,7 @@ RSpec.describe BrickFTP::RESTfulAPI::CreateAPIKey, type: :lib do
           created_at: '2018-08-17T00:00:00Z'
         )
 
-        stub_request(:post, 'https://subdomain.brickftp.com/api/rest/v1/users/1234/api_keys.json')
+        stub_request(:post, 'https://subdomain.files.com/api/rest/v1/users/1234/api_keys.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {

@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Delete a bundle
     #
-    # @see https://developers.brickftp.com/#delete-a-bundle Delete a bundle
+    # @see https://developers.files.com/#delete-a-bundle Delete a bundle
     #
     class DeleteBundle
       include Command

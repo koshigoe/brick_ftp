@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # List all groups
     #
-    # @see https://developers.brickftp.com/#list-all-groups List all groups
+    # @see https://developers.files.com/#list-all-groups List all groups
     #
     class ListGroups
       include Command

@@ -6,7 +6,7 @@ module BrickFTP
   module RESTfulAPI
     # Retrieve file history
     #
-    # @see https://developers.brickftp.com/#retrieve-file-history Retrieve file history
+    # @see https://developers.files.com/#retrieve-file-history Retrieve file history
     #
     # ### Params
     #

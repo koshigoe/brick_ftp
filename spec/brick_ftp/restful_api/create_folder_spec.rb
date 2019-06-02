@@ -6,7 +6,7 @@ RSpec.describe BrickFTP::RESTfulAPI::CreateFolder, type: :lib do
   describe '#call' do
     context 'given correct parameters' do
       it 'return created Folder object' do
-        stub_request(:post, 'https://subdomain.brickftp.com/api/rest/v1/folders/a%20b%2Fc')
+        stub_request(:post, 'https://subdomain.files.com/api/rest/v1/folders/a%20b%2Fc')
           .with(
             basic_auth: %w[api-key x],
             headers: {

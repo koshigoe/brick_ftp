@@ -6,7 +6,7 @@ RSpec.describe BrickFTP::RESTfulAPI::MoveFolder, type: :lib do
   describe '#call' do
     context 'given correct parameters' do
       it 'move folder' do
-        stub_request(:post, 'https://subdomain.brickftp.com/api/rest/v1/files/a%20b%2Fc')
+        stub_request(:post, 'https://subdomain.files.com/api/rest/v1/files/a%20b%2Fc')
           .with(
             basic_auth: %w[api-key x],
             headers: {

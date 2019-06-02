@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Delete an API key
     #
-    # @see https://developers.brickftp.com/#delete-an-api-key Delete an API key
+    # @see https://developers.files.com/#delete-an-api-key Delete an API key
     #
     class DeleteAPIKey
       include Command

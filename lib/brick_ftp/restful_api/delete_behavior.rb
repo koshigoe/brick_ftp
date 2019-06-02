@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Delete a behavior
     #
-    # @see https://developers.brickftp.com/#delete-a-behavior Delete a behavior
+    # @see https://developers.files.com/#delete-a-behavior Delete a behavior
     #
     class DeleteBehavior
       include Command

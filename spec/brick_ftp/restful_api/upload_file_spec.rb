@@ -10,10 +10,10 @@ RSpec.describe BrickFTP::RESTfulAPI::UploadFile, type: :lib do
         expected_upload = BrickFTP::Types::Upload.new(
           ref: 'put-378670',
           http_method: 'PUT',
-          upload_uri: 'https://s3.amazonaws.com/objects.brickftp.com/'
+          upload_uri: 'https://s3.amazonaws.com/objects.files.com/'
         )
 
-        stub_request(:post, 'https://subdomain.brickftp.com/api/rest/v1/files/path')
+        stub_request(:post, 'https://subdomain.files.com/api/rest/v1/files/path')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -23,7 +23,7 @@ RSpec.describe BrickFTP::RESTfulAPI::UploadFile, type: :lib do
           )
           .to_return(body: expected_upload.to_h.to_json)
 
-        stub_request(:put, 'https://s3.amazonaws.com/objects.brickftp.com/')
+        stub_request(:put, 'https://s3.amazonaws.com/objects.files.com/')
           .with(body: 'TEST')
           .to_return(body: '', status: 200)
 
@@ -41,7 +41,7 @@ RSpec.describe BrickFTP::RESTfulAPI::UploadFile, type: :lib do
           permissions: 'rwd'
         )
 
-        stub_request(:post, 'https://subdomain.brickftp.com/api/rest/v1/files/path')
+        stub_request(:post, 'https://subdomain.files.com/api/rest/v1/files/path')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -65,11 +65,11 @@ RSpec.describe BrickFTP::RESTfulAPI::UploadFile, type: :lib do
           expected_upload = BrickFTP::Types::Upload.new(
             ref: 'put-378670',
             http_method: 'PUT',
-            upload_uri: 'https://s3.amazonaws.com/objects.brickftp.com/',
+            upload_uri: 'https://s3.amazonaws.com/objects.files.com/',
             part_number: 1
           )
 
-          stub_request(:post, 'https://subdomain.brickftp.com/api/rest/v1/files/path')
+          stub_request(:post, 'https://subdomain.files.com/api/rest/v1/files/path')
             .with(
               basic_auth: %w[api-key x],
               headers: {
@@ -79,18 +79,18 @@ RSpec.describe BrickFTP::RESTfulAPI::UploadFile, type: :lib do
             )
             .to_return(body: expected_upload.to_h.to_json)
 
-          stub_request(:put, 'https://s3.amazonaws.com/objects.brickftp.com/')
+          stub_request(:put, 'https://s3.amazonaws.com/objects.files.com/')
             .with(body: 'a' * 5_242_880)
             .to_return(body: '', status: 200)
 
           expected_upload2 = BrickFTP::Types::Upload.new(
             ref: 'put-378670',
             http_method: 'PUT',
-            upload_uri: 'https://s3.amazonaws.com/objects.brickftp.com/2',
+            upload_uri: 'https://s3.amazonaws.com/objects.files.com/2',
             part_number: 2
           )
 
-          stub_request(:post, 'https://subdomain.brickftp.com/api/rest/v1/files/path')
+          stub_request(:post, 'https://subdomain.files.com/api/rest/v1/files/path')
             .with(
               basic_auth: %w[api-key x],
               headers: {
@@ -100,7 +100,7 @@ RSpec.describe BrickFTP::RESTfulAPI::UploadFile, type: :lib do
             )
             .to_return(body: expected_upload2.to_h.to_json)
 
-          stub_request(:put, 'https://s3.amazonaws.com/objects.brickftp.com/2')
+          stub_request(:put, 'https://s3.amazonaws.com/objects.files.com/2')
             .with(body: 'b')
             .to_return(body: '', status: 200)
 
@@ -118,7 +118,7 @@ RSpec.describe BrickFTP::RESTfulAPI::UploadFile, type: :lib do
             permissions: 'rwd'
           )
 
-          stub_request(:post, 'https://subdomain.brickftp.com/api/rest/v1/files/path')
+          stub_request(:post, 'https://subdomain.files.com/api/rest/v1/files/path')
             .with(
               basic_auth: %w[api-key x],
               headers: {
@@ -145,11 +145,11 @@ RSpec.describe BrickFTP::RESTfulAPI::UploadFile, type: :lib do
           expected_upload = BrickFTP::Types::Upload.new(
             ref: 'put-378670',
             http_method: 'PUT',
-            upload_uri: 'https://s3.amazonaws.com/objects.brickftp.com/',
+            upload_uri: 'https://s3.amazonaws.com/objects.files.com/',
             part_number: 1
           )
 
-          stub_request(:post, 'https://subdomain.brickftp.com/api/rest/v1/files/path')
+          stub_request(:post, 'https://subdomain.files.com/api/rest/v1/files/path')
             .with(
               basic_auth: %w[api-key x],
               headers: {
@@ -159,7 +159,7 @@ RSpec.describe BrickFTP::RESTfulAPI::UploadFile, type: :lib do
             )
             .to_return(body: expected_upload.to_h.to_json)
 
-          stub_request(:put, 'https://s3.amazonaws.com/objects.brickftp.com/')
+          stub_request(:put, 'https://s3.amazonaws.com/objects.files.com/')
             .with(body: 'a' * 5_242_880 + 'b')
             .to_return(body: '', status: 200)
 
@@ -177,7 +177,7 @@ RSpec.describe BrickFTP::RESTfulAPI::UploadFile, type: :lib do
             permissions: 'rwd'
           )
 
-          stub_request(:post, 'https://subdomain.brickftp.com/api/rest/v1/files/path')
+          stub_request(:post, 'https://subdomain.files.com/api/rest/v1/files/path')
             .with(
               basic_auth: %w[api-key x],
               headers: {

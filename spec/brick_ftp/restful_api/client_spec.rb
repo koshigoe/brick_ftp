@@ -6,7 +6,7 @@ RSpec.describe BrickFTP::RESTfulAPI::Client, type: :lib do
   describe '#get' do
     context 'HTTP 200 OK' do
       it 'return JSON parsed object' do
-        stub_request(:get, 'https://subdomain.brickftp.com/path/to/resource.json')
+        stub_request(:get, 'https://subdomain.files.com/path/to/resource.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -23,7 +23,7 @@ RSpec.describe BrickFTP::RESTfulAPI::Client, type: :lib do
 
     context 'HTTP 404 Not Found' do
       it 'raise exception' do
-        stub_request(:get, 'https://subdomain.brickftp.com/path/to/resource.json')
+        stub_request(:get, 'https://subdomain.files.com/path/to/resource.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -46,7 +46,7 @@ RSpec.describe BrickFTP::RESTfulAPI::Client, type: :lib do
   describe '#post' do
     context 'HTTP 200 OK' do
       it 'return JSON parsed object' do
-        stub_request(:post, 'https://subdomain.brickftp.com/path/to/resource.json')
+        stub_request(:post, 'https://subdomain.files.com/path/to/resource.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -65,7 +65,7 @@ RSpec.describe BrickFTP::RESTfulAPI::Client, type: :lib do
 
     context 'HTTP 400 Bad Request' do
       it 'raise exception' do
-        stub_request(:post, 'https://subdomain.brickftp.com/path/to/resource.json')
+        stub_request(:post, 'https://subdomain.files.com/path/to/resource.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -89,7 +89,7 @@ RSpec.describe BrickFTP::RESTfulAPI::Client, type: :lib do
   describe '#put' do
     context 'HTTP 200 OK' do
       it 'return JSON parsed object' do
-        stub_request(:put, 'https://subdomain.brickftp.com/path/to/resource.json')
+        stub_request(:put, 'https://subdomain.files.com/path/to/resource.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -108,7 +108,7 @@ RSpec.describe BrickFTP::RESTfulAPI::Client, type: :lib do
 
     context 'HTTP 400 Bad Request' do
       it 'raise exception' do
-        stub_request(:put, 'https://subdomain.brickftp.com/path/to/resource.json')
+        stub_request(:put, 'https://subdomain.files.com/path/to/resource.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -132,7 +132,7 @@ RSpec.describe BrickFTP::RESTfulAPI::Client, type: :lib do
   describe '#patch' do
     context 'HTTP 200 OK' do
       it 'return JSON parsed object' do
-        stub_request(:patch, 'https://subdomain.brickftp.com/path/to/resource.json')
+        stub_request(:patch, 'https://subdomain.files.com/path/to/resource.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -151,7 +151,7 @@ RSpec.describe BrickFTP::RESTfulAPI::Client, type: :lib do
 
     context 'HTTP 400 Bad Request' do
       it 'raise exception' do
-        stub_request(:patch, 'https://subdomain.brickftp.com/path/to/resource.json')
+        stub_request(:patch, 'https://subdomain.files.com/path/to/resource.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -175,7 +175,7 @@ RSpec.describe BrickFTP::RESTfulAPI::Client, type: :lib do
   describe '#delete' do
     context 'HTTP 200 OK' do
       it 'return JSON parsed object' do
-        stub_request(:delete, 'https://subdomain.brickftp.com/path/to/resource.json')
+        stub_request(:delete, 'https://subdomain.files.com/path/to/resource.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -193,7 +193,7 @@ RSpec.describe BrickFTP::RESTfulAPI::Client, type: :lib do
 
     context 'HTTP 400 Bad Request' do
       it 'raise exception' do
-        stub_request(:delete, 'https://subdomain.brickftp.com/path/to/resource.json')
+        stub_request(:delete, 'https://subdomain.files.com/path/to/resource.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {

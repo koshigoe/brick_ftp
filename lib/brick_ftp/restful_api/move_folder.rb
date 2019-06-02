@@ -6,7 +6,7 @@ module BrickFTP
   module RESTfulAPI
     # Move or rename a file or folder
     #
-    # @see https://developers.brickftp.com/#move-or-rename-a-file-or-folder Move or rename a file or folder
+    # @see https://developers.files.com/#move-or-rename-a-file-or-folder Move or rename a file or folder
     #
     # ### Params
     #

@@ -6,7 +6,7 @@ RSpec.describe BrickFTP::RESTfulAPI::CountFolderContents, type: :lib do
   describe '#call' do
     context 'recursive: true' do
       it 'return count' do
-        stub_request(:get, 'https://subdomain.brickftp.com/api/rest/v1/folders/path?action=count')
+        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/folders/path?action=count')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -25,7 +25,7 @@ RSpec.describe BrickFTP::RESTfulAPI::CountFolderContents, type: :lib do
 
     context 'recursive: false' do
       it 'return count' do
-        stub_request(:get, 'https://subdomain.brickftp.com/api/rest/v1/folders/path?action=count_nrs')
+        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/folders/path?action=count_nrs')
           .with(
             basic_auth: %w[api-key x],
             headers: {

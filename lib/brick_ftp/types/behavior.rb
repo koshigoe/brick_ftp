@@ -6,7 +6,7 @@ module BrickFTP
 
     # ## The behavior object
     #
-    # @see https://developers.brickftp.com/#the-behavior-object The behavior object
+    # @see https://developers.files.com/#the-behavior-object The behavior object
     #
     # ATTRIBUTE  | TYPE     | DESCRIPTION
     # ---------- | -------- | -----------

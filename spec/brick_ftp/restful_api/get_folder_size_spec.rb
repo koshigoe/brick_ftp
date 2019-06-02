@@ -5,7 +5,7 @@ require 'spec_helper'
 RSpec.describe BrickFTP::RESTfulAPI::GetFolderSize, type: :lib do
   describe '#call' do
     it 'return size' do
-      stub_request(:get, 'https://subdomain.brickftp.com/api/rest/v1/folders/path?action=size')
+      stub_request(:get, 'https://subdomain.files.com/api/rest/v1/folders/path?action=size')
         .with(
           basic_auth: %w[api-key x],
           headers: {

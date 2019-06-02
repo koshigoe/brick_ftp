@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Create an API key
     #
-    # @see https://developers.brickftp.com/#create-an-api-key Create an API key
+    # @see https://developers.files.com/#create-an-api-key Create an API key
     #
     # ### Params
     #

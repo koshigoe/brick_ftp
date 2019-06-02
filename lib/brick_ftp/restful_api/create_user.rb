@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Create a user
     #
-    # @see https://developers.brickftp.com/#create-a-user Create a user
+    # @see https://developers.files.com/#create-a-user Create a user
     #
     # ### Params
     #

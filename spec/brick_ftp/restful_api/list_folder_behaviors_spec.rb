@@ -13,7 +13,7 @@ RSpec.describe BrickFTP::RESTfulAPI::ListFolderBehaviors, type: :lib do
           value: %w[https://a.mywebhookhandler.com]
         )
 
-        stub_request(:get, 'https://subdomain.brickftp.com/api/rest/v1/behaviors/folders/a?recursive=1')
+        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/behaviors/folders/a?recursive=1')
           .with(
             basic_auth: %w[api-key x],
             headers: {

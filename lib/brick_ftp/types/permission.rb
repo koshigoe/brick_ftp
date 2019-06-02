@@ -6,7 +6,7 @@ module BrickFTP
 
     # The permission object
     #
-    # @see https://developers.brickftp.com/#the-permission-object The permission object
+    # @see https://developers.files.com/#the-permission-object The permission object
     #
     # ATTRIBUTE  | TYPE    | DESCRIPTION
     # ---------- | ------- | -----------

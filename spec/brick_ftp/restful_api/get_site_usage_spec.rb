@@ -28,7 +28,7 @@ RSpec.describe BrickFTP::RESTfulAPI::GetSiteUsage, type: :lib do
           total_downloads: 0
         )
 
-        stub_request(:get, 'https://subdomain.brickftp.com/api/rest/v1/site/usage.json')
+        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/site/usage.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {

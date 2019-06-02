@@ -6,7 +6,7 @@ module BrickFTP
 
     # The file/folder object
     #
-    # @see https://developers.brickftp.com/#the-file-folder-object The file/folder object
+    # @see https://developers.files.com/#the-file-folder-object The file/folder object
     #
     # ATTRIBUTE          | TYPE     | DESCRIPTION
     # ------------------ | -------- | -----------

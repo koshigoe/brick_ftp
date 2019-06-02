@@ -6,7 +6,7 @@ module BrickFTP
   module RESTfulAPI
     # Retrieve folder history
     #
-    # @see https://developers.brickftp.com/#retrieve-folder-history Retrieve folder history
+    # @see https://developers.files.com/#retrieve-folder-history Retrieve folder history
     #
     # ### Params
     #

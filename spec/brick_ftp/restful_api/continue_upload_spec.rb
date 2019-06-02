@@ -12,7 +12,7 @@ RSpec.describe BrickFTP::RESTfulAPI::ContinueUpload, type: :lib do
           action: 'put/write',
           ask_about_overwrites: false,
           http_method: 'PUT',
-          upload_uri: 'https://s3.amazonaws.com/objects.brickftp.com/..',
+          upload_uri: 'https://s3.amazonaws.com/objects.files.com/..',
           partsize: 5_242_880,
           part_number: 2,
           available_parts: 10_000,
@@ -24,7 +24,7 @@ RSpec.describe BrickFTP::RESTfulAPI::ContinueUpload, type: :lib do
           parameters: {}
         )
 
-        stub_request(:post, 'https://subdomain.brickftp.com/api/rest/v1/files/a%20b%2Fc')
+        stub_request(:post, 'https://subdomain.files.com/api/rest/v1/files/a%20b%2Fc')
           .with(
             basic_auth: %w[api-key x],
             headers: {

@@ -2,12 +2,27 @@ Changelog
 ====
 
 
-[unreleased](https://github.com/koshigoe/brick_ftp/compare/v1.0.1...master)
+[unreleased](https://github.com/koshigoe/brick_ftp/compare/v2.0.0...master)
 ----
 
-[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v1.0.1...master)
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v2.0.0...master)
 
 ### Enhancements:
+
+### Fixed Bugs:
+
+### Breaking Changes:
+
+
+[v2.0.0](https://github.com/koshigoe/brick_ftp/compare/v1.0.1...v2.0.0)
+----
+
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v1.0.1...v2.0.0)
+
+### Enhancements:
+
+- [#119](https://github.com/koshigoe/brick_ftp/pull/119) Change domain of API endpoint.
+    - _**Please check your SSL cert of new custom domain before update this gem.**_
 
 ### Fixed Bugs:
 

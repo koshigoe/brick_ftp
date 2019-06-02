@@ -15,7 +15,7 @@ RSpec.describe BrickFTP::RESTfulAPI::ListNotifications, type: :lib do
           unsubscribed: false
         )
 
-        stub_request(:get, 'https://subdomain.brickftp.com/api/rest/v1/notifications.json')
+        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/notifications.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {

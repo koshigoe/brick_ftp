@@ -6,7 +6,7 @@ RSpec.describe BrickFTP::RESTfulAPI::RemoveGroupMember, type: :lib do
   describe '#call' do
     context 'given correct group id and user id' do
       it 'return true' do
-        stub_request(:delete, 'https://subdomain.brickftp.com/api/rest/v1/groups/1/memberships/2.json')
+        stub_request(:delete, 'https://subdomain.files.com/api/rest/v1/groups/1/memberships/2.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {

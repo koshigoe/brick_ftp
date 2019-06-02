@@ -38,7 +38,7 @@ RSpec.describe BrickFTP::RESTfulAPI::UnlockUser, type: :lib do
           admin_group_ids: []
         )
 
-        stub_request(:post, 'https://subdomain.brickftp.com/api/rest/v1/users/1234/unlock.json')
+        stub_request(:post, 'https://subdomain.files.com/api/rest/v1/users/1234/unlock.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -56,7 +56,7 @@ RSpec.describe BrickFTP::RESTfulAPI::UnlockUser, type: :lib do
 
     context 'User not found' do
       it 'raise exception' do
-        stub_request(:post, 'https://subdomain.brickftp.com/api/rest/v1/users/1234/unlock.json')
+        stub_request(:post, 'https://subdomain.files.com/api/rest/v1/users/1234/unlock.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {

@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Create a group
     #
-    # @see https://developers.brickftp.com/#create-a-group Create a group
+    # @see https://developers.files.com/#create-a-group Create a group
     #
     # ### Params
     #

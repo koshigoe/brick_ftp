@@ -38,7 +38,7 @@ RSpec.describe BrickFTP::RESTfulAPI::ListUsers, type: :lib do
           admin_group_ids: []
         )
 
-        stub_request(:get, 'https://subdomain.brickftp.com/api/rest/v1/users.json?page=1&per_page=1000')
+        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/users.json?page=1&per_page=1000')
           .with(
             basic_auth: %w[api-key x],
             headers: {

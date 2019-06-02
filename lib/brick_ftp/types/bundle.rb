@@ -6,7 +6,7 @@ module BrickFTP
 
     # The bundle object
     #
-    # @see https://developers.brickftp.com/#the-bundle-object The bundle object
+    # @see https://developers.files.com/#the-bundle-object The bundle object
     #
     # ATTRIBUTE  | TYPE     | DESCRIPTION
     # ---------- | -------- | -----------

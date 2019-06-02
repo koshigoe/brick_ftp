@@ -6,7 +6,7 @@ module BrickFTP
 
     # membership object
     #
-    # @see https://developers.brickftp.com/#add-a-member membership object
+    # @see https://developers.files.com/#add-a-member membership object
     #
     # ATTRIBUTE | TYPE    | DESCRIPTION
     # --------- | ------- | -----------

@@ -13,7 +13,7 @@ RSpec.describe BrickFTP::RESTfulAPI::UpdateGroupMember, type: :lib do
           admin: true
         )
 
-        stub_request(:patch, 'https://subdomain.brickftp.com/api/rest/v1/groups/1/memberships/2.json')
+        stub_request(:patch, 'https://subdomain.files.com/api/rest/v1/groups/1/memberships/2.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {

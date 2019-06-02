@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # List API keys
     #
-    # @see https://developers.brickftp.com/#list-api-keys List API keys
+    # @see https://developers.files.com/#list-api-keys List API keys
     #
     class ListAPIKeys
       include Command

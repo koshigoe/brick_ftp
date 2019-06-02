@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Show a behavior
     #
-    # @see https://developers.brickftp.com/#show-a-behavior Show a behavior
+    # @see https://developers.files.com/#show-a-behavior Show a behavior
     #
     class GetBehavior
       include Command

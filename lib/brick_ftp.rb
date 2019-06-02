@@ -10,7 +10,7 @@ require 'brick_ftp/types/ignore_undefined_attributes'
 require 'brick_ftp/restful_api'
 
 module BrickFTP
-  # https://brickftp.com/redundancy/
+  # https://files.com/redundancy/
   IP_ADDRESSES = %w[
     54.193.69.72
     54.193.69.200

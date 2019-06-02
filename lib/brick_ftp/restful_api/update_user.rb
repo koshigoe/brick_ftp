@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Update a user
     #
-    # @see https://developers.brickftp.com/#update-a-user Update a user
+    # @see https://developers.files.com/#update-a-user Update a user
     #
     # ### Params
     #

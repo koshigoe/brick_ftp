@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Delete a permission
     #
-    # @see https://developers.brickftp.com/#delete-a-permission Delete a permission
+    # @see https://developers.files.com/#delete-a-permission Delete a permission
     #
     class DeletePermission
       include Command

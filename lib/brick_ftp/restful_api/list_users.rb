@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # List users
     #
-    # @see https://developers.brickftp.com/#list-users List users
+    # @see https://developers.files.com/#list-users List users
     #
     # ### Params
     #

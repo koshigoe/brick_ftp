@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Delete a user
     #
-    # @see https://developers.brickftp.com/#delete-a-user Delete a user
+    # @see https://developers.files.com/#delete-a-user Delete a user
     #
     class DeleteUser
       include Command

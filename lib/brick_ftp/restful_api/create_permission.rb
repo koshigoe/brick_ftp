@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Create a permission
     #
-    # @see https://developers.brickftp.com/#create-a-permission Create a permission
+    # @see https://developers.files.com/#create-a-permission Create a permission
     #
     # ### Params
     #

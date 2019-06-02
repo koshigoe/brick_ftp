@@ -18,10 +18,10 @@ RSpec.describe BrickFTP::RESTfulAPI::DownloadFile, type: :lib do
           md5:  'b67236f5bcd29d1307d574fb9fe585b5',
           region:  'us-east-1',
           permissions:  'rwd',
-          download_uri:  'https://s3.amazonaws.com/objects.brickftp.com/...'
+          download_uri:  'https://s3.amazonaws.com/objects.files.com/...'
         )
 
-        url = 'https://subdomain.brickftp.com/api/rest/v1/files/a%20b%2Fc'
+        url = 'https://subdomain.files.com/api/rest/v1/files/a%20b%2Fc'
         stub_request(:get, url)
           .with(
             basic_auth: %w[api-key x],
@@ -54,7 +54,7 @@ RSpec.describe BrickFTP::RESTfulAPI::DownloadFile, type: :lib do
           permissions:  'rwd'
         )
 
-        url = 'https://subdomain.brickftp.com/api/rest/v1/files/a%20b%2Fc?action=stat'
+        url = 'https://subdomain.files.com/api/rest/v1/files/a%20b%2Fc?action=stat'
         stub_request(:get, url)
           .with(
             basic_auth: %w[api-key x],

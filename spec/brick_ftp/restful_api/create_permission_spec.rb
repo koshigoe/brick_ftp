@@ -13,7 +13,7 @@ RSpec.describe BrickFTP::RESTfulAPI::CreatePermission, type: :lib do
           permission: 'writeonly'
         )
 
-        stub_request(:post, 'https://subdomain.brickftp.com/api/rest/v1/permissions.json')
+        stub_request(:post, 'https://subdomain.files.com/api/rest/v1/permissions.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {

@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Show a user
     #
-    # @see https://developers.brickftp.com/#show-a-user Show a user
+    # @see https://developers.files.com/#show-a-user Show a user
     #
     class GetUser
       include Command

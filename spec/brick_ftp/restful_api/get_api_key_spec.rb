@@ -15,7 +15,7 @@ RSpec.describe BrickFTP::RESTfulAPI::GetAPIKey, type: :lib do
           created_at: '2018-08-17T08:16:52-04:00'
         )
 
-        stub_request(:get, 'https://subdomain.brickftp.com/api/rest/v1/api_keys/12345.json')
+        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/api_keys/12345.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -33,7 +33,7 @@ RSpec.describe BrickFTP::RESTfulAPI::GetAPIKey, type: :lib do
 
     context 'API key not found' do
       it 'raise exception' do
-        stub_request(:get, 'https://subdomain.brickftp.com/api/rest/v1/api_keys/1234.json')
+        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/api_keys/1234.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {

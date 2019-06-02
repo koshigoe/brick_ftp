@@ -6,7 +6,7 @@ RSpec.describe BrickFTP::RESTfulAPI::DeleteNotification, type: :lib do
   describe '#call' do
     context 'given correct Notification ID' do
       it 'return true' do
-        stub_request(:delete, 'https://subdomain.brickftp.com/api/rest/v1/notifications/1234.json')
+        stub_request(:delete, 'https://subdomain.files.com/api/rest/v1/notifications/1234.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {

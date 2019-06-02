@@ -10,10 +10,10 @@ RSpec.describe BrickFTP::RESTfulAPI::GetFileInBundle, type: :lib do
           path: 'a/b',
           type: 'file',
           size: 842_665,
-          download_uri: 'https://s3.amazonaws.com/objects.brickftp.com/metadata/10099/2e2376c0-7527-0133-21fb-0a2d4abb99a7?..'
+          download_uri: 'https://s3.amazonaws.com/objects.files.com/metadata/10099/2e2376c0-7527-0133-21fb-0a2d4abb99a7?..'
         )
 
-        stub_request(:post, 'https://subdomain.brickftp.com/api/rest/v1/bundles/download.json')
+        stub_request(:post, 'https://subdomain.files.com/api/rest/v1/bundles/download.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
