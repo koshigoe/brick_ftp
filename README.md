@@ -1,5 +1,7 @@
 [![CircleCI](https://circleci.com/gh/koshigoe/brick_ftp/tree/master.svg?style=svg)](https://circleci.com/gh/koshigoe/brick_ftp/tree/master)
 [![codecov](https://codecov.io/gh/koshigoe/brick_ftp/branch/master/graph/badge.svg)](https://codecov.io/gh/koshigoe/brick_ftp)
+[![Maintainability](https://api.codeclimate.com/v1/badges/b996c388d3d32b7ec953/maintainability)](https://codeclimate.com/github/koshigoe/brick_ftp/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/b996c388d3d32b7ec953/test_coverage)](https://codeclimate.com/github/koshigoe/brick_ftp/test_coverage)
 
 
 Files.com (BrickFTP)
