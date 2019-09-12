@@ -2,17 +2,17 @@
 
 module BrickFTP
   module RESTfulAPI
-    # Show a bundle
+    # Show bundle
     #
-    # @see https://developers.files.com/#show-a-bundle Show a bundle
+    # @see https://developers.files.com/#show-bundle Show bundle
     #
     class GetBundle
       include Command
       using BrickFTP::CoreExt::Hash
 
-      # Returns a single bundle.
+      # Show bundle
       #
-      # @param [Integer] id Globally unique identifier of each bundle.
+      # @param [Integer] id Bundle ID.
       # @return [BrickFTP::Types::Bundle] Bundle
       #
       def call(id)
