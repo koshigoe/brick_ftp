@@ -7,10 +7,12 @@ RSpec.describe BrickFTP::RESTfulAPI::CreateBehavior, type: :lib do
     context 'given correct parameters' do
       it 'return created Behavior object' do
         created_behavior = BrickFTP::Types::Behavior.new(
-          id:  38,
-          path: 'a',
+          id: 1,
           behavior: 'webhook',
-          value: %w[https://a.mywebhookhandler.com]
+          path: 'webhook',
+          value: {
+            'method' => 'GET',
+          }
         )
 
         stub_request(:post, 'https://subdomain.files.com/api/rest/v1/behaviors.json')
