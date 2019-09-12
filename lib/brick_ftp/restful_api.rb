@@ -55,6 +55,7 @@ module BrickFTP
     autoload :ListCertificates, 'brick_ftp/restful_api/list_certificates'
     autoload :GetCertificate, 'brick_ftp/restful_api/get_certificate'
     autoload :CreateCertificate, 'brick_ftp/restful_api/create_certificate'
+    autoload :DeactivateCertificate, 'brick_ftp/restful_api/deactivate_certificate'
     # ref. https://developers.files.com/#user-public-keys
     autoload :ListPublicKeys, 'brick_ftp/restful_api/list_public_keys'
     autoload :GetPublicKey, 'brick_ftp/restful_api/get_public_key'
