@@ -34,6 +34,7 @@ module BrickFTP
     autoload :GetAutomation, 'brick_ftp/restful_api/get_automation'
     autoload :CreateAutomation, 'brick_ftp/restful_api/create_automation'
     autoload :UpdateAutomation, 'brick_ftp/restful_api/update_automation'
+    autoload :DeleteAutomation, 'brick_ftp/restful_api/delete_automation'
     # ref. https://developers.files.com/#user-public-keys
     autoload :ListPublicKeys, 'brick_ftp/restful_api/list_public_keys'
     autoload :GetPublicKey, 'brick_ftp/restful_api/get_public_key'
