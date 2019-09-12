@@ -1,15 +1,33 @@
 Changelog
 ====
 
+The official Ruby SDK released by Files.com
 
-[unreleased](https://github.com/koshigoe/brick_ftp/compare/v2.0.0...master)
+> SDKs in Ruby and PHP are available for download using the typical package manager for each language.
+> https://developers.files.com/?ruby#introduction
+
+Its usage like:
+
+```ruby
+Files.api_key = 'YOUR_API_KEY'
+
+# Alternatively, you can specify the API key on a per-request basis in the final parameter to any method or initializer.
+Files::User.new(params, api_key: 'YOUR_API_KEY')
+```
+
+I will archive this repository after found official SDK.
+
+
+[v2.0.1](https://github.com/koshigoe/brick_ftp/compare/v2.0.0...v2.0.1)
 ----
 
-[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v2.0.0...master)
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v2.0.0...v2.0.1)
 
 ### Enhancements:
 
 ### Fixed Bugs:
+
+- [#124](https://github.com/koshigoe/brick_ftp/pull/124) Handle response 204 No Content avoid to parse error.
 
 ### Breaking Changes:
 

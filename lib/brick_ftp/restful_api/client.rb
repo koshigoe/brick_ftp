@@ -153,6 +153,8 @@ module BrickFTP
 
       def handle_response(response)
         case response
+        when Net::HTTPNoContent
+          nil
         when Net::HTTPSuccess
           parse_success_response(response)
         else
