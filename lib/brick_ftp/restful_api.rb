@@ -53,6 +53,7 @@ module BrickFTP
     autoload :GetBundleZip, 'brick_ftp/restful_api/get_bundle_zip'
     # ref. https://developers.files.com/#certificates
     autoload :ListCertificates, 'brick_ftp/restful_api/list_certificates'
+    autoload :GetCertificate, 'brick_ftp/restful_api/get_certificate'
     # ref. https://developers.files.com/#user-public-keys
     autoload :ListPublicKeys, 'brick_ftp/restful_api/list_public_keys'
     autoload :GetPublicKey, 'brick_ftp/restful_api/get_public_key'
