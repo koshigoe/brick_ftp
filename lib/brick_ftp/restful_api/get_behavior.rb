@@ -2,17 +2,17 @@
 
 module BrickFTP
   module RESTfulAPI
-    # Show a behavior
+    # Show behavior
     #
-    # @see https://developers.files.com/#show-a-behavior Show a behavior
+    # @see https://developers.files.com/#show-a-behavior Show behavior
     #
     class GetBehavior
       include Command
       using BrickFTP::CoreExt::Hash
 
-      # Returns a single behavior.
+      # Show behavior
       #
-      # @param [Integer] id Globally unique identifier of each behavior.
+      # @param [Integer] id Folder behavior ID.
       # @return [BrickFTP::Types::Behavior, nil] found Behavior or nil
       #
       def call(id)
