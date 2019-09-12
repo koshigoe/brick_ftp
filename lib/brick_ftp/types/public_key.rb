@@ -15,8 +15,8 @@ module BrickFTP
     # fingerprint | string   | Public key fingerprint
     # title       | string   | Public key title
     #
-    UserPublicKey = Struct.new(
-      'userPublicKey',
+    PublicKey = Struct.new(
+      'PublicKey',
       :id,
       :created_at,
       :fingerprint,
