@@ -6,14 +6,14 @@ module BrickFTP
 
     # ## The behavior object
     #
-    # @see https://developers.files.com/#the-behavior-object The behavior object
+    # @see https://developers.files.com/#the-behavior-object The Behavior object
     #
     # ATTRIBUTE  | TYPE     | DESCRIPTION
     # ---------- | -------- | -----------
-    # id         | integer  | Globally unique identifier of each behavior.
-    # path       | string   | Folder path for behaviors. This must be slash-delimited, but it must neither start nor end with a slash. Maximum of 5000 characters.
-    # behavior   | string   | The behavior type. Can be one of the following: webhook, file_expiration, auto_encrypt, lock_subfolders.
-    # value      | array    | Array of values associated with the behavior.
+    # id         | integer  | Folder behavior ID
+    # behavior   | string   | Behavior type.
+    # path       | string   | Folder path This must be slash-delimited, but it must neither start nor end with a slash. Maximum of 5000 characters.
+    # value      | object   | Settings for this behavior. See the section above for an example value to provide here. Formatting is different for each Behavior type. May be sent as nested JSON or a single JSON-encoded string. If using XML encoding for the API call, this data must be sent as a JSON-encoded string.
     #
     Behavior = Struct.new(
       'Behavior',
