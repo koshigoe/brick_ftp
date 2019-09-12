@@ -22,7 +22,9 @@ module BrickFTP
     autoload :ListUserAPIKeys, 'brick_ftp/restful_api/list_user_api_keys'
     autoload :ListSiteWideAPIKeys, 'brick_ftp/restful_api/list_site_wide_api_keys'
     autoload :GetAPIKey, 'brick_ftp/restful_api/get_api_key'
-    autoload :CreateAPIKey, 'brick_ftp/restful_api/create_api_key'
+    autoload :CreateCurrentUserAPIKey, 'brick_ftp/restful_api/create_current_user_api_key'
+    autoload :CreateUserAPIKey, 'brick_ftp/restful_api/create_user_api_key'
+    autoload :CreateSiteWideAPIKey, 'brick_ftp/restful_api/create_site_wide_api_key'
     autoload :DeleteAPIKey, 'brick_ftp/restful_api/delete_api_key'
     # ref. https://developers.files.com/#user-public-keys
     autoload :ListPublicKeys, 'brick_ftp/restful_api/list_public_keys'
