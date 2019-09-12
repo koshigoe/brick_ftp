@@ -2,17 +2,17 @@
 
 module BrickFTP
   module RESTfulAPI
-    # List all bundles
+    # List bundles
     #
-    # @see https://developers.files.com/#list-all-bundles List all bundles
+    # @see https://developers.files.com/#list-bundles List bundles
     #
     class ListBundles
       include Command
       using BrickFTP::CoreExt::Hash
 
-      # Returns a list of all bundles on the current site.
+      # List bundles
       #
-      # @return [Array<BrickFTP::Types::Bundle>] Bundle
+      # @return [Array<BrickFTP::Types::Bundle>]
       #
       def call
         res = client.get('/api/rest/v1/bundles.json')
