@@ -29,6 +29,8 @@ module BrickFTP
     autoload :DeleteCurrentApiKey, 'brick_ftp/restful_api/delete_current_api_key'
     autoload :UpdateCurrentApiKey, 'brick_ftp/restful_api/update_current_api_key'
     autoload :UpdateApiKey, 'brick_ftp/restful_api/update_api_key'
+    # ref. https://developers.files.com/#automations
+    autoload :ListAutomations, 'brick_ftp/restful_api/list_automations'
     # ref. https://developers.files.com/#user-public-keys
     autoload :ListPublicKeys, 'brick_ftp/restful_api/list_public_keys'
     autoload :GetPublicKey, 'brick_ftp/restful_api/get_public_key'
