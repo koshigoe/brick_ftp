@@ -7,13 +7,15 @@ RSpec.describe BrickFTP::RESTfulAPI::ListBehaviors, type: :lib do
     context 'correct request' do
       it 'return Array of Behavior object' do
         expected_behavior = BrickFTP::Types::Behavior.new(
-          id:  38,
-          path: 'Finance',
+          id: 1,
           behavior: 'webhook',
-          value: %w[https://a.mywebhookhandler.com]
+          path: '',
+          value: {
+            'method' => 'GET',
+          }
         )
 
-        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/behaviors.json')
+        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/behaviors.json?behavior=webhook')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -23,9 +25,10 @@ RSpec.describe BrickFTP::RESTfulAPI::ListBehaviors, type: :lib do
           .to_return(body: [expected_behavior.to_h].to_json)
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
+        params = BrickFTP::RESTfulAPI::ListBehaviors::Params.new(behavior: 'webhook')
         command = BrickFTP::RESTfulAPI::ListBehaviors.new(rest)
 
-        expect(command.call).to eq([expected_behavior])
+        expect(command.call(params)).to eq([expected_behavior])
       end
     end
   end

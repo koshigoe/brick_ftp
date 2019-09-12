@@ -2,20 +2,37 @@
 
 module BrickFTP
   module RESTfulAPI
-    # List all behaviors
+    # List behaviors
     #
-    # @see https://developers.files.com/#list-all-behaviors List all behaviors
+    # @see https://developers.files.com/#list-behaviors List behaviors
+    #
+    # ### Params
+    #
+    # PARAMETER  | TYPE    | DESCRIPTION
+    # ---------- | ------- | -----------
+    # behavior   | string  | If set, only shows folder behaviors matching this behavior type.
     #
     class ListBehaviors
       include Command
+      using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
-      # Returns a list of all behaviors on the current site.
+      Params = Struct.new(
+        'ListBehaviorsParams',
+        :behavior,
+        keyword_init: true
+      )
+
+      # List behaviors
       #
-      # @return [Array<BrickFTP::Types::Behavior>] Behaviors
+      # @param [BrickFTP::RESTfulAPI::ListBehavior::Params] params parameters for search behaviors
+      # @return [Array<BrickFTP::Types::Behavior>]
       #
-      def call
-        res = client.get('/api/rest/v1/behaviors.json')
+      def call(params)
+        endpoint = '/api/rest/v1/behaviors.json'
+        query = params.to_h.compact.map { |k, v| "#{k}=#{ERB::Util.url_encode(v.to_s)}" }.join('&')
+        endpoint += "?#{query}" unless query.empty?
+        res = client.get(endpoint)
 
         res.map { |i| BrickFTP::Types::Behavior.new(i.symbolize_keys) }
       end

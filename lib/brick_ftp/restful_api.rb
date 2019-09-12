@@ -35,6 +35,13 @@ module BrickFTP
     autoload :CreateAutomation, 'brick_ftp/restful_api/create_automation'
     autoload :UpdateAutomation, 'brick_ftp/restful_api/update_automation'
     autoload :DeleteAutomation, 'brick_ftp/restful_api/delete_automation'
+    # ref. https://developers.files.com/#behaviors
+    autoload :ListBehaviors, 'brick_ftp/restful_api/list_behaviors'
+    autoload :ListFolderBehaviors, 'brick_ftp/restful_api/list_folder_behaviors'
+    autoload :GetBehavior, 'brick_ftp/restful_api/get_behavior'
+    autoload :CreateBehavior, 'brick_ftp/restful_api/create_behavior'
+    autoload :UpdateBehavior, 'brick_ftp/restful_api/update_behavior'
+    autoload :DeleteBehavior, 'brick_ftp/restful_api/delete_behavior'
     # ref. https://developers.files.com/#user-public-keys
     autoload :ListPublicKeys, 'brick_ftp/restful_api/list_public_keys'
     autoload :GetPublicKey, 'brick_ftp/restful_api/get_public_key'
@@ -73,13 +80,6 @@ module BrickFTP
     autoload :ListBundleContents, 'brick_ftp/restful_api/list_bundle_contents'
     autoload :GetFileInBundle, 'brick_ftp/restful_api/get_file_in_bundle'
     autoload :GetBundleZip, 'brick_ftp/restful_api/get_bundle_zip'
-    # ref. https://developers.files.com/#behaviors
-    autoload :ListBehaviors, 'brick_ftp/restful_api/list_behaviors'
-    autoload :ListFolderBehaviors, 'brick_ftp/restful_api/list_folder_behaviors'
-    autoload :GetBehavior, 'brick_ftp/restful_api/get_behavior'
-    autoload :CreateBehavior, 'brick_ftp/restful_api/create_behavior'
-    autoload :UpdateBehavior, 'brick_ftp/restful_api/update_behavior'
-    autoload :DeleteBehavior, 'brick_ftp/restful_api/delete_behavior'
     # ref. https://developers.files.com/#file-and-folder-operations
     autoload :ListFolders, 'brick_ftp/restful_api/list_folders'
     autoload :CreateFolder, 'brick_ftp/restful_api/create_folder'
