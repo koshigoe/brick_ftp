@@ -2,16 +2,16 @@
 
 module BrickFTP
   module RESTfulAPI
-    # Delete a bundle
+    # Delete bundle
     #
-    # @see https://developers.files.com/#delete-a-bundle Delete a bundle
+    # @see https://developers.files.com/#delete-bundle Delete bundle
     #
     class DeleteBundle
       include Command
 
-      # Deletes the specified bundle.
+      # Delete bundle
       #
-      # @param [Integer] id Globally unique identifier of each bundle.
+      # @param [Integer] id Bundle ID.
       #
       def call(id)
         client.delete("/api/rest/v1/bundles/#{id}.json")
