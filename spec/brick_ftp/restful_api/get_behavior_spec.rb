@@ -7,10 +7,12 @@ RSpec.describe BrickFTP::RESTfulAPI::GetBehavior, type: :lib do
     context 'given correct Behavior ID' do
       it 'return Behavior object' do
         expected_behavior = BrickFTP::Types::Behavior.new(
-          id:  38,
-          path: 'Finance',
+          id: 1,
           behavior: 'webhook',
-          value: %w[https://a.mywebhookhandler.com]
+          path: 'webhook',
+          value: {
+            'method' => 'GET',
+          }
         )
 
         stub_request(:get, 'https://subdomain.files.com/api/rest/v1/behaviors/1234.json')
