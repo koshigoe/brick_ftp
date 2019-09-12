@@ -2,16 +2,19 @@
 
 module BrickFTP
   module RESTfulAPI
-    # Create a bundle
+    # Create bundle
     #
-    # @see https://developers.files.com/#create-a-bundle Create a bundle
+    # @see https://developers.files.com/#create-bundle Create bundle
     #
     # ### Params
     #
-    # PARAMETER | TYPE   | DESCRIPTION
-    # --------- | ------ | -----------
-    # paths     | array  | List of the paths associated with the bundle.
-    # password  | string | Optional password to password-protect the bundle. This property is write-only. It cannot be retrieved via the API.
+    # PARAMETER   | TYPE          | DESCRIPTION
+    # ----------- | ------------- | -----------
+    # paths       | array(string) | Required: A list of paths to include in this bundle.
+    # password    | string        | Password for this bundle.
+    # expires_at  | string        | Bundle expiration date/time.
+    # description | string        | Bundle public description
+    # note        | string        | Bundle internal note
     #
     class CreateBundle
       include Command
@@ -22,13 +25,16 @@ module BrickFTP
         'CreateBundleParams',
         :paths,
         :password,
+        :expires_at,
+        :description,
+        :note,
         keyword_init: true
       )
 
-      # Creates a new group on the current site.
+      # Create bundle
       #
       # @param [BrickFTP::RESTfulAPI::CreateBundle::Params] params parameters
-      # @return [BrickFTP::Types::Bundle] Bundle
+      # @return [BrickFTP::Types::Bundle]
       #
       def call(params)
         res = client.post('/api/rest/v1/bundles.json', params.to_h.compact)
