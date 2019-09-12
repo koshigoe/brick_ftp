@@ -42,6 +42,14 @@ module BrickFTP
     autoload :CreateBehavior, 'brick_ftp/restful_api/create_behavior'
     autoload :UpdateBehavior, 'brick_ftp/restful_api/update_behavior'
     autoload :DeleteBehavior, 'brick_ftp/restful_api/delete_behavior'
+    # ref. https://developers.files.com/#bundles
+    autoload :ListBundles, 'brick_ftp/restful_api/list_bundles'
+    autoload :GetBundle, 'brick_ftp/restful_api/get_bundle'
+    autoload :CreateBundle, 'brick_ftp/restful_api/create_bundle'
+    autoload :DeleteBundle, 'brick_ftp/restful_api/delete_bundle'
+    autoload :ListBundleContents, 'brick_ftp/restful_api/list_bundle_contents'
+    autoload :GetFileInBundle, 'brick_ftp/restful_api/get_file_in_bundle'
+    autoload :GetBundleZip, 'brick_ftp/restful_api/get_bundle_zip'
     # ref. https://developers.files.com/#user-public-keys
     autoload :ListPublicKeys, 'brick_ftp/restful_api/list_public_keys'
     autoload :GetPublicKey, 'brick_ftp/restful_api/get_public_key'
@@ -72,14 +80,6 @@ module BrickFTP
     autoload :RetrieveUserHistory, 'brick_ftp/restful_api/retrieve_user_history'
     autoload :RetrieveFolderHistory, 'brick_ftp/restful_api/retrieve_folder_history'
     autoload :RetrieveFileHistory, 'brick_ftp/restful_api/retrieve_file_history'
-    # ref. https://developers.files.com/#bundles
-    autoload :ListBundles, 'brick_ftp/restful_api/list_bundles'
-    autoload :GetBundle, 'brick_ftp/restful_api/get_bundle'
-    autoload :CreateBundle, 'brick_ftp/restful_api/create_bundle'
-    autoload :DeleteBundle, 'brick_ftp/restful_api/delete_bundle'
-    autoload :ListBundleContents, 'brick_ftp/restful_api/list_bundle_contents'
-    autoload :GetFileInBundle, 'brick_ftp/restful_api/get_file_in_bundle'
-    autoload :GetBundleZip, 'brick_ftp/restful_api/get_bundle_zip'
     # ref. https://developers.files.com/#file-and-folder-operations
     autoload :ListFolders, 'brick_ftp/restful_api/list_folders'
     autoload :CreateFolder, 'brick_ftp/restful_api/create_folder'
