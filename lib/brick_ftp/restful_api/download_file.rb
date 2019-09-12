@@ -1,40 +1,45 @@
 # frozen_string_literal: true
 
+require 'erb'
+
 module BrickFTP
   module RESTfulAPI
-    # Download a file
+    # Download file
     #
-    # @see https://developers.files.com/#download-a-file Download a file
+    # @see https://developers.files.com/#download-file Download file
     #
     # ### Params
     #
-    # PARAMETER | TYPE     | DESCRIPTION
-    # --------- | -------- | -----------
-    # action    | string   | Optionally set to `stat` to have the `download_uri` field omitted in the response and no download action logged.
+    # PARAMETER           | TYPE     | DESCRIPTION
+    # ------------------- | -------- | -----------
+    # action              | string   | Can be blank, `redirect` or `stat`.
+    # path                | string   | Required: File path.
+    # with_previews       | boolean  | Include file preview information?
+    # with_priority_color | boolean  | Include file priority color information?
     #
     class DownloadFile
       include Command
+      using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
-      # Provides a download URL that will enable you to download a file.
+      Params = Struct.new(
+        'DownloadFileParams',
+        :action,
+        :with_previews,
+        :with_priority_color,
+        keyword_init: true
+      )
+
+      # Download file
       #
-      # The download URL is a direct URL to Amazon S3 that has been signed by BrickFTP to provide temporary
-      # access to the file. The download links are valid for 3 minutes.
+      # @param [String] path File path.
+      # @param [BrickFTP::RESTfulAPI::DownloadFile::Params] params parameters
+      # @return [BrickFTP::Types::File]
       #
-      # By default this request assumes that the file will be downloaded, and therefore a download action is
-      # logged for the user that is logged into the REST API session. If downloading the file is not desired,
-      # but rather one is just looking at the information associated with the file such as the MD5 checksum or
-      # file size, then the action query parameter can be passed in on the URL with the value of stat.
-      # This causes the download_uri field to be omitted in the response and no download action to be logged.
-      #
-      # @param [String] path Full path of the file or folder. Maximum of 550 characters.
-      # @param [Boolean] stat Optionally set to stat to have the `download_uri` field
-      #   omitted in the response and no download action logged.
-      # @return [BrickFTP::Types::File] File
-      #
-      def call(path, stat: false)
+      def call(path, params)
         endpoint = "/api/rest/v1/files/#{ERB::Util.url_encode(path)}"
-        endpoint = "#{endpoint}?action=stat" if stat
+        query = params.to_h.compact.map { |k, v| "#{k}=#{ERB::Util.url_encode(v.to_s)}" }.join('&')
+        endpoint += "?#{query}" unless query.empty?
         res = client.get(endpoint)
         return nil if !res || res.empty?
 
