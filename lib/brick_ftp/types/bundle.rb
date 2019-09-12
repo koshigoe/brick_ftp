@@ -4,29 +4,36 @@ module BrickFTP
   module Types
     using BrickFTP::CoreExt::Struct
 
-    # The bundle object
+    # The Bundle object
     #
-    # @see https://developers.files.com/#the-bundle-object The bundle object
+    # @see https://developers.files.com/#the-bundle-object The Bundle object
     #
-    # ATTRIBUTE  | TYPE     | DESCRIPTION
-    # ---------- | -------- | -----------
-    # id         | integer  | Globally unique identifier of each bundle.
-    # code       | string   | Unique code string identifier for the bundle.
-    # url        | string   | Public sharing URL for the bundle.
-    # user_id    | integer  | ID of the user that created the bundle.
-    # created_at | datetime | Creation date of the bundle.
-    # paths      | array    | List of the paths associated with the bundle.
-    # password   | string   | Optional password to password-protect the bundle. This property is write-only. It cannot be retrieved via the API.
+    # ATTRIBUTE          | TYPE     | DESCRIPTION
+    # ------------------ | -------- | -----------
+    # code               | string   | Bundle code. This code forms the end part of the Public URL.
+    # created_at         | datetime | Bundle created at date/time
+    # description        | string   | Public description
+    # expires_at         | datetime | Bundle expiration date/time
+    # paths              | array    | A list of filenames in this bundle
+    # id                 | integer  | Bundle ID
+    # note               | string   | Bundle internal note
+    # password_protected | boolean  | Is this bundle password protected?
+    # url                | string   | Public URL of Share Link
+    # user_id            | integer  | Bundle creator user ID
+    # username           | string   | Bundle creator username
     #
     Bundle = Struct.new(
       'Bundle',
-      :id,
       :code,
+      :created_at,
+      :description,
+      :expires_at,
+      :paths,
+      :id,
+      :note,
+      :password_protected,
       :url,
       :user_id,
-      :created_at,
-      :paths,
-      :expires_at,
       :username,
       keyword_init: true
     ) do
