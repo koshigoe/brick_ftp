@@ -2,17 +2,17 @@
 
 module BrickFTP
   module RESTfulAPI
-    # Create a behavior
+    # Create behavior
     #
-    # @see https://developers.files.com/#create-a-behavior Create a behavior
+    # @see https://developers.files.com/#create-behavior Create behavior
     #
     # ### Params
     #
     # PARAMETER | TYPE   | DESCRIPTION
     # --------- | ------ | -----------
-    # path      | string | Folder path for behaviors. This must be slash-delimited, but it must neither start nor end with a slash. Maximum of 5000 characters.
-    # behavior  | string | The behavior type. Can be one of the following: webhook, file_expiration, auto_encrypt, lock_subfolders.
-    # value     | array  | Array of values associated with the behavior.
+    # path      | string | Required: Folder behaviors path.
+    # behavior  | string | Required: Behavior type.
+    # value     | string | The value of the folder behavior. Can be a integer, array, or hash depending on the type of folder behavior.
     #
     class CreateBehavior
       include Command
@@ -27,7 +27,7 @@ module BrickFTP
         keyword_init: true
       )
 
-      # Creates a new behavior.
+      # Create behavior
       #
       # @param [BrickFTP::RESTfulAPI::CreateBehavior::Params] params parameters
       # @return [BrickFTP::Types::Behavior] Behavior
