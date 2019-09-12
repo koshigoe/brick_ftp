@@ -4,27 +4,37 @@ module BrickFTP
   module Types
     using BrickFTP::CoreExt::Struct
 
-    # The notification object
+    # The Notification object
     #
-    # @see https://developers.files.com/#the-notification-object The notification object
+    # @see https://developers.files.com/#the-notification-object The Notification object
     #
-    # ATTRIBUTE     | TYPE    | DESCRIPTION
-    # ------------- | ------- | -----------
-    # id            | integer | Globally unique identifier of each notification. Each notification is given an ID automatically upon creation.
-    # path          | string  | Folder path for notifications. This must be slash-delimited, but it must neither start nor end with a slash. Maximum of 5000 characters.
-    # user_id       | integer | Unique identifier for the user being notified. Each user is given an ID automatically upon creation. You can look up user IDs by using the User resource of this REST API.
-    # username      | string  | Username for the user given by user_id. If this value is set during creation and user_id is not set, the user_id is looked up from the username and set. Maximum of 50 characters.
-    # send_interval | string  | The send interval for notifications. Can be one of the following: five_minutes (default), fifteen_minutes, hourly, daily.
-    # unsubscribed  | boolean | If true, the user has unsubscribed from receiving this notification. This property is read-only.
+    # ATTRIBUTE           | TYPE    | DESCRIPTION
+    # ------------------- | ------- | -----------
+    # id                  | integer | Notification ID
+    # group_id            | integer | Notification group id
+    # group_name          | string  | Group name if applicable
+    # notify_user_actions | boolean | Trigger notification on notification user actions?
+    # notify_on_copy      | boolean | Triggers notification when moving or copying files to this path
+    # path                | string  | Folder path to notify on This must be slash-delimited, but it must neither start nor end with a slash. Maximum of 5000 characters.
+    # send_interval       | string  | The time interval that notifications are aggregated to. Can be five_minutes, fifteen_minutes, hourly, or daily
+    # unsubscribed        | boolean | Is the user unsubscribed from this notification?
+    # unsubscribed_reason | string  | The reason that the user unsubscribed. Can be none, unsubscribe_link_clicked, mail_bounced, or mail_marked_as_spam.
+    # user_id             | integer | Notification user ID
+    # username            | string  | Notification username
     #
     Notification = Struct.new(
       'Notification',
       :id,
+      :group_id,
+      :group_name,
+      :notify_user_actions,
+      :notify_on_copy,
       :path,
-      :user_id,
-      :username,
       :send_interval,
       :unsubscribed,
+      :unsubscribed_reason,
+      :user_id,
+      :username,
       keyword_init: true
     ) do
       prepend IgnoreUndefinedAttributes
