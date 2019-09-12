@@ -2,16 +2,16 @@
 
 module BrickFTP
   module RESTfulAPI
-    # Delete a behavior
+    # Delete behavior
     #
-    # @see https://developers.files.com/#delete-a-behavior Delete a behavior
+    # @see https://developers.files.com/#delete-behavior Delete behavior
     #
     class DeleteBehavior
       include Command
 
-      # Deletes a behavior.
+      # Delete behavior
       #
-      # @param [Integer] id Globally unique identifier of each behavior.
+      # @param [Integer] id Folder behavior ID.
       #
       def call(id)
         client.delete("/api/rest/v1/behaviors/#{id}.json")
