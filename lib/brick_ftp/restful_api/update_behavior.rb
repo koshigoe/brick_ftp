@@ -2,15 +2,16 @@
 
 module BrickFTP
   module RESTfulAPI
-    # Update a behavior
+    # Update behavior
     #
-    # @see https://developers.files.com/#update-a-behavior Update a behavior
+    # @see https://developers.files.com/#update-behavior Update behavior
     #
     # ### Params
     #
-    # PARAMETER | TYPE   | DESCRIPTION
-    # --------- | ------ | -----------
-    # value     | array | Array of values associated with the behavior.
+    # PARAMETER | TYPE    | DESCRIPTION
+    # --------- | ------- | -----------
+    # id        | integer | Required: Folder behavior ID.
+    # value     | integer | The value of the folder behavior. Can be a integer, array, or hash depending on the type of folder behavior.
     #
     class UpdateBehavior
       include Command
@@ -23,9 +24,9 @@ module BrickFTP
         keyword_init: true
       )
 
-      # Updates an existing behavior.
+      # Update behavior
       #
-      # @param [Integer] id Globally unique identifier of each behavior.
+      # @param [Integer] id Folder behavior ID.
       # @param [BrickFTP::RESTfulAPI::UpdateBehavior::Params] params parameters
       # @return [BrickFTP::Types::Behavior] Behavior
       #
