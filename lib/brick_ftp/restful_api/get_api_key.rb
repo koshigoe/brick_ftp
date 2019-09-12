@@ -2,24 +2,37 @@
 
 module BrickFTP
   module RESTfulAPI
-    # Show an API key
+    # Show API Key
     #
-    # @see https://developers.files.com/#show-an-api-key Show an API key
+    # @see https://developers.files.com/#show-api-key Show API Key
+    #
+    # ### Params
+    #
+    # PARAMETER | TYPE    | DESCRIPTION
+    # --------- | ------- | -----------
+    # id        | integer | Required: API Key ID.
     #
     class GetAPIKey
       include Command
+      using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
-      # Returns a single API key.
-      #
-      # @param [Integer] id Globally unique identifier of each user API key.
-      #   Each user API key is given an ID automatically upon creation.
-      # @return [BrickFTP::Types::UserAPIKey] User's API key
-      #
-      def call(id)
-        res = client.get("/api/rest/v1/api_keys/#{id}.json")
+      Params = Struct.new(
+        'GetApiKeyParams',
+        :id,
+        keyword_init: true
+      )
 
-        BrickFTP::Types::UserAPIKey.new(res.symbolize_keys)
+      # Show API Key
+      #
+      # @param [BrickFTP::RESTfulAPI::GetApiKey::Params] params parameters
+      # @return [BrickFTP::Types::APIKey]
+      #
+      def call(params)
+        params = params.to_h.compact
+        res = client.get("/api/rest/v1/api_keys/#{params[:id]}.json")
+
+        BrickFTP::Types::APIKey.new(res.symbolize_keys)
       end
     end
   end
