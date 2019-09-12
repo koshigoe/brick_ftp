@@ -19,8 +19,8 @@ module BrickFTP
     # platform       | string   | If this API key represents a Desktop app, what platform was it created on?
     # user_id        | integer  | User ID for the owner of this API Key. May be blank for Site-wide API Keys.
     #
-    APIKey = Struct.new(
-      'APIKey',
+    ApiKey = Struct.new(
+      'ApiKey',
       :id,
       :created_at,
       :expires_at,

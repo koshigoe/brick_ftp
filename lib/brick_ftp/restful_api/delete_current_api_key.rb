@@ -6,7 +6,7 @@ module BrickFTP
     #
     # @see https://developers.files.com/#delete-current-api-key-requires-current-api-connection-to-be-using-an-api-key Delete current API key. (Requires current API connection to be using an API key.)
     #
-    class DeleteCurrentAPIKey
+    class DeleteCurrentApiKey
       include Command
 
       # Delete current API key. (Requires current API connection to be using an API key.)

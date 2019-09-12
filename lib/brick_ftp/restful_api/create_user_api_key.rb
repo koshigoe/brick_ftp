@@ -15,13 +15,13 @@ module BrickFTP
     # permission_set | string   | Leave blank, or set to desktop_app to restrict the key to only desktop app functions.
     # expires_at     | string   | Have the key expire at this date/time.
     #
-    class CreateUserAPIKey
+    class CreateUserApiKey
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
       Params = Struct.new(
-        'CreateUserAPIKeyParams',
+        'CreateUserApiKeyParams',
         :id,
         :name,
         :permission_set,
@@ -31,14 +31,14 @@ module BrickFTP
 
       # Create API key for user
       #
-      # @param [BrickFTP::RESTfulAPI::CreateUserAPIKey::Params] params parameters for creating an API key
-      # @return [BrickFTP::Types::APIKey]
+      # @param [BrickFTP::RESTfulAPI::CreateUserApiKey::Params] params parameters for creating an API key
+      # @return [BrickFTP::Types::ApiKey]
       #
       def call(params)
         params = params.to_h.compact
         res = client.post("/api/rest/v1/users/#{params.delete(:id)}/api_keys.json", params)
 
-        BrickFTP::Types::APIKey.new(res.symbolize_keys)
+        BrickFTP::Types::ApiKey.new(res.symbolize_keys)
       end
     end
   end

@@ -12,7 +12,7 @@ module BrickFTP
     # --------- | ------- | -----------
     # id        | integer | Required: API Key ID.
     #
-    class GetAPIKey
+    class GetApiKey
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
@@ -26,13 +26,13 @@ module BrickFTP
       # Show API Key
       #
       # @param [BrickFTP::RESTfulAPI::GetApiKey::Params] params parameters
-      # @return [BrickFTP::Types::APIKey]
+      # @return [BrickFTP::Types::ApiKey]
       #
       def call(params)
         params = params.to_h.compact
         res = client.get("/api/rest/v1/api_keys/#{params[:id]}.json")
 
-        BrickFTP::Types::APIKey.new(res.symbolize_keys)
+        BrickFTP::Types::ApiKey.new(res.symbolize_keys)
       end
     end
   end

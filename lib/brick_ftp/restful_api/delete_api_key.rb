@@ -12,20 +12,20 @@ module BrickFTP
     # --------- | ------- | -----------
     # id        | integer | Required: API Key ID.
     #
-    class DeleteAPIKey
+    class DeleteApiKey
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
       Params = Struct.new(
-        'DeleteAPIKeyParams',
+        'DeleteApiKeyParams',
         :id,
         keyword_init: true
       )
 
       # Delete API Key
       #
-      # @param [BrickFTP::RESTfulAPI::DeleteAPIKey::Params] params parameters
+      # @param [BrickFTP::RESTfulAPI::DeleteApiKey::Params] params parameters
       #
       def call(params)
         params = params.to_h.compact

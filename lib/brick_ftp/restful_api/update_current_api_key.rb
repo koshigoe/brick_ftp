@@ -14,13 +14,13 @@ module BrickFTP
     # permission_set | string | Leave blank, or set to desktop_app to restrict the key to only desktop app functions.
     # expires_at     | string | Have the key expire at this date/time.
     #
-    class UpdateCurrentAPIKey
+    class UpdateCurrentApiKey
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
       Params = Struct.new(
-        'UpdateCurrentAPIKeyParams',
+        'UpdateCurrentApiKeyParams',
         :name,
         :permission_set,
         :expires_at,
@@ -29,13 +29,13 @@ module BrickFTP
 
       # Update current API key. (Requires current API connection to be using an API key.)
       #
-      # @param [BrickFTP::RESTfulAPI::UpdateCurrentAPIKey::Params] params parameters for update API key
-      # @return [BrickFTP::Types::APIKey]
+      # @param [BrickFTP::RESTfulAPI::UpdateCurrentApiKey::Params] params parameters for update API key
+      # @return [BrickFTP::Types::ApiKey]
       #
       def call(params)
         res = client.patch('/api/rest/v1/api_key.json', params.to_h.compact)
 
-        BrickFTP::Types::APIKey.new(res.symbolize_keys)
+        BrickFTP::Types::ApiKey.new(res.symbolize_keys)
       end
     end
   end

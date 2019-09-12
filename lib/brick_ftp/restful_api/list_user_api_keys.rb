@@ -12,7 +12,7 @@ module BrickFTP
     # --------- | ------- | -----------
     # id        | integer | Required: User ID.
     #
-    class ListUserAPIKeys
+    class ListUserApiKeys
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
@@ -26,13 +26,13 @@ module BrickFTP
       # List user's API keys
       #
       # @param [BrickFTP::RESTfulAPI::ListUserApiKeys::Params] params parameters
-      # @return [Array<BrickFTP::Types::APIKey>]
+      # @return [Array<BrickFTP::Types::ApiKey>]
       #
       def call(params)
         params = params.to_h.compact
         res = client.get("/api/rest/v1/users/#{params[:id]}/api_keys.json")
 
-        res.map { |i| BrickFTP::Types::APIKey.new(i.symbolize_keys) }
+        res.map { |i| BrickFTP::Types::ApiKey.new(i.symbolize_keys) }
       end
     end
   end

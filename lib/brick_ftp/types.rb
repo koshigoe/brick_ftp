@@ -2,7 +2,7 @@
 
 module BrickFTP
   module Types
-    autoload :APIKey, 'brick_ftp/types/api_key'
+    autoload :ApiKey, 'brick_ftp/types/api_key'
     autoload :Automation, 'brick_ftp/types/automation'
     autoload :Behavior, 'brick_ftp/types/behavior'
     autoload :Bundle, 'brick_ftp/types/bundle'

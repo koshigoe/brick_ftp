@@ -2,11 +2,11 @@
 
 require 'spec_helper'
 
-RSpec.describe BrickFTP::RESTfulAPI::CreateUserAPIKey, type: :lib do
+RSpec.describe BrickFTP::RESTfulAPI::CreateUserApiKey, type: :lib do
   describe '#call' do
     context 'given correct parameters' do
       it 'return created user API key object' do
-        created_api_key = BrickFTP::Types::APIKey.new(
+        created_api_key = BrickFTP::Types::ApiKey.new(
           id: 1,
           created_at: '2000-01-01 01:00:00 UTC',
           expires_at: '2000-01-01 01:00:00 UTC',
@@ -32,13 +32,13 @@ RSpec.describe BrickFTP::RESTfulAPI::CreateUserAPIKey, type: :lib do
           .to_return(body: created_api_key.to_h.to_json)
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-        params = BrickFTP::RESTfulAPI::CreateUserAPIKey::Params.new(
+        params = BrickFTP::RESTfulAPI::CreateUserApiKey::Params.new(
           id: 1,
           name: 'My Primary API Key',
           permission_set: 'full',
           expires_at: '2000-01-01 01:00:00 UTC',
         )
-        command = BrickFTP::RESTfulAPI::CreateUserAPIKey.new(rest)
+        command = BrickFTP::RESTfulAPI::CreateUserApiKey.new(rest)
 
         expect(command.call(params)).to eq created_api_key
       end

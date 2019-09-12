@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe BrickFTP::RESTfulAPI::DeleteCurrentAPIKey, type: :lib do
+RSpec.describe BrickFTP::RESTfulAPI::DeleteCurrentApiKey, type: :lib do
   describe '#call' do
     context 'given correct current API key ID' do
       it 'return true' do
@@ -16,7 +16,7 @@ RSpec.describe BrickFTP::RESTfulAPI::DeleteCurrentAPIKey, type: :lib do
           .to_return(body: nil, status: 204)
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-        command = BrickFTP::RESTfulAPI::DeleteCurrentAPIKey.new(rest)
+        command = BrickFTP::RESTfulAPI::DeleteCurrentApiKey.new(rest)
 
         expect(command.call).to be_truthy
       end

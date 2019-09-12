@@ -2,11 +2,11 @@
 
 require 'spec_helper'
 
-RSpec.describe BrickFTP::RESTfulAPI::CreateSiteWideAPIKey, type: :lib do
+RSpec.describe BrickFTP::RESTfulAPI::CreateSiteWideApiKey, type: :lib do
   describe '#call' do
     context 'given correct parameters' do
       it 'return created Site Wide API key object' do
-        created_api_key = BrickFTP::Types::APIKey.new(
+        created_api_key = BrickFTP::Types::ApiKey.new(
           id: 1,
           created_at: "2000-01-01 01:00:00 UTC",
           expires_at: "2000-01-01 01:00:00 UTC",
@@ -32,12 +32,12 @@ RSpec.describe BrickFTP::RESTfulAPI::CreateSiteWideAPIKey, type: :lib do
           .to_return(body: created_api_key.to_h.to_json)
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-        params = BrickFTP::RESTfulAPI::CreateSiteWideAPIKey::Params.new(
+        params = BrickFTP::RESTfulAPI::CreateSiteWideApiKey::Params.new(
           name: 'API Key Name',
           permission_set: 'full',
           expires_at: '2000-01-01 01:00:00 UTC'
         )
-        command = BrickFTP::RESTfulAPI::CreateSiteWideAPIKey.new(rest)
+        command = BrickFTP::RESTfulAPI::CreateSiteWideApiKey.new(rest)
 
         expect(command.call(params)).to eq created_api_key
       end

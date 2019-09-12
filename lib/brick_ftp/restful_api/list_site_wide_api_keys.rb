@@ -14,7 +14,7 @@ module BrickFTP
     # ---------- | ------- | -----------
     # with_users | boolean | Shows associated user ids if set.
     #
-    class ListSiteWideAPIKeys
+    class ListSiteWideApiKeys
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
@@ -28,7 +28,6 @@ module BrickFTP
       # List site-wide API Keys
       #
       # @param [BrickFTP::RESTfulAPI::ListSiteWideApiKeys::Params] params parameters
-      # @return [Array<BrickFTP::Types::APIKey>]
       #
       def call(params)
         params = params.to_h.compact
@@ -37,7 +36,7 @@ module BrickFTP
         endpoint += "?#{query}" unless query.empty?
         res = client.get(endpoint)
 
-        res.map { |i| BrickFTP::Types::APIKey.new(i.symbolize_keys) }
+        res.map { |i| BrickFTP::Types::ApiKey.new(i.symbolize_keys) }
       end
     end
   end

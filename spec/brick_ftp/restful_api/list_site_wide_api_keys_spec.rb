@@ -2,11 +2,11 @@
 
 require 'spec_helper'
 
-RSpec.describe BrickFTP::RESTfulAPI::ListSiteWideAPIKeys, type: :lib do
+RSpec.describe BrickFTP::RESTfulAPI::ListSiteWideApiKeys, type: :lib do
   describe '#call' do
     context 'correct request' do
       it 'return Array of site-wide API key object' do
-        expected_user_api_key = BrickFTP::Types::APIKey.new(
+        expected_user_api_key = BrickFTP::Types::ApiKey.new(
           id: 1,
           created_at: '2000-01-01 01:00:00 UTC',
           expires_at: '000-01-01 01:00:00 UTC',
@@ -27,7 +27,7 @@ RSpec.describe BrickFTP::RESTfulAPI::ListSiteWideAPIKeys, type: :lib do
           .to_return(body: [expected_user_api_key.to_h].to_json)
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-        command = BrickFTP::RESTfulAPI::ListSiteWideAPIKeys.new(rest)
+        command = BrickFTP::RESTfulAPI::ListSiteWideApiKeys.new(rest)
 
         expect(command.call(with_users: true)).to eq([expected_user_api_key])
       end
