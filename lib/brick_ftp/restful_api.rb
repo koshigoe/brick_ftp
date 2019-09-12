@@ -18,7 +18,9 @@ module BrickFTP
     autoload :DeleteUser, 'brick_ftp/restful_api/delete_user'
     autoload :UnlockUser, 'brick_ftp/restful_api/unlock_user'
     # ref. https://developers.files.com/#api-keys
-    autoload :ListAPIKeys, 'brick_ftp/restful_api/list_api_keys'
+    autoload :ListCurrentUserAPIKeys, 'brick_ftp/restful_api/list_current_user_api_keys'
+    autoload :ListUserAPIKeys, 'brick_ftp/restful_api/list_user_api_keys'
+    autoload :ListSiteWideAPIKeys, 'brick_ftp/restful_api/list_site_wide_api_keys'
     autoload :GetAPIKey, 'brick_ftp/restful_api/get_api_key'
     autoload :CreateAPIKey, 'brick_ftp/restful_api/create_api_key'
     autoload :DeleteAPIKey, 'brick_ftp/restful_api/delete_api_key'
