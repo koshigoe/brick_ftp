@@ -59,6 +59,15 @@ module BrickFTP
     autoload :ActivateCertificate, 'brick_ftp/restful_api/activate_certificate'
     autoload :UpdateCertificate, 'brick_ftp/restful_api/update_certificate'
     autoload :DeleteCertificate, 'brick_ftp/restful_api/delete_certificate'
+    # ref. https://developers.files.com/#file-and-folder-operations
+    autoload :ListFolders, 'brick_ftp/restful_api/list_folders'
+    autoload :CreateFolder, 'brick_ftp/restful_api/create_folder'
+    autoload :CountFolderContents, 'brick_ftp/restful_api/count_folder_contents'
+    autoload :GetFolderSize, 'brick_ftp/restful_api/get_folder_size'
+    autoload :DownloadFile, 'brick_ftp/restful_api/download_file'
+    autoload :MoveFolder, 'brick_ftp/restful_api/move_folder'
+    autoload :CopyFolder, 'brick_ftp/restful_api/copy_folder'
+    autoload :DeleteFolder, 'brick_ftp/restful_api/delete_folder'
     # ref. https://developers.files.com/#user-public-keys
     autoload :ListPublicKeys, 'brick_ftp/restful_api/list_public_keys'
     autoload :GetPublicKey, 'brick_ftp/restful_api/get_public_key'
@@ -89,15 +98,6 @@ module BrickFTP
     autoload :RetrieveUserHistory, 'brick_ftp/restful_api/retrieve_user_history'
     autoload :RetrieveFolderHistory, 'brick_ftp/restful_api/retrieve_folder_history'
     autoload :RetrieveFileHistory, 'brick_ftp/restful_api/retrieve_file_history'
-    # ref. https://developers.files.com/#file-and-folder-operations
-    autoload :ListFolders, 'brick_ftp/restful_api/list_folders'
-    autoload :CreateFolder, 'brick_ftp/restful_api/create_folder'
-    autoload :CountFolderContents, 'brick_ftp/restful_api/count_folder_contents'
-    autoload :GetFolderSize, 'brick_ftp/restful_api/get_folder_size'
-    autoload :DownloadFile, 'brick_ftp/restful_api/download_file'
-    autoload :MoveFolder, 'brick_ftp/restful_api/move_folder'
-    autoload :CopyFolder, 'brick_ftp/restful_api/copy_folder'
-    autoload :DeleteFolder, 'brick_ftp/restful_api/delete_folder'
     # ref. https://developers.files.com/#file-uploading
     autoload :StartUpload, 'brick_ftp/restful_api/start_upload'
     autoload :ContinueUpload, 'brick_ftp/restful_api/continue_upload'
