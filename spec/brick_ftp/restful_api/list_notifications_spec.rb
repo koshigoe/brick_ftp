@@ -7,12 +7,17 @@ RSpec.describe BrickFTP::RESTfulAPI::ListNotifications, type: :lib do
     context 'correct request' do
       it 'return Array of Notification object' do
         expected_notification = BrickFTP::Types::Notification.new(
-          id: 1234,
-          path: 'a/b/c',
+          id: 1,
+          group_id: 1,
+          group_name: '',
+          notify_user_actions: true,
+          notify_on_copy: true,
+          path: 'path',
+          send_interval: 'fifteen_minutes',
+          unsubscribed: true,
+          unsubscribed_reason: '',
           user_id: 1,
-          username: 'user',
-          send_interval: 'daily',
-          unsubscribed: false
+          username: 'User'
         )
 
         stub_request(:get, 'https://subdomain.files.com/api/rest/v1/notifications.json')
