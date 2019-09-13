@@ -13,7 +13,7 @@ RSpec.describe BrickFTP::RESTfulAPI::DeleteNotification, type: :lib do
               'User-Agent' => 'BrickFTP Client/1.0 (https://github.com/koshigoe/brick_ftp)',
             }
           )
-          .to_return(body: '[]')
+          .to_return(body: nil, status: 204)
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::DeleteNotification.new(rest)
