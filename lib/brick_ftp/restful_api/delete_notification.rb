@@ -2,17 +2,16 @@
 
 module BrickFTP
   module RESTfulAPI
-    # Delete a notification
+    # Delete notification
     #
-    # @see https://developers.files.com/#delete-a-notification Delete a notification
+    # @see https://developers.files.com/#delete-notification Delete notification
     #
     class DeleteNotification
       include Command
 
-      # Deletes the specified notification.
+      # Delete notification
       #
-      # @param [Integer] id Globally unique identifier of each notification.
-      #   Each notification is given an ID automatically upon creation.
+      # @param [Integer] id Notification ID.
       #
       def call(id)
         client.delete("/api/rest/v1/notifications/#{id}.json")
