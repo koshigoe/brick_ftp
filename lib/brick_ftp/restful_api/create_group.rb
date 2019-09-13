@@ -2,17 +2,18 @@
 
 module BrickFTP
   module RESTfulAPI
-    # Create a group
+    # Create group
     #
-    # @see https://developers.files.com/#create-a-group Create a group
+    # @see https://developers.files.com/#create-group Create group
     #
     # ### Params
     #
-    # PARAMETER | TYPE                     | DESCRIPTION
-    # --------- | ------------------------ | -----------
-    # name      | string                   | Name of the group. This is how the group will be displayed on the site. Maximum of 50 characters.
-    # notes     | text                     | You may use this property to store any additional information you require. There are no restrictions on its formatting.
-    # user_ids  | comma-separated integers | IDs of the users that are in this group.
+    # PARAMETER | TYPE    | DESCRIPTION
+    # --------- | ------- | -----------
+    # name      | string  | Group name.
+    # notes     | string  | Group notes.
+    # user_ids  | string  | A list of user ids. If sent as a string, should be comma-delimited.
+    # admin_ids | string  | A list of group admin user ids. If sent as a string, should be comma-delimited.
     #
     class CreateGroup
       include Command
@@ -24,13 +25,14 @@ module BrickFTP
         :name,
         :notes,
         :user_ids,
+        :admin_ids,
         keyword_init: true
       )
 
-      # Creates a new group on the current site.
+      # Create group
       #
       # @param [BrickFTP::RESTfulAPI::CreateGroup::Params] params parameters for creating a Group
-      # @return [BrickFTP::Types::Group] created Group
+      # @return [BrickFTP::Types::Group]
       #
       def call(params)
         res = client.post('/api/rest/v1/groups.json', params.to_h.compact)
