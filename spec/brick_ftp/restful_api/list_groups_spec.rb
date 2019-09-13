@@ -7,12 +7,12 @@ RSpec.describe BrickFTP::RESTfulAPI::ListGroups, type: :lib do
     context 'correct request' do
       it 'return Array of Group object' do
         expected_group = BrickFTP::Types::Group.new(
-          id: 1234,
-          name: 'test',
-          notes: 'notes',
-          user_ids: '',
-          usernames: nil,
-          admin_ids: []
+          id: 1,
+          admin_ids: [],
+          name: 'owners',
+          notes: '',
+          user_ids: [],
+          usernames: []
         )
 
         stub_request(:get, 'https://subdomain.files.com/api/rest/v1/groups.json')
