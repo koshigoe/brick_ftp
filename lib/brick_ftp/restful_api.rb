@@ -85,6 +85,10 @@ module BrickFTP
     autoload :RetrieveUserHistory, 'brick_ftp/restful_api/retrieve_user_history'
     autoload :RetrieveFolderHistory, 'brick_ftp/restful_api/retrieve_folder_history'
     autoload :RetrieveFileHistory, 'brick_ftp/restful_api/retrieve_file_history'
+    # ref. https://developers.files.com/#locks
+    autoload :ListLocks, 'brick_ftp/restful_api/list_locks'
+    autoload :CreateLock, 'brick_ftp/restful_api/create_lock'
+    autoload :DeleteLock, 'brick_ftp/restful_api/delete_lock'
     # ref. https://developers.files.com/#user-public-keys
     autoload :ListPublicKeys, 'brick_ftp/restful_api/list_public_keys'
     autoload :GetPublicKey, 'brick_ftp/restful_api/get_public_key'
