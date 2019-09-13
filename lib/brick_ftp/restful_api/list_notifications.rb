@@ -2,17 +2,17 @@
 
 module BrickFTP
   module RESTfulAPI
-    # List all notifications
+    # List notifications
     #
-    # @see https://developers.files.com/#list-all-notifications List all notifications
+    # @see https://developers.files.com/#list-notifications List notifications
     #
     class ListNotifications
       include Command
       using BrickFTP::CoreExt::Hash
 
-      # Returns a list of all notifications on the current site.
+      # List notifications
       #
-      # @return [Array<BrickFTP::Types::Notification>] Notifications
+      # @return [Array<BrickFTP::Types::Notification>]
       #
       def call
         res = client.get('/api/rest/v1/notifications.json')
