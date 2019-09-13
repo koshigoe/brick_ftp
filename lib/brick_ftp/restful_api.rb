@@ -89,6 +89,10 @@ module BrickFTP
     autoload :ListLocks, 'brick_ftp/restful_api/list_locks'
     autoload :CreateLock, 'brick_ftp/restful_api/create_lock'
     autoload :DeleteLock, 'brick_ftp/restful_api/delete_lock'
+    # ref. https://developers.files.com/#notifications
+    autoload :ListNotifications, 'brick_ftp/restful_api/list_notifications'
+    autoload :CreateNotification, 'brick_ftp/restful_api/create_notification'
+    autoload :DeleteNotification, 'brick_ftp/restful_api/delete_notification'
     # ref. https://developers.files.com/#user-public-keys
     autoload :ListPublicKeys, 'brick_ftp/restful_api/list_public_keys'
     autoload :GetPublicKey, 'brick_ftp/restful_api/get_public_key'
@@ -98,10 +102,6 @@ module BrickFTP
     autoload :ListPermissions, 'brick_ftp/restful_api/list_permissions'
     autoload :CreatePermission, 'brick_ftp/restful_api/create_permission'
     autoload :DeletePermission, 'brick_ftp/restful_api/delete_permission'
-    # ref. https://developers.files.com/#notifications
-    autoload :ListNotifications, 'brick_ftp/restful_api/list_notifications'
-    autoload :CreateNotification, 'brick_ftp/restful_api/create_notification'
-    autoload :DeleteNotification, 'brick_ftp/restful_api/delete_notification'
     # ref. https://developers.files.com/#file-uploading
     autoload :StartUpload, 'brick_ftp/restful_api/start_upload'
     autoload :ContinueUpload, 'brick_ftp/restful_api/continue_upload'
