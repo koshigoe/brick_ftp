@@ -116,12 +116,14 @@ module BrickFTP
       # Send HTTP request via DELETE method.
       #
       # @param [String] path the request path including query string.
+      # @param [Hash, nil] data the request body
       # @param [Hash, nil] headers additional request headers
       # @return [Hash] JSON parsed object.
       #
-      def delete(path, headers = nil)
+      def delete(path, data = nil, headers = nil)
         req = Net::HTTP::Delete.new(path, (headers || {}).merge(@request_headers))
         req.basic_auth(@api_key, 'x')
+        req.body = data.to_json unless data.nil?
         res = @http.start { |session| session.request(req) }
 
         handle_response(res)
