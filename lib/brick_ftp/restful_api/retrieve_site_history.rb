@@ -2,36 +2,52 @@
 
 module BrickFTP
   module RESTfulAPI
-    # Retrieve site history
+    # List site actions history
     #
-    # @see https://developers.files.com/#retrieve-site-history Retrieve site history
+    # @see https://developers.files.com/#list-site-actions-history
     #
     # ### Params
     #
     # PARAMETER | TYPE     | DESCRIPTION
     # --------- | -------- | -----------
-    # page      | integer  | Optional page number of items to return in this request.
-    # per_page  | integer  | Optional requested number of items returned per request. Default: 1000, maximum: 10000. Leave blank for default (strongly recommended).
-    # start_at  | datetime | Optional date and time in the history to start from.
+    # page      | integer  | Site actions page.
+    # per_page  | integer  | Site actions to display per page.
+    # start_at  | string   | Leave blank or set to a date/time to filter earlier entries.
+    # end_at    | string   | Leave blank or set to a date/time to filter later entries.
+    # display   | string   | Display format. Leave blank or set to full or parent.
     #
     class RetrieveSiteHistory
       include Command
-      include RetrieveHistory
+      using BrickFTP::CoreExt::Struct
+      using BrickFTP::CoreExt::Hash
 
-      # Returns the entire history for the current site.
+      Params = Struct.new(
+        'RetrieveSiteHistory',
+        :page,
+        :per_page,
+        :start_at,
+        :end_at,
+        :display,
+        keyword_init: true
+      )
+
+      # List site actions history
       #
-      # - The history starts with the most recent entries and proceeds back in time.
-      # - There is a maximum number of records that will be returned with a single request
-      #   (default 1000 or whatever value you provide as the per_page parameter, up to a maximum of 10,000).
+      # @param [BrickFTP::RESTfulAPI::RetrieveSiteHistory::Params] params parameters
+      # @return [Array<BrickFTP::Types::History>]
       #
-      # @param [Integer] page Optional page number of items to return in this request.
-      # @param [Integer] per_page Optional requested number of items returned per request.
-      #   Default: 1000, maximum: 10000. Leave blank for default (strongly recommended).
-      # @param [Time] start_at Optional date and time in the history to start from.
-      # @return [Array<BrickFTP::Types::History>] History
-      #
-      def call(page: nil, per_page: nil, start_at: nil)
-        retrieve('/api/rest/v1/history.json', page, per_page, start_at)
+      def call(params)
+        params = params.to_h.compact
+        %i[start_at end_at].each do |key|
+          params[key] = params[key].utc.iso8601 if params[key].is_a?(Time)
+        end
+
+        endpoint = '/api/rest/v1/history.json'
+        query = params.sort.map { |k, v| "#{k}=#{ERB::Util.url_encode(v.to_s)}" }.join('&')
+        endpoint += "?#{query}" unless query.empty?
+        res = client.get(endpoint)
+
+        res.map { |i| BrickFTP::Types::History.new(i.symbolize_keys) }
       end
     end
   end
