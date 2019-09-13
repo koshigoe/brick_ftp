@@ -2,17 +2,17 @@
 
 module BrickFTP
   module RESTfulAPI
-    # List all groups
+    # List groups
     #
-    # @see https://developers.files.com/#list-all-groups List all groups
+    # @see https://developers.files.com/#list-groups List groups
     #
     class ListGroups
       include Command
       using BrickFTP::CoreExt::Hash
 
-      # Returns a list of all groups on the current site.
+      # List groups
       #
-      # @return [Array<BrickFTP::Types::Group>] Groups
+      # @return [Array<BrickFTP::Types::Group>]
       #
       def call
         res = client.get('/api/rest/v1/groups.json')
