@@ -2,17 +2,19 @@
 
 module BrickFTP
   module RESTfulAPI
-    # Update a group
+    # Update group
     #
-    # @see https://developers.files.com/#update-a-group Update a group
+    # @see https://developers.files.com/#update-group Update group
     #
     # ### Params
     #
-    # PARAMETER | TYPE                     | DESCRIPTION
-    # --------- | ------------------------ | -----------
-    # name      | string                   | Name of the group. This is how the group will be displayed on the site. Maximum of 50 characters.
-    # notes     | text                     | You may use this property to store any additional information you require. There are no restrictions on its formatting.
-    # user_ids  | comma-separated integers | IDs of the users that are in this group.
+    # PARAMETER | TYPE    | DESCRIPTION
+    # --------- | ------- | -----------
+    # id        | integer | Required: Group ID.
+    # name      | string  | Group name.
+    # notes     | string  | Group notes.
+    # user_ids  | string  | A list of user ids. If sent as a string, should be comma-delimited.
+    # admin_ids | string  | A list of group admin user ids. If sent as a string, should be comma-delimited.
     #
     class UpdateGroup
       include Command
@@ -24,15 +26,15 @@ module BrickFTP
         :name,
         :notes,
         :user_ids,
+        :admin_ids,
         keyword_init: true
       )
 
-      # Updates the specified group.
+      # Update group
       #
-      # @param [Integer] id Globally unique identifier of each group.
-      #   Each group is given an ID automatically upon creation.
+      # @param [Integer] id Group ID.
       # @param [BrickFTP::RESTfulAPI::UpdateGroup::Params] params parameters for updating a Group
-      # @return [BrickFTP::Types::Group] updated Group
+      # @return [BrickFTP::Types::Group]
       #
       def call(id, params)
         res = client.put("/api/rest/v1/groups/#{id}.json", params.to_h.compact)
