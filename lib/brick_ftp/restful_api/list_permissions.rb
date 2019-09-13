@@ -12,23 +12,16 @@ module BrickFTP
     #
     # PARAMETER | TYPE   | DESCRIPTION
     # --------- | ------ | -----------
-    # path      | string | Optional path to focus the result set on.
+    # path      | string | Permission path.
     #
     class ListPermissions
       include Command
       using BrickFTP::CoreExt::Hash
 
-      # Returns a list of permissions on the current site.
+      # List permissions
       #
-      # - By default all permissions for the entire site are returned.
-      # - When given a path parameter, then only permissions immediately relevant to the given path are returned.
-      # - When using a path parameter, the result will include permissions on the current path and recursive
-      #   permissions that are inherited from parent paths, except that lesser permissions will be excluded
-      #   if a greater permission applies on the given path for a particular user or group.
-      #
-      # @param [String] path Folder path for the permission to apply to. This must be slash-delimited,
-      #   but it must neither start nor end with a slash. Maximum of 5000 characters.
-      # @return [Array<BrickFTP::Types::Permission>] Permissions
+      # @param [String] path Permission path.
+      # @return [Array<BrickFTP::Types::Permission>]
       #
       def call(path: nil)
         endpoint = '/api/rest/v1/permissions.json'
