@@ -2,19 +2,18 @@
 
 module BrickFTP
   module RESTfulAPI
-    # Show a group
+    # Show group
     #
-    # @see https://developers.files.com/#show-a-group Show a group
+    # @see https://developers.files.com/#show-group Show group
     #
     class GetGroup
       include Command
       using BrickFTP::CoreExt::Hash
 
-      # Returns a single group.
+      # Show group
       #
-      # @param [Integer] id Globally unique identifier of each group.
-      #   Each group is given an ID automatically upon creation.
-      # @return [BrickFTP::Types::Group, nil] found Group or nil
+      # @param [Integer] id Group ID.
+      # @return [BrickFTP::Types::Group, nil]
       #
       def call(id)
         res = client.get("/api/rest/v1/groups/#{id}.json")
