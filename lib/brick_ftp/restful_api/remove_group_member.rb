@@ -2,20 +2,20 @@
 
 module BrickFTP
   module RESTfulAPI
-    # Remove a member
+    # Delete group membership
     #
-    # @see https://developers.files.com/#remove-a-member Remove a member
+    # @see https://developers.files.com/#delete-group-membership Delete group membership
     #
     class RemoveGroupMember
       include Command
 
-      # Removes a user from a group. No action will be taken if the user is not already in the group.
+      # Delete group membership
       #
-      # @param [Integer] group_id ID of the group the membership is associated with.
-      # @param [Integer] user_id ID of the user the membership is associated with.
+      # @param [Integer] id Group ID.
+      # @param [Integer] user_id User ID.
       #
-      def call(group_id, user_id)
-        client.delete("/api/rest/v1/groups/#{group_id}/memberships/#{user_id}.json")
+      def call(id, user_id)
+        client.delete("/api/rest/v1/groups/#{id}/memberships/#{user_id}.json")
         true
       end
     end
