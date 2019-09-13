@@ -68,11 +68,6 @@ module BrickFTP
     autoload :MoveFolder, 'brick_ftp/restful_api/move_folder'
     autoload :CopyFolder, 'brick_ftp/restful_api/copy_folder'
     autoload :DeleteFolder, 'brick_ftp/restful_api/delete_folder'
-    # ref. https://developers.files.com/#user-public-keys
-    autoload :ListPublicKeys, 'brick_ftp/restful_api/list_public_keys'
-    autoload :GetPublicKey, 'brick_ftp/restful_api/get_public_key'
-    autoload :CreatePublicKey, 'brick_ftp/restful_api/create_public_key'
-    autoload :DeletePublicKey, 'brick_ftp/restful_api/delete_public_key'
     # ref. https://developers.files.com/#groups
     autoload :ListGroups, 'brick_ftp/restful_api/list_groups'
     autoload :GetGroup, 'brick_ftp/restful_api/get_group'
@@ -83,6 +78,11 @@ module BrickFTP
     autoload :AddGroupMember, 'brick_ftp/restful_api/add_group_member'
     autoload :UpdateGroupMember, 'brick_ftp/restful_api/update_group_member'
     autoload :RemoveGroupMember, 'brick_ftp/restful_api/remove_group_member'
+    # ref. https://developers.files.com/#user-public-keys
+    autoload :ListPublicKeys, 'brick_ftp/restful_api/list_public_keys'
+    autoload :GetPublicKey, 'brick_ftp/restful_api/get_public_key'
+    autoload :CreatePublicKey, 'brick_ftp/restful_api/create_public_key'
+    autoload :DeletePublicKey, 'brick_ftp/restful_api/delete_public_key'
     # ref. https://developers.files.com/#permissions
     autoload :ListPermissions, 'brick_ftp/restful_api/list_permissions'
     autoload :CreatePermission, 'brick_ftp/restful_api/create_permission'
