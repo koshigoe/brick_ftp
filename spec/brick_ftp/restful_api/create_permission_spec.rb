@@ -7,10 +7,14 @@ RSpec.describe BrickFTP::RESTfulAPI::CreatePermission, type: :lib do
     context 'given correct parameters' do
       it 'return created Permission object' do
         created_permission = BrickFTP::Types::Permission.new(
-          id: 1234,
+          id: 1,
           user_id: 1,
-          path: 'a/b/c',
-          permission: 'writeonly'
+          username: 'Sser',
+          group_id: 1,
+          group_name: '',
+          path: '',
+          permission: 'full',
+          recursive: true
         )
 
         stub_request(:post, 'https://subdomain.files.com/api/rest/v1/permissions.json')
@@ -19,12 +23,24 @@ RSpec.describe BrickFTP::RESTfulAPI::CreatePermission, type: :lib do
             headers: {
               'User-Agent' => 'BrickFTP Client/1.0 (https://github.com/koshigoe/brick_ftp)',
             },
-            body: { user_id: 1, path: 'a/b/c', permission: 'writeonly' }.to_json
+            body: {
+              group_id: 1,
+              permission: 'full',
+              recursive: true,
+              user_id: 1,
+              username: 'Sser',
+            }.to_json
           )
           .to_return(body: created_permission.to_h.to_json)
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-        params = BrickFTP::RESTfulAPI::CreatePermission::Params.new(user_id: 1, path: 'a/b/c', permission: 'writeonly')
+        params = BrickFTP::RESTfulAPI::CreatePermission::Params.new(
+          group_id: 1,
+          permission: 'full',
+          recursive: true,
+          user_id: 1,
+          username: 'Sser'
+        )
         command = BrickFTP::RESTfulAPI::CreatePermission.new(rest)
 
         expect(command.call(params)).to eq created_permission
