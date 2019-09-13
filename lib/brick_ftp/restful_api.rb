@@ -78,6 +78,13 @@ module BrickFTP
     autoload :AddGroupMember, 'brick_ftp/restful_api/add_group_member'
     autoload :UpdateGroupMember, 'brick_ftp/restful_api/update_group_member'
     autoload :RemoveGroupMember, 'brick_ftp/restful_api/remove_group_member'
+    # ref. https://developers.files.com/#history
+    autoload :RetrieveHistory, 'brick_ftp/restful_api/retrieve_history'
+    autoload :RetrieveSiteHistory, 'brick_ftp/restful_api/retrieve_site_history'
+    autoload :RetrieveLoginHistory, 'brick_ftp/restful_api/retrieve_login_history'
+    autoload :RetrieveUserHistory, 'brick_ftp/restful_api/retrieve_user_history'
+    autoload :RetrieveFolderHistory, 'brick_ftp/restful_api/retrieve_folder_history'
+    autoload :RetrieveFileHistory, 'brick_ftp/restful_api/retrieve_file_history'
     # ref. https://developers.files.com/#user-public-keys
     autoload :ListPublicKeys, 'brick_ftp/restful_api/list_public_keys'
     autoload :GetPublicKey, 'brick_ftp/restful_api/get_public_key'
@@ -91,13 +98,6 @@ module BrickFTP
     autoload :ListNotifications, 'brick_ftp/restful_api/list_notifications'
     autoload :CreateNotification, 'brick_ftp/restful_api/create_notification'
     autoload :DeleteNotification, 'brick_ftp/restful_api/delete_notification'
-    # ref. https://developers.files.com/#history
-    autoload :RetrieveHistory, 'brick_ftp/restful_api/retrieve_history'
-    autoload :RetrieveSiteHistory, 'brick_ftp/restful_api/retrieve_site_history'
-    autoload :RetrieveLoginHistory, 'brick_ftp/restful_api/retrieve_login_history'
-    autoload :RetrieveUserHistory, 'brick_ftp/restful_api/retrieve_user_history'
-    autoload :RetrieveFolderHistory, 'brick_ftp/restful_api/retrieve_folder_history'
-    autoload :RetrieveFileHistory, 'brick_ftp/restful_api/retrieve_file_history'
     # ref. https://developers.files.com/#file-uploading
     autoload :StartUpload, 'brick_ftp/restful_api/start_upload'
     autoload :ContinueUpload, 'brick_ftp/restful_api/continue_upload'
