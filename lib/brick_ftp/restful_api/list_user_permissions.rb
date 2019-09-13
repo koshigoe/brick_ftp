@@ -4,36 +4,38 @@ require 'erb'
 
 module BrickFTP
   module RESTfulAPI
-    # List permissions
+    # List user's permissions
     #
-    # @see https://developers.files.com/#list-permissions List permissions
+    # @see https://developers.files.com/#list-user-39-s-permissions List user's permissions
     #
     # ### Params
     #
-    # PARAMETER | TYPE   | DESCRIPTION
-    # --------- | ------ | -----------
-    # path      | string | Permission path.
+    # PARAMETER      | TYPE    | DESCRIPTION
+    # -------------- | ------- | -----------
+    # id             | integer | Required: User ID.
+    # include_groups | boolean | Include group permissions?
     #
-    class ListPermissions
+    class ListUserPermissions
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
       Params = Struct.new(
-        'ListPermissions',
-        :path,
+        'ListUserPermissions',
+        :id,
+        :include_groups,
         keyword_init: true
       )
 
-      # List permissions
+      # List user's permissions
       #
-      # @param [BrickFTP::RESTfulAPI::ListPermissions::Params] params parameters
+      # @param [BrickFTP::RESTfulAPI::ListUserPermissions::Params] params parameters
       # @return [Array<BrickFTP::Types::Permission>]
       #
       def call(params)
         params = params.to_h.compact
 
-        endpoint = '/api/rest/v1/permissions.json'
+        endpoint = "/api/rest/v1/users/#{params.delete(:id)}/permissions.json"
         query = params.sort.map { |k, v| "#{k}=#{ERB::Util.url_encode(v.to_s)}" }.join('&')
         endpoint += "?#{query}" unless query.empty?
         res = client.get(endpoint)
