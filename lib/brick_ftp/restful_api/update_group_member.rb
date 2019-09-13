@@ -2,15 +2,17 @@
 
 module BrickFTP
   module RESTfulAPI
-    # Update a member
+    # Update group membership
     #
-    # @see https://developers.files.com/#update-a-member Update a member
+    # @see https://developers.files.com/#update-group-membership Update group membership
     #
     # ### Params
     #
     # PARAMETER | TYPE    | DESCRIPTION
     # --------- | ------- | -----------
-    # admin     | boolean | Indicates whether the user is an administrator of the group.
+    # id        | integer | Required: Group ID.
+    # user_id   | integer | Required: User ID to add to group.
+    # admin     | boolean | Is the user a group administrator?
     #
     class UpdateGroupMember
       include Command
@@ -23,15 +25,15 @@ module BrickFTP
         keyword_init: true
       )
 
-      # Updates a user's group membership. No action will be taken if the user is not already in the group.
+      # Update group membership
       #
-      # @param [Integer] group_id ID of the group the membership is associated with.
-      # @param [Integer] user_id ID of the user the membership is associated with.
+      # @param [Integer] id Group ID.
+      # @param [Integer] User ID to add to group.
       # @param [BrickFTP::RESTfulAPI::UpdateGroupMember::Params] params parameters
-      # @return [BrickFTP::Types::GroupMembership] group membership
+      # @return [BrickFTP::Types::GroupMembership]
       #
-      def call(group_id, user_id, params)
-        res = client.patch("/api/rest/v1/groups/#{group_id}/memberships/#{user_id}.json", membership: params.to_h.compact)
+      def call(id, user_id, params)
+        res = client.patch("/api/rest/v1/groups/#{id}/memberships/#{user_id}.json", params.to_h.compact)
 
         BrickFTP::Types::GroupMembership.new(res.symbolize_keys)
       end
