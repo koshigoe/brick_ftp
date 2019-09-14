@@ -118,5 +118,10 @@ module BrickFTP
     autoload :GetSiteSettings, 'brick_ftp/restful_api/get_site_settings'
     autoload :ListIpAddresses, 'brick_ftp/restful_api/list_ip_addresses'
     autoload :UpdateSiteSettings, 'brick_ftp/restful_api/update_site_settings'
+    # ref. https://developers.files.com/#sso-strategies
+    autoload :ListSsoStrategies, 'brick_ftp/restful_api/list_sso_strategies'
+    autoload :CreateSsoStrategy, 'brick_ftp/restful_api/create_sso_strategy'
+    autoload :UpdateSsoStrategy, 'brick_ftp/restful_api/update_sso_strategy'
+    autoload :DeleteSsoStrategy, 'brick_ftp/restful_api/delete_sso_strategy'
   end
 end
