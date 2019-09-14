@@ -29,7 +29,7 @@ module BrickFTP
 
       # Create API Key for current user
       #
-      # @param [BrickFTP::RESTfulAPI::CreateCurrentUserApiKey::Params] params parameters for creating an API key
+      # @param [BrickFTP::RESTfulAPI::CreateCurrentUserApiKey::Params] params parameters
       # @return [BrickFTP::Types::UserApiKey]
       #
       def call(params = {})

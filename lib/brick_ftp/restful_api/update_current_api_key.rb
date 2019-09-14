@@ -29,7 +29,7 @@ module BrickFTP
 
       # Update current API key. (Requires current API connection to be using an API key.)
       #
-      # @param [BrickFTP::RESTfulAPI::UpdateCurrentApiKey::Params] params parameters for update API key
+      # @param [BrickFTP::RESTfulAPI::UpdateCurrentApiKey::Params] params parameters
       # @return [BrickFTP::Types::ApiKey]
       #
       def call(params = {})

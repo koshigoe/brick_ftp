@@ -29,7 +29,7 @@ module BrickFTP
 
       # Create site-wide API Key
       #
-      # @param [BrickFTP::RESTfulAPI::CreateSiteWideApiKey::Params] params parameters for creating an API key
+      # @param [BrickFTP::RESTfulAPI::CreateSiteWideApiKey::Params] params parameters
       # @return [BrickFTP::Types::ApiKey]
       #
       def call(params = {})

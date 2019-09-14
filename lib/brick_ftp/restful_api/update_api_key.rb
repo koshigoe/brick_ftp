@@ -31,7 +31,7 @@ module BrickFTP
 
       # Update API Key
       #
-      # @param [BrickFTP::RESTfulAPI::UpdateApiKey::Params] params parameters for update API key
+      # @param [BrickFTP::RESTfulAPI::UpdateApiKey::Params] params parameters
       # @return [BrickFTP::Types::ApiKey]
       #
       def call(params = {})
