@@ -65,6 +65,11 @@ module BrickFTP
     autoload :MoveFolder, 'brick_ftp/restful_api/move_folder'
     autoload :CopyFolder, 'brick_ftp/restful_api/copy_folder'
     autoload :DeleteFolder, 'brick_ftp/restful_api/delete_folder'
+    # ref. https://developers.files.com/#file-uploading
+    autoload :StartUpload, 'brick_ftp/restful_api/start_upload'
+    autoload :ContinueUpload, 'brick_ftp/restful_api/continue_upload'
+    autoload :CompleteUpload, 'brick_ftp/restful_api/complete_upload'
+    autoload :UploadFile, 'brick_ftp/restful_api/upload_file'
     # ref. https://developers.files.com/#groups
     autoload :ListGroups, 'brick_ftp/restful_api/list_groups'
     autoload :GetGroup, 'brick_ftp/restful_api/get_group'
@@ -109,10 +114,5 @@ module BrickFTP
     # ref. https://developers.files.com/#sessions
     autoload :CreateSession, 'brick_ftp/restful_api/create_session'
     autoload :DeleteSession, 'brick_ftp/restful_api/delete_session'
-    # ref. https://developers.files.com/#file-uploading
-    autoload :StartUpload, 'brick_ftp/restful_api/start_upload'
-    autoload :ContinueUpload, 'brick_ftp/restful_api/continue_upload'
-    autoload :CompleteUpload, 'brick_ftp/restful_api/complete_upload'
-    autoload :UploadFile, 'brick_ftp/restful_api/upload_file'
   end
 end
