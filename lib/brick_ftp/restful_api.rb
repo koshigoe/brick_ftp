@@ -126,5 +126,11 @@ module BrickFTP
     # ref. https://developers.files.com/#styles
     autoload :UpdateStyle, 'brick_ftp/restful_api/update_style'
     autoload :DeleteStyle, 'brick_ftp/restful_api/delete_style'
+    # ref. https://developers.files.com/#two-factor-authentication-methods
+    autoload :ListCurrentUser2faMethods, 'brick_ftp/restful_api/list_current_user_2fa_methods'
+    autoload :CreateCurrentUser2faMethod, 'brick_ftp/restful_api/create_current_user_2fa_method'
+    autoload :GenerateCurrentUser2faOtp, 'brick_ftp/restful_api/generate_current_user_2fa_otp'
+    autoload :Update2faMethod, 'brick_ftp/restful_api/update_2fa_method'
+    autoload :Delete2faMethod, 'brick_ftp/restful_api/delete_2fa_method'
   end
 end

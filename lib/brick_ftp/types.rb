@@ -27,6 +27,7 @@ module BrickFTP
     autoload :SsoStrategy, 'brick_ftp/types/sso_strategy'
     autoload :Style, 'brick_ftp/types/style'
     autoload :TwoFactorAuthenticationMethod, 'brick_ftp/types/two_factor_authentication_method'
+    autoload :TwoFactorAuthenticationOtp, 'brick_ftp/types/two_factor_authentication_otp'
     autoload :Upload, 'brick_ftp/types/upload'
     autoload :User, 'brick_ftp/types/user'
     autoload :UserPublicKey, 'brick_ftp/types/user_public_key'
