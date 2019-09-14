@@ -36,7 +36,6 @@ module BrickFTP
     autoload :CreateBundle, 'brick_ftp/restful_api/create_bundle'
     autoload :ShareBundleByEmail, 'brick_ftp/restful_api/share_bundle_by_email'
     autoload :DeleteBundle, 'brick_ftp/restful_api/delete_bundle'
-    autoload :ListBundleContents, 'brick_ftp/restful_api/list_bundle_contents'
     autoload :GetFileInBundle, 'brick_ftp/restful_api/get_file_in_bundle'
     autoload :GetBundleZip, 'brick_ftp/restful_api/get_bundle_zip'
     # ref. https://developers.files.com/#certificates
@@ -67,7 +66,6 @@ module BrickFTP
     autoload :CreateGroup, 'brick_ftp/restful_api/create_group'
     autoload :UpdateGroup, 'brick_ftp/restful_api/update_group'
     autoload :DeleteGroup, 'brick_ftp/restful_api/delete_group'
-    autoload :CreateUserInGroup, 'brick_ftp/restful_api/create_user_in_group'
     autoload :AddGroupMember, 'brick_ftp/restful_api/add_group_member'
     autoload :UpdateGroupMember, 'brick_ftp/restful_api/update_group_member'
     autoload :RemoveGroupMember, 'brick_ftp/restful_api/remove_group_member'
@@ -128,7 +126,6 @@ module BrickFTP
     # ref. https://developers.files.com/#users
     autoload :ListUsers, 'brick_ftp/restful_api/list_users'
     autoload :CountUsers, 'brick_ftp/restful_api/count_users'
-    autoload :SearchUser, 'brick_ftp/restful_api/search_user'
     autoload :GetUser, 'brick_ftp/restful_api/get_user'
     autoload :CreateUser, 'brick_ftp/restful_api/create_user'
     autoload :UpdateUser, 'brick_ftp/restful_api/update_user'
