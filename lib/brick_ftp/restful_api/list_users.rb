@@ -8,53 +8,65 @@ module BrickFTP
     #
     # ### Params
     #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # page      | integer | Optional page number of items to return in this request. Default: 1.
-    # per_page  | integer | Optional requested number of items returned per request. Default: 1000. Leave blank for default (strongly recommended).
+    # PARAMETER                 | TYPE    | DESCRIPTION
+    # ------------------------- | ------- | -----------
+    # ids                       | string  | Comma-separated list of user ids to include in results.
+    # page                      | integer | Current page.
+    # per_page                  | integer | Users per page.
+    # q[username]               | string  | List users matching username.
+    # q[email]                  | string  | List users matching email.
+    # q[notes]                  | string  | List users matching notes field.
+    # q[admin]                  | string  | If true, list only admin users.
+    # q[allowed_ips]            | string  | If set, list only users with overridden allowed IP setting.
+    # q[password_validity_days] | string  | If set, list only users with overridden password validity days setting.
+    # q[ssl_required]           | string  | If set, list only users with overridden SSL required setting.
+    # search                    | string  | Searches for partial matches of name, username, or email.
+    # action                    | string  | If set to 'count' returns the current site user count.
     #
     class ListUsers
       include Command
+      using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
-      # Returns a list of users on the current site.
-      #
-      # @param [Integer] page Optional page number of items to return in this request.
-      #   Default: 1.
-      # @param [Integer] per_page Optional requested number of items returned per request.
-      #   Default: 1000. Leave blank for default (strongly recommended).
-      # @return [Array<BrickFTP::Types::User>] Users
-      #
-      def call(page: nil, per_page: nil)
-        validate_page!(page)
-        validate_per_page!(per_page)
+      Params = Struct.new(
+        'ListUserParams',
+        :ids,
+        :page,
+        :per_page,
+        :q,
+        :search,
+        :action,
+        keyword_init: true
+      )
 
-        params = {}
-        params[:page] = page if page
-        params[:per_page] = per_page if per_page
-        query = params.map { |k, v| "#{k}=#{v}" }.join('&')
+      Q = Struct.new(
+        'ListUserParamQ',
+        :username,
+        :email,
+        :notes,
+        :admin,
+        :allowed_ips,
+        :password_validity_days,
+        :ssl_required,
+        keyword_init: true
+      )
 
+      # List users
+      #
+      # @param [BrickFTP::RESTfulAPI::ListUser::Params] params parameters
+      # @return [Array<BrickFTP::Types::User>]
+      #
+      def call(params)
+        params = params.to_h.compact
+        q = params.delete(:q)
+        params.update(q.to_h.compact.each_with_object({}) { |(k, v), m| m[:"q[#{k}]"] = v }) if q
+
+        query = params.sort.map { |k, v| "#{ERB::Util.url_encode(k.to_s)}=#{ERB::Util.url_encode(v.to_s)}" }.join('&')
         endpoint = '/api/rest/v1/users.json'
         endpoint = "#{endpoint}?#{query}" unless query.empty?
         res = client.get(endpoint)
 
         res.map { |i| BrickFTP::Types::User.new(i.symbolize_keys) }
-      end
-
-      private
-
-      def validate_page!(page)
-        return if page.nil?
-        return if page.is_a?(Integer) && page.positive?
-
-        raise ArgumentError, 'page must be greater than 0.'
-      end
-
-      def validate_per_page!(per_page)
-        return if per_page.nil?
-        return if per_page.is_a?(Integer) && per_page.positive?
-
-        raise ArgumentError, 'per_page must be greater than 0.'
       end
     end
   end
