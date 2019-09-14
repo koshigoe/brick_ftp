@@ -2,10 +2,10 @@
 
 require 'spec_helper'
 
-RSpec.describe BrickFTP::RESTfulAPI::ListPublicKeys, type: :lib do
+RSpec.describe BrickFTP::RESTfulAPI::ListCurrentUserPublicKeys, type: :lib do
   describe '#call' do
     context 'correct request' do
-      it 'return Array of User Public key object' do
+      it 'return Array of Public key object' do
         expected_user_public_key = BrickFTP::Types::PublicKey.new(
           id: 1,
           created_at: '2000-01-01 01:00:00 UTC',
@@ -13,7 +13,7 @@ RSpec.describe BrickFTP::RESTfulAPI::ListPublicKeys, type: :lib do
           title: 'My public key'
         )
 
-        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/users/1/public_keys.json')
+        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/user/public_keys.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -23,9 +23,9 @@ RSpec.describe BrickFTP::RESTfulAPI::ListPublicKeys, type: :lib do
           .to_return(body: [expected_user_public_key.to_h].to_json)
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-        command = BrickFTP::RESTfulAPI::ListPublicKeys.new(rest)
+        command = BrickFTP::RESTfulAPI::ListCurrentUserPublicKeys.new(rest)
 
-        expect(command.call(id: 1)).to eq([expected_user_public_key])
+        expect(command.call).to eq([expected_user_public_key])
       end
     end
   end

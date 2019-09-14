@@ -2,39 +2,36 @@
 
 module BrickFTP
   module RESTfulAPI
-    # Create SSH public key on a user
+    # Create SSH public key on current user
     #
-    # @see https://developers.files.com/#create-ssh-public-key-on-a-user Create SSH public key on a user
+    # @see https://developers.files.com/#create-ssh-public-key-on-current-user Create SSH public key on current user
     #
     # ### Params
     #
     # PARAMETER  | TYPE    | DESCRIPTION
     # ---------- | ------- | -----------
-    # id         | integer | Required: User ID.
     # title      | string  | Required: Internal reference for key.
     # public_key | string  | Required: Actual contents of SSH key.
     #
-    class CreatePublicKey
+    class CreateCurrentUserPublicKey
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
       Params = Struct.new(
-        'CreatePublicKeyParams',
-        :id,
+        'CreateCurrentUserPublicKeyParams',
         :title,
         :public_key,
         keyword_init: true
       )
 
-      # Create SSH public key on a user
+      # Create SSH public key on current user
       #
-      # @param [BrickFTP::RESTfulAPI::CreatePublicKey::Params] params parameters
+      # @param [BrickFTP::RESTfulAPI::CreateCurrentUserPublicKey::Params] params parameters
       # @return [BrickFTP::Types::PublicKey]
       #
       def call(params)
-        params = params.to_h.compact
-        res = client.post("/api/rest/v1/users/#{params.delete(:id)}/public_keys.json", params)
+        res = client.post('/api/rest/v1/user/public_keys.json', params.to_h.compact)
 
         BrickFTP::Types::PublicKey.new(res.symbolize_keys)
       end

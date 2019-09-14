@@ -2,20 +2,28 @@
 
 module BrickFTP
   module RESTfulAPI
-    # Delete a public key
+    # Delete SSH public key
     #
-    # @see https://developers.files.com/#delete-a-public-key Delete a public key
+    # @see https://developers.files.com/#delete-ssh-public-key Delete SSH public key
     #
     class DeletePublicKey
       include Command
+      using BrickFTP::CoreExt::Struct
+      using BrickFTP::CoreExt::Hash
 
-      # Deletes the specified public key.
+      Params = Struct.new(
+        'DeletePublicKeyParams',
+        :id,
+        keyword_init: true
+      )
+
+      # Delete SSH public key
       #
-      # @param [Integer] id Globally unique identifier of each public key.
-      #   Each public key is given an ID automatically upon creation.
+      # @param [BrickFTP::RESTfulAPI::DeletePublicKey::Params] params parameters
       #
-      def call(id)
-        client.delete("/api/rest/v1/public_keys/#{id}.json")
+      def call(params)
+        params = params.to_h.compact
+        client.delete("/api/rest/v1/public_keys/#{params.delete(:id)}.json")
         true
       end
     end

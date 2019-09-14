@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe BrickFTP::RESTfulAPI::CreatePublicKey, type: :lib do
+RSpec.describe BrickFTP::RESTfulAPI::CreateCurrentUserPublicKey, type: :lib do
   describe '#call' do
     context 'given correct parameters' do
       it 'return created User Public key object' do
@@ -13,7 +13,7 @@ RSpec.describe BrickFTP::RESTfulAPI::CreatePublicKey, type: :lib do
           title: 'My public key'
         )
 
-        stub_request(:post, 'https://subdomain.files.com/api/rest/v1/users/1/public_keys.json')
+        stub_request(:post, 'https://subdomain.files.com/api/rest/v1/user/public_keys.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -27,12 +27,11 @@ RSpec.describe BrickFTP::RESTfulAPI::CreatePublicKey, type: :lib do
           .to_return(body: created_public_key.to_h.to_json)
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-        params = BrickFTP::RESTfulAPI::CreatePublicKey::Params.new(
-          id: 1,
+        params = BrickFTP::RESTfulAPI::CreateCurrentUserPublicKey::Params.new(
           title: 'SSH Key Name',
           public_key: '[key]'
         )
-        command = BrickFTP::RESTfulAPI::CreatePublicKey.new(rest)
+        command = BrickFTP::RESTfulAPI::CreateCurrentUserPublicKey.new(rest)
 
         expect(command.call(params)).to eq created_public_key
       end

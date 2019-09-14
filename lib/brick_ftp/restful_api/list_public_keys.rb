@@ -2,24 +2,37 @@
 
 module BrickFTP
   module RESTfulAPI
-    # List public keys
+    # List user's SSH public keys
     #
-    # @see https://developers.files.com/#list-public-keys List public keys
+    # @see https://developers.files.com/#list-user-39-s-ssh-public-keys List user's SSH public keys
+    #
+    # ### Params
+    #
+    # PARAMETER | TYPE    | DESCRIPTION
+    # --------- | ------- | -----------
+    # id        | integer | Required: User ID.
     #
     class ListPublicKeys
       include Command
+      using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
-      # Returns a list of all public keys for a user on the current site.
-      #
-      # @param [Integer] id Globally unique identifier of each user.
-      #   Each user is given an ID automatically upon creation.
-      # @return [Array<BrickFTP::Types::UserPublicKey>] User's Public keys
-      #
-      def call(id)
-        res = client.get("/api/rest/v1/users/#{id}/public_keys.json")
+      Params = Struct.new(
+        'ListPublicKeysParams',
+        :id,
+        keyword_init: true
+      )
 
-        res.map { |i| BrickFTP::Types::UserPublicKey.new(i.symbolize_keys) }
+      # List user's SSH public keys
+      #
+      # @param [BrickFTP::RESTfulAPI::ListPublicKeys::Params] params parameters
+      # @return [Array<BrickFTP::Types::PublicKey>]
+      #
+      def call(params)
+        params = params.to_h.compact
+        res = client.get("/api/rest/v1/users/#{params.delete(:id)}/public_keys.json")
+
+        res.map { |i| BrickFTP::Types::PublicKey.new(i.symbolize_keys) }
       end
     end
   end

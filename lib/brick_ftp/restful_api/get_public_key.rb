@@ -2,24 +2,37 @@
 
 module BrickFTP
   module RESTfulAPI
-    # Show a public key
+    # Show SSH public key
     #
-    # @see https://developers.files.com/#show-a-public-key Show a public key
+    # @see https://developers.files.com/#show-ssh-public-key Show SSH public key
+    #
+    # ### Params
+    #
+    # PARAMETER | TYPE    | DESCRIPTION
+    # --------- | ------- | -----------
+    # id        | integer | Required: SSH public key ID.
     #
     class GetPublicKey
       include Command
+      using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
-      # Returns a single public key.
-      #
-      # @param [Integer] id Globally unique identifier of each public key.
-      #   Each public key is given an ID automatically upon creation.
-      # @return [BrickFTP::Types::UserPublicKey] User's Public key
-      #
-      def call(id)
-        res = client.get("/api/rest/v1/public_keys/#{id}.json")
+      Params = Struct.new(
+        'GetPublicKeyParams',
+        :id,
+        keyword_init: true
+      )
 
-        BrickFTP::Types::UserPublicKey.new(res.symbolize_keys)
+      # Show SSH public key
+      #
+      # @param [BrickFTP::RESTfulAPI::GetPublicKey::Params] params parameters
+      # @return [BrickFTP::Types::PublicKey]
+      #
+      def call(params)
+        params = params.to_h.compact
+        res = client.get("/api/rest/v1/public_keys/#{params.delete(:id)}.json")
+
+        BrickFTP::Types::PublicKey.new(res.symbolize_keys)
       end
     end
   end

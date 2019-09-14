@@ -94,8 +94,10 @@ module BrickFTP
     autoload :DeletePermission, 'brick_ftp/restful_api/delete_permission'
     # ref. https://developers.files.com/#user-public-keys
     autoload :ListPublicKeys, 'brick_ftp/restful_api/list_public_keys'
+    autoload :ListCurrentUserPublicKeys, 'brick_ftp/restful_api/list_current_user_public_keys'
     autoload :GetPublicKey, 'brick_ftp/restful_api/get_public_key'
     autoload :CreatePublicKey, 'brick_ftp/restful_api/create_public_key'
+    autoload :CreateCurrentUserPublicKey, 'brick_ftp/restful_api/create_current_user_public_key'
     autoload :DeletePublicKey, 'brick_ftp/restful_api/delete_public_key'
     # ref. https://developers.files.com/#remote-servers
     autoload :ListRemoteServers, 'brick_ftp/restful_api/list_remote_servers'
