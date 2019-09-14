@@ -21,7 +21,7 @@ module BrickFTP
       using BrickFTP::CoreExt::Hash
 
       Params = Struct.new(
-        'ListUserPermissions',
+        'ListUserPermissionsParams',
         :id,
         :include_groups,
         keyword_init: true

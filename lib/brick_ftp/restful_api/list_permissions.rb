@@ -20,7 +20,7 @@ module BrickFTP
       using BrickFTP::CoreExt::Hash
 
       Params = Struct.new(
-        'ListPermissions',
+        'ListPermissionsParams',
         :path,
         keyword_init: true
       )

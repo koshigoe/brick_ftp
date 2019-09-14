@@ -22,7 +22,7 @@ module BrickFTP
       using BrickFTP::CoreExt::Hash
 
       Params = Struct.new(
-        'RetrieveSiteHistory',
+        'RetrieveSiteHistoryParams',
         :page,
         :per_page,
         :start_at,

@@ -25,7 +25,7 @@ module BrickFTP
       using BrickFTP::CoreExt::Hash
 
       Params = Struct.new(
-        'RetrieveFolderHistory',
+        'RetrieveFolderHistoryParams',
         :path,
         :page,
         :per_page,

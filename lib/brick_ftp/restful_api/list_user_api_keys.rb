@@ -18,7 +18,7 @@ module BrickFTP
       using BrickFTP::CoreExt::Hash
 
       Params = Struct.new(
-        'ListCurrentUserApiKeys',
+        'ListCurrentUserApiKeysParams',
         :id,
         keyword_init: true
       )

@@ -21,7 +21,7 @@ module BrickFTP
       using BrickFTP::CoreExt::Hash
 
       Params = Struct.new(
-        'DeleteLock',
+        'DeleteLockParams',
         :path,
         :token,
         keyword_init: true

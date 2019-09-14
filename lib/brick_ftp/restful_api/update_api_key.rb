@@ -21,7 +21,7 @@ module BrickFTP
       using BrickFTP::CoreExt::Hash
 
       Params = Struct.new(
-        'UpdateApiKey',
+        'UpdateApiKeyParams',
         :id,
         :name,
         :permission_set,
