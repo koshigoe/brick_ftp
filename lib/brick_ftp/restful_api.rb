@@ -114,5 +114,9 @@ module BrickFTP
     # ref. https://developers.files.com/#sessions
     autoload :CreateSession, 'brick_ftp/restful_api/create_session'
     autoload :DeleteSession, 'brick_ftp/restful_api/delete_session'
+    # ref. https://developers.files.com/#site
+    autoload :GetSiteSettings, 'brick_ftp/restful_api/get_site_settings'
+    autoload :ListIpAddresses, 'brick_ftp/restful_api/list_ip_addresses'
+    autoload :UpdateSiteSettings, 'brick_ftp/restful_api/update_site_settings'
   end
 end

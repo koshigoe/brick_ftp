@@ -30,5 +30,6 @@ module BrickFTP
     autoload :Upload, 'brick_ftp/types/upload'
     autoload :User, 'brick_ftp/types/user'
     autoload :UserPublicKey, 'brick_ftp/types/user_public_key'
+    autoload :IpAddress, 'brick_ftp/types/ip_address'
   end
 end
