@@ -2,19 +2,18 @@
 
 module BrickFTP
   module RESTfulAPI
-    # Show a user
+    # Show user
     #
-    # @see https://developers.files.com/#show-a-user Show a user
+    # @see https://developers.files.com/#show-user Show user
     #
     class GetUser
       include Command
       using BrickFTP::CoreExt::Hash
 
-      # Returns a single user.
+      # Show user
       #
-      # @param [Integer] id Globally unique identifier of each user.
-      #   Each user is given an ID automatically upon creation.
-      # @return [BrickFTP::Types::User, nil] found User or nil
+      # @param [Integer] id User ID.
+      # @return [BrickFTP::Types::User, nil]
       #
       def call(id)
         res = client.get("/api/rest/v1/users/#{id}.json")
