@@ -20,7 +20,7 @@ module BrickFTP
       using BrickFTP::CoreExt::Hash
 
       Params = Struct.new(
-        'CreateUserApiKeyParams',
+        'CreateSiteWideApiKeyParams',
         :name,
         :permission_set,
         :expires_at,
