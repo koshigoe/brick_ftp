@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module BrickFTP
-  module Types
+  module Types # rubocop:disable Metrics/ModuleLength
     using BrickFTP::CoreExt::Struct
 
     # The Site object

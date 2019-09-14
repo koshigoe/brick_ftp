@@ -8,12 +8,12 @@ RSpec.describe BrickFTP::RESTfulAPI::CreateCurrentUserApiKey, type: :lib do
       it 'return created current user API key object' do
         created_api_key = BrickFTP::Types::ApiKey.new(
           id: 1,
-          created_at: "2000-01-01 01:00:00 UTC",
-          expires_at: "2000-01-01 01:00:00 UTC",
-          key: "[key]",
-          name: "My Main API Key",
-          permission_set: "full",
-          platform: "win32",
+          created_at: '2000-01-01 01:00:00 UTC',
+          expires_at: '2000-01-01 01:00:00 UTC',
+          key: '[key]',
+          name: 'My Main API Key',
+          permission_set: 'full',
+          platform: 'win32',
           user_id: 1
         )
 
@@ -35,7 +35,7 @@ RSpec.describe BrickFTP::RESTfulAPI::CreateCurrentUserApiKey, type: :lib do
         params = BrickFTP::RESTfulAPI::CreateCurrentUserApiKey::Params.new(
           name: 'My Primary API Key',
           permission_set: 'full',
-          expires_at: '2000-01-01 01:00:00 UTC',
+          expires_at: '2000-01-01 01:00:00 UTC'
         )
         command = BrickFTP::RESTfulAPI::CreateCurrentUserApiKey.new(rest)
 

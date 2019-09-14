@@ -34,6 +34,7 @@ module BrickFTP
 
     def respond_to_missing?(symbol, include_private)
       return true if command_class(symbol)
+
       super
     end
 

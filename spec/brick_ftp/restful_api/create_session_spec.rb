@@ -13,7 +13,7 @@ RSpec.describe BrickFTP::RESTfulAPI::CreateSession, type: :lib do
           login_token_domain: 'https://mysite.files.com',
           max_dir_listing_size: 1,
           multiple_regions: true,
-          root_path: "",
+          root_path: '',
           site_id: 1,
           ssl_required: true,
           tls_disabled: true,
@@ -23,7 +23,7 @@ RSpec.describe BrickFTP::RESTfulAPI::CreateSession, type: :lib do
           allowed_2fa_method_u2f: true,
           allowed_2fa_method_yubi: true,
           use_provided_modified_at: true,
-          windows_mode_ftp: true,
+          windows_mode_ftp: true
         )
 
         stub_request(:post, 'https://subdomain.files.com/api/rest/v1/sessions.json')
@@ -44,7 +44,7 @@ RSpec.describe BrickFTP::RESTfulAPI::CreateSession, type: :lib do
         params = BrickFTP::RESTfulAPI::CreateSession::Params.new(
           username: 'username',
           password: 'password',
-          otp: '123456',
+          otp: '123456'
         )
         command = BrickFTP::RESTfulAPI::CreateSession.new(rest)
 

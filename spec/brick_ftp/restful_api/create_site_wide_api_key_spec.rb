@@ -8,12 +8,12 @@ RSpec.describe BrickFTP::RESTfulAPI::CreateSiteWideApiKey, type: :lib do
       it 'return created Site Wide API key object' do
         created_api_key = BrickFTP::Types::ApiKey.new(
           id: 1,
-          created_at: "2000-01-01 01:00:00 UTC",
-          expires_at: "2000-01-01 01:00:00 UTC",
-          key: "[key]",
-          name: "My Main API Key",
-          permission_set: "full",
-          platform: "win32",
+          created_at: '2000-01-01 01:00:00 UTC',
+          expires_at: '2000-01-01 01:00:00 UTC',
+          key: '[key]',
+          name: 'My Main API Key',
+          permission_set: 'full',
+          platform: 'win32',
           user_id: 1
         )
 
@@ -26,7 +26,7 @@ RSpec.describe BrickFTP::RESTfulAPI::CreateSiteWideApiKey, type: :lib do
             body: {
               name: 'API Key Name',
               permission_set: 'full',
-              expires_at: '2000-01-01 01:00:00 UTC'
+              expires_at: '2000-01-01 01:00:00 UTC',
             }.to_json
           )
           .to_return(body: created_api_key.to_h.to_json)

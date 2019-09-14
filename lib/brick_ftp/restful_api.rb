@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module BrickFTP
-  module RESTfulAPI
+  module RESTfulAPI # rubocop:disable Metrics/ModuleLength
     autoload :Client, 'brick_ftp/restful_api/client'
     autoload :Command, 'brick_ftp/restful_api/command'
     autoload :GetSiteUsage, 'brick_ftp/restful_api/get_site_usage'

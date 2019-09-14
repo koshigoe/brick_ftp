@@ -12,7 +12,7 @@ module BrickFTP
       # Delete user session (log out)
       #
       def call
-        client.delete("/api/rest/v1/sessions.json")
+        client.delete('/api/rest/v1/sessions.json')
         true
       end
     end

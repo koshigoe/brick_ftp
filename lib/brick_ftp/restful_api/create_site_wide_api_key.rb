@@ -2,9 +2,9 @@
 
 module BrickFTP
   module RESTfulAPI
-    # 
+    # Create site-wide API Key
     #
-    # @see 
+    # @see https://developers.files.com/#create-site-wide-api-key Create site-wide API Key
     #
     # ### Params
     #
@@ -27,7 +27,7 @@ module BrickFTP
         keyword_init: true
       )
 
-      # Create API key for user
+      # Create site-wide API Key
       #
       # @param [BrickFTP::RESTfulAPI::CreateSiteWideApiKey::Params] params parameters for creating an API key
       # @return [BrickFTP::Types::ApiKey]

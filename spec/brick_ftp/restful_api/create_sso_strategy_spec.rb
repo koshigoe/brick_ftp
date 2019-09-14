@@ -64,7 +64,6 @@ RSpec.describe BrickFTP::RESTfulAPI::CreateSsoStrategy, type: :lib do
           provision_ftp_permission: true,
           provision_sftp_permission: true,
           provision_time_zone: 'Eastern Time (US & Canada)'
-
         )
         command = BrickFTP::RESTfulAPI::CreateSsoStrategy.new(rest)
 

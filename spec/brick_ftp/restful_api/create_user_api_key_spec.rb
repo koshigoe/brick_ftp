@@ -36,7 +36,7 @@ RSpec.describe BrickFTP::RESTfulAPI::CreateUserApiKey, type: :lib do
           id: 1,
           name: 'My Primary API Key',
           permission_set: 'full',
-          expires_at: '2000-01-01 01:00:00 UTC',
+          expires_at: '2000-01-01 01:00:00 UTC'
         )
         command = BrickFTP::RESTfulAPI::CreateUserApiKey.new(rest)
 

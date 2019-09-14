@@ -26,7 +26,7 @@ RSpec.describe BrickFTP::RESTfulAPI::UpdateCurrentApiKey, type: :lib do
             body: {
               name: 'My Key',
               permission_set: 'full',
-              expires_at: '2000-01-01 01:00:00 UTC'
+              expires_at: '2000-01-01 01:00:00 UTC',
             }.to_json
           )
           .to_return(body: updated_api_key.to_h.to_json)

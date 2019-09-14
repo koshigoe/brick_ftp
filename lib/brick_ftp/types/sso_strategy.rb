@@ -16,7 +16,7 @@ module BrickFTP
     # provision_users                  | boolean | Auto-provision users?
     # provision_groups                 | boolean | Auto-provision group membership based on group memberships on the SSO side?
     # provision_group_default          | string  | Comma-separated list of group names for groups to automatically add all auto-provisioned users to.
-     # provision_group_exclusion       | string  | Comma-separated list of group names for groups (with optional wildcards) that will be excluded from auto-provisioning.
+    # provision_group_exclusion       | string  | Comma-separated list of group names for groups (with optional wildcards) that will be excluded from auto-provisioning.
     # provision_group_inclusion        | string  | Comma-separated list of group names for groups (with optional wildcards) that will be auto-provisioned.
     # provision_group_required         | string  | Comma or newline separated list of group names (with optional wildcards) to require membership for user provisioning.
     # provision_attachments_permission | boolean | Auto-provisioned users get Sharing permission?
