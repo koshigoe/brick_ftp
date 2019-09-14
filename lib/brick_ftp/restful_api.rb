@@ -123,5 +123,8 @@ module BrickFTP
     autoload :CreateSsoStrategy, 'brick_ftp/restful_api/create_sso_strategy'
     autoload :UpdateSsoStrategy, 'brick_ftp/restful_api/update_sso_strategy'
     autoload :DeleteSsoStrategy, 'brick_ftp/restful_api/delete_sso_strategy'
+    # ref. https://developers.files.com/#styles
+    autoload :UpdateStyle, 'brick_ftp/restful_api/update_style'
+    autoload :DeleteStyle, 'brick_ftp/restful_api/delete_style'
   end
 end
