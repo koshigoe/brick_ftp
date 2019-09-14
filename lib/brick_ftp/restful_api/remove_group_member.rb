@@ -6,15 +6,33 @@ module BrickFTP
     #
     # @see https://developers.files.com/#delete-group-membership Delete group membership
     #
+    # ### Params
+    #
+    # PARAMETER | TYPE    | DESCRIPTION
+    # --------- | ------- | -----------
+    # id        | integer | Required: Group ID.
+    # user_id   | integer | Required: User ID to add to group.
+    #
     class RemoveGroupMember
       include Command
+      using BrickFTP::CoreExt::Struct
+      using BrickFTP::CoreExt::Hash
+
+      Params = Struct.new(
+        'RemoveGroupMemberParams',
+        :id,
+        :user_id,
+        keyword_init: true
+      )
 
       # Delete group membership
       #
-      # @param [Integer] id Group ID.
-      # @param [Integer] user_id User ID.
+      # @param [BrickFTP::RESTfulAPI::RemoveGroupMember::Params] params parameters
       #
-      def call(id, user_id)
+      def call(params)
+        params = params.to_h.compact
+        id = params.delete(:id)
+        user_id = params.delete(:user_id)
         client.delete("/api/rest/v1/groups/#{id}/memberships/#{user_id}.json")
         true
       end

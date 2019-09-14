@@ -26,10 +26,10 @@ RSpec.describe BrickFTP::RESTfulAPI::UpdateGroup, type: :lib do
           .to_return(body: updated_group.to_h.to_json)
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-        params = BrickFTP::RESTfulAPI::UpdateGroup::Params.new(name: 'owners')
+        params = BrickFTP::RESTfulAPI::UpdateGroup::Params.new(id: 1234, name: 'owners')
         command = BrickFTP::RESTfulAPI::UpdateGroup.new(rest)
 
-        expect(command.call(1234, params)).to eq updated_group
+        expect(command.call(params)).to eq updated_group
       end
     end
   end

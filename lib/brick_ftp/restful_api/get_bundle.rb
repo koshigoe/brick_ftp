@@ -6,17 +6,31 @@ module BrickFTP
     #
     # @see https://developers.files.com/#show-bundle Show bundle
     #
+    # ### Params
+    #
+    # PARAMETER | TYPE    | DESCRIPTION
+    # --------- | ------- | -----------
+    # id        | integer | Required: Bundle ID.
+    #
     class GetBundle
       include Command
+      using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
+
+      Params = Struct.new(
+        'GetBundleParams',
+        :id,
+        keyword_init: true
+      )
 
       # Show bundle
       #
-      # @param [Integer] id Bundle ID.
+      # @param [BrickFTP::RESTfulAPI::GetBundle::Params] params parameters
       # @return [BrickFTP::Types::Bundle] Bundle
       #
-      def call(id)
-        res = client.get("/api/rest/v1/bundles/#{id}.json")
+      def call(params)
+        params = params.to_h.compact
+        res = client.get("/api/rest/v1/bundles/#{params.delete(:id)}.json")
         return nil if !res || res.empty?
 
         BrickFTP::Types::Bundle.new(res.symbolize_keys)

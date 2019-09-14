@@ -17,10 +17,10 @@ RSpec.describe BrickFTP::RESTfulAPI::ActivateCertificate, type: :lib do
           .to_return(body: nil, status: 204)
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-        params = BrickFTP::RESTfulAPI::ActivateCertificate::Params.new(replace_cert: '')
+        params = BrickFTP::RESTfulAPI::ActivateCertificate::Params.new(id: 1234, replace_cert: '')
         command = BrickFTP::RESTfulAPI::ActivateCertificate.new(rest)
 
-        expect(command.call(1234, params)).to be_truthy
+        expect(command.call(params)).to be_truthy
       end
     end
   end

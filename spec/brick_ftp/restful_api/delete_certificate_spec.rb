@@ -6,7 +6,7 @@ RSpec.describe BrickFTP::RESTfulAPI::DeleteCertificate, type: :lib do
   describe '#call' do
     context 'given correct Certificate ID' do
       it 'return true' do
-        stub_request(:delete, 'https://subdomain.files.com/api/rest/v1/certificates/1234.json')
+        stub_request(:delete, 'https://subdomain.files.com/api/rest/v1/certificates/1.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -18,7 +18,7 @@ RSpec.describe BrickFTP::RESTfulAPI::DeleteCertificate, type: :lib do
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::DeleteCertificate.new(rest)
 
-        expect(command.call(1234)).to be_truthy
+        expect(command.call(id: 1)).to be_truthy
       end
     end
   end

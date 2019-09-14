@@ -6,15 +6,30 @@ module BrickFTP
     #
     # @see https://developers.files.com/#delete-bundle Delete bundle
     #
+    # ### Params
+    #
+    # PARAMETER | TYPE    | DESCRIPTION
+    # --------- | ------- | -----------
+    # id        | integer | Required: Bundle ID.
+    #
     class DeleteBundle
       include Command
+      using BrickFTP::CoreExt::Struct
+      using BrickFTP::CoreExt::Hash
+
+      Params = Struct.new(
+        'DeleteBundleParams',
+        :id,
+        keyword_init: true
+      )
 
       # Delete bundle
       #
-      # @param [Integer] id Bundle ID.
+      # @param [BrickFTP::RESTfulAPI::DeleteBundle::Params] params parameters
       #
-      def call(id)
-        client.delete("/api/rest/v1/bundles/#{id}.json")
+      def call(params)
+        params = params.to_h.compact
+        client.delete("/api/rest/v1/bundles/#{params.delete(:id)}.json")
         true
       end
     end

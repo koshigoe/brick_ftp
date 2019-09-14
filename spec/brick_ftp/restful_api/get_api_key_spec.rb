@@ -17,7 +17,7 @@ RSpec.describe BrickFTP::RESTfulAPI::GetApiKey, type: :lib do
           user_id: 1
         )
 
-        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/api_keys/12345.json')
+        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/api_keys/1.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -29,13 +29,13 @@ RSpec.describe BrickFTP::RESTfulAPI::GetApiKey, type: :lib do
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::GetApiKey.new(rest)
 
-        expect(command.call(12_345)).to eq(expected_api_key)
+        expect(command.call(id: 1)).to eq(expected_api_key)
       end
     end
 
     context 'API key not found' do
       it 'raise exception' do
-        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/api_keys/1234.json')
+        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/api_keys/1.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -47,7 +47,7 @@ RSpec.describe BrickFTP::RESTfulAPI::GetApiKey, type: :lib do
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::GetApiKey.new(rest)
 
-        expect { command.call(1234) }.to raise_error(BrickFTP::RESTfulAPI::Client::Error)
+        expect { command.call(id: 1) }.to raise_error(BrickFTP::RESTfulAPI::Client::Error)
       end
     end
   end

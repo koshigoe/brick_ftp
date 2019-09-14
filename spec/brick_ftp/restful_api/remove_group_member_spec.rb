@@ -18,7 +18,7 @@ RSpec.describe BrickFTP::RESTfulAPI::RemoveGroupMember, type: :lib do
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::RemoveGroupMember.new(rest)
 
-        expect(command.call(1, 2)).to be_truthy
+        expect(command.call(id: 1, user_id: 2)).to be_truthy
       end
     end
   end

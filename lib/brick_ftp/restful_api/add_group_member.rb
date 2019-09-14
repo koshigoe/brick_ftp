@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Add a User to a Group
     #
-    # @see Add a User to a Group
+    # @see https://developers.files.com/#add-a-user-to-a-group Add a User to a Group
     #
     # ### Params
     #
@@ -21,20 +21,23 @@ module BrickFTP
 
       Params = Struct.new(
         'AddGroupMemberParams',
+        :id,
+        :user_id,
         :admin,
         keyword_init: true
       )
 
       # Add a User to a Group
       #
-      # @param [Integer] id Group ID
-      # @param [Integer] user_id User ID to add to Group.
       # @param [BrickFTP::RESTfulAPI::AddGroupMember::Params] params parameters
       # @return [BrickFTP::Types::GroupMembership]
       # @raise [BrickFTP::RESTfulAPI::Error] exception
       #
-      def call(id, user_id, params)
-        res = client.put("/api/rest/v1/groups/#{id}/memberships/#{user_id}.json", params.to_h.compact)
+      def call(params)
+        params = params.to_h.compact
+        id = params.delete(:id)
+        user_id = params.delete(:user_id)
+        res = client.put("/api/rest/v1/groups/#{id}/memberships/#{user_id}.json", params)
 
         BrickFTP::Types::GroupMembership.new(res.symbolize_keys)
       end

@@ -6,15 +6,30 @@ module BrickFTP
     #
     # @see https://developers.files.com/#delete-notification Delete notification
     #
+    # ### Params
+    #
+    # PARAMETER | TYPE    | DESCRIPTION
+    # --------- | ------- | -----------
+    # id        | integer | Required: Notification ID.
+    #
     class DeleteNotification
       include Command
+      using BrickFTP::CoreExt::Struct
+      using BrickFTP::CoreExt::Hash
+
+      Params = Struct.new(
+        'DeleteNotificationParams',
+        :id,
+        keyword_init: true
+      )
 
       # Delete notification
       #
-      # @param [Integer] id Notification ID.
+      # @param [BrickFTP::RESTfulAPI::DeleteNotification::Params] params parameters
       #
-      def call(id)
-        client.delete("/api/rest/v1/notifications/#{id}.json")
+      def call(params)
+        params = params.to_h.compact
+        client.delete("/api/rest/v1/notifications/#{params.delete(:id)}.json")
         true
       end
     end

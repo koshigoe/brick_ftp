@@ -2,22 +2,35 @@
 
 module BrickFTP
   module RESTfulAPI
-    # Unlock a user
+    # Unlock user who has been locked out due to failed logins
     #
-    # @see https://developers.files.com/#unlock-a-user Unlock a user
+    # @see https://developers.files.com/#unlock-user-who-has-been-locked-out-due-to-failed-logins Unlock user who has been locked out due to failed logins
+    #
+    # ### Params
+    #
+    # PARAMETER | TYPE    | DESCRIPTION
+    # --------- | ------- | -----------
+    # id        | integer | Required: User ID.
     #
     class UnlockUser
       include Command
+      using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
-      # Unlocks a user that has been locked out by Brute Force Login Protection.
+      Params = Struct.new(
+        'UnlockUserParams',
+        :id,
+        keyword_init: true
+      )
+
+      # Unlock user who has been locked out due to failed logins
       #
-      # @param [Integer] id Globally unique identifier of each user.
-      #   Each user is given an ID automatically upon creation.
-      # @return [BrickFTP::Types::User, nil] unlocked User or nil
+      # @param [BrickFTP::RESTfulAPI::UnlockUser::Params] params parameters
+      # @return [BrickFTP::Types::User, nil]
       #
-      def call(id)
-        res = client.post("/api/rest/v1/users/#{id}/unlock.json")
+      def call(params)
+        params = params.to_h.compact
+        res = client.post("/api/rest/v1/users/#{params.delete(:id)}/unlock.json")
 
         BrickFTP::Types::User.new(res.symbolize_keys)
       end

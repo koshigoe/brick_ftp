@@ -7,38 +7,43 @@ RSpec.describe BrickFTP::RESTfulAPI::UnlockUser, type: :lib do
     context 'given correct User ID' do
       it 'return User object' do
         expected_user = BrickFTP::Types::User.new(
-          id: 1234,
-          username: 'user',
-          authentication_method: 'password',
-          last_login_at: nil,
-          authenticate_until: nil,
-          name: nil,
-          email: 'user@example.com',
-          notes: nil,
-          group_ids: '',
-          ftp_permission: true,
-          sftp_permission: true,
-          dav_permission: true,
-          restapi_permission: true,
+          id: 1,
+          admin_group_ids: [],
+          allowed_ips: '127.0.0.1',
           attachments_permission: true,
-          self_managed: true,
-          require_password_change: false,
-          require_2fa: false,
-          allowed_ips: nil,
-          user_root: '',
-          time_zone: 'Eastern Time (US & Canada)',
-          language: '',
-          ssl_required: 'use_system_setting',
-          site_admin: true,
-          password_set_at: nil,
+          authenticate_until: '2000-01-01 01:00:00 UTC',
+          authentication_method: 'password',
+          bypass_site_allowed_ips: true,
+          dav_permission: true,
+          email: 'john.doe@files.com',
+          ftp_permission: true,
+          group_ids: [],
+          language: 'en',
+          last_login_at: '2000-01-01 01:00:00 UTC',
+          last_protocol_cipher: '',
+          lockout_expires: '2000-01-01 01:00:00 UTC',
+          name: 'John Doe',
+          notes: 'Internal notes on this user.',
+          password_set_at: '2000-01-01 01:00:00 UTC',
+          password_validity_days: 1,
+          public_keys_count: 1,
           receive_admin_alerts: true,
-          subscribe_to_newsletter: false,
-          last_protocol_cipher: nil,
-          lockout_expires: nil,
-          admin_group_ids: []
+          require_2fa: true,
+          require_password_change: true,
+          restapi_permission: true,
+          self_managed: true,
+          sftp_permission: true,
+          site_admin: true,
+          ssl_required: 'always_require',
+          sso_strategy_id: 1,
+          subscribe_to_newsletter: true,
+          externally_managed: true,
+          time_zone: 'Pacific Time (US & Canada)',
+          user_root: '',
+          username: 'user'
         )
 
-        stub_request(:post, 'https://subdomain.files.com/api/rest/v1/users/1234/unlock.json')
+        stub_request(:post, 'https://subdomain.files.com/api/rest/v1/users/1/unlock.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -50,13 +55,13 @@ RSpec.describe BrickFTP::RESTfulAPI::UnlockUser, type: :lib do
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::UnlockUser.new(rest)
 
-        expect(command.call(1234)).to eq expected_user
+        expect(command.call(id: 1)).to eq expected_user
       end
     end
 
     context 'User not found' do
       it 'raise exception' do
-        stub_request(:post, 'https://subdomain.files.com/api/rest/v1/users/1234/unlock.json')
+        stub_request(:post, 'https://subdomain.files.com/api/rest/v1/users/1/unlock.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -68,7 +73,7 @@ RSpec.describe BrickFTP::RESTfulAPI::UnlockUser, type: :lib do
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::UnlockUser.new(rest)
 
-        expect { command.call(1234) }.to raise_error(BrickFTP::RESTfulAPI::Client::Error)
+        expect { command.call(id: 1) }.to raise_error(BrickFTP::RESTfulAPI::Client::Error)
       end
     end
   end

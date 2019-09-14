@@ -6,17 +6,31 @@ module BrickFTP
     #
     # @see https://developers.files.com/#show-ssl-certificate Show SSL Certificate
     #
+    # ### Params
+    #
+    # PARAMETER | TYPE    | DESCRIPTION
+    # --------- | ------- | -----------
+    # id        | integer | Required: SSL Certificate ID.
+    #
     class GetCertificate
       include Command
+      using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
+
+      Params = Struct.new(
+        'GetCertificateParams',
+        :id,
+        keyword_init: true
+      )
 
       # Show SSL Certificate
       #
-      # @param [Integer] id SSL Certificate ID.
+      # @param [BrickFTP::RESTfulAPI::GetCertificate::Params] params parameters
       # @return [BrickFTP::Types::Certificate]
       #
-      def call(id)
-        res = client.get("/api/rest/v1/certificates/#{id}.json")
+      def call(params)
+        params = params.to_h.compact
+        res = client.get("/api/rest/v1/certificates/#{params.delete(:id)}.json")
         return nil if !res || res.empty?
 
         BrickFTP::Types::Certificate.new(res.symbolize_keys)

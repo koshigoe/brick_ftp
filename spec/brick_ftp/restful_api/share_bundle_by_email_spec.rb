@@ -6,7 +6,7 @@ RSpec.describe BrickFTP::RESTfulAPI::ShareBundleByEmail, type: :lib do
   describe '#call' do
     context 'given correct parameters' do
       it 'return empty body' do
-        stub_request(:post, 'https://subdomain.files.com/api/rest/v1/bundles/1234/share.json')
+        stub_request(:post, 'https://subdomain.files.com/api/rest/v1/bundles/1/share.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -21,12 +21,13 @@ RSpec.describe BrickFTP::RESTfulAPI::ShareBundleByEmail, type: :lib do
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         params = BrickFTP::RESTfulAPI::ShareBundleByEmail::Params.new(
+          id: 1,
           to: %w[johndoe@gmail.com],
           note: 'Just a note.'
         )
         command = BrickFTP::RESTfulAPI::ShareBundleByEmail.new(rest)
 
-        expect(command.call(1234, params)).to be_truthy
+        expect(command.call(params)).to be_truthy
       end
     end
   end

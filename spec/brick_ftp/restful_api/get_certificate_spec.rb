@@ -25,7 +25,7 @@ RSpec.describe BrickFTP::RESTfulAPI::GetCertificate, type: :lib do
           updated_at: '2000-01-01 01:00:00 UTC'
         )
 
-        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/certificates/1234.json')
+        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/certificates/1.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -37,13 +37,13 @@ RSpec.describe BrickFTP::RESTfulAPI::GetCertificate, type: :lib do
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::GetCertificate.new(rest)
 
-        expect(command.call(1234)).to eq expected_certificate
+        expect(command.call(id: 1)).to eq expected_certificate
       end
     end
 
     context 'Certificate not found' do
       it 'return nil' do
-        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/certificates/1234.json')
+        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/certificates/1.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -55,7 +55,7 @@ RSpec.describe BrickFTP::RESTfulAPI::GetCertificate, type: :lib do
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::GetCertificate.new(rest)
 
-        expect(command.call(1234)).to be_nil
+        expect(command.call(id: 1)).to be_nil
       end
     end
   end

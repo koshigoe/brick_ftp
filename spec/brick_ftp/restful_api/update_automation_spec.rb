@@ -22,7 +22,7 @@ RSpec.describe BrickFTP::RESTfulAPI::UpdateAutomation, type: :lib do
           group_ids: []
         )
 
-        stub_request(:put, 'https://subdomain.files.com/api/rest/v1/automations/1234.json')
+        stub_request(:put, 'https://subdomain.files.com/api/rest/v1/automations/1.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -38,13 +38,14 @@ RSpec.describe BrickFTP::RESTfulAPI::UpdateAutomation, type: :lib do
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         params = BrickFTP::RESTfulAPI::UpdateAutomation::Params.new(
+          id: 1,
           source: 'source',
           destination: 'destination',
           interval: 'year'
         )
         command = BrickFTP::RESTfulAPI::UpdateAutomation.new(rest)
 
-        expect(command.call(1234, params)).to eq updated_automation
+        expect(command.call(params)).to eq updated_automation
       end
     end
   end

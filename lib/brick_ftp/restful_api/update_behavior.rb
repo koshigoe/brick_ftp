@@ -20,18 +20,19 @@ module BrickFTP
 
       Params = Struct.new(
         'UpdateBehaviorParams',
+        :id,
         :value,
         keyword_init: true
       )
 
       # Update behavior
       #
-      # @param [Integer] id Folder behavior ID.
       # @param [BrickFTP::RESTfulAPI::UpdateBehavior::Params] params parameters
       # @return [BrickFTP::Types::Behavior] Behavior
       #
-      def call(id, params)
-        res = client.patch("/api/rest/v1/behaviors/#{id}.json", params.to_h.compact)
+      def call(params)
+        params = params.to_h.compact
+        res = client.patch("/api/rest/v1/behaviors/#{params.delete(:id)}.json", params)
 
         BrickFTP::Types::Behavior.new(res.symbolize_keys)
       end

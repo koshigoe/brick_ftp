@@ -18,7 +18,7 @@ RSpec.describe BrickFTP::RESTfulAPI::DeactivateCertificate, type: :lib do
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::DeactivateCertificate.new(rest)
 
-        expect(command.call(1234)).to be_truthy
+        expect(command.call(id: 1234)).to be_truthy
       end
     end
   end

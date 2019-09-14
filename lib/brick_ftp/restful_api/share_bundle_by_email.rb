@@ -21,6 +21,7 @@ module BrickFTP
 
       Params = Struct.new(
         'ShareBundleByEmailParams',
+        :id,
         :to,
         :note,
         keyword_init: true
@@ -28,12 +29,12 @@ module BrickFTP
 
       # Send email(s) with a link to bundle
       #
-      # @param [Integer] id Bundle ID.
       # @param [BrickFTP::RESTfulAPI::CreateBundle::Params] params parameters
       # @return [Boolean]
       #
-      def call(id, params)
-        client.post("/api/rest/v1/bundles/#{id}/share.json", params.to_h.compact)
+      def call(params)
+        params = params.to_h.compact
+        client.post("/api/rest/v1/bundles/#{params.delete(:id)}/share.json", params)
         true
       end
     end

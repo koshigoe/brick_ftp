@@ -31,13 +31,14 @@ RSpec.describe BrickFTP::RESTfulAPI::UpdateCertificate, type: :lib do
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         params = BrickFTP::RESTfulAPI::UpdateCertificate::Params.new(
+          id: 1234,
           name: 'My Certificate',
           intermediates: '[certificates]',
           certificate: '[certificate]'
         )
         command = BrickFTP::RESTfulAPI::UpdateCertificate.new(rest)
 
-        expect(command.call(1234, params)).to eq updated_certificate
+        expect(command.call(params)).to eq updated_certificate
       end
     end
   end

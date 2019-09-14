@@ -41,12 +41,12 @@ module BrickFTP
 
       # Update automation
       #
-      # @param [Integer] Automation ID.
       # @param [BrickFTP::RESTfulAPI::CreateAutomation::Params] params parameters for create an automation
       # @return [BrickFTP::Types::Automation]
       #
-      def call(id, params)
-        res = client.put("/api/rest/v1/automations/#{id}.json", params.to_h.compact)
+      def call(params)
+        params = params.to_h.compact
+        res = client.put("/api/rest/v1/automations/#{params.delete(:id)}.json", params)
 
         BrickFTP::Types::Automation.new(res.symbolize_keys)
       end

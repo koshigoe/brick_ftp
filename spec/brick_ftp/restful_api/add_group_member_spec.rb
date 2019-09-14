@@ -24,10 +24,10 @@ RSpec.describe BrickFTP::RESTfulAPI::AddGroupMember, type: :lib do
           .to_return(body: added_group_membership.to_h.to_json)
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-        params = BrickFTP::RESTfulAPI::AddGroupMember::Params.new(admin: true)
+        params = BrickFTP::RESTfulAPI::AddGroupMember::Params.new(id: 1, user_id: 2, admin: true)
         command = BrickFTP::RESTfulAPI::AddGroupMember.new(rest)
 
-        expect(command.call(1, 2, params)).to eq added_group_membership
+        expect(command.call(params)).to eq added_group_membership
       end
     end
   end

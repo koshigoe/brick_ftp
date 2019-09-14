@@ -27,7 +27,7 @@ RSpec.describe BrickFTP::RESTfulAPI::GetGroup, type: :lib do
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::GetGroup.new(rest)
 
-        expect(command.call(1234)).to eq expected_group
+        expect(command.call(id: 1234)).to eq expected_group
       end
     end
 
@@ -40,12 +40,12 @@ RSpec.describe BrickFTP::RESTfulAPI::GetGroup, type: :lib do
               'User-Agent' => 'BrickFTP Client/1.0 (https://github.com/koshigoe/brick_ftp)',
             }
           )
-          .to_return(body: '[]')
+          .to_return(body: nil, status: 204)
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::GetGroup.new(rest)
 
-        expect(command.call(1234)).to be_nil
+        expect(command.call(id: 1234)).to be_nil
       end
     end
   end

@@ -6,15 +6,30 @@ module BrickFTP
     #
     # @see https://developers.files.com/#delete-automation Delete automation
     #
+    # ### Params
+    #
+    # PARAMETER | TYPE    | DESCRIPTION
+    # --------- | ------- | -----------
+    # id        | integer | Required: Automation ID.
+    #
     class DeleteAutomation
       include Command
+      using BrickFTP::CoreExt::Struct
+      using BrickFTP::CoreExt::Hash
+
+      Params = Struct.new(
+        'DeleteAutomationParams',
+        :id,
+        keyword_init: true
+      )
 
       # Delete automation
       #
-      # @param [Integer] Automation ID.
+      # @param [BrickFTP::RESTfulAPI::DeleteAutomation::Params] params parameters
       #
-      def call(id)
-        client.delete("/api/rest/v1/automations/#{id}.json")
+      def call(params)
+        params = params.to_h.compact
+        client.delete("/api/rest/v1/automations/#{params.delete(:id)}.json")
         true
       end
     end

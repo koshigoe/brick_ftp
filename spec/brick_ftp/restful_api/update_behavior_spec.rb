@@ -15,7 +15,7 @@ RSpec.describe BrickFTP::RESTfulAPI::UpdateBehavior, type: :lib do
           }
         )
 
-        stub_request(:patch, 'https://subdomain.files.com/api/rest/v1/behaviors/1234.json')
+        stub_request(:patch, 'https://subdomain.files.com/api/rest/v1/behaviors/1.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -26,10 +26,10 @@ RSpec.describe BrickFTP::RESTfulAPI::UpdateBehavior, type: :lib do
           .to_return(body: updated_behavior.to_h.to_json)
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-        params = BrickFTP::RESTfulAPI::UpdateBehavior::Params.new(value: 1)
+        params = BrickFTP::RESTfulAPI::UpdateBehavior::Params.new(id: 1, value: 1)
         command = BrickFTP::RESTfulAPI::UpdateBehavior.new(rest)
 
-        expect(command.call(1234, params)).to eq updated_behavior
+        expect(command.call(params)).to eq updated_behavior
       end
     end
   end

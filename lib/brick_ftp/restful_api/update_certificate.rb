@@ -4,7 +4,7 @@ module BrickFTP
   module RESTfulAPI
     # Update SSL Certificate
     #
-    # @see Update SSL Certificate
+    # @see https://developers.files.com/#update-ssl-certificate Update SSL Certificate
     #
     # ### Params
     #
@@ -22,6 +22,7 @@ module BrickFTP
 
       Params = Struct.new(
         'UpdateCertificateParams',
+        :id,
         :name,
         :intermediates,
         :certificate,
@@ -30,12 +31,12 @@ module BrickFTP
 
       # Update SSL Certificate
       #
-      # @param [Integer] id SSL Certificate ID.
       # @param [BrickFTP::RESTfulAPI::UpdateCertificate::Params] params parameters
       # @return [BrickFTP::Types::Certificate]
       #
-      def call(id, params)
-        res = client.patch("/api/rest/v1/certificates/#{id}.json", params.to_h.compact)
+      def call(params)
+        params = params.to_h.compact
+        res = client.patch("/api/rest/v1/certificates/#{params.delete(:id)}.json", params)
 
         BrickFTP::Types::Certificate.new(res.symbolize_keys)
       end

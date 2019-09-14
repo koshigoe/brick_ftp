@@ -43,7 +43,7 @@ RSpec.describe BrickFTP::RESTfulAPI::GetUser, type: :lib do
           username: 'user'
         )
 
-        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/users/1234.json')
+        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/users/1.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -55,13 +55,13 @@ RSpec.describe BrickFTP::RESTfulAPI::GetUser, type: :lib do
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::GetUser.new(rest)
 
-        expect(command.call(1234)).to eq expected_user
+        expect(command.call(id: 1)).to eq expected_user
       end
     end
 
     context 'User not found' do
       it 'return nil' do
-        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/users/1234.json')
+        stub_request(:get, 'https://subdomain.files.com/api/rest/v1/users/1.json')
           .with(
             basic_auth: %w[api-key x],
             headers: {
@@ -73,7 +73,7 @@ RSpec.describe BrickFTP::RESTfulAPI::GetUser, type: :lib do
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::GetUser.new(rest)
 
-        expect(command.call(1234)).to be_nil
+        expect(command.call(id: 1)).to be_nil
       end
     end
   end

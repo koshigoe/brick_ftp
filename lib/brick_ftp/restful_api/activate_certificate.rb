@@ -20,18 +20,19 @@ module BrickFTP
 
       Params = Struct.new(
         'ActivateCertificateParams',
+        :id,
         :replace_cert,
         keyword_init: true
       )
 
       # Activate SSL Certificate
       #
-      # @param [Integer] id SSL Certificate ID.
       # @param [BrickFTP::RESTfulAPI::CreateCertificate::Params] params parameters
       # @return [Boolean]
       #
-      def call(id, params)
-        client.post("/api/rest/v1/certificates/#{id}/activate.json", params.to_h.compact)
+      def call(params)
+        params = params.to_h.compact
+        client.post("/api/rest/v1/certificates/#{params.delete(:id)}/activate.json", params)
         true
       end
     end

@@ -6,15 +6,30 @@ module BrickFTP
     #
     # @see https://developers.files.com/#delete-permission Delete permission
     #
+    # ### Params
+    #
+    # PARAMETER | TYPE    | DESCRIPTION
+    # --------- | ------- | -----------
+    # id        | integer | Required: Permission ID.
+    #
     class DeletePermission
       include Command
+      using BrickFTP::CoreExt::Struct
+      using BrickFTP::CoreExt::Hash
+
+      Params = Struct.new(
+        'DeletePermissionParams',
+        :id,
+        keyword_init: true
+      )
 
       # Delete permission
       #
-      # @param [Integer] id Permission ID.
+      # @param [BrickFTP::RESTfulAPI::DeletePermission::Params] params parameters
       #
-      def call(id)
-        client.delete("/api/rest/v1/permissions/#{id}.json")
+      def call(params)
+        params = params.to_h.compact
+        client.delete("/api/rest/v1/permissions/#{params.delete(:id)}.json")
         true
       end
     end
