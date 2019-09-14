@@ -46,15 +46,15 @@ module BrickFTP
     autoload :ActivateCertificate, 'brick_ftp/restful_api/activate_certificate'
     autoload :UpdateCertificate, 'brick_ftp/restful_api/update_certificate'
     autoload :DeleteCertificate, 'brick_ftp/restful_api/delete_certificate'
-    # ref. https://developers.files.com/#file-and-folder-operations
+    # ref. https://developers.files.com/#files-folders
     autoload :ListFolders, 'brick_ftp/restful_api/list_folders'
     autoload :CreateFolder, 'brick_ftp/restful_api/create_folder'
-    autoload :CountFolderContents, 'brick_ftp/restful_api/count_folder_contents'
     autoload :GetFolderSize, 'brick_ftp/restful_api/get_folder_size'
     autoload :DownloadFile, 'brick_ftp/restful_api/download_file'
     autoload :MoveFolder, 'brick_ftp/restful_api/move_folder'
     autoload :CopyFolder, 'brick_ftp/restful_api/copy_folder'
     autoload :DeleteFolder, 'brick_ftp/restful_api/delete_folder'
+    autoload :UpdateFileMetadata, 'brick_ftp/restful_api/update_file_metadata'
     # ref. https://developers.files.com/#file-uploading
     autoload :StartUpload, 'brick_ftp/restful_api/start_upload'
     autoload :ContinueUpload, 'brick_ftp/restful_api/continue_upload'

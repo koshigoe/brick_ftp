@@ -7,20 +7,25 @@ RSpec.describe BrickFTP::RESTfulAPI::ListFolders, type: :lib do
     context 'correct request' do
       it 'return Array of Folder object' do
         expected_folder = BrickFTP::Types::File.new(
-          id:  867_530_900,
-          path:  'a b/c',
-          display_name:  'Needs Review',
-          type:  'directory',
-          size:  nil,
-          mtime:  '2014-05-15T20:26:18+00:00',
-          provided_mtime:  '2014-05-15T20:26:26+00:00',
-          crc32:  nil,
-          md5:  nil,
-          permissions:  'rwd',
-          subfolders_locked?:  nil
+          id: 1,
+          path: 'path/file.txt',
+          display_name: 'file.txt',
+          type: 'file',
+          size: 1024,
+          mtime: '2000-01-01 01:00:00 UTC',
+          provided_mtime: '2000-01-01 01:00:00 UTC',
+          crc32: '70976923',
+          md5: '17c54824e9931a4688ca032d03f6663c',
+          region: 'us-east-1',
+          permissions: 'rpw',
+          subfolders_locked?: true,
+          download_uri: 'https://mysite.files.com/...',
+          priority_color: 'red',
+          preview_id: 1,
+          preview: ''
         )
 
-        url = 'https://subdomain.files.com/api/rest/v1/folders/a%20b%2Fc?page=1&per_page=2&search=a%20b%2Fc&sort_by[path]=desc&sort_by[size]=desc&sort_by[modified_at_datetime]=desc'
+        url = 'https://subdomain.files.com/api/rest/v1/folders/a%20b%2Fc?page=1&per_page=2'
         stub_request(:get, url)
           .with(
             basic_auth: %w[api-key x],
@@ -33,46 +38,12 @@ RSpec.describe BrickFTP::RESTfulAPI::ListFolders, type: :lib do
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::ListFolders.new(rest)
         params = BrickFTP::RESTfulAPI::ListFolders::Params.new(
+          path: 'a b/c',
           page: 1,
-          per_page: 2,
-          search: 'a b/c',
-          'sort_by[path]': 'desc',
-          'sort_by[size]': 'desc',
-          'sort_by[modified_at_datetime]': 'desc'
+          per_page: 2
         )
 
-        expect(command.call('a b/c', params)).to eq([expected_folder])
-      end
-    end
-
-    context 'invalid parameters' do
-      context 'page' do
-        it 'raise ArgumentError' do
-          rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-          command = BrickFTP::RESTfulAPI::ListFolders.new(rest)
-
-          expect { command.call('a b/c', page: -1) }.to raise_error(ArgumentError, 'page must be greater than 0.')
-        end
-      end
-
-      context 'per_page' do
-        it 'raise ArgumentError' do
-          rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-          command = BrickFTP::RESTfulAPI::ListFolders.new(rest)
-
-          expect { command.call('a b/c', per_page: -1) }
-            .to raise_error(ArgumentError, 'per_page must be greater than 0 and less than equal 5000.')
-        end
-      end
-
-      context 'sort_by' do
-        it 'raise ArgumentError' do
-          rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-          command = BrickFTP::RESTfulAPI::ListFolders.new(rest)
-
-          expect { command.call('a b/c', 'sort_by[path]': 'value') }
-            .to raise_error(ArgumentError, 'sort_by[*] must be `asc` or `desc`.')
-        end
+        expect(command.call(params)).to eq([expected_folder])
       end
     end
   end

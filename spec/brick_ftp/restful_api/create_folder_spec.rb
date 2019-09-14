@@ -18,7 +18,7 @@ RSpec.describe BrickFTP::RESTfulAPI::CreateFolder, type: :lib do
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::CreateFolder.new(rest)
 
-        expect(command.call('a b/c')).to be_truthy
+        expect(command.call(path: 'a b/c')).to be_truthy
       end
     end
   end

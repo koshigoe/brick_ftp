@@ -4,20 +4,33 @@ require 'erb'
 
 module BrickFTP
   module RESTfulAPI
-    # Create a folder
+    # Create folder
     #
-    # @see https://developers.files.com/#create-a-folder Create a folder
+    # @see https://developers.files.com/#create-folder Create folder
+    #
+    # ### Params
+    #
+    # PARAMETER | TYPE    | DESCRIPTION
+    # --------- | ------- | -----------
+    # path      | string  | Required: Path
     #
     class CreateFolder
       include Command
+      using BrickFTP::CoreExt::Struct
+      using BrickFTP::CoreExt::Hash
 
-      # Creates a folder.
+      Params = Struct.new(
+        'CreateFolderParams',
+        :path,
+        keyword_init: true
+      )
+
+      # Create folder
       #
-      # @param [String] path
-      # @return [BrickFTP::Types::Folder] Folders
+      # @param [BrickFTP::RESTfulAPI::CreateFolder::Params] params parameters
       #
-      def call(path)
-        client.post("/api/rest/v1/folders/#{ERB::Util.url_encode(path)}")
+      def call(params)
+        client.post("/api/rest/v1/folders/#{ERB::Util.url_encode(params[:path])}")
         true
       end
     end

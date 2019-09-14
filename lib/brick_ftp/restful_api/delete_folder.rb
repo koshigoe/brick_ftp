@@ -4,27 +4,37 @@ require 'erb'
 
 module BrickFTP
   module RESTfulAPI
-    # Delete a file or folder
+    # Delete file/folder
     #
-    # @see https://developers.files.com/#delete-a-file-or-folder Delete a file or folder
+    # @see https://developers.files.com/#delete-file-folder Delete file/folder
+    #
+    # ### Params
+    #
+    # PARAMETER | TYPE    | DESCRIPTION
+    # --------- | ------- | -----------
+    # path      | string  | Required: Path
     #
     class DeleteFolder
       include Command
+      using BrickFTP::CoreExt::Struct
+      using BrickFTP::CoreExt::Hash
 
-      # Deletes a file or folder.
+      Params = Struct.new(
+        'DeleteFolderParams',
+        :path,
+        :recursive,
+        keyword_init: true
+      )
+
+      # Delete file/folder
       #
-      # Note that this operation works for both files and folders, but normally it will only work on empty folders.
-      # If you want to recursively delete a folder and all its contents, send the request with a `Depth` header
-      # with the value set to `infinity`.
+      # @param [BrickFTP::RESTfulAPI::DeleteFolder::Params] params parameters
       #
-      # @param [String] path Full path of the file or folder. Maximum of 550 characters.
-      # @param [Boolean] recursive
-      #
-      def call(path, recursive: false)
+      def call(params)
         headers = {}
-        headers = { 'Depth' => 'infinity' } if recursive
+        headers = { 'Depth' => 'infinity' } if params[:recursive]
 
-        client.delete("/api/rest/v1/files/#{ERB::Util.url_encode(path)}", headers)
+        client.delete("/api/rest/v1/files/#{ERB::Util.url_encode(params[:path])}", nil, headers)
         true
       end
     end

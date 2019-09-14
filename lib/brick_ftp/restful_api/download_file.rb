@@ -12,7 +12,7 @@ module BrickFTP
     #
     # PARAMETER           | TYPE     | DESCRIPTION
     # ------------------- | -------- | -----------
-    # action              | string   | Can be blank, `redirect` or `stat`.
+    # action              | string   | Can be blank, redirect or stat.
     # path                | string   | Required: File path.
     # with_previews       | boolean  | Include file preview information?
     # with_priority_color | boolean  | Include file priority color information?
@@ -25,6 +25,7 @@ module BrickFTP
       Params = Struct.new(
         'DownloadFileParams',
         :action,
+        :path,
         :with_previews,
         :with_priority_color,
         keyword_init: true
@@ -32,11 +33,12 @@ module BrickFTP
 
       # Download file
       #
-      # @param [String] path File path.
       # @param [BrickFTP::RESTfulAPI::DownloadFile::Params] params parameters
       # @return [BrickFTP::Types::File]
       #
-      def call(path, params)
+      def call(params)
+        params = params.to_h.compact
+        path = params.delete(:path)
         endpoint = "/api/rest/v1/files/#{ERB::Util.url_encode(path)}"
         query = params.to_h.compact.map { |k, v| "#{k}=#{ERB::Util.url_encode(v.to_s)}" }.join('&')
         endpoint += "?#{query}" unless query.empty?

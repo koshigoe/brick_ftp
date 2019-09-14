@@ -14,12 +14,12 @@ RSpec.describe BrickFTP::RESTfulAPI::DeleteFolder, type: :lib do
               'Depth' => 'infinity',
             }
           )
-          .to_return(body: '[]')
+          .to_return(body: nil, status: 204)
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::DeleteFolder.new(rest)
 
-        expect(command.call('a b/c', recursive: true)).to be_truthy
+        expect(command.call(path: 'a b/c', recursive: true)).to be_truthy
       end
     end
   end

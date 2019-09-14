@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe BrickFTP::RESTfulAPI::DownloadFile, type: :lib do
+RSpec.describe BrickFTP::RESTfulAPI::UpdateFileMetadata, type: :lib do
   describe '#call' do
     it 'return File object' do
       expected_file = BrickFTP::Types::File.new(
@@ -24,20 +24,29 @@ RSpec.describe BrickFTP::RESTfulAPI::DownloadFile, type: :lib do
         preview: ''
       )
 
-      url = 'https://subdomain.files.com/api/rest/v1/files/a%20b%2Fc?action=stat'
-      stub_request(:get, url)
+      url = 'https://subdomain.files.com/api/rest/v1/files/path%2Ffile.txt'
+      stub_request(:patch, url)
         .with(
           basic_auth: %w[api-key x],
           headers: {
             'User-Agent' => 'BrickFTP Client/1.0 (https://github.com/koshigoe/brick_ftp)',
-          }
+          },
+          body: {
+            provided_mtime: '2000-01-01 01:00:00 UTC',
+            priority_color: 'red',
+          }.to_json
         )
         .to_return(body: expected_file.to_h.to_json)
 
       rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-      command = BrickFTP::RESTfulAPI::DownloadFile.new(rest)
+      params = BrickFTP::RESTfulAPI::UpdateFileMetadata::Params.new(
+        path: 'path/file.txt',
+        provided_mtime: '2000-01-01 01:00:00 UTC',
+        priority_color: 'red'
+      )
+      command = BrickFTP::RESTfulAPI::UpdateFileMetadata.new(rest)
 
-      expect(command.call(path: 'a b/c', action: 'stat')).to eq(expected_file)
+      expect(command.call(params)).to eq(expected_file)
     end
   end
 end
