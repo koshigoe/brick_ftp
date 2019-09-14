@@ -33,7 +33,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::MoveFolder::Params] params parameters
       #
       def call(path, params)
-        client.post("/api/rest/v1/files/#{ERB::Util.url_encode(path)}", params.to_h.compact)
+        client.post("/api/rest/v1/files/#{ERB::Util.url_encode(path)}", Params.new(params.to_h).to_h.compact)
         true
       end
     end

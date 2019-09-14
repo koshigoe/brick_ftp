@@ -35,7 +35,7 @@ module BrickFTP
       # @return [BrickFTP::Types::File]
       #
       def call(params)
-        params = params.to_h.compact
+        params = Params.new(params.to_h).to_h.compact
         path = params.delete(:path)
         res = client.patch("/api/rest/v1/files/#{ERB::Util.url_encode(path)}", params)
 

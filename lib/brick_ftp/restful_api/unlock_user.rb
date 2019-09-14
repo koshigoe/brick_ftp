@@ -29,7 +29,7 @@ module BrickFTP
       # @return [BrickFTP::Types::User, nil]
       #
       def call(params)
-        params = params.to_h.compact
+        params = Params.new(params.to_h).to_h.compact
         res = client.post("/api/rest/v1/users/#{params.delete(:id)}/unlock.json")
 
         BrickFTP::Types::User.new(res.symbolize_keys)

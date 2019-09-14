@@ -30,7 +30,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::Delete2faMethod::Params] params parameters
       #
       def call(params)
-        params = params.to_h.compact
+        params = Params.new(params.to_h).to_h.compact
         client.delete("/api/rest/v1/2fa/#{params.delete(:id)}.json")
         true
       end

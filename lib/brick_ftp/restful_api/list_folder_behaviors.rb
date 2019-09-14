@@ -36,7 +36,7 @@ module BrickFTP
       #
       def call(path, params)
         endpoint = "/api/rest/v1/behaviors/folders/#{ERB::Util.url_encode(path)}"
-        query = params.to_h.compact.sort.map { |k, v| "#{k}=#{ERB::Util.url_encode(v.to_s)}" }.join('&')
+        query = Params.new(params.to_h).to_h.compact.sort.map { |k, v| "#{k}=#{ERB::Util.url_encode(v.to_s)}" }.join('&')
         endpoint += "?#{query}" unless query.empty?
         res = client.get(endpoint)
 

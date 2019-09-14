@@ -12,6 +12,7 @@ module BrickFTP
     #
     # PARAMETER | TYPE    | DESCRIPTION
     # --------- | ------- | -----------
+    # path      | string  | Required: Path
     # ref       | string  | Unique identifier to reference this file upload. This identifier is needed for subsequent requests to the REST API to complete the upload or request more upload URLs.
     # part      | integer | part number of multi part uploads.
     #
@@ -22,6 +23,7 @@ module BrickFTP
 
       Params = Struct.new(
         'ContinueUploadParams',
+        :path,
         :ref,
         :part,
         keyword_init: true
@@ -36,12 +38,13 @@ module BrickFTP
       # because the part is to be re-uploaded or because a prior upload attempt failed and the prior URL's signature
       # has expired.
       #
-      # @param [String] path Full path of the file or folder. Maximum of 550 characters.
       # @param [BrickFTP::RESTfulAPI::ContinueUpload::Params] params parameters
       # @return [BrickFTP::Types::Upload] Upload object
       #
-      def call(path, params)
-        res = client.post("/api/rest/v1/files/#{ERB::Util.url_encode(path)}", params.to_h.compact.merge(action: 'put'))
+      def call(params)
+        params = Params.new(params.to_h).to_h.compact.merge(action: 'put')
+        path = params.delete(:path)
+        res = client.post("/api/rest/v1/files/#{ERB::Util.url_encode(path)}", params)
 
         BrickFTP::Types::Upload.new(res.symbolize_keys)
       end

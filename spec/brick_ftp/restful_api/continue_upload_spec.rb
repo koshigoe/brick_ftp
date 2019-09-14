@@ -35,10 +35,14 @@ RSpec.describe BrickFTP::RESTfulAPI::ContinueUpload, type: :lib do
           .to_return(body: expected_upload.to_h.to_json)
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-        params = BrickFTP::RESTfulAPI::ContinueUpload::Params.new(ref: 'put-378670', part: 2)
+        params = BrickFTP::RESTfulAPI::ContinueUpload::Params.new(
+          ref: 'put-378670',
+          part: 2,
+          path: 'a b/c'
+        )
         command = BrickFTP::RESTfulAPI::ContinueUpload.new(rest)
 
-        expect(command.call('a b/c', params)).to eq expected_upload
+        expect(command.call(params)).to eq expected_upload
       end
     end
   end

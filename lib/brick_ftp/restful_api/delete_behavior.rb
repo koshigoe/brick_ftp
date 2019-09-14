@@ -28,7 +28,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::DeleteBehavior::Params] params parameters
       #
       def call(params)
-        params = params.to_h.compact
+        params = Params.new(params.to_h).to_h.compact
         client.delete("/api/rest/v1/behaviors/#{params.delete(:id)}.json")
         true
       end

@@ -40,7 +40,7 @@ module BrickFTP
       # @return [BrickFTP::Types::FileInBundle] FileInBundle
       #
       def call(params)
-        res = client.post('/api/rest/v1/bundles/download.json', params.to_h.compact)
+        res = client.post('/api/rest/v1/bundles/download.json', Params.new(params.to_h).to_h.compact)
 
         BrickFTP::Types::FileInBundle.new(res.symbolize_keys)
       end

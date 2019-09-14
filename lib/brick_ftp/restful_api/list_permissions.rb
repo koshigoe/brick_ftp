@@ -31,7 +31,7 @@ module BrickFTP
       # @return [Array<BrickFTP::Types::Permission>]
       #
       def call(params)
-        params = params.to_h.compact
+        params = Params.new(params.to_h).to_h.compact
 
         endpoint = '/api/rest/v1/permissions.json'
         query = params.sort.map { |k, v| "#{k}=#{ERB::Util.url_encode(v.to_s)}" }.join('&')

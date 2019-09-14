@@ -35,7 +35,7 @@ module BrickFTP
       # @return [BrickFTP::Types::ApiKey]
       #
       def call(params)
-        params = params.to_h.compact
+        params = Params.new(params.to_h).to_h.compact
         res = client.patch("/api/rest/v1/api_keys/#{params.delete(:id)}.json", params)
 
         BrickFTP::Types::ApiKey.new(res.symbolize_keys)

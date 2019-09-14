@@ -59,7 +59,7 @@ module BrickFTP
       # @return [BrickFTP::Types::::Params]
       #
       def call(params)
-        res = client.post('/api/rest/v1/certificates.json', params.to_h.compact)
+        res = client.post('/api/rest/v1/certificates.json', Params.new(params.to_h).to_h.compact)
 
         BrickFTP::Types::Certificate.new(res.symbolize_keys)
       end

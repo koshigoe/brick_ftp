@@ -31,7 +31,7 @@ module BrickFTP
       # @return [Array<BrickFTP::Types::Automation>]
       #
       def call(params)
-        params = params.to_h.compact
+        params = Params.new(params.to_h).to_h.compact
         query = params.sort.map { |k, v| "#{k}=#{ERB::Util.url_encode(v.to_s)}" }.join('&')
         endpoint = '/api/rest/v1/automations.json'
         endpoint += "?#{query}" unless query.empty?

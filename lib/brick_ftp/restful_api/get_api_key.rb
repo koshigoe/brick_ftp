@@ -29,7 +29,7 @@ module BrickFTP
       # @return [BrickFTP::Types::ApiKey]
       #
       def call(params)
-        params = params.to_h.compact
+        params = Params.new(params.to_h).to_h.compact
         res = client.get("/api/rest/v1/api_keys/#{params[:id]}.json")
 
         BrickFTP::Types::ApiKey.new(res.symbolize_keys)

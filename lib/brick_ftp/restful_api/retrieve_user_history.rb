@@ -39,7 +39,7 @@ module BrickFTP
       # @return [Array<BrickFTP::Types::History>]
       #
       def call(params)
-        params = params.to_h.compact
+        params = Params.new(params.to_h).to_h.compact
         %i[start_at end_at].each do |key|
           params[key] = params[key].utc.iso8601 if params[key].is_a?(Time)
         end

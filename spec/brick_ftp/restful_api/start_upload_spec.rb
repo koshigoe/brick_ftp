@@ -37,7 +37,7 @@ RSpec.describe BrickFTP::RESTfulAPI::StartUpload, type: :lib do
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::StartUpload.new(rest)
 
-        expect(command.call('a b/c')).to eq expected_upload
+        expect(command.call(path: 'a b/c')).to eq expected_upload
       end
     end
   end

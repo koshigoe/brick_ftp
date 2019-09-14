@@ -33,7 +33,7 @@ module BrickFTP
       # @return [Boolean]
       #
       def call(params)
-        params = params.to_h.compact
+        params = Params.new(params.to_h).to_h.compact
         client.post("/api/rest/v1/bundles/#{params.delete(:id)}/share.json", params)
         true
       end

@@ -31,7 +31,7 @@ module BrickFTP
       # @return [BrickFTP::Types::Behavior] Behavior
       #
       def call(params)
-        params = params.to_h.compact
+        params = Params.new(params.to_h).to_h.compact
         res = client.patch("/api/rest/v1/behaviors/#{params.delete(:id)}.json", params)
 
         BrickFTP::Types::Behavior.new(res.symbolize_keys)

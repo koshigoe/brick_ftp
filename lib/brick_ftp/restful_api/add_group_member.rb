@@ -34,7 +34,7 @@ module BrickFTP
       # @raise [BrickFTP::RESTfulAPI::Error] exception
       #
       def call(params)
-        params = params.to_h.compact
+        params = Params.new(params.to_h).to_h.compact
         id = params.delete(:id)
         user_id = params.delete(:user_id)
         res = client.put("/api/rest/v1/groups/#{id}/memberships/#{user_id}.json", params)

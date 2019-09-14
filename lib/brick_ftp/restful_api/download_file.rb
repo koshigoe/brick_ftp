@@ -37,10 +37,10 @@ module BrickFTP
       # @return [BrickFTP::Types::File]
       #
       def call(params)
-        params = params.to_h.compact
+        params = Params.new(params.to_h).to_h.compact
         path = params.delete(:path)
         endpoint = "/api/rest/v1/files/#{ERB::Util.url_encode(path)}"
-        query = params.to_h.compact.map { |k, v| "#{k}=#{ERB::Util.url_encode(v.to_s)}" }.join('&')
+        query = Params.new(params.to_h).to_h.compact.map { |k, v| "#{k}=#{ERB::Util.url_encode(v.to_s)}" }.join('&')
         endpoint += "?#{query}" unless query.empty?
         res = client.get(endpoint)
         return nil if !res || res.empty?

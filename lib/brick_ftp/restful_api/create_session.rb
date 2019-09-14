@@ -33,7 +33,7 @@ module BrickFTP
       # @return [BrickFTP::Types::Session]
       #
       def call(params)
-        res = client.post('/api/rest/v1/sessions.json', params.to_h.compact)
+        res = client.post('/api/rest/v1/sessions.json', Params.new(params.to_h).to_h.compact)
 
         BrickFTP::Types::Session.new(res.symbolize_keys)
       end

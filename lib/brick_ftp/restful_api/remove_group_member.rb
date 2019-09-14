@@ -30,7 +30,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::RemoveGroupMember::Params] params parameters
       #
       def call(params)
-        params = params.to_h.compact
+        params = Params.new(params.to_h).to_h.compact
         id = params.delete(:id)
         user_id = params.delete(:user_id)
         client.delete("/api/rest/v1/groups/#{id}/memberships/#{user_id}.json")

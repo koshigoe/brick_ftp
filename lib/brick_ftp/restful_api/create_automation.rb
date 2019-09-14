@@ -45,7 +45,7 @@ module BrickFTP
       # @return [BrickFTP::Types::Automation]
       #
       def call(params)
-        res = client.post('/api/rest/v1/automations.json', params.to_h.compact)
+        res = client.post('/api/rest/v1/automations.json', Params.new(params.to_h).to_h.compact)
 
         BrickFTP::Types::Automation.new(res.symbolize_keys)
       end

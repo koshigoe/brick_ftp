@@ -31,10 +31,13 @@ RSpec.describe BrickFTP::RESTfulAPI::CompleteUpload, type: :lib do
           .to_return(body: expected_file.to_h.to_json)
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-        params = BrickFTP::RESTfulAPI::CompleteUpload::Params.new(ref: 'put-378670')
+        params = BrickFTP::RESTfulAPI::CompleteUpload::Params.new(
+          ref: 'put-378670',
+          path: 'a b/c'
+        )
         command = BrickFTP::RESTfulAPI::CompleteUpload.new(rest)
 
-        expect(command.call('a b/c', params)).to eq expected_file
+        expect(command.call(params)).to eq expected_file
       end
     end
   end

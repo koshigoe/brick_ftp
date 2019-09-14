@@ -39,7 +39,7 @@ module BrickFTP
       # @return [BrickFTP::Types::BundleZip] BundleZip
       #
       def call(params)
-        res = client.post('/api/rest/v1/bundles/zip.json', params.to_h.compact)
+        res = client.post('/api/rest/v1/bundles/zip.json', Params.new(params.to_h).to_h.compact)
 
         BrickFTP::Types::BundleZip.new(res.symbolize_keys)
       end

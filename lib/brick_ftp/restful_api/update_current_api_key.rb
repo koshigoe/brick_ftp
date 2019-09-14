@@ -33,7 +33,7 @@ module BrickFTP
       # @return [BrickFTP::Types::ApiKey]
       #
       def call(params)
-        res = client.patch('/api/rest/v1/api_key.json', params.to_h.compact)
+        res = client.patch('/api/rest/v1/api_key.json', Params.new(params.to_h).to_h.compact)
 
         BrickFTP::Types::ApiKey.new(res.symbolize_keys)
       end

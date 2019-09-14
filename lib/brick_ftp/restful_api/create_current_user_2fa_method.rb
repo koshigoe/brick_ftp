@@ -33,7 +33,7 @@ module BrickFTP
       # @return [BrickFTP::Types::TwoFactorAuthenticationMethod]
       #
       def call(params)
-        res = client.post('/api/rest/v1/2fa.json', params.to_h.compact)
+        res = client.post('/api/rest/v1/2fa.json', Params.new(params.to_h).to_h.compact)
 
         BrickFTP::Types::TwoFactorAuthenticationMethod.new(res.symbolize_keys)
       end

@@ -57,7 +57,7 @@ module BrickFTP
       # @return [Array<BrickFTP::Types::User>]
       #
       def call(params)
-        params = params.to_h.compact
+        params = Params.new(params.to_h).to_h.compact
         q = params.delete(:q)
         params.update(q.to_h.compact.each_with_object({}) { |(k, v), m| m[:"q[#{k}]"] = v }) if q
 

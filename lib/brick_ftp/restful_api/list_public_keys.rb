@@ -29,7 +29,7 @@ module BrickFTP
       # @return [Array<BrickFTP::Types::PublicKey>]
       #
       def call(params)
-        params = params.to_h.compact
+        params = Params.new(params.to_h).to_h.compact
         res = client.get("/api/rest/v1/users/#{params.delete(:id)}/public_keys.json")
 
         res.map { |i| BrickFTP::Types::PublicKey.new(i.symbolize_keys) }

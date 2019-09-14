@@ -38,7 +38,7 @@ module BrickFTP
         chunk_size = adjust_chunk_size(data, chunk_size)
         validate_range_of_chunk_size!(chunk_size)
 
-        upload = StartUpload.new(client).call(path)
+        upload = StartUpload.new(client).call(path: path)
         chunk_io = BrickFTP::Utils::ChunkIO.new(data, chunk_size: chunk_size)
 
         rest = data.size
@@ -46,9 +46,9 @@ module BrickFTP
           rest -= client.upload_file(upload.http_method, upload.upload_uri, chunk)
           break if !chunk_size || rest <= 0
 
-          upload = ContinueUpload.new(client).call(path, ref: upload.ref, part: upload.part_number + 1)
+          upload = ContinueUpload.new(client).call(path: path, ref: upload.ref, part: upload.part_number + 1)
         end
-        CompleteUpload.new(client).call(path, ref: upload.ref)
+        CompleteUpload.new(client).call(path: path, ref: upload.ref)
       end
 
       private

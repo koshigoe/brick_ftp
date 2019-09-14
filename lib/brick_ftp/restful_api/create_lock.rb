@@ -37,7 +37,7 @@ module BrickFTP
       # @return [BrickFTP::Types::Lock]
       #
       def call(params)
-        params = params.to_h.compact
+        params = Params.new(params.to_h).to_h.compact
         path = params.delete(:path)
         res = client.post("/api/rest/v1/locks/#{ERB::Util.url_encode(path)}", params)
 

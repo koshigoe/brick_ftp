@@ -203,7 +203,7 @@ module BrickFTP
       # @return [BrickFTP::Types::Site]
       #
       def call(params)
-        res = client.put('/api/rest/v1/site.json', params.to_h.compact)
+        res = client.put('/api/rest/v1/site.json', Params.new(params.to_h).to_h.compact)
 
         BrickFTP::Types::Site.new(res.symbolize_keys)
       end

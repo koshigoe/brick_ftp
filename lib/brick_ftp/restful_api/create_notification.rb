@@ -41,7 +41,7 @@ module BrickFTP
       # @return [BrickFTP::Types::Notification]
       #
       def call(params)
-        res = client.post('/api/rest/v1/notifications.json', params.to_h.compact)
+        res = client.post('/api/rest/v1/notifications.json', Params.new(params.to_h).to_h.compact)
 
         BrickFTP::Types::Notification.new(res.symbolize_keys)
       end
