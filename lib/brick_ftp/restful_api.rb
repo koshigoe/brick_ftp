@@ -49,7 +49,6 @@ module BrickFTP
     # ref. https://developers.files.com/#files-folders
     autoload :ListFolders, 'brick_ftp/restful_api/list_folders'
     autoload :CreateFolder, 'brick_ftp/restful_api/create_folder'
-    autoload :GetFolderSize, 'brick_ftp/restful_api/get_folder_size'
     autoload :DownloadFile, 'brick_ftp/restful_api/download_file'
     autoload :MoveFolder, 'brick_ftp/restful_api/move_folder'
     autoload :CopyFolder, 'brick_ftp/restful_api/copy_folder'
