@@ -23,6 +23,7 @@ module BrickFTP
 
       Params = Struct.new(
         'ListFolderBehaviorsParams',
+        :path,
         :behavior,
         :recursive,
         keyword_init: true
@@ -30,13 +31,14 @@ module BrickFTP
 
       # List behaviors by path
       #
-      # @param [String] path Folder behaviors path.
       # @param [BrickFTP::RESTfulAPI::ListFolderBehaviors::Params] params parameters for search folder behaviors
       # @return [Array<BrickFTP::Types::Behavior>] Behaviors
       #
-      def call(path, params)
+      def call(params)
+        params = Params.new(params.to_h).to_h.compact
+        path = params.delete(:path)
+        query = params.sort.map { |k, v| "#{k}=#{ERB::Util.url_encode(v.to_s)}" }.join('&')
         endpoint = "/api/rest/v1/behaviors/folders/#{ERB::Util.url_encode(path)}"
-        query = Params.new(params.to_h).to_h.compact.sort.map { |k, v| "#{k}=#{ERB::Util.url_encode(v.to_s)}" }.join('&')
         endpoint += "?#{query}" unless query.empty?
         res = client.get(endpoint)
 

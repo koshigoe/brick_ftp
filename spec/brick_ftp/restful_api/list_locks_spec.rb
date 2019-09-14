@@ -30,7 +30,7 @@ RSpec.describe BrickFTP::RESTfulAPI::ListLocks, type: :lib do
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         command = BrickFTP::RESTfulAPI::ListLocks.new(rest)
 
-        expect(command.call('phun/physics1.png')).to eq([expected_lock])
+        expect(command.call(path: 'phun/physics1.png')).to eq([expected_lock])
       end
     end
   end

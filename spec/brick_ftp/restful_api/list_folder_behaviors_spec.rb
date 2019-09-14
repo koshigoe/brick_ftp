@@ -25,10 +25,14 @@ RSpec.describe BrickFTP::RESTfulAPI::ListFolderBehaviors, type: :lib do
           .to_return(body: [expected_behavior.to_h].to_json)
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-        params = BrickFTP::RESTfulAPI::ListFolderBehaviors::Params.new(recursive: true, behavior: 'webhook')
+        params = BrickFTP::RESTfulAPI::ListFolderBehaviors::Params.new(
+          path: 'a',
+          recursive: true,
+          behavior: 'webhook'
+        )
         command = BrickFTP::RESTfulAPI::ListFolderBehaviors.new(rest)
 
-        expect(command.call('a', params)).to eq([expected_behavior])
+        expect(command.call(params)).to eq([expected_behavior])
       end
     end
   end
