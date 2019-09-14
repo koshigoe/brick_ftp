@@ -104,6 +104,11 @@ module BrickFTP
     autoload :GetPublicKey, 'brick_ftp/restful_api/get_public_key'
     autoload :CreatePublicKey, 'brick_ftp/restful_api/create_public_key'
     autoload :DeletePublicKey, 'brick_ftp/restful_api/delete_public_key'
+    # ref. https://developers.files.com/#remote-servers
+    autoload :ListRemoteServers, 'brick_ftp/restful_api/list_remote_servers'
+    autoload :CreateRemoteServer, 'brick_ftp/restful_api/create_remote_server'
+    autoload :UpdateRemoteServer, 'brick_ftp/restful_api/update_remote_server'
+    autoload :DeleteRemoteServer, 'brick_ftp/restful_api/delete_remote_server'
     # ref. https://developers.files.com/#file-uploading
     autoload :StartUpload, 'brick_ftp/restful_api/start_upload'
     autoload :ContinueUpload, 'brick_ftp/restful_api/continue_upload'
