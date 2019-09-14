@@ -2,22 +2,34 @@
 
 module BrickFTP
   module RESTfulAPI
-    # Delete a user
+    # Delete user
     #
-    # @see https://developers.files.com/#delete-a-user Delete a user
+    # @see https://developers.files.com/#delete-user Delete user
+    #
+    # ### Params
+    #
+    # PARAMETER | TYPE    | DESCRIPTION
+    # --------- | ------- | -----------
+    # id        | integer | User ID.
     #
     class DeleteUser
       include Command
+      using BrickFTP::CoreExt::Struct
+      using BrickFTP::CoreExt::Hash
 
-      # Deletes the specified user.
+      Params = Struct.new(
+        'DeleteUserParams',
+        :id,
+        keyword_init: true
+      )
+
+      # Delete user
       #
-      # For additional security, this method requires reauthentication when updating a password unless an API key is used.
+      # @param [BrickFTP::RESTfulAPI::DeleteUser::Params] params parameters
       #
-      # @param [Integer] id Globally unique identifier of each user.
-      #   Each user is given an ID automatically upon creation.
-      #
-      def call(id)
-        client.delete("/api/rest/v1/users/#{id}.json")
+      def call(params)
+        params = params.to_h.compact
+        client.delete("/api/rest/v1/users/#{params[:id]}.json")
         true
       end
     end
