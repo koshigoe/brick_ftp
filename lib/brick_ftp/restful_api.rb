@@ -5,15 +5,6 @@ module BrickFTP
     autoload :Client, 'brick_ftp/restful_api/client'
     autoload :Command, 'brick_ftp/restful_api/command'
     autoload :GetSiteUsage, 'brick_ftp/restful_api/get_site_usage'
-    # ref. https://developers.files.com/#users
-    autoload :ListUsers, 'brick_ftp/restful_api/list_users'
-    autoload :CountUsers, 'brick_ftp/restful_api/count_users'
-    autoload :SearchUser, 'brick_ftp/restful_api/search_user'
-    autoload :GetUser, 'brick_ftp/restful_api/get_user'
-    autoload :CreateUser, 'brick_ftp/restful_api/create_user'
-    autoload :UpdateUser, 'brick_ftp/restful_api/update_user'
-    autoload :DeleteUser, 'brick_ftp/restful_api/delete_user'
-    autoload :UnlockUser, 'brick_ftp/restful_api/unlock_user'
     # ref. https://developers.files.com/#api-keys
     autoload :ListCurrentUserApiKeys, 'brick_ftp/restful_api/list_current_user_api_keys'
     autoload :ListUserApiKeys, 'brick_ftp/restful_api/list_user_api_keys'
@@ -132,5 +123,14 @@ module BrickFTP
     autoload :GenerateCurrentUser2faOtp, 'brick_ftp/restful_api/generate_current_user_2fa_otp'
     autoload :Update2faMethod, 'brick_ftp/restful_api/update_2fa_method'
     autoload :Delete2faMethod, 'brick_ftp/restful_api/delete_2fa_method'
+    # ref. https://developers.files.com/#users
+    autoload :ListUsers, 'brick_ftp/restful_api/list_users'
+    autoload :CountUsers, 'brick_ftp/restful_api/count_users'
+    autoload :SearchUser, 'brick_ftp/restful_api/search_user'
+    autoload :GetUser, 'brick_ftp/restful_api/get_user'
+    autoload :CreateUser, 'brick_ftp/restful_api/create_user'
+    autoload :UpdateUser, 'brick_ftp/restful_api/update_user'
+    autoload :DeleteUser, 'brick_ftp/restful_api/delete_user'
+    autoload :UnlockUser, 'brick_ftp/restful_api/unlock_user'
   end
 end
