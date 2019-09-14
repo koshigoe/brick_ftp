@@ -202,7 +202,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::UpdateSiteSettings::Params] params parameters
       # @return [BrickFTP::Types::Site]
       #
-      def call(params)
+      def call(params = {})
         res = client.put('/api/rest/v1/site.json', Params.new(params.to_h).to_h.compact)
 
         BrickFTP::Types::Site.new(res.symbolize_keys)

@@ -28,7 +28,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::GetGroup::Params] params parameters
       # @return [BrickFTP::Types::Group, nil]
       #
-      def call(params)
+      def call(params = {})
         params = Params.new(params.to_h).to_h.compact
         res = client.get("/api/rest/v1/groups/#{params.delete(:id)}.json")
         return nil if !res || res.empty?

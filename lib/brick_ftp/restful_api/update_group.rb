@@ -36,7 +36,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::UpdateGroup::Params] params parameters for updating a Group
       # @return [BrickFTP::Types::Group]
       #
-      def call(params)
+      def call(params = {})
         params = Params.new(params.to_h).to_h.compact
         res = client.put("/api/rest/v1/groups/#{params.delete(:id)}.json", params)
 

@@ -29,7 +29,7 @@ module BrickFTP
       #
       # @param [BrickFTP::RESTfulAPI::RemoveGroupMember::Params] params parameters
       #
-      def call(params)
+      def call(params = {})
         params = Params.new(params.to_h).to_h.compact
         id = params.delete(:id)
         user_id = params.delete(:user_id)

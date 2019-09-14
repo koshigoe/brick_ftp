@@ -38,7 +38,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::CreatePermission::Params] params parameters
       # @return [BrickFTP::Types::Permission]
       #
-      def call(params)
+      def call(params = {})
         res = client.post('/api/rest/v1/permissions.json', Params.new(params.to_h).to_h.compact)
 
         BrickFTP::Types::Permission.new(res.symbolize_keys)

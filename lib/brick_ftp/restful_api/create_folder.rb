@@ -29,7 +29,7 @@ module BrickFTP
       #
       # @param [BrickFTP::RESTfulAPI::CreateFolder::Params] params parameters
       #
-      def call(params)
+      def call(params = {})
         client.post("/api/rest/v1/folders/#{ERB::Util.url_encode(params[:path])}")
         true
       end

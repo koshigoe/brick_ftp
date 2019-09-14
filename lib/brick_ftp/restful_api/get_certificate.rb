@@ -28,7 +28,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::GetCertificate::Params] params parameters
       # @return [BrickFTP::Types::Certificate]
       #
-      def call(params)
+      def call(params = {})
         params = Params.new(params.to_h).to_h.compact
         res = client.get("/api/rest/v1/certificates/#{params.delete(:id)}.json")
         return nil if !res || res.empty?

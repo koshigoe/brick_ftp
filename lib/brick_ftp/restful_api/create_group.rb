@@ -34,7 +34,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::CreateGroup::Params] params parameters for creating a Group
       # @return [BrickFTP::Types::Group]
       #
-      def call(params)
+      def call(params = {})
         res = client.post('/api/rest/v1/groups.json', Params.new(params.to_h).to_h.compact)
 
         BrickFTP::Types::Group.new(res.symbolize_keys)

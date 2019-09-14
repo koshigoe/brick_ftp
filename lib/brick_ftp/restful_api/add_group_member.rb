@@ -33,7 +33,7 @@ module BrickFTP
       # @return [BrickFTP::Types::GroupMembership]
       # @raise [BrickFTP::RESTfulAPI::Error] exception
       #
-      def call(params)
+      def call(params = {})
         params = Params.new(params.to_h).to_h.compact
         id = params.delete(:id)
         user_id = params.delete(:user_id)

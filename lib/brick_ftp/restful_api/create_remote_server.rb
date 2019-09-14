@@ -52,7 +52,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::CreateRemoteServer::Params] params parameters
       # @return [BrickFTP::Types::RemoteServer]
       #
-      def call(params)
+      def call(params = {})
         res = client.post('/api/rest/v1/remote_servers.json', Params.new(params.to_h).to_h.compact)
 
         BrickFTP::Types::RemoteServer.new(res.symbolize_keys)

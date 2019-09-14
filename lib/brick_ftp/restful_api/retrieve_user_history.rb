@@ -38,7 +38,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::RetrieveUserHistory::Params] params parameters
       # @return [Array<BrickFTP::Types::History>]
       #
-      def call(params)
+      def call(params = {})
         params = Params.new(params.to_h).to_h.compact
         %i[start_at end_at].each do |key|
           params[key] = params[key].utc.iso8601 if params[key].is_a?(Time)

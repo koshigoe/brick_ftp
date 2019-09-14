@@ -30,7 +30,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::CreateCertificate::Params] params parameters
       # @return [Boolean]
       #
-      def call(params)
+      def call(params = {})
         params = Params.new(params.to_h).to_h.compact
         client.post("/api/rest/v1/certificates/#{params.delete(:id)}/activate.json", params)
         true

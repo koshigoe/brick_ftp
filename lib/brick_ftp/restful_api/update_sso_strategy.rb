@@ -58,7 +58,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::UpdateSsoStrategy::Params] params parameters
       # @return [BrickFTP::Types::SsoStrategy]
       #
-      def call(params)
+      def call(params = {})
         params = Params.new(params.to_h).to_h.compact
         res = client.put("/api/rest/v1/sso_strategies/#{params.delete(:id)}.json", params)
 

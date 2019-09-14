@@ -46,7 +46,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::ListFolders::Params] params parameters
       # @return [Array<BrickFTP::Types::File>] Files
       #
-      def call(params)
+      def call(params = {})
         params = Params.new(params.to_h).to_h.compact
         path = params.delete(:path)
 

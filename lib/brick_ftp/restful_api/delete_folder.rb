@@ -30,7 +30,7 @@ module BrickFTP
       #
       # @param [BrickFTP::RESTfulAPI::DeleteFolder::Params] params parameters
       #
-      def call(params)
+      def call(params = {})
         headers = {}
         headers = { 'Depth' => 'infinity' } if params[:recursive]
 

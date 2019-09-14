@@ -88,7 +88,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::CreateUser::Params] params parameters
       # @return [BrickFTP::Types::User]
       #
-      def call(params)
+      def call(params = {})
         params = Params.new(params.to_h).to_h.compact
         res = client.put("/api/rest/v1/users/#{params.delete(:id)}.json", params)
 

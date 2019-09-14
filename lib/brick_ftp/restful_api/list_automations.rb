@@ -30,7 +30,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::ListAutomations::Params] params parameters
       # @return [Array<BrickFTP::Types::Automation>]
       #
-      def call(params)
+      def call(params = {})
         params = Params.new(params.to_h).to_h.compact
         query = params.sort.map { |k, v| "#{k}=#{ERB::Util.url_encode(v.to_s)}" }.join('&')
         endpoint = '/api/rest/v1/automations.json'

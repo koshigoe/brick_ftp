@@ -32,7 +32,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::CreateBehavior::Params] params parameters
       # @return [BrickFTP::Types::Behavior] Behavior
       #
-      def call(params)
+      def call(params = {})
         res = client.post('/api/rest/v1/behaviors.json', Params.new(params.to_h).to_h.compact)
 
         BrickFTP::Types::Behavior.new(res.symbolize_keys)

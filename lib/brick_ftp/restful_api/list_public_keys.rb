@@ -28,7 +28,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::ListPublicKeys::Params] params parameters
       # @return [Array<BrickFTP::Types::PublicKey>]
       #
-      def call(params)
+      def call(params = {})
         params = Params.new(params.to_h).to_h.compact
         res = client.get("/api/rest/v1/users/#{params.delete(:id)}/public_keys.json")
 

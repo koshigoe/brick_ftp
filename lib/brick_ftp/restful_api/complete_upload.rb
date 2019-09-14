@@ -37,7 +37,7 @@ module BrickFTP
       # @return [BrickFTP::Types::File] File object
       # @raise [BrickFTP::RESTfulAPI::Error] exception
       #
-      def call(params)
+      def call(params = {})
         params = Params.new(params.to_h).to_h.compact.merge(action: 'end')
         path = params.delete(:path)
         res = client.post("/api/rest/v1/files/#{ERB::Util.url_encode(path)}", params)

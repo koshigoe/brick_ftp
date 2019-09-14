@@ -32,7 +32,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::CreateSiteWideApiKey::Params] params parameters for creating an API key
       # @return [BrickFTP::Types::ApiKey]
       #
-      def call(params)
+      def call(params = {})
         res = client.post('/api/rest/v1/site/api_keys.json', Params.new(params.to_h).to_h.compact)
 
         BrickFTP::Types::ApiKey.new(res.symbolize_keys)

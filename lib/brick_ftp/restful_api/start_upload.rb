@@ -31,7 +31,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::StartUpload::Params] params parameters
       # @return [BrickFTP::Types::Upload] Upload object
       #
-      def call(params)
+      def call(params = {})
         params = Params.new(params.to_h).to_h.compact
         path = params.delete(:path)
         res = client.post("/api/rest/v1/files/#{ERB::Util.url_encode(path)}", action: 'put')

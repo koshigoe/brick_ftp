@@ -30,7 +30,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::ListGroupPermissions::Params] params parameters
       # @return [Array<BrickFTP::Types::Permission>]
       #
-      def call(params)
+      def call(params = {})
         res = client.get("/api/rest/v1/groups/#{params[:id]}/permissions.json")
 
         res.map { |i| BrickFTP::Types::Permission.new(i.symbolize_keys) }

@@ -31,7 +31,7 @@ module BrickFTP
       #
       # @param [BrickFTP::RESTfulAPI::DeleteLock::Params] params parameters
       #
-      def call(params)
+      def call(params = {})
         params = Params.new(params.to_h).to_h.compact
         path = params.delete(:path)
         client.delete("/api/rest/v1/locks/#{ERB::Util.url_encode(path)}", params)

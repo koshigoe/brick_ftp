@@ -36,7 +36,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::CreateBundle::Params] params parameters
       # @return [BrickFTP::Types::Bundle]
       #
-      def call(params)
+      def call(params = {})
         res = client.post('/api/rest/v1/bundles.json', Params.new(params.to_h).to_h.compact)
 
         BrickFTP::Types::Bundle.new(res.symbolize_keys)

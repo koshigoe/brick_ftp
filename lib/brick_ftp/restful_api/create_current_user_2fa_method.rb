@@ -32,7 +32,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::CreateCurrentUser2faMethod::Params] params parameters
       # @return [BrickFTP::Types::TwoFactorAuthenticationMethod]
       #
-      def call(params)
+      def call(params = {})
         res = client.post('/api/rest/v1/2fa.json', Params.new(params.to_h).to_h.compact)
 
         BrickFTP::Types::TwoFactorAuthenticationMethod.new(res.symbolize_keys)

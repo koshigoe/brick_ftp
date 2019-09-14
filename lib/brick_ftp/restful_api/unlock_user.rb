@@ -28,7 +28,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::UnlockUser::Params] params parameters
       # @return [BrickFTP::Types::User, nil]
       #
-      def call(params)
+      def call(params = {})
         params = Params.new(params.to_h).to_h.compact
         res = client.post("/api/rest/v1/users/#{params.delete(:id)}/unlock.json")
 

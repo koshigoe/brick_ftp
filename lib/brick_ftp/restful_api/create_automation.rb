@@ -44,7 +44,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::CreateAutomation::Params] params parameters for creating an Automation
       # @return [BrickFTP::Types::Automation]
       #
-      def call(params)
+      def call(params = {})
         res = client.post('/api/rest/v1/automations.json', Params.new(params.to_h).to_h.compact)
 
         BrickFTP::Types::Automation.new(res.symbolize_keys)

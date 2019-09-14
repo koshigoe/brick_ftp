@@ -27,7 +27,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::GetAutomation::Params] params parameters
       # @return [Array<BrickFTP::Types::Automation>]
       #
-      def call(params)
+      def call(params = {})
         params = Params.new(params.to_h).to_h.compact
         res = client.get("/api/rest/v1/automations/#{params.delete(:id)}.json")
         return nil if !res || res.empty?

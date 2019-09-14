@@ -30,7 +30,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::ListPermissions::Params] params parameters
       # @return [Array<BrickFTP::Types::Permission>]
       #
-      def call(params)
+      def call(params = {})
         params = Params.new(params.to_h).to_h.compact
 
         endpoint = '/api/rest/v1/permissions.json'

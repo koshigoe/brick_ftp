@@ -28,7 +28,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::ListBehavior::Params] params parameters for search behaviors
       # @return [Array<BrickFTP::Types::Behavior>]
       #
-      def call(params)
+      def call(params = {})
         endpoint = '/api/rest/v1/behaviors.json'
         query = Params.new(params.to_h).to_h.compact.map { |k, v| "#{k}=#{ERB::Util.url_encode(v.to_s)}" }.join('&')
         endpoint += "?#{query}" unless query.empty?

@@ -28,8 +28,9 @@ module BrickFTP
       # List site-wide API Keys
       #
       # @param [BrickFTP::RESTfulAPI::ListSiteWideApiKeys::Params] params parameters
+      # @return [Array<BrickFTP::Types::ApiKey>]
       #
-      def call(params)
+      def call(params = {})
         params = Params.new(params.to_h).to_h.compact
         endpoint = '/api/rest/v1/site/api_keys.json'
         query = params.sort.map { |k, v| "#{k}=#{ERB::Util.url_encode(v.to_s)}" }.join('&')

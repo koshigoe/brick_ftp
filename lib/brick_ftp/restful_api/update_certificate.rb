@@ -34,7 +34,7 @@ module BrickFTP
       # @param [BrickFTP::RESTfulAPI::UpdateCertificate::Params] params parameters
       # @return [BrickFTP::Types::Certificate]
       #
-      def call(params)
+      def call(params = {})
         params = Params.new(params.to_h).to_h.compact
         res = client.patch("/api/rest/v1/certificates/#{params.delete(:id)}.json", params)
 
