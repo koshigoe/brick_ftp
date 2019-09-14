@@ -5,9 +5,6 @@ module BrickFTP
     autoload :Client, 'brick_ftp/restful_api/client'
     autoload :Command, 'brick_ftp/restful_api/command'
     autoload :GetSiteUsage, 'brick_ftp/restful_api/get_site_usage'
-    # ref. https://developers.files.com/#sessions
-    autoload :CreateSession, 'brick_ftp/restful_api/create_session'
-    autoload :DeleteSession, 'brick_ftp/restful_api/delete_session'
     # ref. https://developers.files.com/#users
     autoload :ListUsers, 'brick_ftp/restful_api/list_users'
     autoload :CountUsers, 'brick_ftp/restful_api/count_users'
@@ -109,6 +106,9 @@ module BrickFTP
     autoload :CreateRemoteServer, 'brick_ftp/restful_api/create_remote_server'
     autoload :UpdateRemoteServer, 'brick_ftp/restful_api/update_remote_server'
     autoload :DeleteRemoteServer, 'brick_ftp/restful_api/delete_remote_server'
+    # ref. https://developers.files.com/#sessions
+    autoload :CreateSession, 'brick_ftp/restful_api/create_session'
+    autoload :DeleteSession, 'brick_ftp/restful_api/delete_session'
     # ref. https://developers.files.com/#file-uploading
     autoload :StartUpload, 'brick_ftp/restful_api/start_upload'
     autoload :ContinueUpload, 'brick_ftp/restful_api/continue_upload'
