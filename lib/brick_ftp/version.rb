@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module BrickFTP
-  VERSION = '2.0.1'
+  VERSION = '3.0.0.beta1'
 end

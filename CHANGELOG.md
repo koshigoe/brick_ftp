@@ -18,6 +18,24 @@ Files::User.new(params, api_key: 'YOUR_API_KEY')
 I will archive this repository after found official SDK.
 
 
+[v3.0.0](https://github.com/koshigoe/brick_ftp/compare/v2.0.1...v3.0.0)
+----
+
+_**NOTE: I recommend to use official SDK.**_
+
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v2.0.1...v3.0.0)
+
+### Enhancements:
+
+- Catch up API specification (2019/09/12)
+
+### Fixed Bugs:
+
+### Breaking Changes:
+
+- Unify method signature: `BrickFTP::RestfulAPI::*#call(params)`
+
+
 [v2.0.1](https://github.com/koshigoe/brick_ftp/compare/v2.0.0...v2.0.1)
 ----
 
