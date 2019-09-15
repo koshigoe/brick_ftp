@@ -128,6 +128,7 @@ module BrickFTP
     autoload :ListCurrentUserGroupMemberships, 'brick_ftp/restful_api/list_current_user_group_memberships'
     autoload :CreateUser, 'brick_ftp/restful_api/create_user'
     autoload :ResendUserWelcomeEmail, 'brick_ftp/restful_api/resend_user_welcome_email'
+    autoload :Reset2fa, 'brick_ftp/restful_api/reset_2fa'
     autoload :UpdateUser, 'brick_ftp/restful_api/update_user'
     autoload :DeleteUser, 'brick_ftp/restful_api/delete_user'
     autoload :UnlockUser, 'brick_ftp/restful_api/unlock_user'
