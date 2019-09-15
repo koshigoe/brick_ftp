@@ -38,7 +38,7 @@ module BrickFTP
 
       # Create automation
       #
-      # @param [BrickFTP::RESTfulAPI::CreateAutomation::Params] params parameters for creating an Automation
+      # @param [BrickFTP::RESTfulAPI::CreateAutomation::Params] params parameters
       # @return [BrickFTP::Types::Automation]
       #
       def call(params = {})

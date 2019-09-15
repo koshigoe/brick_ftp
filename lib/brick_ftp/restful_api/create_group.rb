@@ -25,7 +25,7 @@ module BrickFTP
 
       # Create group
       #
-      # @param [BrickFTP::RESTfulAPI::CreateGroup::Params] params parameters for creating a Group
+      # @param [BrickFTP::RESTfulAPI::CreateGroup::Params] params parameters
       # @return [BrickFTP::Types::Group]
       #
       def call(params = {})

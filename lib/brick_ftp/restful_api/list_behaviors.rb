@@ -22,7 +22,7 @@ module BrickFTP
 
       # List behaviors
       #
-      # @param [BrickFTP::RESTfulAPI::ListBehavior::Params] params parameters for search behaviors
+      # @param [BrickFTP::RESTfulAPI::ListBehavior::Params] params parameters
       # @return [Array<BrickFTP::Types::Behavior>]
       #
       def call(params = {})

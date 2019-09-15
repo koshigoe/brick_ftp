@@ -80,7 +80,7 @@ module BrickFTP
 
       # Create user
       #
-      # @param [BrickFTP::RESTfulAPI::CreateUser::Params] params parameters for create a user
+      # @param [BrickFTP::RESTfulAPI::CreateUser::Params] params parameters
       # @return [BrickFTP::Types::User]
       #
       def call(params = {})

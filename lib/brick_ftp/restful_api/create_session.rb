@@ -26,7 +26,7 @@ module BrickFTP
 
       # Creates user session.
       #
-      # @param [BrickFTP::RESTfulAPI::CreateSession::Params] params parameters for create user session
+      # @param [BrickFTP::RESTfulAPI::CreateSession::Params] params parameters
       # @return [BrickFTP::Types::Session]
       #
       def call(params = {})

@@ -28,7 +28,7 @@ module BrickFTP
 
       # List behaviors by path
       #
-      # @param [BrickFTP::RESTfulAPI::ListFolderBehaviors::Params] params parameters for search folder behaviors
+      # @param [BrickFTP::RESTfulAPI::ListFolderBehaviors::Params] params parameters
       # @return [Array<BrickFTP::Types::Behavior>] Behaviors
       #
       def call(params)

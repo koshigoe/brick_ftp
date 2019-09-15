@@ -30,7 +30,7 @@ module BrickFTP
 
       # Update group
       #
-      # @param [BrickFTP::RESTfulAPI::UpdateGroup::Params] params parameters for updating a Group
+      # @param [BrickFTP::RESTfulAPI::UpdateGroup::Params] params parameters
       # @return [BrickFTP::Types::Group]
       #
       def call(params = {})
