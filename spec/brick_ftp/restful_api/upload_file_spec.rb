@@ -55,7 +55,7 @@ RSpec.describe BrickFTP::RESTfulAPI::UploadFile, type: :lib do
         command = BrickFTP::RESTfulAPI::UploadFile.new(client)
         io = StringIO.new('TEST')
 
-        expect(command.call('path', io)).to eq expected_file
+        expect(command.call(path: 'path', data: io)).to eq expected_file
       end
     end
 
@@ -135,7 +135,7 @@ RSpec.describe BrickFTP::RESTfulAPI::UploadFile, type: :lib do
             io.write('a' * 5_242_880 + 'b')
             io.flush
             io.rewind
-            expect(command.call('path', io, chunk_size: 5_242_880)).to eq expected_file
+            expect(command.call(path: 'path', data: io, chunk_size: 5_242_880)).to eq expected_file
           end
         end
       end
@@ -192,7 +192,7 @@ RSpec.describe BrickFTP::RESTfulAPI::UploadFile, type: :lib do
 
           io = StringIO.new('a' * 5_242_880 + 'b')
           io.rewind
-          expect(command.call('path', io, chunk_size: 5_242_880)).to eq expected_file
+          expect(command.call(path: 'path', data: io, chunk_size: 5_242_880)).to eq expected_file
         end
       end
     end

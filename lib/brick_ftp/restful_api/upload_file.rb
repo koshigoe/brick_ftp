@@ -16,8 +16,24 @@ module BrickFTP
     #
     class UploadFile
       include Command
+      using BrickFTP::CoreExt::Struct
+      using BrickFTP::CoreExt::Hash
 
       CHUNK_SIZE_RANGE = (5_242_880..5_368_709_120).freeze
+
+      # @!attribute [rw] path
+      #   Full path of the file or folder. Maximum of 550 characters.
+      # @!attribute [rw] data
+      #   data to upload
+      # @!attribute [rw] chunk_size
+      #   the chunk sizes are required to be between 5 MB and 5 GB.
+      Params = Struct.new(
+        'UploadFileParams',
+        :path,
+        :data,
+        :chunk_size,
+        keyword_init: true
+      )
 
       # At this point, you are to send a PUT request to the returned upload_uri with the file data,
       # along with the headers and parameters provided to you from BrickFTP.
@@ -28,13 +44,15 @@ module BrickFTP
       # Should you wish to upload the file in multiple parts (required if the file size exceeds 5 GB)
       # you will need to request an additional upload URL for the next part.
       #
-      # @param [String] path Full path of the file or folder. Maximum of 550 characters.
-      # @param [IO] data
-      # @param [Integer, nil] chunk_size the chunk sizes are required to be between 5 MB and 5 GB.
-      #   This option is ignored if `data` is `StringIO`.
+      # @param [BrickFTP::RESTfulAPI::UploadFile::Params] params parameters
       # @return [BrickFTP::Types::File] File object
       #
-      def call(path, data, chunk_size: nil)
+      def call(params) # rubocop:disable Metrics/AbcSize
+        params = Params.new(params.to_h).to_h.compact
+        path = params.delete(:path)
+        data = params.delete(:data)
+        chunk_size = params.delete(:chunk_size)
+
         chunk_size = adjust_chunk_size(data, chunk_size)
         validate_range_of_chunk_size!(chunk_size)
 
