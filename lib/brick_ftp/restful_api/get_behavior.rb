@@ -23,7 +23,7 @@ module BrickFTP
       # Show behavior
       #
       # @param [BrickFTP::RESTfulAPI::GetBehavior::Params] params parameters
-      # @return [BrickFTP::Types::Behavior, nil] found Behavior or nil
+      # @return [BrickFTP::Types::Behavior, nil]
       #
       def call(params = {})
         params = Params.new(params.to_h).to_h.compact

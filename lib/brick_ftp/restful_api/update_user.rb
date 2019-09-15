@@ -82,7 +82,7 @@ module BrickFTP
 
       # Update user
       #
-      # @param [BrickFTP::RESTfulAPI::CreateUser::Params] params parameters
+      # @param [BrickFTP::RESTfulAPI::UpdateUser::Params] params parameters
       # @return [BrickFTP::Types::User]
       #
       def call(params = {})

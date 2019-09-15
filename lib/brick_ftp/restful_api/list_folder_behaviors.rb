@@ -29,7 +29,7 @@ module BrickFTP
       # List behaviors by path
       #
       # @param [BrickFTP::RESTfulAPI::ListFolderBehaviors::Params] params parameters
-      # @return [Array<BrickFTP::Types::Behavior>] Behaviors
+      # @return [Array<BrickFTP::Types::Behavior>]
       #
       def call(params)
         params = Params.new(params.to_h).to_h.compact

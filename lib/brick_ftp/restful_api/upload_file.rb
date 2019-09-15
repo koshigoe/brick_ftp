@@ -45,7 +45,7 @@ module BrickFTP
       # you will need to request an additional upload URL for the next part.
       #
       # @param [BrickFTP::RESTfulAPI::UploadFile::Params] params parameters
-      # @return [BrickFTP::Types::File] File object
+      # @return [BrickFTP::Types::File]
       #
       def call(params) # rubocop:disable Metrics/AbcSize
         params = Params.new(params.to_h).to_h.compact

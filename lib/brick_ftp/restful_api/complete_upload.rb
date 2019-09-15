@@ -31,7 +31,7 @@ module BrickFTP
       # parameter `action` set to end and parameter `ref` set to the reference ID returned at the start of the upload.
       #
       # @param [BrickFTP::RESTfulAPI::CompleteUpload::Params] params parameters
-      # @return [BrickFTP::Types::File] File object
+      # @return [BrickFTP::Types::File]
       # @raise [BrickFTP::RESTfulAPI::Error] exception
       #
       def call(params = {})

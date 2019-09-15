@@ -27,7 +27,7 @@ module BrickFTP
       # Create behavior
       #
       # @param [BrickFTP::RESTfulAPI::CreateBehavior::Params] params parameters
-      # @return [BrickFTP::Types::Behavior] Behavior
+      # @return [BrickFTP::Types::Behavior]
       #
       def call(params = {})
         res = client.post('/api/rest/v1/behaviors.json', Params.new(params.to_h).to_h.compact)

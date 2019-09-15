@@ -26,7 +26,7 @@ module BrickFTP
       # with an action parameter with the value of put.
       #
       # @param [BrickFTP::RESTfulAPI::StartUpload::Params] params parameters
-      # @return [BrickFTP::Types::Upload] Upload object
+      # @return [BrickFTP::Types::Upload]
       #
       def call(params = {})
         params = Params.new(params.to_h).to_h.compact

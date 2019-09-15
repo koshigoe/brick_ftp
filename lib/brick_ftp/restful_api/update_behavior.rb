@@ -25,7 +25,7 @@ module BrickFTP
       # Update behavior
       #
       # @param [BrickFTP::RESTfulAPI::UpdateBehavior::Params] params parameters
-      # @return [BrickFTP::Types::Behavior] Behavior
+      # @return [BrickFTP::Types::Behavior]
       #
       def call(params = {})
         params = Params.new(params.to_h).to_h.compact

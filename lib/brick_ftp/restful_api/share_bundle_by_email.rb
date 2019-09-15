@@ -26,7 +26,7 @@ module BrickFTP
 
       # Send email(s) with a link to bundle
       #
-      # @param [BrickFTP::RESTfulAPI::CreateBundle::Params] params parameters
+      # @param [BrickFTP::RESTfulAPI::ShareBundleByEmail::Params] params parameters
       # @return [Boolean]
       #
       def call(params = {})

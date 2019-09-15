@@ -36,7 +36,7 @@ module BrickFTP
       # has expired.
       #
       # @param [BrickFTP::RESTfulAPI::ContinueUpload::Params] params parameters
-      # @return [BrickFTP::Types::Upload] Upload object
+      # @return [BrickFTP::Types::Upload]
       #
       def call(params = {})
         params = Params.new(params.to_h).to_h.compact.merge(action: 'put')

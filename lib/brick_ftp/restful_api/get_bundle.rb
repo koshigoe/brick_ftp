@@ -23,7 +23,7 @@ module BrickFTP
       # Show bundle
       #
       # @param [BrickFTP::RESTfulAPI::GetBundle::Params] params parameters
-      # @return [BrickFTP::Types::Bundle] Bundle
+      # @return [BrickFTP::Types::Bundle]
       #
       def call(params = {})
         params = Params.new(params.to_h).to_h.compact
