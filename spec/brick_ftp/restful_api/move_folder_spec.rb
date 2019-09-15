@@ -17,10 +17,10 @@ RSpec.describe BrickFTP::RESTfulAPI::MoveFolder, type: :lib do
           .to_return(body: '[]')
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
-        params = BrickFTP::RESTfulAPI::MoveFolder::Params.new('move-destination': 'a b/d')
+        params = BrickFTP::RESTfulAPI::MoveFolder::Params.new(path: 'a b/c', 'move-destination': 'a b/d')
         command = BrickFTP::RESTfulAPI::MoveFolder.new(rest)
 
-        expect(command.call('a b/c', params)).to be_truthy
+        expect(command.call(params)).to be_truthy
       end
     end
   end

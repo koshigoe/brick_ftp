@@ -15,10 +15,12 @@ module BrickFTP
 
       # PARAMETER        | TYPE   | DESCRIPTION
       # ---------------- | ------ | -----------
+      # path             | string | Path
       # copy-destination | string | Full path of the file or folder. Maximum of 550 characters.
       # structure        | any    | Optionally, provide the parameter `structure` and set it to any value to only copy the folder structure without copying any files.
       Params = Struct.new(
         'CopyFolderParams',
+        :path,
         :'copy-destination',
         :structure,
         keyword_init: true
@@ -31,11 +33,12 @@ module BrickFTP
       # Optionally, provide the parameter `structure` and set it to any value
       # to only copy the folder structure without copying any files.
       #
-      # @param [String] path Full path of the file or folder. Maximum of 550 characters.
       # @param [BrickFTP::RESTfulAPI::CopyFolder::Params] params parameters
       #
-      def call(path, params)
-        client.post("/api/rest/v1/files/#{ERB::Util.url_encode(path)}", Params.new(params.to_h).to_h.compact)
+      def call(params)
+        params = Params.new(params.to_h).to_h.compact
+        path = params.delete(:path)
+        client.post("/api/rest/v1/files/#{ERB::Util.url_encode(path)}", params)
         true
       end
     end
