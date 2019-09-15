@@ -130,6 +130,7 @@ module BrickFTP
     autoload :ResendUserWelcomeEmail, 'brick_ftp/restful_api/resend_user_welcome_email'
     autoload :Reset2fa, 'brick_ftp/restful_api/reset_2fa'
     autoload :UpdateUser, 'brick_ftp/restful_api/update_user'
+    autoload :UpdateCurrentUser, 'brick_ftp/restful_api/update_current_user'
     autoload :DeleteUser, 'brick_ftp/restful_api/delete_user'
     autoload :UnlockUser, 'brick_ftp/restful_api/unlock_user'
   end
