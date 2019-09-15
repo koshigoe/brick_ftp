@@ -6,19 +6,16 @@ module BrickFTP
     #
     # @see https://developers.files.com/#create-2fa-method-on-current-user Create 2FA method on current user
     #
-    # ### Params
-    #
-    # PARAMETER    | TYPE    | DESCRIPTION
-    # ------------ | ------- | -----------
-    # method_type  | string  | Required: One of: `u2f`, `sms`, `totp`, `yubi`
-    # name         | string  | Internal name, for reference only.
-    # phone_number | string  | If method_type=sms, provide phone number.
-    #
     class CreateCurrentUser2faMethod
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER    | TYPE    | DESCRIPTION
+      # ------------ | ------- | -----------
+      # method_type  | string  | Required: One of: `u2f`, `sms`, `totp`, `yubi`
+      # name         | string  | Internal name, for reference only.
+      # phone_number | string  | If method_type=sms, provide phone number.
       Params = Struct.new(
         'CreateCurrentUser2faMethodParams',
         :method_type,

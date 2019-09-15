@@ -6,17 +6,14 @@ module BrickFTP
     #
     # @see https://developers.files.com/#show-behavior Show behavior
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # id        | integer | Required: Folder behavior ID.
-    #
     class GetBehavior
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # id        | integer | Required: Folder behavior ID.
       Params = Struct.new(
         'GetBehaviorParams',
         :id,

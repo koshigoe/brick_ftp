@@ -8,17 +8,14 @@ module BrickFTP
     #
     # @see https://developers.files.com/#list-site-wide-api-keys List site-wide API Keys
     #
-    # ### Params
-    #
-    # PARAMETER  | TYPE    | DESCRIPTION
-    # ---------- | ------- | -----------
-    # with_users | boolean | Shows associated user ids if set.
-    #
     class ListSiteWideApiKeys
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER  | TYPE    | DESCRIPTION
+      # ---------- | ------- | -----------
+      # with_users | boolean | Shows associated user ids if set.
       Params = Struct.new(
         'ListSiteWideApiKeysParams',
         :with_users,

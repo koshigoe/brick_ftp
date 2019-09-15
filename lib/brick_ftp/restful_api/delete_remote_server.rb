@@ -6,17 +6,14 @@ module BrickFTP
     #
     # @see https://developers.files.com/#delete-remote-server Delete remote server
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # id        | integer | Required: Remote Server ID.
-    #
     class DeleteRemoteServer
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # id        | integer | Required: Remote Server ID.
       Params = Struct.new(
         'DeleteRemoteServerParams',
         :id,

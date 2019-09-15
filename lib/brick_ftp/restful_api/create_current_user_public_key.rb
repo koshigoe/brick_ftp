@@ -6,18 +6,15 @@ module BrickFTP
     #
     # @see https://developers.files.com/#create-ssh-public-key-on-current-user Create SSH public key on current user
     #
-    # ### Params
-    #
-    # PARAMETER  | TYPE    | DESCRIPTION
-    # ---------- | ------- | -----------
-    # title      | string  | Required: Internal reference for key.
-    # public_key | string  | Required: Actual contents of SSH key.
-    #
     class CreateCurrentUserPublicKey
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER  | TYPE    | DESCRIPTION
+      # ---------- | ------- | -----------
+      # title      | string  | Required: Internal reference for key.
+      # public_key | string  | Required: Actual contents of SSH key.
       Params = Struct.new(
         'CreateCurrentUserPublicKeyParams',
         :title,

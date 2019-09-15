@@ -6,19 +6,16 @@ module BrickFTP
     #
     # @see https://developers.files.com/#create-user-session-log-in Create user session (log in)
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE   | DESCRIPTION
-    # --------- | ------ | -----------
-    # username  | string | Username to sign in as
-    # password  | string | Password for sign in
-    # otp       | string | If this user has a 2FA device, provide its OTP or code here.
-    #
     class CreateSession
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE   | DESCRIPTION
+      # --------- | ------ | -----------
+      # username  | string | Username to sign in as
+      # password  | string | Password for sign in
+      # otp       | string | If this user has a 2FA device, provide its OTP or code here.
       Params = Struct.new(
         'CreateSessionParams',
         :username,

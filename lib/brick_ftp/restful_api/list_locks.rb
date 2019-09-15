@@ -8,17 +8,14 @@ module BrickFTP
     #
     # @see https://developers.files.com/#list-locks-at-path List locks at path
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE     | DESCRIPTION
-    # --------- | -------- | -----------
-    # path      | string   | Required
-    #
     class ListLocks
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE     | DESCRIPTION
+      # --------- | -------- | -----------
+      # path      | string   | Required
       Params = Struct.new(
         'ListLocksParams',
         :path,

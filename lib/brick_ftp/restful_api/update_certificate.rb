@@ -6,20 +6,17 @@ module BrickFTP
     #
     # @see https://developers.files.com/#update-ssl-certificate Update SSL Certificate
     #
-    # ### Params
-    #
-    # PARAMETER     | TYPE    | DESCRIPTION
-    # ------------- | ------- | -----------
-    # id            | integer | Required: SSL Certificate ID.
-    # name          | string  | Internal certificate name.
-    # intermediates | string  | Any intermediate certificates. PEM or PKCS7 formats accepted.
-    # certificate   | string  | The certificate. PEM or PKCS7 formats accepted.
-    #
     class UpdateCertificate
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER     | TYPE    | DESCRIPTION
+      # ------------- | ------- | -----------
+      # id            | integer | Required: SSL Certificate ID.
+      # name          | string  | Internal certificate name.
+      # intermediates | string  | Any intermediate certificates. PEM or PKCS7 formats accepted.
+      # certificate   | string  | The certificate. PEM or PKCS7 formats accepted.
       Params = Struct.new(
         'UpdateCertificateParams',
         :id,

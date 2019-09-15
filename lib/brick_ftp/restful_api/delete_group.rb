@@ -6,17 +6,14 @@ module BrickFTP
     #
     # @see https://developers.files.com/#delete-group Delete group
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # id        | integer | Required: Group ID.
-    #
     class DeleteGroup
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # id        | integer | Required: Group ID.
       Params = Struct.new(
         'DeleteGroupParams',
         :id,

@@ -8,18 +8,15 @@ module BrickFTP
     #
     # @see https://developers.files.com/#copy-a-file-or-folder Copy a file or folder
     #
-    # ### Params
-    #
-    # PARAMETER        | TYPE   | DESCRIPTION
-    # ---------------- | ------ | -----------
-    # copy-destination | string | Full path of the file or folder. Maximum of 550 characters.
-    # structure        | any    | Optionally, provide the parameter `structure` and set it to any value to only copy the folder structure without copying any files.
-    #
     class CopyFolder
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER        | TYPE   | DESCRIPTION
+      # ---------------- | ------ | -----------
+      # copy-destination | string | Full path of the file or folder. Maximum of 550 characters.
+      # structure        | any    | Optionally, provide the parameter `structure` and set it to any value to only copy the folder structure without copying any files.
       Params = Struct.new(
         'CopyFolderParams',
         :'copy-destination',

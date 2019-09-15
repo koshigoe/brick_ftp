@@ -6,20 +6,14 @@ module BrickFTP
     #
     # @see https://developers.files.com/#create-group Create group
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # name      | string  | Group name.
-    # notes     | string  | Group notes.
-    # user_ids  | string  | A list of user ids. If sent as a string, should be comma-delimited.
-    # admin_ids | string  | A list of group admin user ids. If sent as a string, should be comma-delimited.
-    #
     class CreateGroup
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # path      | string  | Required: Path
       Params = Struct.new(
         'CreateGroupParams',
         :name,

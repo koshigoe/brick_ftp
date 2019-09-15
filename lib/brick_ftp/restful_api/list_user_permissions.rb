@@ -8,18 +8,15 @@ module BrickFTP
     #
     # @see https://developers.files.com/#list-user-39-s-permissions List user's permissions
     #
-    # ### Params
-    #
-    # PARAMETER      | TYPE    | DESCRIPTION
-    # -------------- | ------- | -----------
-    # id             | integer | Required: User ID.
-    # include_groups | boolean | Include group permissions?
-    #
     class ListUserPermissions
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER      | TYPE    | DESCRIPTION
+      # -------------- | ------- | -----------
+      # id             | integer | Required: User ID.
+      # include_groups | boolean | Include group permissions?
       Params = Struct.new(
         'ListUserPermissionsParams',
         :id,

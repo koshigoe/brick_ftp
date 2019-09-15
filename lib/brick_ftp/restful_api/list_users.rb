@@ -6,28 +6,25 @@ module BrickFTP
     #
     # @see https://developers.files.com/#list-users List users
     #
-    # ### Params
-    #
-    # PARAMETER                 | TYPE    | DESCRIPTION
-    # ------------------------- | ------- | -----------
-    # ids                       | string  | Comma-separated list of user ids to include in results.
-    # page                      | integer | Current page.
-    # per_page                  | integer | Users per page.
-    # q[username]               | string  | List users matching username.
-    # q[email]                  | string  | List users matching email.
-    # q[notes]                  | string  | List users matching notes field.
-    # q[admin]                  | string  | If true, list only admin users.
-    # q[allowed_ips]            | string  | If set, list only users with overridden allowed IP setting.
-    # q[password_validity_days] | string  | If set, list only users with overridden password validity days setting.
-    # q[ssl_required]           | string  | If set, list only users with overridden SSL required setting.
-    # search                    | string  | Searches for partial matches of name, username, or email.
-    # action                    | string  | If set to 'count' returns the current site user count.
-    #
     class ListUsers
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER                 | TYPE    | DESCRIPTION
+      # ------------------------- | ------- | -----------
+      # ids                       | string  | Comma-separated list of user ids to include in results.
+      # page                      | integer | Current page.
+      # per_page                  | integer | Users per page.
+      # q[username]               | string  | List users matching username.
+      # q[email]                  | string  | List users matching email.
+      # q[notes]                  | string  | List users matching notes field.
+      # q[admin]                  | string  | If true, list only admin users.
+      # q[allowed_ips]            | string  | If set, list only users with overridden allowed IP setting.
+      # q[password_validity_days] | string  | If set, list only users with overridden password validity days setting.
+      # q[ssl_required]           | string  | If set, list only users with overridden SSL required setting.
+      # search                    | string  | Searches for partial matches of name, username, or email.
+      # action                    | string  | If set to 'count' returns the current site user count.
       Params = Struct.new(
         'ListUserParams',
         :ids,

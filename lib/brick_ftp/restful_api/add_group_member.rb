@@ -6,19 +6,16 @@ module BrickFTP
     #
     # @see https://developers.files.com/#add-a-user-to-a-group Add a User to a Group
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # id        | integer | Required: Group ID.
-    # user_id   | integer | Required: User ID to add to group.
-    # admin     | boolean | Is the user a group administrator?
-    #
     class AddGroupMember
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # id        | integer | Required: Group ID.
+      # user_id   | integer | Required: User ID to add to group.
+      # admin     | boolean | Is the user a group administrator?
       Params = Struct.new(
         'AddGroupMemberParams',
         :id,

@@ -8,25 +8,22 @@ module BrickFTP
     #
     # @see https://developers.files.com/#list-folder List folder
     #
-    # ### Params
-    #
-    # PARAMETER           | TYPE    | DESCRIPTION
-    # ------------------- | ------- | -----------
-    # path                | string  | Required: Folder path.
-    # action              | string  | Action to take. Can be `count`, `count_nrs` (non recursive), `size`, `permissions`, or blank.
-    # filter              | string  | Specify to filter folders/files list by name.
-    # page                | integer | Current page in folders/files list.
-    # per_page            | integer | Number of folders/files to show per page.
-    # preview_size        | string  | Request a preview size. Can be `small` (default), `large`, `xlarge`, or `pdf`.
-    # search_all          | boolean | Search entire site?
-    # with_preview        | boolean | Include file preview information?
-    # with_priority_color | boolean | Include file priority color information?
-    #
     class ListFolders
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER           | TYPE    | DESCRIPTION
+      # ------------------- | ------- | -----------
+      # path                | string  | Required: Folder path.
+      # action              | string  | Action to take. Can be `count`, `count_nrs` (non recursive), `size`, `permissions`, or blank.
+      # filter              | string  | Specify to filter folders/files list by name.
+      # page                | integer | Current page in folders/files list.
+      # per_page            | integer | Number of folders/files to show per page.
+      # preview_size        | string  | Request a preview size. Can be `small` (default), `large`, `xlarge`, or `pdf`.
+      # search_all          | boolean | Search entire site?
+      # with_preview        | boolean | Include file preview information?
+      # with_priority_color | boolean | Include file priority color information?
       Params = Struct.new(
         'ListFoldersParams',
         :path,

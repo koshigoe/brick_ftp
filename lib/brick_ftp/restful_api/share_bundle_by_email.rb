@@ -6,19 +6,16 @@ module BrickFTP
     #
     # @see https://developers.files.com/#send-email-s-with-a-link-to-bundle Send email(s) with a link to bundle
     #
-    # ### Params
-    #
-    # PARAMETER   | TYPE          | DESCRIPTION
-    # ----------- | ------------- | -----------
-    # id          | integer       | Required: Bundle ID.
-    # to          | array(string) | Required: A list of email addresses to share this bundle with.
-    # note        | string        | Note to include in email.
-    #
     class ShareBundleByEmail
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER   | TYPE          | DESCRIPTION
+      # ----------- | ------------- | -----------
+      # id          | integer       | Required: Bundle ID.
+      # to          | array(string) | Required: A list of email addresses to share this bundle with.
+      # note        | string        | Note to include in email.
       Params = Struct.new(
         'ShareBundleByEmailParams',
         :id,

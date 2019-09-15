@@ -6,18 +6,15 @@ module BrickFTP
     #
     # @see https://developers.files.com/#update-behavior Update behavior
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # id        | integer | Required: Folder behavior ID.
-    # value     | integer | The value of the folder behavior. Can be a integer, array, or hash depending on the type of folder behavior.
-    #
     class UpdateBehavior
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # id        | integer | Required: Folder behavior ID.
+      # value     | integer | The value of the folder behavior. Can be a integer, array, or hash depending on the type of folder behavior.
       Params = Struct.new(
         'UpdateBehaviorParams',
         :id,

@@ -6,17 +6,14 @@ module BrickFTP
     #
     # @see https://developers.files.com/#show-api-key Show API Key
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # id        | integer | Required: API Key ID.
-    #
     class GetApiKey
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # id        | integer | Required: API Key ID.
       Params = Struct.new(
         'GetApiKeyParams',
         :id,

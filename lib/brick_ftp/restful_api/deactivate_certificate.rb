@@ -6,17 +6,14 @@ module BrickFTP
     #
     # @see https://developers.files.com/#deactivate-ssl-certificate Deactivate SSL Certificate
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # id        | integer | Required: SSL Certificate ID.
-    #
     class DeactivateCertificate
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # id        | integer | Required: SSL Certificate ID.
       Params = Struct.new(
         'DeactivateCertificateParams',
         :id,

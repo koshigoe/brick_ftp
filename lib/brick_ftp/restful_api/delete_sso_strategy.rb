@@ -6,17 +6,14 @@ module BrickFTP
     #
     # @see https://developers.files.com/#delete-sso-strategy Delete SSO strategy
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # id        | integer |
-    #
     class DeleteSsoStrategy
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # id        | integer |
       Params = Struct.new(
         'DeleteSsoStrategyParams',
         :id,

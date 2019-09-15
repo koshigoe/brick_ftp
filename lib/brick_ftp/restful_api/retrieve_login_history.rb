@@ -6,21 +6,18 @@ module BrickFTP
     #
     # @see https://developers.files.com/#list-site-login-history List site login history
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE     | DESCRIPTION
-    # --------- | -------- | -----------
-    # page      | integer  | Login actions page.
-    # per_page  | integer  | Login actions to display per page.
-    # start_at  | string   | Leave blank or set to a date/time to filter earlier entries.
-    # end_at    | string   | Leave blank or set to a date/time to filter later entries.
-    # display   | string   | Display format. Leave blank or set to `full` or `parent`.
-    #
     class RetrieveLoginHistory
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE     | DESCRIPTION
+      # --------- | -------- | -----------
+      # page      | integer  | Login actions page.
+      # per_page  | integer  | Login actions to display per page.
+      # start_at  | string   | Leave blank or set to a date/time to filter earlier entries.
+      # end_at    | string   | Leave blank or set to a date/time to filter later entries.
+      # display   | string   | Display format. Leave blank or set to `full` or `parent`.
       Params = Struct.new(
         'RetrieveLoginHistoryParams',
         :page,

@@ -6,19 +6,14 @@ module BrickFTP
     #
     # @see https://developers.files.com/#download-one-file-in-a-bundle Download one file in a bundle
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE   | DESCRIPTION
-    # --------- | ------ | -----------
-    # code      | string | Unique code string identifier for the bundle.
-    # path      | string |
-    # password  | string | Optional password to password-protect the bundle. This property is write-only. It cannot be retrieved via the API.
-    #
     class GetFileInBundle
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # id        | integer | Required: SSL Certificate ID.
       Params = Struct.new(
         'GetFileInBundleParams',
         :code,

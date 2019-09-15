@@ -6,17 +6,14 @@ module BrickFTP
     #
     # @see https://developers.files.com/#list-current-user-39-s-api-keys List user's API keys
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # id        | integer | Required: User ID.
-    #
     class ListUserApiKeys
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # id        | integer | Required: User ID.
       Params = Struct.new(
         'ListUserApiKeysParams',
         :id,

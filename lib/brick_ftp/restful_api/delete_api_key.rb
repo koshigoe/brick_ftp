@@ -6,17 +6,14 @@ module BrickFTP
     #
     # @see https://developers.files.com/#delete-api-key Delete API Key
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # id        | integer | Required: API Key ID.
-    #
     class DeleteApiKey
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # id        | integer | Required: API Key ID.
       Params = Struct.new(
         'DeleteApiKeyParams',
         :id,

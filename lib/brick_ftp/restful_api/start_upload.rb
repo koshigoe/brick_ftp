@@ -8,17 +8,14 @@ module BrickFTP
     #
     # @see https://developers.files.com/#starting-a-new-upload Starting a new upload
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # path      | string  | Required: Path
-    #
     class StartUpload
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # path      | string  | Required: Path
       Params = Struct.new(
         'StartUploadParams',
         :path,

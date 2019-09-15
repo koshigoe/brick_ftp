@@ -6,19 +6,16 @@ module BrickFTP
     #
     # @see https://developers.files.com/#create-site-wide-api-key Create site-wide API Key
     #
-    # ### Params
-    #
-    # PARAMETER      | TYPE     | DESCRIPTION
-    # -------------- | -------- | -----------
-    # name           | string   | Required: Public name for this API key.
-    # permission_set | string   | Leave blank, or set to desktop_app to restrict the key to only desktop app functions.
-    # expires_at     | string   | Have the key expire at this date/time.
-    #
     class CreateSiteWideApiKey
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER      | TYPE     | DESCRIPTION
+      # -------------- | -------- | -----------
+      # name           | string   | Required: Public name for this API key.
+      # permission_set | string   | Leave blank, or set to desktop_app to restrict the key to only desktop app functions.
+      # expires_at     | string   | Have the key expire at this date/time.
       Params = Struct.new(
         'CreateSiteWideApiKeyParams',
         :name,

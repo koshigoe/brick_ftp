@@ -6,21 +6,18 @@ module BrickFTP
     #
     # @see https://developers.files.com/#create-bundle Create bundle
     #
-    # ### Params
-    #
-    # PARAMETER   | TYPE          | DESCRIPTION
-    # ----------- | ------------- | -----------
-    # paths       | array(string) | Required: A list of paths to include in this bundle.
-    # password    | string        | Password for this bundle.
-    # expires_at  | string        | Bundle expiration date/time.
-    # description | string        | Bundle public description
-    # note        | string        | Bundle internal note
-    #
     class CreateBundle
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER   | TYPE          | DESCRIPTION
+      # ----------- | ------------- | -----------
+      # paths       | array(string) | Required: A list of paths to include in this bundle.
+      # password    | string        | Password for this bundle.
+      # expires_at  | string        | Bundle expiration date/time.
+      # description | string        | Bundle public description
+      # note        | string        | Bundle internal note
       Params = Struct.new(
         'CreateBundleParams',
         :paths,

@@ -6,17 +6,14 @@ module BrickFTP
     #
     # @see https://developers.files.com/#unlock-user-who-has-been-locked-out-due-to-failed-logins Unlock user who has been locked out due to failed logins
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # id        | integer | Required: User ID.
-    #
     class UnlockUser
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # id        | integer | Required: User ID.
       Params = Struct.new(
         'UnlockUserParams',
         :id,

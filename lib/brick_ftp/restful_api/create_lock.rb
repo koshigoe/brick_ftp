@@ -8,20 +8,17 @@ module BrickFTP
     #
     # @see https://developers.files.com/#create-lock Create lock
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # path      | string  | Required: Path
-    # timeout   | integer | Lock timeout length
-    # scope     | string  | Lock scope(shared or exclusive)
-    # type      | string  | Lock type
-    #
     class CreateLock
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # path      | string  | Required: Path
+      # timeout   | integer | Lock timeout length
+      # scope     | string  | Lock scope(shared or exclusive)
+      # type      | string  | Lock type
       Params = Struct.new(
         'CreateLockParams',
         :path,

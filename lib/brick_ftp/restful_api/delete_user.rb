@@ -6,17 +6,14 @@ module BrickFTP
     #
     # @see https://developers.files.com/#delete-user Delete user
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # id        | integer | User ID.
-    #
     class DeleteUser
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # id        | integer | User ID.
       Params = Struct.new(
         'DeleteUserParams',
         :id,

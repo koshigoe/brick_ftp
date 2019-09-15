@@ -8,20 +8,17 @@ module BrickFTP
     #
     # @see https://developers.files.com/#download-file Download file
     #
-    # ### Params
-    #
-    # PARAMETER           | TYPE     | DESCRIPTION
-    # ------------------- | -------- | -----------
-    # action              | string   | Can be blank, redirect or stat.
-    # path                | string   | Required: File path.
-    # with_previews       | boolean  | Include file preview information?
-    # with_priority_color | boolean  | Include file priority color information?
-    #
     class DownloadFile
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER           | TYPE     | DESCRIPTION
+      # ------------------- | -------- | -----------
+      # action              | string   | Can be blank, redirect or stat.
+      # path                | string   | Required: File path.
+      # with_previews       | boolean  | Include file preview information?
+      # with_priority_color | boolean  | Include file priority color information?
       Params = Struct.new(
         'DownloadFileParams',
         :action,

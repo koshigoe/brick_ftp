@@ -6,19 +6,16 @@ module BrickFTP
     #
     # @see https://developers.files.com/#create-behavior Create behavior
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE   | DESCRIPTION
-    # --------- | ------ | -----------
-    # path      | string | Required: Folder behaviors path.
-    # behavior  | string | Required: Behavior type.
-    # value     | string | The value of the folder behavior. Can be a integer, array, or hash depending on the type of folder behavior.
-    #
     class CreateBehavior
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE   | DESCRIPTION
+      # --------- | ------ | -----------
+      # path      | string | Required: Folder behaviors path.
+      # behavior  | string | Required: Behavior type.
+      # value     | string | The value of the folder behavior. Can be a integer, array, or hash depending on the type of folder behavior.
       Params = Struct.new(
         'CreateBehaviorParams',
         :path,

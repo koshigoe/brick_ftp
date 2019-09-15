@@ -6,17 +6,14 @@ module BrickFTP
     #
     # @see https://developers.files.com/#show-ssh-public-key Show SSH public key
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # id        | integer | Required: SSH public key ID.
-    #
     class GetPublicKey
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # id        | integer | Required: SSH public key ID.
       Params = Struct.new(
         'GetPublicKeyParams',
         :id,

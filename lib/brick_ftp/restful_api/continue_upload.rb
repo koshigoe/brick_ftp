@@ -8,19 +8,16 @@ module BrickFTP
     #
     # @see https://developers.files.com/#requesting-additional-upload-urls Requesting additional upload URLs
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # path      | string  | Required: Path
-    # ref       | string  | Unique identifier to reference this file upload. This identifier is needed for subsequent requests to the REST API to complete the upload or request more upload URLs.
-    # part      | integer | part number of multi part uploads.
-    #
     class ContinueUpload
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # path      | string  | Required: Path
+      # ref       | string  | Unique identifier to reference this file upload. This identifier is needed for subsequent requests to the REST API to complete the upload or request more upload URLs.
+      # part      | integer | part number of multi part uploads.
       Params = Struct.new(
         'ContinueUploadParams',
         :path,

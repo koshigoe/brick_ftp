@@ -6,18 +6,15 @@ module BrickFTP
     #
     # @see https://developers.files.com/#delete-group-membership Delete group membership
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # id        | integer | Required: Group ID.
-    # user_id   | integer | Required: User ID to add to group.
-    #
     class RemoveGroupMember
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # id        | integer | Required: Group ID.
+      # user_id   | integer | Required: User ID to add to group.
       Params = Struct.new(
         'RemoveGroupMemberParams',
         :id,

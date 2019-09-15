@@ -6,17 +6,14 @@ module BrickFTP
     #
     # @see https://developers.files.com/#show-group Show group
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # id        | integer | Required: Group ID.
-    #
     class GetGroup
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # id        | integer | Required: Group ID.
       Params = Struct.new(
         'GetGroupParams',
         :id,

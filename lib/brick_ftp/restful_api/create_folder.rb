@@ -8,17 +8,14 @@ module BrickFTP
     #
     # @see https://developers.files.com/#create-folder Create folder
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # path      | string  | Required: Path
-    #
     class CreateFolder
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # path      | string  | Required: Path
       Params = Struct.new(
         'CreateFolderParams',
         :path,

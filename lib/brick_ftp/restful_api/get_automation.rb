@@ -6,16 +6,14 @@ module BrickFTP
     #
     # @see https://developers.files.com/#show-automation Show automation
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    #
     class GetAutomation
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # id        | integer | Required: Automation ID.
       Params = Struct.new(
         'GetAutomationParams',
         :id,

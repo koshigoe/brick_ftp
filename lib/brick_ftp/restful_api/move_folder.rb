@@ -8,17 +8,14 @@ module BrickFTP
     #
     # @see https://developers.files.com/#move-or-rename-a-file-or-folder Move or rename a file or folder
     #
-    # ### Params
-    #
-    # PARAMETER        | TYPE   | DESCRIPTION
-    # ---------------- | ------ | -----------
-    # move-destination | string | Full path of the file or folder. Maximum of 550 characters.
-    #
     class MoveFolder
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER        | TYPE   | DESCRIPTION
+      # ---------------- | ------ | -----------
+      # move-destination | string | Full path of the file or folder. Maximum of 550 characters.
       Params = Struct.new(
         'MoveFolderParams',
         :'move-destination',

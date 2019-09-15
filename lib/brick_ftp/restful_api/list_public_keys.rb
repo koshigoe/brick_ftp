@@ -6,17 +6,14 @@ module BrickFTP
     #
     # @see https://developers.files.com/#list-user-39-s-ssh-public-keys List user's SSH public keys
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # id        | integer | Required: User ID.
-    #
     class ListPublicKeys
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # id        | integer | Required: User ID.
       Params = Struct.new(
         'ListPublicKeysParams',
         :id,

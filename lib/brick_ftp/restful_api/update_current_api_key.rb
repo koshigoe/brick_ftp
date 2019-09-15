@@ -6,19 +6,16 @@ module BrickFTP
     #
     # @see https://developers.files.com/#update-current-api-key-requires-current-api-connection-to-be-using-an-api-key Update current API key. (Requires current API connection to be using an API key.)
     #
-    # ### Params
-    #
-    # PARAMETER      | TYPE   | DESCRIPTION
-    # -------------- | ------ | -----------
-    # name           | string | Internal name for key. For your reference only.
-    # permission_set | string | Leave blank, or set to desktop_app to restrict the key to only desktop app functions.
-    # expires_at     | string | Have the key expire at this date/time.
-    #
     class UpdateCurrentApiKey
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER      | TYPE   | DESCRIPTION
+      # -------------- | ------ | -----------
+      # name           | string | Internal name for key. For your reference only.
+      # permission_set | string | Leave blank, or set to desktop_app to restrict the key to only desktop app functions.
+      # expires_at     | string | Have the key expire at this date/time.
       Params = Struct.new(
         'UpdateCurrentApiKeyParams',
         :name,

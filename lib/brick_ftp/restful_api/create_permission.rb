@@ -6,22 +6,19 @@ module BrickFTP
     #
     # @see https://developers.files.com/#create-permission Create permission
     #
-    # ### Params
-    #
-    # PARAMETER  | TYPE    | DESCRIPTION
-    # ---------- | ------- | -----------
-    # group_id   | integer | Group ID
-    # path       | string  | Folder path
-    # permission | object  | Permission type. Can be full, readonly, writeonly, previewonly, or history
-    # recursive  | boolean | Apply to subfolders recursively?
-    # user_id    | integer | User ID. Provide username or user_id
-    # username   | string  | User username. Provide username or user_id
-    #
     class CreatePermission
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER  | TYPE    | DESCRIPTION
+      # ---------- | ------- | -----------
+      # group_id   | integer | Group ID
+      # path       | string  | Folder path
+      # permission | object  | Permission type. Can be full, readonly, writeonly, previewonly, or history
+      # recursive  | boolean | Apply to subfolders recursively?
+      # user_id    | integer | User ID. Provide username or user_id
+      # username   | string  | User username. Provide username or user_id
       Params = Struct.new(
         'CreatePermissionParams',
         :group_id,

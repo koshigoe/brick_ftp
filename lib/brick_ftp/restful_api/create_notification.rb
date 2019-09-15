@@ -6,23 +6,20 @@ module BrickFTP
     #
     # @see https://developers.files.com/#create-notification Create notification
     #
-    # ### Params
-    #
-    # PARAMETER           | TYPE    | DESCRIPTION
-    # ------------------- | ------- | -----------
-    # group_id            | integer | The ID of the group to notify. Provide user_id, username or group_id.
-    # notify_on_copy      | boolean | If true, copying or moving resources into this path will trigger a notification, in addition to just uploads.
-    # notify_user_actions | boolean | If true actions initiated by the user will still result in a notification
-    # path                | string  | Path
-    # send_interval       | string  | The time interval that notifications are aggregated by. Can be five_minutes, fifteen_minutes, hourly, or daily.
-    # user_id             | integer | The id of the user to notify. Provide user_id, username or group_id.
-    # username            | string  | The username of the user to notify. Provide user_id, username or group_id.
-    #
     class CreateNotification
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER           | TYPE    | DESCRIPTION
+      # ------------------- | ------- | -----------
+      # group_id            | integer | The ID of the group to notify. Provide user_id, username or group_id.
+      # notify_on_copy      | boolean | If true, copying or moving resources into this path will trigger a notification, in addition to just uploads.
+      # notify_user_actions | boolean | If true actions initiated by the user will still result in a notification
+      # path                | string  | Path
+      # send_interval       | string  | The time interval that notifications are aggregated by. Can be five_minutes, fifteen_minutes, hourly, or daily.
+      # user_id             | integer | The id of the user to notify. Provide user_id, username or group_id.
+      # username            | string  | The username of the user to notify. Provide user_id, username or group_id.
       Params = Struct.new(
         'CreateNotificationParams',
         :group_id,

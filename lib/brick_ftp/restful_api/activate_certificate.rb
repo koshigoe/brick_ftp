@@ -6,18 +6,15 @@ module BrickFTP
     #
     # @see https://developers.files.com/#activate-ssl-certificate Activate SSL Certificate
     #
-    # ### Params
-    #
-    # PARAMETER    | TYPE    | DESCRIPTION
-    # ------------ | ------- | -----------
-    # id           | integer | Required: SSL Certificate ID.
-    # replace_cert | string  | Leave blank, set to `any` or `new_ips`.
-    #
     class ActivateCertificate
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER    | TYPE    | DESCRIPTION
+      # ------------ | ------- | -----------
+      # id           | integer | Required: SSL Certificate ID.
+      # replace_cert | string  | Leave blank, set to `any` or `new_ips`.
       Params = Struct.new(
         'ActivateCertificateParams',
         :id,

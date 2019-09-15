@@ -8,17 +8,14 @@ module BrickFTP
     #
     # @see https://developers.files.com/#delete-file-folder Delete file/folder
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # path      | string  | Required: Path
-    #
     class DeleteFolder
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # path      | string  | Required: Path
       Params = Struct.new(
         'DeleteFolderParams',
         :path,

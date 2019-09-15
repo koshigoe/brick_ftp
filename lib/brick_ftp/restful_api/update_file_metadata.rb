@@ -8,19 +8,16 @@ module BrickFTP
     #
     # @see https://developers.files.com/#update-file-folder-metadata Update file/folder metadata
     #
-    # ### Params
-    #
-    # PARAMETER      | TYPE    | DESCRIPTION
-    # -------------- | ------- | -----------
-    # path           | string  | Required: Path
-    # provided_mtime | string  | Modified time of file.
-    # priority_color | string  | Priority/Bookmark color of file.
-    #
     class UpdateFileMetadata
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER      | TYPE    | DESCRIPTION
+      # -------------- | ------- | -----------
+      # path           | string  | Required: Path
+      # provided_mtime | string  | Modified time of file.
+      # priority_color | string  | Priority/Bookmark color of file.
       Params = Struct.new(
         'UpdateFileMetadataParams',
         :path,

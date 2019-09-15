@@ -6,20 +6,17 @@ module BrickFTP
     #
     # @see https://developers.files.com/#create-api-key-for-user Create API key for user
     #
-    # ### Params
-    #
-    # PARAMETER      | TYPE     | DESCRIPTION
-    # -------------- | -------- | -----------
-    # id             | integer  | Required: User ID.
-    # name           | string   | Required: Public name for this API key.
-    # permission_set | string   | Leave blank, or set to desktop_app to restrict the key to only desktop app functions.
-    # expires_at     | string   | Have the key expire at this date/time.
-    #
     class CreateUserApiKey
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER      | TYPE     | DESCRIPTION
+      # -------------- | -------- | -----------
+      # id             | integer  | Required: User ID.
+      # name           | string   | Required: Public name for this API key.
+      # permission_set | string   | Leave blank, or set to desktop_app to restrict the key to only desktop app functions.
+      # expires_at     | string   | Have the key expire at this date/time.
       Params = Struct.new(
         'CreateUserApiKeyParams',
         :id,

@@ -8,18 +8,15 @@ module BrickFTP
     #
     # @see https://developers.files.com/#update-style Update style
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # path      | string  | Required: Style path.
-    # file      | file    | Required: Logo for custom branding.
-    #
     class UpdateStyle
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # path      | string  | Required: Style path.
+      # file      | file    | Required: Logo for custom branding.
       Params = Struct.new(
         'UpdateStyleParams',
         :path,

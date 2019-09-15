@@ -8,17 +8,14 @@ module BrickFTP
     #
     # @see https://developers.files.com/#list-permissions List permissions
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE   | DESCRIPTION
-    # --------- | ------ | -----------
-    # path      | string | Permission path.
-    #
     class ListPermissions
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE   | DESCRIPTION
+      # --------- | ------ | -----------
+      # path      | string | Permission path.
       Params = Struct.new(
         'ListPermissionsParams',
         :path,

@@ -8,17 +8,14 @@ module BrickFTP
     #
     # @see https://developers.files.com/#list-automations List automations
     #
-    # ### Params
-    #
-    # PARAMETER  | TYPE    | DESCRIPTION
-    # ---------- | ------- | -----------
-    # automation | string  | Type of automation to filter by.
-    #
     class ListAutomations
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER  | TYPE    | DESCRIPTION
+      # ---------- | ------- | -----------
+      # automation | string  | Type of automation to filter by.
       Params = Struct.new(
         'ListAutomationsParams',
         :automation,

@@ -6,17 +6,14 @@ module BrickFTP
     #
     # @see https://developers.files.com/#show-user Show user
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # id        | integer | Required: User ID.
-    #
     class GetUser
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # id        | integer | Required: User ID.
       Params = Struct.new(
         'GetUserParams',
         :id,

@@ -6,18 +6,15 @@ module BrickFTP
     #
     # @see https://developers.files.com/#download-entire-bundle-as-zip Download entire bundle as ZIP
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE   | DESCRIPTION
-    # --------- | ------ | -----------
-    # code,     | string | Unique code string identifier for the bundle.
-    # password  | string | Optional password to password-protect the bundle. This property is write-only. It cannot be retrieved via the API.
-    #
     class GetBundleZip
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE   | DESCRIPTION
+      # --------- | ------ | -----------
+      # code,     | string | Unique code string identifier for the bundle.
+      # password  | string | Optional password to password-protect the bundle. This property is write-only. It cannot be retrieved via the API.
       Params = Struct.new(
         'GetBundleZipParams',
         :code,

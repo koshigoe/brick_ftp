@@ -6,19 +6,16 @@ module BrickFTP
     #
     # @see https://developers.files.com/#update-2fa-method Update 2FA method
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # id        | integer | Required: 2FA Method ID.
-    # otp       | string  | Current value of OTP, Yubikey string, or U2F response value. U2F response value requires a json stringified object containing fields clientData, keyHandle, and signatureData.
-    # name      | string  | New name for 2FA method.
-    #
     class Update2faMethod
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # id        | integer | Required: 2FA Method ID.
+      # otp       | string  | Current value of OTP, Yubikey string, or U2F response value. U2F response value requires a json stringified object containing fields clientData, keyHandle, and signatureData.
+      # name      | string  | New name for 2FA method.
       Params = Struct.new(
         'Update2faMethodParams',
         :id,

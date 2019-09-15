@@ -8,18 +8,15 @@ module BrickFTP
     #
     # @see https://developers.files.com/#delete-lock Delete lock
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # path      | string  | Required: Path
-    # token     | string  | Required: Lock token
-    #
     class DeleteLock
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # path      | string  | Required: Path
+      # token     | string  | Required: Lock token
       Params = Struct.new(
         'DeleteLockParams',
         :path,

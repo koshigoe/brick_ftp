@@ -8,22 +8,19 @@ module BrickFTP
     #
     # @see https://developers.files.com/#list-history-for-specific-folder List history for specific folder
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE     | DESCRIPTION
-    # --------- | -------- | -----------
-    # path      | string   | History path.
-    # page      | integer  | Current page.
-    # per_page  | integer  | History actions per page.
-    # start_at  | string   | Leave blank or set to a date/time to filter earlier entries.
-    # end_at    | string   | Leave blank or set to a date/time to filter later entries.
-    # display   | string   | Display format. Leave blank or set to `full` or `parent`.
-    #
     class RetrieveFolderHistory
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE     | DESCRIPTION
+      # --------- | -------- | -----------
+      # path      | string   | History path.
+      # page      | integer  | Current page.
+      # per_page  | integer  | History actions per page.
+      # start_at  | string   | Leave blank or set to a date/time to filter earlier entries.
+      # end_at    | string   | Leave blank or set to a date/time to filter later entries.
+      # display   | string   | Display format. Leave blank or set to `full` or `parent`.
       Params = Struct.new(
         'RetrieveFolderHistoryParams',
         :path,

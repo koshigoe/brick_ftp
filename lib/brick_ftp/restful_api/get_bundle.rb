@@ -6,17 +6,14 @@ module BrickFTP
     #
     # @see https://developers.files.com/#show-bundle Show bundle
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE    | DESCRIPTION
-    # --------- | ------- | -----------
-    # id        | integer | Required: Bundle ID.
-    #
     class GetBundle
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE    | DESCRIPTION
+      # --------- | ------- | -----------
+      # id        | integer | Required: Bundle ID.
       Params = Struct.new(
         'GetBundleParams',
         :id,

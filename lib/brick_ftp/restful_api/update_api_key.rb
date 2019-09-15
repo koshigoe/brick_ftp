@@ -6,20 +6,17 @@ module BrickFTP
     #
     # @see Update https://developers.files.com/#update-api-key API Key
     #
-    # ### Params
-    #
-    # PARAMETER      | TYPE    | DESCRIPTION
-    # -------------- | ------- | -----------
-    # id             | integer | Required: API Key ID.
-    # name           | string  | Internal name for key. For your reference only.
-    # permission_set | string  | Leave blank, or set to desktop_app to restrict the key to only desktop app functions.
-    # expires_at     | string  | Have the key expire at this date/time.
-    #
     class UpdateApiKey
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER      | TYPE    | DESCRIPTION
+      # -------------- | ------- | -----------
+      # id             | integer | Required: API Key ID.
+      # name           | string  | Internal name for key. For your reference only.
+      # permission_set | string  | Leave blank, or set to desktop_app to restrict the key to only desktop app functions.
+      # expires_at     | string  | Have the key expire at this date/time.
       Params = Struct.new(
         'UpdateApiKeyParams',
         :id,

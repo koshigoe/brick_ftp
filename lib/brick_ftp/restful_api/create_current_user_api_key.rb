@@ -6,19 +6,16 @@ module BrickFTP
     #
     # @see https://developers.files.com/#create-api-key-for-current-user Create API Key for current user
     #
-    # ### Params
-    #
-    # PARAMETER      | TYPE     | DESCRIPTION
-    # -------------- | -------- | -----------
-    # name           | string   | Required: Internal name for key. For your reference only.
-    # permission_set | string   | Leave blank, or set to desktop_app to restrict the key to only desktop app functions.
-    # expires_at     | string   | Have the key expire at this date/time.
-    #
     class CreateCurrentUserApiKey
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER      | TYPE     | DESCRIPTION
+      # -------------- | -------- | -----------
+      # name           | string   | Required: Internal name for key. For your reference only.
+      # permission_set | string   | Leave blank, or set to desktop_app to restrict the key to only desktop app functions.
+      # expires_at     | string   | Have the key expire at this date/time.
       Params = Struct.new(
         'CreateCurrentUserApiKeyParams',
         :name,

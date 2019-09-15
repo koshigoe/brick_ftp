@@ -8,19 +8,16 @@ module BrickFTP
     #
     # @see https://developers.files.com/#list-behaviors-by-path List behaviors by path
     #
-    # ### Params
-    #
-    # PARAMETER | TYPE     | DESCRIPTION
-    # --------- | -------- | -----------
-    # path      | string   | Required: Folder behaviors path.
-    # recursive | string   | Show behaviors below this path?
-    # behavior  | string   | If set only shows folder behaviors matching this behavior type.
-    #
     class ListFolderBehaviors
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER | TYPE     | DESCRIPTION
+      # --------- | -------- | -----------
+      # path      | string   | Required: Folder behaviors path.
+      # recursive | string   | Show behaviors below this path?
+      # behavior  | string   | If set only shows folder behaviors matching this behavior type.
       Params = Struct.new(
         'ListFolderBehaviorsParams',
         :path,

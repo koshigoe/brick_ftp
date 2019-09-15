@@ -6,17 +6,14 @@ module BrickFTP
     #
     # @see https://developers.files.com/#list-behaviors List behaviors
     #
-    # ### Params
-    #
-    # PARAMETER  | TYPE    | DESCRIPTION
-    # ---------- | ------- | -----------
-    # behavior   | string  | If set, only shows folder behaviors matching this behavior type.
-    #
     class ListBehaviors
       include Command
       using BrickFTP::CoreExt::Struct
       using BrickFTP::CoreExt::Hash
 
+      # PARAMETER  | TYPE    | DESCRIPTION
+      # ---------- | ------- | -----------
+      # behavior   | string  | If set, only shows folder behaviors matching this behavior type.
       Params = Struct.new(
         'ListBehaviorsParams',
         :behavior,
