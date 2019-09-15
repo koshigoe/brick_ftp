@@ -124,7 +124,6 @@ module BrickFTP
     autoload :Delete2faMethod, 'brick_ftp/restful_api/delete_2fa_method'
     # ref. https://developers.files.com/#users
     autoload :ListUsers, 'brick_ftp/restful_api/list_users'
-    autoload :CountUsers, 'brick_ftp/restful_api/count_users'
     autoload :GetUser, 'brick_ftp/restful_api/get_user'
     autoload :ListCurrentUserGroupMemberships, 'brick_ftp/restful_api/list_current_user_group_memberships'
     autoload :CreateUser, 'brick_ftp/restful_api/create_user'
