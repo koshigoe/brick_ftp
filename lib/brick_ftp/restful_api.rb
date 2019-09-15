@@ -126,6 +126,7 @@ module BrickFTP
     autoload :ListUsers, 'brick_ftp/restful_api/list_users'
     autoload :CountUsers, 'brick_ftp/restful_api/count_users'
     autoload :GetUser, 'brick_ftp/restful_api/get_user'
+    autoload :ListCurrentUserGroupMemberships, 'brick_ftp/restful_api/list_current_user_group_memberships'
     autoload :CreateUser, 'brick_ftp/restful_api/create_user'
     autoload :UpdateUser, 'brick_ftp/restful_api/update_user'
     autoload :DeleteUser, 'brick_ftp/restful_api/delete_user'
