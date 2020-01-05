@@ -2,6 +2,22 @@ Changelog
 ====
 
 
+[0.8.4](https://github.com/koshigoe/brick_ftp/compare/v0.8.3...v0.8.4)
+----
+
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v0.8.3...v0.8.4)
+
+### Enhancements:
+
+### Fixed Bugs:
+
+### Breaking Changes:
+
+### Others
+
+- [#129](https://github.com/koshigoe/brick_ftp/pull/129) Update thor to 0.20 (by [cherbst-2112](https://github.com/cherbst-2112))
+
+
 [0.8.3](https://github.com/koshigoe/brick_ftp/compare/v0.8.2...v0.8.3)
 ----
 
