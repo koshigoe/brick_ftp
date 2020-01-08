@@ -8,6 +8,8 @@ Files.com (BrickFTP)
 
 This is a [File.com (BrickFTP)](https://files.com/)'s _unofficial_ [RESTful API](https://developers.files.com/) Client.
 
+**I recommend official SDK: [Files-com/files-sdk-ruby](https://github.com/Files-com/files-sdk-ruby)**
+
 
 Installation
 ----
