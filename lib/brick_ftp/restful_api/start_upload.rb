@@ -21,7 +21,7 @@ module BrickFTP
       def call(path)
         res = client.post("/api/rest/v1/files/#{ERB::Util.url_encode(path)}", action: 'put')
 
-        BrickFTP::Types::Upload.new(res.symbolize_keys)
+        BrickFTP::Types::Upload.new(**res.symbolize_keys)
       end
     end
   end

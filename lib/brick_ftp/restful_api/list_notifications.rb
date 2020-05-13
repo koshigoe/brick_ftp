@@ -17,7 +17,7 @@ module BrickFTP
       def call
         res = client.get('/api/rest/v1/notifications.json')
 
-        res.map { |i| BrickFTP::Types::Notification.new(i.symbolize_keys) }
+        res.map { |i| BrickFTP::Types::Notification.new(**i.symbolize_keys) }
       end
     end
   end

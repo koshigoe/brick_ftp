@@ -19,7 +19,7 @@ module BrickFTP
       def call(id)
         res = client.get("/api/rest/v1/users/#{id}/api_keys.json")
 
-        res.map { |i| BrickFTP::Types::UserAPIKey.new(i.symbolize_keys) }
+        res.map { |i| BrickFTP::Types::UserAPIKey.new(**i.symbolize_keys) }
       end
     end
   end

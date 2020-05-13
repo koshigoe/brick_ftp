@@ -35,7 +35,7 @@ module BrickFTP
       def call(params)
         res = client.post('/api/rest/v1/groups.json', params.to_h.compact)
 
-        BrickFTP::Types::Group.new(res.symbolize_keys)
+        BrickFTP::Types::Group.new(**res.symbolize_keys)
       end
     end
   end

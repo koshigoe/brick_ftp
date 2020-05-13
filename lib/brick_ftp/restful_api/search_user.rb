@@ -22,7 +22,7 @@ module BrickFTP
         res = client.get("/api/rest/v1/users.json?q[username]=#{ERB::Util.url_encode(username)}")
         return nil if !res || res.empty?
 
-        BrickFTP::Types::User.new(res.first.symbolize_keys)
+        BrickFTP::Types::User.new(**res.first.symbolize_keys)
       end
     end
   end

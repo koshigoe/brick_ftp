@@ -32,7 +32,7 @@ module BrickFTP
       def call(id, params)
         res = client.patch("/api/rest/v1/behaviors/#{id}.json", params.to_h.compact)
 
-        BrickFTP::Types::Behavior.new(res.symbolize_keys)
+        BrickFTP::Types::Behavior.new(**res.symbolize_keys)
       end
     end
   end

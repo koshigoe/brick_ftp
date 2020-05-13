@@ -38,7 +38,7 @@ module BrickFTP
         res = client.get(endpoint)
         return nil if !res || res.empty?
 
-        BrickFTP::Types::File.new(res.symbolize_keys)
+        BrickFTP::Types::File.new(**res.symbolize_keys)
       end
     end
   end

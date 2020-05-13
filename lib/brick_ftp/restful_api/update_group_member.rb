@@ -33,7 +33,7 @@ module BrickFTP
       def call(group_id, user_id, params)
         res = client.patch("/api/rest/v1/groups/#{group_id}/memberships/#{user_id}.json", membership: params.to_h.compact)
 
-        BrickFTP::Types::GroupMembership.new(res.symbolize_keys)
+        BrickFTP::Types::GroupMembership.new(**res.symbolize_keys)
       end
     end
   end

@@ -15,21 +15,9 @@ jobs:
       - run:
           name: YARDoc
           command: yardoc --fail-on-warning lib
-      # see https://docs.codeclimate.com/docs/circle-ci-test-coverage-example
-      - run:
-          name: Setup Code Climate test-reporter
-          command: |
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-            chmod +x ./cc-test-reporter
       - run:
           name: RSpec
-          command: |
-            ./cc-test-reporter before-build
-            rspec
-            ./cc-test-reporter after-build --coverage-input-type simplecov --exit-code $?
-      - store_artifacts:
-          path: coverage
-          destination: coverage
+          command: rspec
   ruby-2.3:
     <<: *build
     docker:
@@ -45,7 +33,11 @@ jobs:
   ruby-2.6:
     <<: *build
     docker:
-      - image: circleci/ruby:2.5
+      - image: circleci/ruby:2.6
+  ruby-2.7:
+    <<: *build
+    docker:
+      - image: circleci/ruby:2.7
 
 workflows:
   version: 2
@@ -55,3 +47,4 @@ workflows:
       - ruby-2.4
       - ruby-2.5
       - ruby-2.6
+      - ruby-2.7

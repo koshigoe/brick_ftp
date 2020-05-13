@@ -35,7 +35,7 @@ module BrickFTP
         endpoint = "#{endpoint}?path=#{ERB::Util.url_encode(path)}" unless path.nil?
         res = client.get(endpoint)
 
-        res.map { |i| BrickFTP::Types::Permission.new(i.symbolize_keys) }
+        res.map { |i| BrickFTP::Types::Permission.new(**i.symbolize_keys) }
       end
     end
   end

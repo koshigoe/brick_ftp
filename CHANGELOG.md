@@ -18,6 +18,20 @@ Files::User.new(params, api_key: 'YOUR_API_KEY')
 I will archive this repository after found official SDK.
 
 
+[v2.0.2](https://github.com/koshigoe/brick_ftp/compare/v2.0.1...v2.0.2)
+----
+
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v2.0.1...v2.0.2)
+
+### Enhancements:
+
+- [#132](https://github.com/koshigoe/brick_ftp/pull/132) Suppress warnings in Ruby 2.7
+
+### Fixed Bugs:
+
+### Breaking Changes:
+
+
 [v2.0.1](https://github.com/koshigoe/brick_ftp/compare/v2.0.0...v2.0.1)
 ----
 

@@ -33,7 +33,7 @@ module BrickFTP
         endpoint = "#{endpoint}?recursive=1" if recursive
         res = client.get(endpoint)
 
-        res.map { |i| BrickFTP::Types::Behavior.new(i.symbolize_keys) }
+        res.map { |i| BrickFTP::Types::Behavior.new(**i.symbolize_keys) }
       end
     end
   end

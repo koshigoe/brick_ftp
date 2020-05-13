@@ -17,7 +17,7 @@ module BrickFTP
       def call
         res = client.get('/api/rest/v1/behaviors.json')
 
-        res.map { |i| BrickFTP::Types::Behavior.new(i.symbolize_keys) }
+        res.map { |i| BrickFTP::Types::Behavior.new(**i.symbolize_keys) }
       end
     end
   end

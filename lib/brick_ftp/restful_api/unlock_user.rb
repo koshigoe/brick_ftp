@@ -19,7 +19,7 @@ module BrickFTP
       def call(id)
         res = client.post("/api/rest/v1/users/#{id}/unlock.json")
 
-        BrickFTP::Types::User.new(res.symbolize_keys)
+        BrickFTP::Types::User.new(**res.symbolize_keys)
       end
     end
   end
