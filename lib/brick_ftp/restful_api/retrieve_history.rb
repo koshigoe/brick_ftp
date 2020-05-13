@@ -17,7 +17,7 @@ module BrickFTP
         endpoint = "#{path}?#{query}" unless query.empty?
         res = client.get(endpoint)
 
-        res.map { |i| BrickFTP::Types::History.new(i.symbolize_keys) }
+        res.map { |i| BrickFTP::Types::History.new(**i.symbolize_keys) }
       end
 
       def validate_page!(page)

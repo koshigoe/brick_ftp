@@ -20,7 +20,7 @@ module BrickFTP
         res = client.get("/api/rest/v1/groups/#{id}.json")
         return nil if !res || res.empty?
 
-        BrickFTP::Types::Group.new(res.symbolize_keys)
+        BrickFTP::Types::Group.new(**res.symbolize_keys)
       end
     end
   end

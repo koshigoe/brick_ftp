@@ -41,7 +41,7 @@ module BrickFTP
       def call(params)
         res = client.post('/api/rest/v1/permissions.json', params.to_h.compact)
 
-        BrickFTP::Types::Permission.new(res.symbolize_keys)
+        BrickFTP::Types::Permission.new(**res.symbolize_keys)
       end
     end
   end

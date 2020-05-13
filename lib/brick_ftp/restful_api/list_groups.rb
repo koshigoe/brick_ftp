@@ -17,7 +17,7 @@ module BrickFTP
       def call
         res = client.get('/api/rest/v1/groups.json')
 
-        res.map { |i| BrickFTP::Types::Group.new(i.symbolize_keys) }
+        res.map { |i| BrickFTP::Types::Group.new(**i.symbolize_keys) }
       end
     end
   end

@@ -59,7 +59,7 @@ module BrickFTP
 
         res = client.get(endpoint)
 
-        res.map { |i| BrickFTP::Types::File.new(i.symbolize_keys) }
+        res.map { |i| BrickFTP::Types::File.new(**i.symbolize_keys) }
       end
 
       private

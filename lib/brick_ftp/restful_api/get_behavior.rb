@@ -19,7 +19,7 @@ module BrickFTP
         res = client.get("/api/rest/v1/behaviors/#{id}.json")
         return nil if !res || res.empty?
 
-        BrickFTP::Types::Behavior.new(res.symbolize_keys)
+        BrickFTP::Types::Behavior.new(**res.symbolize_keys)
       end
     end
   end

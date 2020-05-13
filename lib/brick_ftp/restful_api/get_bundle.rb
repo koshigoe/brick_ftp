@@ -19,7 +19,7 @@ module BrickFTP
         res = client.get("/api/rest/v1/bundles/#{id}.json")
         return nil if !res || res.empty?
 
-        BrickFTP::Types::Bundle.new(res.symbolize_keys)
+        BrickFTP::Types::Bundle.new(**res.symbolize_keys)
       end
     end
   end

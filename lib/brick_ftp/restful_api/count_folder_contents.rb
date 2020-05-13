@@ -29,7 +29,7 @@ module BrickFTP
         if recursive
           BrickFTP::Types::FolderContentsCount.new(total: res['data']['count'])
         else
-          BrickFTP::Types::FolderContentsCount.new(res['data']['count'].symbolize_keys)
+          BrickFTP::Types::FolderContentsCount.new(**res['data']['count'].symbolize_keys)
         end
       end
     end

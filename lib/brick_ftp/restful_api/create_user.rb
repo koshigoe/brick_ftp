@@ -83,7 +83,7 @@ module BrickFTP
       def call(params)
         res = client.post('/api/rest/v1/users.json', params.to_h.compact)
 
-        BrickFTP::Types::User.new(res.symbolize_keys)
+        BrickFTP::Types::User.new(**res.symbolize_keys)
       end
     end
   end

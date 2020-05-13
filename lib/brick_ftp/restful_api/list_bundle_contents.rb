@@ -51,7 +51,7 @@ module BrickFTP
                    end
         res = client.post(endpoint, params.to_h.compact)
 
-        res.map { |i| BrickFTP::Types::BundleContent.new(i.symbolize_keys) }
+        res.map { |i| BrickFTP::Types::BundleContent.new(**i.symbolize_keys) }
       end
     end
   end

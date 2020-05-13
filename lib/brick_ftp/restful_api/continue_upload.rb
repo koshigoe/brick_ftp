@@ -43,7 +43,7 @@ module BrickFTP
       def call(path, params)
         res = client.post("/api/rest/v1/files/#{ERB::Util.url_encode(path)}", params.to_h.compact.merge(action: 'put'))
 
-        BrickFTP::Types::Upload.new(res.symbolize_keys)
+        BrickFTP::Types::Upload.new(**res.symbolize_keys)
       end
     end
   end

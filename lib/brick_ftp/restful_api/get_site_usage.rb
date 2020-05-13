@@ -13,7 +13,7 @@ module BrickFTP
       def call
         res = client.get('/api/rest/v1/site/usage.json')
 
-        BrickFTP::Types::SiteUsage.new(res.symbolize_keys)
+        BrickFTP::Types::SiteUsage.new(**res.symbolize_keys)
       end
     end
   end
