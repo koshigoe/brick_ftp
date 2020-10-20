@@ -18,6 +18,20 @@ Files::User.new(params, api_key: 'YOUR_API_KEY')
 I will archive this repository after found official SDK.
 
 
+[v2.0.3](https://github.com/koshigoe/brick_ftp/compare/v2.0.2...v2.0.3)
+----
+
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v2.0.2...v2.0.3)
+
+### Enhancements:
+
+### Fixed Bugs:
+
+- [#133](https://github.com/koshigoe/brick_ftp/pull/133) Fix to enable to delete folders recursively
+
+### Breaking Changes:
+
+
 [v2.0.2](https://github.com/koshigoe/brick_ftp/compare/v2.0.1...v2.0.2)
 ----
 
