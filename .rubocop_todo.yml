@@ -40,3 +40,10 @@ Style/Documentation:
 
 Style/Lambda:
   EnforcedStyle: literal
+
+Lint/StructNewOverride:
+  Enabled: false
+
+Style/StringConcatenation:
+  Exclude:
+    - "spec/**/*_spec.rb"

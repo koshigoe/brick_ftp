@@ -7,17 +7,17 @@ RSpec.describe BrickFTP::RESTfulAPI::ListFolders, type: :lib do
     context 'correct request' do
       it 'return Array of Folder object' do
         expected_folder = BrickFTP::Types::File.new(
-          id:  867_530_900,
-          path:  'a b/c',
-          display_name:  'Needs Review',
-          type:  'directory',
-          size:  nil,
-          mtime:  '2014-05-15T20:26:18+00:00',
-          provided_mtime:  '2014-05-15T20:26:26+00:00',
-          crc32:  nil,
-          md5:  nil,
-          permissions:  'rwd',
-          subfolders_locked?:  nil
+          id: 867_530_900,
+          path: 'a b/c',
+          display_name: 'Needs Review',
+          type: 'directory',
+          size: nil,
+          mtime: '2014-05-15T20:26:18+00:00',
+          provided_mtime: '2014-05-15T20:26:26+00:00',
+          crc32: nil,
+          md5: nil,
+          permissions: 'rwd',
+          subfolders_locked?: nil
         )
 
         url = 'https://subdomain.files.com/api/rest/v1/folders/a%20b%2Fc?page=1&per_page=2&search=a%20b%2Fc&sort_by[path]=desc&sort_by[size]=desc&sort_by[modified_at_datetime]=desc'

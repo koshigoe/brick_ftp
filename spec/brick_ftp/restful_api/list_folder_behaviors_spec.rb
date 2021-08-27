@@ -7,7 +7,7 @@ RSpec.describe BrickFTP::RESTfulAPI::ListFolderBehaviors, type: :lib do
     context 'correct request' do
       it 'return Array of Behavior object' do
         expected_behavior = BrickFTP::Types::Behavior.new(
-          id:  38,
+          id: 38,
           path: 'Finance',
           behavior: 'webhook',
           value: %w[https://a.mywebhookhandler.com]

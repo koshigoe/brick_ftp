@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  files-mock-server:
+    image: filescom/files-mock-server:latest
+    ports:
+      - 40410:4041

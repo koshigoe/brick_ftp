@@ -33,22 +33,18 @@ Usage
 ----
 
 ```
+$ docker compose up -d
 $ bin/console
-> client = BrickFTP::Client.new
+> client = BrickFTP::Client.new(base_url: 'http://localhost:40410', api_key: 'dummy')
 > client.list_users
-```
-
-```
-$ bin/console
-> api_client = BrickFTP::RESTfulAPI::Client.new(ENV['BRICK_FTP_SUBDOMAIN'], ENV['BRICK_FTP_API_KEY'])
-> BrickFTP::RESTfulAPI::ListUsers.new(api_client).call
 ```
 
 ### Environment Variables
 
 Name                  | Description
 --------------------- | -----------
-`BRICK_FTP_SUBDOMAIN` | Default subdomain
+`BRICK_FTP_SUBDOMAIN` | Default subdomain (deprecated)
+`BRICK_FTP_BASE_URL`  | Base URL of Files.com's REST API (e.g. `https://{subdomain}.files.com/`)
 `BRICK_FTP_API_KEY`   | Default API key
 
 

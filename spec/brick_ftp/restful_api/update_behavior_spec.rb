@@ -7,7 +7,7 @@ RSpec.describe BrickFTP::RESTfulAPI::UpdateBehavior, type: :lib do
     context 'given correct parameters' do
       it 'return updated Behavior object' do
         updated_behavior = BrickFTP::Types::Behavior.new(
-          id:  38,
+          id: 38,
           path: 'a',
           behavior: 'webhook',
           value: %w[https://a.mywebhookhandler.com]

@@ -17,7 +17,7 @@ module BrickFTP
     class UploadFile
       include Command
 
-      CHUNK_SIZE_RANGE = 5_242_880..5_368_709_120
+      CHUNK_SIZE_RANGE = (5_242_880..5_368_709_120).freeze
 
       # At this point, you are to send a PUT request to the returned upload_uri with the file data,
       # along with the headers and parameters provided to you from BrickFTP.

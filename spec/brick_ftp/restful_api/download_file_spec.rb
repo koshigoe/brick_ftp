@@ -7,18 +7,18 @@ RSpec.describe BrickFTP::RESTfulAPI::DownloadFile, type: :lib do
     context 'correct request without action' do
       it 'return File object' do
         expected_file = BrickFTP::Types::File.new(
-          id:  4_233_161_221,
-          path:  'a b/c',
-          display_name:  'John Smith.docx',
-          type:  'file',
-          size:  61_440,
-          mtime:  '2014-05-15T18:34:51+00:00',
-          provided_mtime:  '2014-05-15T18:34:51+00:00',
-          crc32:  'f341cc60',
-          md5:  'b67236f5bcd29d1307d574fb9fe585b5',
-          region:  'us-east-1',
-          permissions:  'rwd',
-          download_uri:  'https://s3.amazonaws.com/objects.files.com/...'
+          id: 4_233_161_221,
+          path: 'a b/c',
+          display_name: 'John Smith.docx',
+          type: 'file',
+          size: 61_440,
+          mtime: '2014-05-15T18:34:51+00:00',
+          provided_mtime: '2014-05-15T18:34:51+00:00',
+          crc32: 'f341cc60',
+          md5: 'b67236f5bcd29d1307d574fb9fe585b5',
+          region: 'us-east-1',
+          permissions: 'rwd',
+          download_uri: 'https://s3.amazonaws.com/objects.files.com/...'
         )
 
         url = 'https://subdomain.files.com/api/rest/v1/files/a%20b%2Fc'
@@ -41,17 +41,17 @@ RSpec.describe BrickFTP::RESTfulAPI::DownloadFile, type: :lib do
     context 'correct request with action' do
       it 'return File object' do
         expected_file = BrickFTP::Types::File.new(
-          id:  4_233_161_221,
-          path:  'a b/c',
-          display_name:  'John Smith.docx',
-          type:  'file',
-          size:  61_440,
-          mtime:  '2014-05-15T18:34:51+00:00',
-          provided_mtime:  '2014-05-15T18:34:51+00:00',
-          crc32:  'f341cc60',
-          md5:  'b67236f5bcd29d1307d574fb9fe585b5',
-          region:  'us-east-1',
-          permissions:  'rwd'
+          id: 4_233_161_221,
+          path: 'a b/c',
+          display_name: 'John Smith.docx',
+          type: 'file',
+          size: 61_440,
+          mtime: '2014-05-15T18:34:51+00:00',
+          provided_mtime: '2014-05-15T18:34:51+00:00',
+          crc32: 'f341cc60',
+          md5: 'b67236f5bcd29d1307d574fb9fe585b5',
+          region: 'us-east-1',
+          permissions: 'rwd'
         )
 
         url = 'https://subdomain.files.com/api/rest/v1/files/a%20b%2Fc?action=stat'
