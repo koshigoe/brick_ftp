@@ -18,6 +18,25 @@ Files::User.new(params, api_key: 'YOUR_API_KEY')
 I will archive this repository after found official SDK.
 
 
+[v2.1.0](https://github.com/koshigoe/brick_ftp/compare/v2.0.3...v2.1.0)
+----
+
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v2.0.3...v2.1.0)
+
+### Enhancements:
+
+### Fixed Bugs:
+
+### Deprecate
+
+- Deprecate keyword argument `subdomain:` of `BrickFTP::Client#initialize`
+   - To enable to specify base URL of REST API (e.g. `http://127.0.0.1:40410/`)
+
+### Breaking Changes:
+
+- Dropping support for Ruby 2.3, 2.4
+
+
 [v2.0.3](https://github.com/koshigoe/brick_ftp/compare/v2.0.2...v2.0.3)
 ----
 
