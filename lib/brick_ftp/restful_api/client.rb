@@ -147,6 +147,7 @@ module BrickFTP
         res = http.start { |session| session.request(req) }
 
         return io.size if res.is_a?(Net::HTTPSuccess)
+
         raise Error, parse_error_response(res)
       end
 
