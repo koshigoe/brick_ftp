@@ -40,3 +40,6 @@ Style/Documentation:
 
 Style/Lambda:
   EnforcedStyle: literal
+
+Lint/StructNewOverride:
+  Enabled: false
