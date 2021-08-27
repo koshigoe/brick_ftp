@@ -18,6 +18,19 @@ RSpec.describe BrickFTP::RESTfulAPI::Client, type: :lib do
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         expect(rest.get('/path/to/resource.json', 'Depth' => 'infinity')).to eq({})
+
+        stub_request(:get, 'http://my.mock.com/path/to/resource.json')
+          .with(
+            basic_auth: %w[api-key x],
+            headers: {
+              'User-Agent' => 'BrickFTP Client/1.0 (https://github.com/koshigoe/brick_ftp)',
+              'Depth' => 'infinity',
+            }
+          )
+          .to_return(body: '{}')
+
+        rest = BrickFTP::RESTfulAPI::Client.new('http://my.mock.com', 'api-key')
+        expect(rest.get('/path/to/resource.json', 'Depth' => 'infinity')).to eq({})
       end
     end
 
@@ -59,6 +72,21 @@ RSpec.describe BrickFTP::RESTfulAPI::Client, type: :lib do
           .to_return(body: '{}')
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
+        expect(rest.post('/path/to/resource.json', {}, 'Depth' => 'infinity')).to eq({})
+
+        stub_request(:post, 'http://my.mock.com/path/to/resource.json')
+          .with(
+            basic_auth: %w[api-key x],
+            headers: {
+              'User-Agent' => 'BrickFTP Client/1.0 (https://github.com/koshigoe/brick_ftp)',
+              'Content-Type' => 'application/json',
+              'Depth' => 'infinity',
+            },
+            body: '{}'
+          )
+          .to_return(body: '{}')
+
+        rest = BrickFTP::RESTfulAPI::Client.new('http://my.mock.com', 'api-key')
         expect(rest.post('/path/to/resource.json', {}, 'Depth' => 'infinity')).to eq({})
       end
     end
@@ -103,6 +131,21 @@ RSpec.describe BrickFTP::RESTfulAPI::Client, type: :lib do
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         expect(rest.put('/path/to/resource.json', {}, 'Depth' => 'infinity')).to eq({})
+
+        stub_request(:put, 'http://my.mock.com/path/to/resource.json')
+          .with(
+            basic_auth: %w[api-key x],
+            headers: {
+              'User-Agent' => 'BrickFTP Client/1.0 (https://github.com/koshigoe/brick_ftp)',
+              'Content-Type' => 'application/json',
+              'Depth' => 'infinity',
+            },
+            body: '{}'
+          )
+          .to_return(body: '{}')
+
+        rest = BrickFTP::RESTfulAPI::Client.new('http://my.mock.com', 'api-key')
+        expect(rest.put('/path/to/resource.json', {}, 'Depth' => 'infinity')).to eq({})
       end
     end
 
@@ -146,6 +189,21 @@ RSpec.describe BrickFTP::RESTfulAPI::Client, type: :lib do
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         expect(rest.patch('/path/to/resource.json', {}, 'Depth' => 'infinity')).to eq({})
+
+        stub_request(:patch, 'http://my.mock.com/path/to/resource.json')
+          .with(
+            basic_auth: %w[api-key x],
+            headers: {
+              'User-Agent' => 'BrickFTP Client/1.0 (https://github.com/koshigoe/brick_ftp)',
+              'Content-Type' => 'application/json',
+              'Depth' => 'infinity',
+            },
+            body: '{}'
+          )
+          .to_return(body: '{}')
+
+        rest = BrickFTP::RESTfulAPI::Client.new('http://my.mock.com', 'api-key')
+        expect(rest.patch('/path/to/resource.json', {}, 'Depth' => 'infinity')).to eq({})
       end
     end
 
@@ -187,6 +245,20 @@ RSpec.describe BrickFTP::RESTfulAPI::Client, type: :lib do
           .to_return(body: '{}')
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
+        expect(rest.delete('/path/to/resource.json', 'Depth' => 'infinity')).to eq({})
+
+        stub_request(:delete, 'http://my.mock.com/path/to/resource.json')
+          .with(
+            basic_auth: %w[api-key x],
+            headers: {
+              'User-Agent' => 'BrickFTP Client/1.0 (https://github.com/koshigoe/brick_ftp)',
+              'Content-Type' => 'application/json',
+              'Depth' => 'infinity',
+            }
+          )
+          .to_return(body: '{}')
+
+        rest = BrickFTP::RESTfulAPI::Client.new('http://my.mock.com', 'api-key')
         expect(rest.delete('/path/to/resource.json', 'Depth' => 'infinity')).to eq({})
       end
     end

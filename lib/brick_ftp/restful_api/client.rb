@@ -35,12 +35,13 @@ module BrickFTP
 
       # Initialize REST API client.
       #
-      # @param [String] subdomain
+      # @param [String] base_url
       # @param [String] api_key
       #
-      def initialize(subdomain, api_key)
-        @http = Net::HTTP.new("#{subdomain}.files.com", 443)
-        @http.use_ssl = true
+      def initialize(base_url, api_key)
+        @base_uri = make_base_uri(base_url)
+        @http = Net::HTTP.new(@base_uri.host, @base_uri.port)
+        @http.use_ssl = (@base_uri.scheme == 'https')
         @http.open_timeout = OPEN_TIMEOUT
         @http.read_timeout = READ_TIMEOUT
         @request_headers = {
@@ -150,6 +151,16 @@ module BrickFTP
       end
 
       private
+
+      DEFAULT_BASE_URL_TEMPLATE = 'https://%{subdomain}.files.com'
+
+      def make_base_uri(url_or_subdomain)
+        unless /[.:]/.match?(url_or_subdomain)
+          url_or_subdomain = format(DEFAULT_BASE_URL_TEMPLATE, subdomain: url_or_subdomain)
+        end
+
+        URI.parse(url_or_subdomain)
+      end
 
       def handle_response(response)
         case response

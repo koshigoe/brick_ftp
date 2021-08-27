@@ -10,14 +10,26 @@ module BrickFTP
   #   BrickFTP::Client.new.list_users
   #
   class Client
-    attr_reader :subdomain, :api_key, :api_client
+    attr_reader :base_url, :api_key, :api_client
 
-    # @param [String] subdomain
+    # @param [String] base_url
+    # @param [String] subdomain (deprecated)
     # @param [String] api_key
-    def initialize(subdomain: nil, api_key: nil)
+    def initialize(base_url: nil, subdomain: nil, api_key: nil)
+      if subdomain
+        warn('DEPRECATION WARNING: The argument `subdomain:` will be deprecated in a future version.' \
+             ' Please use `base_url:` instead.')
+      end
+
       @subdomain = subdomain || ENV['BRICK_FTP_SUBDOMAIN']
+      @base_url = base_url || ENV['BRICK_FTP_BASE_URL']
       @api_key = api_key || ENV['BRICK_FTP_API_KEY']
-      @api_client = BrickFTP::RESTfulAPI::Client.new(@subdomain, @api_key)
+      @api_client = BrickFTP::RESTfulAPI::Client.new(@base_url || @subdomain, @api_key)
+    end
+
+    def subdomain
+      warn("DEPRECATION WARNING: #{self.class.name}##{__method__} will be deprecated in a future version.")
+      @subdomain
     end
 
     private

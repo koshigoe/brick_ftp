@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 RSpec.describe BrickFTP::Client, type: :lib do
-  describe '#initialize' do
+  describe '#initialize (deprecated)' do
     around do |example|
       subdomain = ENV['BRICK_FTP_SUBDOMAIN']
       api_key = ENV['BRICK_FTP_API_KEY']
@@ -31,6 +31,40 @@ RSpec.describe BrickFTP::Client, type: :lib do
 
         aggregate_failures do
           expect(client.subdomain).to eq 'subdomain'
+          expect(client.api_key).to eq 'api_key'
+        end
+      end
+    end
+  end
+
+  describe '#initialize' do
+    around do |example|
+      base_url = ENV['BRICK_FTP_BASE_URL']
+      api_key = ENV['BRICK_FTP_API_KEY']
+      ENV.update('BRICK_FTP_BASE_URL' => 'http://127.0.0.1:40410/', 'BRICK_FTP_API_KEY' => 'env-api_key')
+
+      example.run
+
+      ENV.update('BRICK_FTP_BASE_URL' => base_url, 'BRICK_FTP_API_KEY' => api_key)
+    end
+
+    context 'omit argument' do
+      it 'use environment variables' do
+        client = BrickFTP::Client.new
+
+        aggregate_failures do
+          expect(client.base_url).to eq 'http://127.0.0.1:40410/'
+          expect(client.api_key).to eq 'env-api_key'
+        end
+      end
+    end
+
+    context 'pass arguments' do
+      it 'use arguments' do
+        client = BrickFTP::Client.new(base_url: 'http://127.0.0.1:40410/', api_key: 'api_key')
+
+        aggregate_failures do
+          expect(client.base_url).to eq 'http://127.0.0.1:40410/'
           expect(client.api_key).to eq 'api_key'
         end
       end
