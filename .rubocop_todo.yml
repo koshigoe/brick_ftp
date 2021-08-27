@@ -43,3 +43,7 @@ Style/Lambda:
 
 Lint/StructNewOverride:
   Enabled: false
+
+Style/StringConcatenation:
+  Exclude:
+    - "spec/**/*_spec.rb"
