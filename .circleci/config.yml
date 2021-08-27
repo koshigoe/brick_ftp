@@ -18,14 +18,6 @@ jobs:
       - run:
           name: RSpec
           command: rspec
-  ruby-2.3:
-    <<: *build
-    docker:
-      - image: circleci/ruby:2.3
-  ruby-2.4:
-    <<: *build
-    docker:
-      - image: circleci/ruby:2.4
   ruby-2.5:
     <<: *build
     docker:
@@ -43,8 +35,6 @@ workflows:
   version: 2
   build-using-multi-rubies:
     jobs:
-      - ruby-2.3
-      - ruby-2.4
       - ruby-2.5
       - ruby-2.6
       - ruby-2.7
