@@ -180,10 +180,10 @@ module BrickFTP
 
       def parse_error_response(response)
         parsed = begin
-                   JSON.parse(response.body)
-                 rescue StandardError
-                   {}
-                 end
+          JSON.parse(response.body)
+        rescue StandardError
+          {}
+        end
         parsed = {} unless parsed.is_a?(Hash)
 
         ErrorResponse.new(parsed.symbolize_keys).tap do |e|
