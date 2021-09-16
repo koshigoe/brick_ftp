@@ -18,6 +18,23 @@ Files::User.new(params, api_key: 'YOUR_API_KEY')
 I will archive this repository after found official SDK.
 
 
+[v2.1.1](https://github.com/koshigoe/brick_ftp/compare/v2.1.0...v2.1.1)
+----
+
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v2.1.0...v2.1.1)
+
+### Enhancements:
+
+- [#136](https://github.com/koshigoe/brick_ftp/pull/136) Use `PATCH` instead of `PUT` to update User.
+    - see https://developers.files.com/#update-user
+
+### Fixed Bugs:
+
+### Deprecate
+
+### Breaking Changes:
+
+
 [v2.1.0](https://github.com/koshigoe/brick_ftp/compare/v2.0.3...v2.1.0)
 ----
 
