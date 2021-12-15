@@ -30,6 +30,10 @@ jobs:
     <<: *build
     docker:
       - image: cimg/ruby:2.7
+  ruby-3.0:
+    <<: *build
+    docker:
+      - image: cimg/ruby:3.0
 
 workflows:
   version: 2
@@ -38,3 +42,4 @@ workflows:
       - ruby-2.5
       - ruby-2.6
       - ruby-2.7
+      - ruby-3.0
