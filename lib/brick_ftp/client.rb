@@ -58,9 +58,11 @@ module BrickFTP
         super
       end
     end
+    ruby2_keywords :method_missing if respond_to?(:ruby2_keywords, true)
 
     def dispatch_command(klass, *args)
       klass.new(api_client).call(*args)
     end
+    ruby2_keywords :dispatch_command if respond_to?(:ruby2_keywords, true)
   end
 end
