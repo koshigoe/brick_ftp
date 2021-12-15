@@ -2,7 +2,7 @@ version: 2
 jobs:
   build: &build
     docker:
-      - image: circleci/ruby:latest
+      - image: cimg/ruby:latest
     working_directory: /home/circleci/app
     steps:
       - checkout
@@ -21,15 +21,15 @@ jobs:
   ruby-2.5:
     <<: *build
     docker:
-      - image: circleci/ruby:2.5
+      - image: cimg/ruby:2.5
   ruby-2.6:
     <<: *build
     docker:
-      - image: circleci/ruby:2.6
+      - image: cimg/ruby:2.6
   ruby-2.7:
     <<: *build
     docker:
-      - image: circleci/ruby:2.7
+      - image: cimg/ruby:2.7
 
 workflows:
   version: 2
