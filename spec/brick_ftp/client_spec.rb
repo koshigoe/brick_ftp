@@ -81,6 +81,24 @@ RSpec.describe BrickFTP::Client, type: :lib do
         expect(client).to be_respond_to(:get_user)
         client.get_user(id)
       end
+
+      context 'API has keyword argument' do
+        it 'dispatch command' do
+          stub_request(:get, 'https://subdomain.files.com/api/rest/v1/folders/path?action=count')
+            .with(
+              basic_auth: %w[api-key x],
+              headers: {
+                'User-Agent' => 'BrickFTP Client/1.0 (https://github.com/koshigoe/brick_ftp)',
+              }
+            )
+            .to_return(body: { data: { count: 3 } }.to_json)
+
+          client = BrickFTP::Client.new(base_url: 'https://subdomain.files.com/', api_key: 'api-key')
+
+          res = client.count_folder_contents('path', recursive: true)
+          expect(res).to eq BrickFTP::Types::FolderContentsCount.new(total: 3)
+        end
+      end
     end
 
     context 'command not found' do

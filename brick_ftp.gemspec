@@ -20,14 +20,16 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.required_ruby_version = '>= 2.5.0'
+  spec.required_ruby_version = '>= 2.6.0'
+
+  spec.add_runtime_dependency 'ruby2_keywords'
 
   spec.add_development_dependency 'bundler', '>= 1.16'
   spec.add_development_dependency 'pry', '~> 0.11'
   spec.add_development_dependency 'rake', '~> 12.0'
   spec.add_development_dependency 'redcarpet', '~> 3.4'
   spec.add_development_dependency 'rspec', '~> 3.7'
-  spec.add_development_dependency 'rubocop', '~> 0.57.0'
+  spec.add_development_dependency 'rubocop', '~> 1.23'
   spec.add_development_dependency 'simplecov', '~> 0.15'
   spec.add_development_dependency 'webmock', '~> 3.4'
   spec.add_development_dependency 'yard', '~> 0.9'

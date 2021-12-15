@@ -2,7 +2,7 @@ version: 2
 jobs:
   build: &build
     docker:
-      - image: circleci/ruby:latest
+      - image: cimg/ruby:latest
     working_directory: /home/circleci/app
     steps:
       - checkout
@@ -18,23 +18,23 @@ jobs:
       - run:
           name: RSpec
           command: rspec
-  ruby-2.5:
-    <<: *build
-    docker:
-      - image: circleci/ruby:2.5
   ruby-2.6:
     <<: *build
     docker:
-      - image: circleci/ruby:2.6
+      - image: cimg/ruby:2.6
   ruby-2.7:
     <<: *build
     docker:
-      - image: circleci/ruby:2.7
+      - image: cimg/ruby:2.7
+  ruby-3.0:
+    <<: *build
+    docker:
+      - image: cimg/ruby:3.0
 
 workflows:
   version: 2
   build-using-multi-rubies:
     jobs:
-      - ruby-2.5
       - ruby-2.6
       - ruby-2.7
+      - ruby-3.0
