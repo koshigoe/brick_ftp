@@ -18,6 +18,24 @@ Files::User.new(params, api_key: 'YOUR_API_KEY')
 I will archive this repository after found official SDK.
 
 
+[v2.1.2](https://github.com/koshigoe/brick_ftp/compare/v2.1.1...v2.1.2)
+----
+
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v2.1.1...v2.1.2)
+
+### Enhancements:
+
+- use `ruby2_keywords` to support Ruby 3.0.
+
+### Fixed Bugs:
+
+### Deprecate
+
+### Breaking Changes:
+
+- Dropping support for Ruby 2.5
+
+
 [v2.1.1](https://github.com/koshigoe/brick_ftp/compare/v2.1.0...v2.1.1)
 ----
 
