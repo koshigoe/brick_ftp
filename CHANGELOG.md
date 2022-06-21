@@ -18,6 +18,22 @@ Files::User.new(params, api_key: 'YOUR_API_KEY')
 I will archive this repository after found official SDK.
 
 
+[v2.1.3](https://github.com/koshigoe/brick_ftp/compare/v2.1.2...v2.1.3)
+----
+
+[Full Changelog](https://github.com/koshigoe/brick_ftp/compare/v2.1.2...v2.1.3)
+
+### Enhancements:
+
+### Fixed Bugs:
+
+- [#138](https://github.com/koshigoe/brick_ftp/pull/138) Filter unsupported keys included in error response
+
+### Deprecate
+
+### Breaking Changes:
+
+
 [v2.1.2](https://github.com/koshigoe/brick_ftp/compare/v2.1.1...v2.1.2)
 ----
 
