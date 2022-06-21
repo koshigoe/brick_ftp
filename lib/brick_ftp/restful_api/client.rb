@@ -187,7 +187,7 @@ module BrickFTP
         end
         parsed = {} unless parsed.is_a?(Hash)
 
-        ErrorResponse.new(parsed.symbolize_keys).tap do |e|
+        ErrorResponse.new(parsed.symbolize_keys.slice(*ErrorResponse.members)).tap do |e|
           e['http-code'] ||= response.code
           e['error'] ||= response.body
         end

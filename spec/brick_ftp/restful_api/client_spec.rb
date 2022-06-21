@@ -102,7 +102,16 @@ RSpec.describe BrickFTP::RESTfulAPI::Client, type: :lib do
             },
             body: '{}'
           )
-          .to_return(body: '{"error":"invalid","http-code":"400"}', status: 400)
+          .to_return(
+            body: {
+              'error' => 'invalid',
+              'http-code' => '400',
+              'instance' => 'a69f6b06-6ba9-4e71-8542-60d2ff3d96f2',
+              'title' => 'title',
+              'type' => 'type',
+            }.to_json,
+            status: 400
+          )
 
         rest = BrickFTP::RESTfulAPI::Client.new('subdomain', 'api-key')
         expect { rest.post('/path/to/resource.json', {}, 'Depth' => 'infinity') }
